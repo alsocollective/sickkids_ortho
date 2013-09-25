@@ -1,0 +1,9 @@
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.pyc
+*.psd
+*.json
+.DS_Store
+/data/

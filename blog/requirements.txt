@@ -1,0 +1,6 @@
+Need to have this going is:
+
+Easy Thumbnails:
+easy_thumbnails
+https://github.com/SmileyChris/easy-thumbnails
+

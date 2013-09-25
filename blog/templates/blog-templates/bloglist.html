@@ -1,0 +1,6 @@
+
+<div id="blog-nav-wrapper">
+{% for post in data%}
+	<a href="/page/{{post.slug}}/">{{post.title}}</a>
+{% endfor %}
+</div>

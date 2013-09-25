@@ -1,0 +1,33 @@
+/*.blog-third{
+	width: 30%;
+	display: inline-block;
+	text-align: center;
+}
+
+.blog-third thead{
+	display: none;
+}
+.blog-third h2{
+	display: none;
+}
+
+.blog-table{
+	width: 100%;
+}
+
+.aligned label{
+	width: auto;
+}
+
+.help{
+	margin: 0 !important;
+	padding: 0 !important;
+	max-width: 200px;
+}
+
+*/
+
+.aligned label{
+	width: auto;
+}
+

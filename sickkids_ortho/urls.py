@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^list/$','blog.views.list',name="bloglist"),
-    url(r'^page/(?P<post>.*)/$','blog.views.post',name="bloglist"),
+    url(r'^page/(?P<post>.*)/$','blog.views.post',name="rawpost"),
+    url(r'^ajax/(?P<post>.*)/$','blog.views.ajaxpost',name="ajaxpost"),
 )

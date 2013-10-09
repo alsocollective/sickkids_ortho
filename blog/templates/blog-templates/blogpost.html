@@ -1,56 +1,36 @@
 
 <html>
 <head>
-	<title></title>
+	<script type="text/javascript" src="/static/js/modernizr.win.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=10.0">
+	<!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+	<title>Sick Kids Orthopedic Surgery</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/blog-css.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/pullSlider.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/animate-slides.css">
 	<script type="text/javascript" src="/static/js/jquery.js"></script>
 </head>
 <body>
-<div id="content">
-	<h1>{{meta.title}}</h1>
-	{%for sections in data%}
-		<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
-		<div class="row">
-			<h1 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h1>
-		</div>
-		{%for row in sections.content%}
-			<div class="row">
-			{%for section in row%}
-			{% if section.paragraph %}
-				<p class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</p>{% else %}
-				<img class="absolute" src="/{{section.image}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
-				{% endif %}
-			{%endfor%}
-			</div>
-		{%endfor%}
-		</div>
-	{%endfor%}
-</div>
+<nav id="nav">
+	<h1>LOGO in here
+	</h1>{% for page in meta.pages %}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{% endfor %}
+	<div class="deviding-block"> </div>
+	<nav id="subnav">
+		{%for sections in data%}
+			<a href="#{{sections.slug}}">{{sections.title}}</a>
+		{% endfor %}
+	</nav>
+	<div class="last-button" > click here to expand</div>
+</nav>
 
-<script type="text/javascript">
-	resizeRows();
-
-	$( window ).resize(function() {
-		resizeRows();
-	});
-
-	function resizeRows(){
-		var rows = $(".row");
-		rows.each(function(index){
-			var children = $(rows[index]).children();
-			var height = 0;
-			for(var a = 0; a < children.length; ++a){
-				var nheight = $(children[a]).height();
-				if(nheight > height){
-					height = nheight;
-				}
-				if(children[a].nodeName = "IMG"){
-					children[a].onload = resizeRows;
-				}
-			}
-			rows[index].style.height = height+"px";
-		});
-	}
-</script>
+<div id="loading" class="page"></div>
+<section id="next-page" class="page"></section>
+<section id="content" class="page animate {{meta.slug}}">
+	{% include "blog-templates/ajax-post.html" %}
+</section>
+<script type="text/javascript" src="/static/js/pullSlider-Jquery.js"></script>
+<script type="text/javascript" src="/static/js/script.js"></script>
 </body>
 </html>

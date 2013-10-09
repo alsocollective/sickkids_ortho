@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from blog.models import *
 from itertools import chain
+from django.core.urlresolvers import reverse
+
 
 def list(request):
 	pages = Page.objects.all().order_by("orderfopage");
@@ -16,17 +18,30 @@ def list(request):
 
 	return render_to_response('blog-templates/bloglist.html',{"data":out})
 
+def getAllPages(pages):
+	out = []
+	for page in pages:
+		outP = {
+			"title":page.title,
+			"slug":page.slug,
+			}
+		out.append(outP)
+	return out
+
 def post(request,post = None):
-	page = Page.objects.filter(slug=post)[0]
-	sections = Section.objects.filter(parent=page).order_by('orderofsec')
+	page = Page.objects.all().order_by("orderfopage");
+	thisPage = page.filter(slug=post)[0]
+	sections = Section.objects.filter(parent=thisPage).order_by('orderofsec')
 	AllTexts = Text.objects.all().order_by('orderofcontent')
 	AllImages = Image.objects.all().order_by('orderofcontent')
-	out = []
 
 	meta = {
-		"title":page.title,
-		"coloumcount":page.number_of_coloums,
+		"title":thisPage.title,
+		"slug":thisPage.slug,
+		"coloumcount":thisPage.number_of_coloums,
+		"pages":getAllPages(page),
 	}
+	out = []
 
 	for section in sections:
 		texts = AllTexts.filter(parent = section)
@@ -102,4 +117,34 @@ def getImageElements(imageObject,cC):
 			})
 	return imageOut
 
+def ajaxpost(request,post = None):
+	page = Page.objects.filter(slug=post)[0]
+	sections = Section.objects.filter(parent=page).order_by('orderofsec')
+	AllTexts = Text.objects.all().order_by('orderofcontent')
+	AllImages = Image.objects.all().order_by('orderofcontent')
+	out = []
+
+	meta = {
+		"title":page.title,
+		"coloumcount":page.number_of_coloums,
+	}
+
+	for section in sections:
+		texts = AllTexts.filter(parent = section)
+		images = AllImages.filter(parent = section)
+
+		smallout = {
+			"title":section.title,
+			"slug":section.slug,
+			"order":section.orderofsec,
+			"coloum":(section.coloumfrom+0.0)/meta["coloumcount"]*100,
+			"coloumWidth":(section.coloumto - section.coloumfrom+0.0)/meta["coloumcount"]*100,
+			"content":getRowsOfEl(texts,images,meta["coloumcount"]),
+		}
+		if section.backgroundImage:
+			smallout["bk"] = section.backgroundImage
+		out.append(smallout)
+
+
+	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
 

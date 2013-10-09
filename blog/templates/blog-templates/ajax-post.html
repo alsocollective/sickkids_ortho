@@ -1,0 +1,23 @@
+<h1>{{meta.title}}</h1>
+{%for sections in data%}
+	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
+	<div class="row">
+		<h1 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h1>
+	</div>
+	{%for row in sections.content%}
+		<div class="row">
+		{%for section in row%}
+		{% if section.paragraph %}
+			<p class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</p>{% else %}
+			<img class="absolute" src="/{{section.image}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
+			{% endif %}
+		{%endfor%}
+		</div>
+	{%endfor%}
+	</div>
+{%endfor%}
+<nav id="subnav-new" style="display:none;">
+{%for sections in data%}
+	<a href="#{{sections.slug}}">{{sections.title}}</a>
+{%endfor%}
+</nav>

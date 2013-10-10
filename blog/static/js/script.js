@@ -44,20 +44,23 @@ function setupnav(){
 	});
 }
 
-var slideMenu;
-if($(window).width()>480){
-	slideMenu = $("#nav").pullSlider({inmode:false});
-} else {
-	slideMenu = $("#nav").pullSlider({inmode:true});
-}
 
-$(window).on("resize",function(){
+var slideMenu;
+$(window).load(function() {
 	if($(window).width()>480){
-		slideMenu.disable();
+		slideMenu = $("#nav").pullSlider({inmode:false});
 	} else {
-		slideMenu.enable();
+		slideMenu = $("#nav").pullSlider({inmode:true});
 	}
-})
+
+	$(window).on("resize",function(){
+		if($(window).width()>480){
+			slideMenu.disable();
+		} else {
+			slideMenu.enable();
+		}
+	})
+});
 
 
 function loadNextPage(address){

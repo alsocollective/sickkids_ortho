@@ -49,6 +49,7 @@ img.absolute{
 
 /* nav */
 	#nav{
+		position: absolute;/* we need absolute as a fall back */
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -95,10 +96,11 @@ img.absolute{
 		overflow: hidden;
 	}
 
-/* content */
+/* ` */
 	#content{
 		left: 0%;
 		background-color: #fff;
+		overflow: scroll;
 	}
 	.page > h1 {
 		padding-top: 2em;
@@ -161,7 +163,7 @@ img.absolute{
 	#nav .last-button{
 		position: static;
 		display: block;
-		height: 100px;
+		height: 50px;
 		width: 100%;
 		background-color: #ccc;
 	}

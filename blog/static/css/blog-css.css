@@ -62,6 +62,8 @@ img.absolute{
 		margin: 0;
 		position: relative;
 		z-index: 2;
+		zoom: 1;
+		*display: inline;
 	}
 	#nav a{
 		display: inline-block;

@@ -204,7 +204,8 @@ $.fn.pullSlider = function( options ) {
 	}
 	//scroll the element to the bottom of the page
 	function scrollToBottom(){
-		settings.element.scrollTop(settings.element[0].scrollHeight);
+		console.log("should of scrolled all the way up");
+		settings.element.scrollTop(settings.element.outerHeight());
 	}
 
 	return this

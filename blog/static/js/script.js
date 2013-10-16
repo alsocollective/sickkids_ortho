@@ -31,7 +31,7 @@ function setupnav(){
 	var links = $(".link-to-page");
 	links.each(function(index){
 		$(links[index]).click(function(){
-			event.preventDefault();
+			// event.preventDefault();
 			if(!animating){
 				animating = true;
 				var linkto = this.getAttribute("href").split("/")
@@ -40,6 +40,7 @@ function setupnav(){
 				linkto = linkto[linkto.length-1];
 				loadNextPage(linkto);
 			}
+			return false;
 		});
 	});
 }

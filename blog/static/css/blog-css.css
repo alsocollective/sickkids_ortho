@@ -165,8 +165,10 @@ img.absolute{
 	#nav .last-button{
 		position: static;
 		display: block;
-		height: 50px;
-		width: 100%;
+		padding: 5%;
+		/*padding: 1em 0 1em 0;*/
+		/*height: 50px;*/
+		width: 90%;
 		background-color: #ccc;
 	}
 	#nav .selected{

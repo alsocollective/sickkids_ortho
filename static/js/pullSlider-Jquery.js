@@ -81,6 +81,7 @@ $.fn.pullSlider = function( options ) {
 			settings.toggelbutton.addClass('selected');
 			settings.selected = true;
 			settings.last = settings.element.offset().top;
+			settings.height = settings.element.height();
 		}
 	})
 	//as the user moves over the screen the element follows their touch, by preventing default we do not allow click to be triggered, we also do the math for the acceleration of the menu
@@ -93,7 +94,6 @@ $.fn.pullSlider = function( options ) {
 			settings.accel = settings.last - thispos;
 			settings.last = thispos;
 			var tLoc = 0;
-			console.log(event);
 			switch(settings.location){
 				case "top":
 					tLoc = touched["clientY"]-settings.height+(settings.tbheight);
@@ -104,7 +104,6 @@ $.fn.pullSlider = function( options ) {
 				default:
 					tLoc = touched["clientY"]-settings.height;
 			}
-			console.log(tLoc);
 			if(touched["clientY"]-settings.height < 0 && touched["clientY"]-settings.height > -settings.height){
 				settings.element.css("top",tLoc);
 			}
@@ -143,7 +142,12 @@ $.fn.pullSlider = function( options ) {
 		settings.windowHeight = $(window).outerHeight();
 		settings.element.height("auto");
 		settings.height = settings.element.height();
-		if(settings.height >= settings.windowHeight){
+		toggleSliderWindow();
+		settings.tbheight = settings.toggelbutton.outerHeight(true);
+	}
+
+	function toggleSliderWindow(){
+		if(settings.height >= settings.windowHeight && settings.display){
 			settings.element.height(settings.windowHeight);
 			if(!settings.element.hasClass('slider-window-height')){
 				settings.element.addClass('slider-window-height');
@@ -154,7 +158,6 @@ $.fn.pullSlider = function( options ) {
 				settings.element.removeClass('slider-window-height');
 			}
 		}
-		settings.tbheight = settings.toggelbutton.outerHeight(true);
 	}
 	//slide either up or down the element based on the animation
 	function putToPosistion(noscroll){
@@ -205,7 +208,8 @@ $.fn.pullSlider = function( options ) {
 	//scroll the element to the bottom of the page
 	function scrollToBottom(){
 		console.log("should of scrolled all the way up");
-		settings.element.scrollTop(settings.element.outerHeight());
+		//settings.element[0].scrollHeight
+		settings.element.scrollTop(settings.element.prop("scrollHeight"));
 	}
 
 	return this

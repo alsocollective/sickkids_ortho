@@ -2,6 +2,9 @@ from django.db import models
 from easy_thumbnails.fields import ThumbnailerImageField
 from django.template.defaultfilters import slugify
 import datetime
+import os.path
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 
 class Style(models.Model):
 	title = models.CharField(max_length = 100)
@@ -66,6 +69,14 @@ class Text(models.Model):
 	def __unicode__(self):
 		return self.subTitle
 
+
+
+import imghdr
+import sys,os
+from PIL import Image as Img
+# for this to work we need PIL to work
+
+
 class Image(models.Model):
 	parent = models.ForeignKey(Section)
 	payload = ThumbnailerImageField(upload_to='static/photos')
@@ -87,4 +98,36 @@ class Image(models.Model):
 	def save(self, *args, **kwargs):
 		datechanged = datetime.datetime.today()
 		super(Image, self).save(*args, **kwargs)
+		# get all the meta data ready like file names...
+		fileType = imghdr.what(self.payload)
+		imgdir = SITE_ROOT + "/../" + str(self.payload)
+		splited = str(self.payload).split("/")
+		# get the root image directory
+		front = ""
+		end = splited[len(splited)-1]
+		for a in range(len(splited)-1):
+			front = front + "/" + splited[a]
+		front = SITE_ROOT + "/../" + front
+		if not os.path.exists("%s/mobile%s"%(front,end)):
+			try:
+				basewidth = 400 #this could be an input
+				im = Img.open(imgdir)
+				wpercent = (basewidth/float(im.size[0]))
+				hsize = int((float(im.size[1])*float(wpercent)))
+				im=im.resize((basewidth,hsize), Img.ANTIALIAS)
+
+				if fileType == "jpeg":
+					im.save("%s/mobile%s"%(front,end), 'JPEG',quality=90)
+				elif fileType == "png":
+					im.save("%s/mobile%s"%(front,end), 'PNG',quality=90)
+				else:
+					im = Image.open("%s/%s"%(front,end))
+					im.save("%s/mobile%s"%(front,end))
+				print "mobile version is created"
+				#im.save("%s/mobile%s"%(sys.argv[1],name))
+			except IOError:
+				print "%s not an image"%(imgdir)
+		else:
+			print "file already exits"
+
 

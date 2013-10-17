@@ -55,6 +55,7 @@ $.fn.pullSlider = function( options ) {
 	this.refindHeight = function(){
 		resetHeight();
 		settings.display = false;
+		settings.element.removeClass('slider-active');
 		putToPosistion();
 	}
 
@@ -69,8 +70,10 @@ $.fn.pullSlider = function( options ) {
 		if(settings.inmode){
 			if(settings.display){
 				settings.display = false;
+				settings.element.removeClass('slider-active');
 			} else {
 				settings.display = true;
+				settings.element.addClass('slider-active');
 			}
 			putToPosistion();
 		}
@@ -118,15 +121,19 @@ $.fn.pullSlider = function( options ) {
 				case "top":
 					if(settings.accel <= 0){
 						settings.display = true;
+						settings.element.addClass('slider-active');
 					} else {
 						settings.display = false;
+						settings.element.removeClass('slider-active');
 					}
 					break;
 				case "bottom":
 					if(settings.accel >= 0){
 						settings.display = true;
+						settings.element.addClass('slider-active');
 					} else {
 						settings.display = false;
+						settings.element.removeClass('slider-active');
 					}
 					break;
 			}
@@ -147,7 +154,7 @@ $.fn.pullSlider = function( options ) {
 	}
 
 	function toggleSliderWindow(){
-		if(settings.height >= settings.windowHeight && settings.display){
+		if(settings.height >= settings.windowHeight){
 			settings.element.height(settings.windowHeight);
 			if(!settings.element.hasClass('slider-window-height')){
 				settings.element.addClass('slider-window-height');
@@ -207,9 +214,7 @@ $.fn.pullSlider = function( options ) {
 	}
 	//scroll the element to the bottom of the page
 	function scrollToBottom(){
-		console.log("should of scrolled all the way up");
-		//settings.element[0].scrollHeight
-		settings.element.scrollTop(settings.element.prop("scrollHeight"));
+		settings.element.scrollTop(settings.element[0].scrollHeight);
 	}
 
 	return this

@@ -8,6 +8,9 @@
 		<div class="row">
 		{%for section in row%}
 		{% if section.paragraph %}
+			{% if section.subTitle %}
+				<h2 class="absolute" style="left:{{section.coloum}}%;"> {{section.subTitle}} </h2>
+			{% endif %}
 			<p class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</p>{% else %}
 			<img class="absolute" src="/{{section.image}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
 			{% endif %}

@@ -10,8 +10,11 @@
 	transition: all 0.5s;
 }
 .slider-window-height{
-	overflow: scroll;
 	position: fixed;
+	overflow: hidden;
+}
+.slider-window-height.slider-active{
+	overflow: scroll !important;
 }
 .selected{
 	background-color: #ccc;

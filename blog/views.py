@@ -7,7 +7,7 @@ import requests
 
 
 def list(request):
-	pages = Page.objects.all().order_by("orderfopage");
+	pages = Page.objects.all().order_by("order_of_page");
 
 	out = []
 	for page in pages:
@@ -30,11 +30,11 @@ def getAllPages(pages):
 	return out
 
 def post(request,post = None):
-	page = Page.objects.all().order_by("orderfopage");
+	page = Page.objects.all().order_by("order_of_page");
 	thisPage = page.filter(slug=post)[0]
-	sections = Section.objects.filter(parent=thisPage).order_by('orderofsec')
-	AllTexts = Text.objects.all().order_by('orderofcontent')
-	AllImages = Image.objects.all().order_by('orderofcontent')
+	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
+	AllTexts = Text.objects.all().order_by('order_of_content')
+	AllImages = Image.objects.all().order_by('order_of_content')
 
 	meta = {
 		"title":thisPage.title,
@@ -51,9 +51,9 @@ def post(request,post = None):
 		smallout = {
 			"title":section.title,
 			"slug":section.slug,
-			"order":section.orderofsec,
-			"coloum":(section.coloumfrom+0.0)/meta["coloumcount"]*100,
-			"coloumWidth":(section.coloumto - section.coloumfrom+0.0)/meta["coloumcount"]*100,
+			"order":section.order_of_section,
+			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
+			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"content":getRowsOfEl(texts,images,meta["coloumcount"], request),
 		}
 		if section.backgroundImage:
@@ -99,9 +99,9 @@ def getTextElements(textObject,cC):
 		textOut.append({
 			"paragraph":text.paragraph,
 			"subTitle":text.subTitle,
-			"coloum":(text.coloumfrom+0.0)/cC*100,
-			"coloumWidth":(text.coloumto - text.coloumfrom+0.0)/cC*100,
-			"order":text.orderofcontent,
+			"coloum":(text.coloum_from+0.0)/cC*100,
+			"coloumWidth":(text.coloum_to - text.coloum_from+0.0)/cC*100,
+			"order":text.order_of_content,
 			"type":"text",
 			})
 	return textOut
@@ -110,9 +110,9 @@ def getImageElements(imageObject,cC,request):
 	imageOut = []
 	for image in imageObject:
 		locDic = {
-			"coloum":(image.coloumfrom+0.0)/cC*100,
-			"coloumWidth":(image.coloumto - image.coloumfrom+0.0)/cC*100,
-			"order":image.orderofcontent,
+			"coloum":(image.coloum_from+0.0)/cC*100,
+			"coloumWidth":(image.coloum_to - image.coloum_from+0.0)/cC*100,
+			"order":image.order_of_content,
 			"type":"image",
 			}
 		if(not request.mobile):

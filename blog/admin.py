@@ -10,7 +10,7 @@ class textInline(admin.StackedInline):
 	extra = 0
 	fieldsets = [
 		('',{
-				'fields':[('paragraph',),('coloumfrom','coloumto','orderofcontent','subTitle',)]
+				'fields':[('paragraph',),('coloum_from','coloum_to','order_of_content','subTitle',)]
 		}),
 	]
 
@@ -21,7 +21,7 @@ class imageInline(admin.StackedInline):
 	readonly_fields = ('showImage',)
 	fieldsets = [
 		('',{
-			'fields':[('payload','showImage',),('coloumfrom','coloumto','orderofcontent',)]
+			'fields':[('payload','showImage',),('coloum_from','coloum_to','order_of_content','alternate_info',)]
 		}),
 	]
 
@@ -32,7 +32,7 @@ class sectionAdmin(admin.ModelAdmin):
 	readonly_fields = ('showBackground',)
 	fieldsets = [
 		('',{
-			'fields':[('title','coloumfrom','coloumto','orderofsec','subTitle','backgroundImage','showBackground',)]}
+			'fields':[('title','show_title','coloum_from','coloum_to','order_of_section','subTitle','backgroundImage','showBackground',)]}
 		),]
 	inlines = [textInline,imageInline]
 	class Media:
@@ -49,7 +49,7 @@ admin.site.register(Section,sectionAdmin)
 class sectionInline(admin.StackedInline):
 	model = Section
 	extra = 0
-	fieldsets = [('', {'fields':[('changeform_link','title','orderofsec',)]	}),]
+	fieldsets = [('', {'fields':[('changeform_link','title','order_of_section',)]	}),]
 	readonly_fields = ['changeform_link', ]
 
 	def changeform_link(self,instance):
@@ -66,7 +66,7 @@ class sectionInline(admin.StackedInline):
 
 class PageAdmin(admin.ModelAdmin):
 	inlines = [sectionInline]
-	list_display = ('title','orderfopage')
-	list_editable = ('orderfopage',)
+	list_display = ('title','order_of_page')
+	list_editable = ('order_of_page',)
 
 admin.site.register(Page,PageAdmin)

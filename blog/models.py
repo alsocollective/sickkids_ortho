@@ -17,7 +17,7 @@ class Style(models.Model):
 class Page(models.Model):
 	title = models.CharField(max_length = 300)
 	slug = models.SlugField(blank=True)
-	orderfopage = models.IntegerField(default=1)
+	order_of_page = models.IntegerField(default=1)
 	number_of_coloums = models.IntegerField(default=8)
 
 	def save(self,*args, **kwargs):
@@ -27,11 +27,12 @@ class Page(models.Model):
 class Section(models.Model):
 	parent = models.ForeignKey(Page)
 	title = models.CharField(max_length = 300)
-	orderofsec = models.IntegerField(default=1)
+	order_of_section = models.IntegerField(default=1)
 	pub_date = models.DateTimeField(auto_now=True)
 	slug = models.SlugField(blank=True)
-	coloumfrom = models.IntegerField(default=1)
-	coloumto = models.IntegerField(default=7)
+	coloum_from = models.IntegerField(default=1)
+	coloum_to = models.IntegerField(default=7)
+	show_title = models.BooleanField(default=True)
 
 	# paragraph = models.TextField()
 
@@ -56,12 +57,12 @@ class Text(models.Model):
 	parent = models.ForeignKey(Section)
 	paragraph = models.TextField()
 	subTitle = models.CharField(max_length = 600,blank=True)
-	coloumfrom = models.IntegerField(default=1)
-	coloumto = models.IntegerField(default=7)
+	coloum_from = models.IntegerField(default=1)
+	coloum_to = models.IntegerField(default=7)
 	style = models.ManyToManyField(Style,blank=True)
 
-	orderofcontent = models.IntegerField(default=1)
-	datechanged = models.DateTimeField(auto_now=True)
+	order_of_content = models.IntegerField(default=1)
+	date_changed = models.DateTimeField(auto_now=True)
 	def save(self, *args, **kwargs):
 		datechanged = datetime.datetime.today()
 		super(Text, self).save(*args, **kwargs)
@@ -80,10 +81,11 @@ from PIL import Image as Img
 class Image(models.Model):
 	parent = models.ForeignKey(Section)
 	payload = ThumbnailerImageField(upload_to='static/photos')
-	orderofcontent = models.IntegerField(default=1)
+	order_of_content = models.IntegerField(default=1)
 	datechanged = models.DateTimeField(auto_now=True)
-	coloumfrom = models.IntegerField(default=1)
-	coloumto = models.IntegerField(default=7)
+	coloum_from = models.IntegerField(default=1)
+	coloum_to = models.IntegerField(default=7)
+	alternate_info = models.TextField()
 	style = models.ManyToManyField(Style,blank=True)
 
 	def showImage(self):

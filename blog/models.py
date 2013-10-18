@@ -26,13 +26,17 @@ class Page(models.Model):
 
 class Section(models.Model):
 	parent = models.ForeignKey(Page)
+
 	title = models.CharField(max_length = 300)
+	show_title = models.BooleanField(default=True)
+	subTitle = models.CharField(max_length = 300)
+	show_subTitle = models.BooleanField(default=True)
+
 	order_of_section = models.IntegerField(default=1)
 	pub_date = models.DateTimeField(auto_now=True)
 	slug = models.SlugField(blank=True)
-	coloum_from = models.IntegerField(default=1)
-	coloum_to = models.IntegerField(default=7)
-	show_title = models.BooleanField(default=True)
+	coloum_from = models.IntegerField(default=0)
+	coloum_to = models.IntegerField(default=8)
 
 	# paragraph = models.TextField()
 
@@ -57,8 +61,8 @@ class Text(models.Model):
 	parent = models.ForeignKey(Section)
 	paragraph = models.TextField()
 	subTitle = models.CharField(max_length = 600,blank=True)
-	coloum_from = models.IntegerField(default=1)
-	coloum_to = models.IntegerField(default=7)
+	coloum_from = models.IntegerField(default=0)
+	coloum_to = models.IntegerField(default=8)
 	style = models.ManyToManyField(Style,blank=True)
 
 	order_of_content = models.IntegerField(default=1)
@@ -83,10 +87,12 @@ class Image(models.Model):
 	payload = ThumbnailerImageField(upload_to='static/photos')
 	order_of_content = models.IntegerField(default=1)
 	datechanged = models.DateTimeField(auto_now=True)
-	coloum_from = models.IntegerField(default=1)
-	coloum_to = models.IntegerField(default=7)
-	alternate_info = models.TextField()
+	coloum_from = models.IntegerField(default=0)
+	coloum_to = models.IntegerField(default=8)
+	alternate_info = models.CharField(max_length = 300)
 	style = models.ManyToManyField(Style,blank=True)
+	image_height = models.IntegerField(default=0)
+	image_width = models.IntegerField(default=0)
 
 	def showImage(self):
 		if self.payload:
@@ -99,7 +105,6 @@ class Image(models.Model):
 
 	def save(self, *args, **kwargs):
 		datechanged = datetime.datetime.today()
-		super(Image, self).save(*args, **kwargs)
 		# get all the meta data ready like file names...
 		fileType = imghdr.what(self.payload)
 		imgdir = SITE_ROOT + "/../" + str(self.payload)
@@ -116,6 +121,7 @@ class Image(models.Model):
 				im = Img.open(imgdir)
 				wpercent = (basewidth/float(im.size[0]))
 				hsize = int((float(im.size[1])*float(wpercent)))
+				self.image_width, self.image_height = im.size
 				im=im.resize((basewidth,hsize), Img.ANTIALIAS)
 
 				if fileType == "jpeg":
@@ -131,5 +137,7 @@ class Image(models.Model):
 				print "%s not an image"%(imgdir)
 		else:
 			print "file already exits"
+
+		super(Image, self).save(*args, **kwargs)
 
 

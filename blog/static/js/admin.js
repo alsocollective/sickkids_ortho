@@ -40,7 +40,7 @@ window.onload = function(){
 	console.log(toGoInTable);
 	reorganizeElements();
 	for(var a = 0; a < listOfNewTextFields.length; ++a){
-		niceditor.panelInstance(listOfNewTextFields[a][0].id);
+		// niceditor.panelInstance(listOfNewTextFields[a][0].id);
 	}
 
 	//makes the buttons add to the list of elements to gointo the table
@@ -52,7 +52,7 @@ window.onload = function(){
 			toGoInTable.push({"element":thisEl,"value":orderField});
 			var textFieldArea = $(thisEl).find(".vLargeTextField");
 			if(textFieldArea.length > 0){
-				niceditor.panelInstance(textFieldArea[0].id);
+				// niceditor.panelInstance(textFieldArea[0].id);
 			}
 		}
 		updateTheTable();

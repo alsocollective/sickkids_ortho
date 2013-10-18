@@ -1,4 +1,6 @@
-<h1>{{meta.title}}</h1>
+<script>ga(function(){console.log("{{ meta.title }}");});</script>
+
+<h1>{{ meta.title }}</h1>
 {%for sections in data%}
 	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
 	<div class="row">

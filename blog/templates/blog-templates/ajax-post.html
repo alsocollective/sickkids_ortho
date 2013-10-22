@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-{%if meta.title != "Home" %}
-	<h1>{{meta.title}}</h1>
-{% endif %}
-
-=======
 <script>ga(function(){console.log("{{ meta.title }}");});</script>
-
-<h1>{{ meta.title }}</h1>
->>>>>>> d40d7ee288ba083c7f4f80ee149c04820c6889ac
+{%if meta.title != "Home" %}
+	<h1>{{ meta.title }}</h1>
+{% endif %}
 {%for sections in data%}
 	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
 	{% if sections.showTitle %}

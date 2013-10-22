@@ -131,9 +131,9 @@ def getImageElements(imageObject,cC,request):
 
 def ajaxpost(request,post = None):
 	page = Page.objects.filter(slug=post)[0]
-	sections = Section.objects.filter(parent=page).order_by('orderofsec')
-	AllTexts = Text.objects.all().order_by('orderofcontent')
-	AllImages = Image.objects.all().order_by('orderofcontent')
+	sections = Section.objects.filter(parent=page).order_by('order_of_section')
+	AllTexts = Text.objects.all().order_by('order_of_content')
+	AllImages = Image.objects.all().order_by('order_of_content')
 	out = []
 
 	meta = {
@@ -148,9 +148,9 @@ def ajaxpost(request,post = None):
 		smallout = {
 			"title":section.title,
 			"slug":section.slug,
-			"order":section.orderofsec,
-			"coloum":(section.coloumfrom+0.0)/meta["coloumcount"]*100,
-			"coloumWidth":(section.coloumto - section.coloumfrom+0.0)/meta["coloumcount"]*100,
+			"order":section.order_of_section,
+			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
+			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"content":getRowsOfEl(texts,images,meta["coloumcount"],request),
 		}
 		if section.backgroundImage:

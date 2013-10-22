@@ -4,16 +4,20 @@ body,html{
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
+	
+	font-family: sans-serif;
 }
+
 body{
 	position: absolute;
 	left: 0;
 	top: 0;
 	background-color: #000;
 }
+
 .absolute{
 	position: absolute;
-	background-color: #c44;
+	/*background-color: #c44;*/
 	display: inline-block;
 	top: 0;
 	vertical-align: top;

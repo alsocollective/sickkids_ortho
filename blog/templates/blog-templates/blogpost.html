@@ -1,4 +1,4 @@
-<html>
+<html lang="en-ca">
 <head>
 
 	<script type="text/javascript" src="/static/js/modernizr.js"></script>
@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav id="nav">
-	<img src="/static/img/sickkidslogo.png"/>{% for page in meta.pages %}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{% endfor %}
+	<img src="/static/img/sickkidslogo.png" alt="Home"/>{% for page in meta.pages %}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{% endfor %}
 	<div class="deviding-block"> </div>
 	<nav id="subnav">
 		{%for sections in data%}

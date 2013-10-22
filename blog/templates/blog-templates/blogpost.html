@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=10.0,user-scalable=no">
 	<!-- <meta name="viewport" content="width=device-width, user-scalable=no"> -->
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
-	<title>Sick Kids Orthopedic Surgery</title>
+	<title>Sick Kids: Orthopaedic Surgery Fellowship</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/blog-css.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/pullSlider.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/animate-slides.css">
@@ -18,15 +18,14 @@
 </head>
 <body>
 <nav id="nav">
-	<h1>LOGO in here
-	</h1>{% for page in meta.pages %}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{% endfor %}
+	<img src="/static/img/sickkidslogo.png"/>{% for page in meta.pages %}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{% endfor %}
 	<div class="deviding-block"> </div>
 	<nav id="subnav">
 		{%for sections in data%}
 			<a href="#{{sections.slug}}">{{sections.title}}</a>
 		{% endfor %}
 	</nav>
-	<div class="last-button" > click here to expand</div>
+	<div class="last-button">click here to expand</div>
 </nav>
 
 <div id="loading" class="page"></div>

@@ -5,3 +5,4 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 // ga('create', 'UA-39447542-2', 'sickkidsorthofellowship.ca', {'cookieDomain': 'none'});
 ga('create', 'UA-39447542-2', 'sickkidsorthofellowship.ca');
+ga('send', 'pageview');

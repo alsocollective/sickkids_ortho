@@ -1,4 +1,9 @@
-<script>// ga(function(){console.log("{{ meta.title }}");});</script>
+<script>ga('send', 'pageview', {
+  'page': '/{{ meta.title }}',
+  'title': '{{ meta.title }}'
+});
+</script>
+
 {%if meta.title != "Home" %}
 	<h1>{{ meta.title }}</h1>
 {% endif %}

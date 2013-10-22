@@ -4,16 +4,20 @@ body,html{
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
+	
+	font-family: sans-serif;
 }
+
 body{
 	position: absolute;
 	left: 0;
 	top: 0;
 	background-color: #000;
 }
+
 .absolute{
 	position: absolute;
-	background-color: #c44;
+	/*background-color: #c44;*/
 	display: inline-block;
 	top: 0;
 	vertical-align: top;
@@ -54,6 +58,8 @@ img.absolute{
 		top: 0;
 		left: 0;
 		z-index: 88;
+		width: 100%;
+		background-color: #ea636e;
 	}
 	#nav h1{
 		display: inline-block;

@@ -1,11 +1,14 @@
 <script>ga(function(){console.log("{{ meta.title }}");});</script>
-
-<h1>{{ meta.title }}</h1>
+{%if meta.title != "Home" %}
+	<h1>{{ meta.title }}</h1>
+{% endif %}
 {%for sections in data%}
 	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
+	{% if sections.showTitle %}
 	<div class="row">
 		<h1 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h1>
 	</div>
+	{% endif %}
 	{%for row in sections.content%}
 		<div class="row">
 		{%for section in row%}
@@ -14,7 +17,7 @@
 				<h2 class="absolute" style="left:{{section.coloum}}%;"> {{section.subTitle}} </h2>
 			{% endif %}
 			<div class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</div>{% else %}
-			<img class="absolute" src="/{{section.image}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
+			<img class="absolute" src="/{{section.image}}" alt="{{section.imageAlt}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
 			{% endif %}
 		{%endfor%}
 		</div>

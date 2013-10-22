@@ -42,24 +42,7 @@ def post(request,post = None):
 		"coloumcount":thisPage.number_of_coloums,
 		"pages":getAllPages(page),
 	}
-	out = []
-
-	for section in sections:
-		texts = AllTexts.filter(parent = section)
-		images = AllImages.filter(parent = section)
-
-		smallout = {
-			"title":section.title,
-			"slug":section.slug,
-			"order":section.order_of_section,
-			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
-			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
-			"content":getRowsOfEl(texts,images,meta["coloumcount"], request),
-		}
-		if section.backgroundImage:
-			smallout["bk"] = section.backgroundImage
-		out.append(smallout)
-
+	out = getSections(request,sections,AllTexts,AllImages,meta)
 
 	return render_to_response('blog-templates/blogpost.html',{"data":out,"meta":meta})
 
@@ -114,6 +97,7 @@ def getImageElements(imageObject,cC,request):
 			"coloumWidth":(image.coloum_to - image.coloum_from+0.0)/cC*100,
 			"order":image.order_of_content,
 			"type":"image",
+			"imageAlt":image.alternate_info,
 			}
 		if(not request.mobile):
 			front = ""
@@ -129,17 +113,8 @@ def getImageElements(imageObject,cC,request):
 		imageOut.append(locDic)
 	return imageOut
 
-def ajaxpost(request,post = None):
-	page = Page.objects.filter(slug=post)[0]
-	sections = Section.objects.filter(parent=page).order_by('order_of_section')
-	AllTexts = Text.objects.all().order_by('order_of_content')
-	AllImages = Image.objects.all().order_by('order_of_content')
+def getSections(request,sections,AllTexts,AllImages,meta):
 	out = []
-
-	meta = {
-		"title":page.title,
-		"coloumcount":page.number_of_coloums,
-	}
 
 	for section in sections:
 		texts = AllTexts.filter(parent = section)
@@ -147,6 +122,9 @@ def ajaxpost(request,post = None):
 
 		smallout = {
 			"title":section.title,
+			"showTitle":section.show_title,
+			"subTitle":section.subTitle,
+			"showSubTitle":section.show_subTitle,
 			"slug":section.slug,
 			"order":section.order_of_section,
 			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
@@ -156,6 +134,20 @@ def ajaxpost(request,post = None):
 		if section.backgroundImage:
 			smallout["bk"] = section.backgroundImage
 		out.append(smallout)
+	return out
+
+def ajaxpost(request,post = None):
+	page = Page.objects.filter(slug=post)[0]
+	sections = Section.objects.filter(parent=page).order_by('order_of_section')
+	AllTexts = Text.objects.all().order_by('order_of_content')
+	AllImages = Image.objects.all().order_by('order_of_content')
+
+	meta = {
+		"title":page.title,
+		"coloumcount":page.number_of_coloums,
+	}
+	out = getSections(request,sections,AllTexts,AllImages,meta)
+
 
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})

@@ -11,7 +11,7 @@
 			{% if section.subTitle %}
 				<h2 class="absolute" style="left:{{section.coloum}}%;"> {{section.subTitle}} </h2>
 			{% endif %}
-			<p class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</p>{% else %}
+			<div class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}</div>{% else %}
 			<img class="absolute" src="/{{section.image}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
 			{% endif %}
 		{%endfor%}

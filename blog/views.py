@@ -145,10 +145,9 @@ def ajaxpost(request,post = None):
 	meta = {
 		"title":page.title,
 		"coloumcount":page.number_of_coloums,
+		"slug":page.slug
 	}
 	out = getSections(request,sections,AllTexts,AllImages,meta)
-
-
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
 

@@ -147,7 +147,7 @@ $("#content").on('scroll', function(){
 			//if the scroll point is less than then next but greater than current
 			if(hashElements[a] != currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a]
-				console.log("got to tis section " + currentHashEl);
+				window.location.hash = currentHashEl;
 				ga('send', 'pageview', {
 					'page': '/'+pageSlug,
 					'title': currentHashEl

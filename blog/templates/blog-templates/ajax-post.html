@@ -1,31 +1,15 @@
-<script>ga('send', 'pageview', {
-  'page': '/{{ meta.title }}',
-  'title': '{{ meta.title }}'
-});
-
-$(function () {
-    var currentHash = "#one"
-    $(document).scroll(function () {
-        $('.hash').each(function () {
-            var top = window.pageYOffset;
-            var distance = top - $(this).offset().top;
-            var hash = $(this).attr('href');
-
-            if (distance < 30 && distance > -30 && currentHash != hash) {
-                alert(hash);
-                currentHash = hash;
-            }
-        });
-    });
-});
-
+<script>
+	ga('send', 'pageview', {
+		'page': '/{{ meta.title }}',
+		'title': '{{ meta.title }}'
+	});
 </script>
 
 {%if meta.title != "Home" %}
 	<h1>{{ meta.title }}</h1>
 {% endif %}
 {%for sections in data%}
-	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">
+	<div id="{{sections.slug}}" {%if sections.bk%} class="background" style="background-image: url(/{{sections.bk}});"{%endif%}>
 	{% if sections.showTitle %}
 	<div class="row">
 		<h1 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h1>
@@ -54,4 +38,12 @@ $(function () {
 {%for sections in data%}
 	<a href="#{{sections.slug}}">{{sections.title}}</a>
 {%endfor%}
+
+<script type="text/javascript">
+	hashElements = [
+	{%for sections in data%}
+		"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}
+	{%endfor%}
+	]
+</script>
 </nav>

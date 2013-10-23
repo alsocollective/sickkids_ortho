@@ -99,7 +99,7 @@ def getImageElements(imageObject,cC,request):
 			"type":"image",
 			"imageAlt":image.alternate_info,
 			}
-		if(not request.mobile):
+		if(False):#request.mobile):
 			front = ""
 			splited = str(image.payload).split("/")
 			end = splited[len(splited)-1]

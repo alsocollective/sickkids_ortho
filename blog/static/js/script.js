@@ -12,7 +12,7 @@ function resizeRows(){
 	rows.each(function(index){
 		var children = $(rows[index]).children();
 		var height = 0;
-		for(var a = 0; a < children.length; ++a){
+		for(var a = 0, max = children.length; a < max; ++a){
 			var nheight = $(children[a]).height();
 			if(nheight > height){
 				height = nheight;
@@ -23,6 +23,7 @@ function resizeRows(){
 		}
 		rows[index].style.height = height+"px";
 	});
+	findTriggerPoints();
 }
 
 setupnav();
@@ -87,6 +88,7 @@ function loadNextPage(address){
 		resizeRows();
 		setTimeout(clearAnimation,1000);
 		setTimeout(resetTheNames,1001);
+		findTriggerPoints();
 	});
 	nextpage.addClass(address);
 }
@@ -130,4 +132,39 @@ function resetTheNames(){
 	newSubnav.className = "";
 
 	slideMenu.refindHeight();
+}
+
+
+//google analytics function
+//when ever we load in new content we replace the hashElements with the id's of the elements
+//we also then reload the height triggering points loading them into the triggersPoints array
+$("#content").on('scroll', function(){
+	contentScrollTop = $(this).scrollTop();
+	//check if there is more than 1 point
+	if(triggersPoints.length > 1){
+		//for each point check if it crossed it
+		for(var a = 0; a < triggersPoints.length; a += 1){
+			//if the scroll point is less than then next but greater than current
+			if(hashElements[a] != currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
+				currentHashEl = hashElements[a]
+				console.log("got to tis section " + currentHashEl);
+				ga('send', 'pageview', {
+					'page': '/'+pageSlug,
+					'title': currentHashEl
+				});
+			}
+		}
+	}
+});
+
+var offsetfindtrigger = -300;
+function findTriggerPoints(){
+	triggersPoints = [];
+	for(var a = 0, max =  hashElements.length; a < max; a += 1){
+		triggersPoints.push($("#"+hashElements[a]).offset().top +offsetfindtrigger);
+		if(a+1 >= max){
+			triggersPoints.push(triggersPoints[triggersPoints.length-1]+$("#"+hashElements[a]).height()+offsetfindtrigger);
+		}
+	}
+	console.log("trigger points = ", triggersPoints);
 }

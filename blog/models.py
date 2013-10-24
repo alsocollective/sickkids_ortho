@@ -107,36 +107,36 @@ class Image(models.Model):
 		datechanged = datetime.datetime.today()
 		# get all the meta data ready like file names...
 		fileType = imghdr.what(self.payload)
-		imgdir = SITE_ROOT + "/../" + str(self.payload)
+		imgdir = SITE_ROOT + "/../static/photos/" + str(self.payload)
 		splited = str(self.payload).split("/")
 		# get the root image directory
 		front = ""
 		end = splited[len(splited)-1]
-		for a in range(len(splited)-1):
-			front = front + "/" + splited[a]
-		front = SITE_ROOT + "/../" + front
-		if not os.path.exists("%s/mobile%s"%(front,end)):
-			try:
-				basewidth = 400 #this could be an input
-				im = Img.open(imgdir)
-				wpercent = (basewidth/float(im.size[0]))
-				hsize = int((float(im.size[1])*float(wpercent)))
-				self.image_width, self.image_height = im.size
-				im=im.resize((basewidth,hsize), Img.ANTIALIAS)
-
-				if fileType == "jpeg":
-					im.save("%s/mobile%s"%(front,end), 'JPEG',quality=90)
-				elif fileType == "png":
-					im.save("%s/mobile%s"%(front,end), 'PNG',quality=90)
-				else:
-					im = Image.open("%s/%s"%(front,end))
-					im.save("%s/mobile%s"%(front,end))
-				print "mobile version is created"
-				#im.save("%s/mobile%s"%(sys.argv[1],name))
-			except IOError:
-				print "%s not an image"%(imgdir)
-		else:
-			print "file already exits"
+		# for a in range(len(splited)-1):
+		# 	front = front + "/" + splited[a]
+		front = SITE_ROOT + "/static/photos"
+		# if not os.path.exists("%s/mobile%s"%(front,end)):
+		try:
+			print imgdir
+			basewidth = 400 #this could be an input
+			im = Img.open(imgdir)
+			wpercent = (basewidth/float(im.size[0]))
+			hsize = int((float(im.size[1])*float(wpercent)))
+			self.image_width, self.image_height = im.size
+			im=im.resize((basewidth,hsize), Img.ANTIALIAS)
+			if fileType == "jpeg":
+				im.save("%s/mobile%s"%(front,end), 'JPEG',quality=90)
+			elif fileType == "png":
+				im.save("%s/mobile%s"%(front,end), 'PNG',quality=90)
+			else:
+				im = Image.open("%s/%s"%(front,end))
+				im.save("%s/mobile%s"%(front,end))
+			print "mobile version is created"
+			#im.save("%s/mobile%s"%(sys.argv[1],name))
+		except IOError  as e:
+			print "I/O error({0}): {1}".format(e.errno, e.strerror)
+		# else:
+		# 	print "file already exits"
 
 		super(Image, self).save(*args, **kwargs)
 

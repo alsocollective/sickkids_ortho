@@ -99,7 +99,7 @@ def getImageElements(imageObject,cC,request):
 			"type":"image",
 			"imageAlt":image.alternate_info,
 			}
-		if(not request.mobile):
+		if(False):#request.mobile):
 			front = ""
 			splited = str(image.payload).split("/")
 			end = splited[len(splited)-1]
@@ -145,10 +145,9 @@ def ajaxpost(request,post = None):
 	meta = {
 		"title":page.title,
 		"coloumcount":page.number_of_coloums,
+		"slug":page.slug
 	}
 	out = getSections(request,sections,AllTexts,AllImages,meta)
-
-
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
 

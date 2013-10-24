@@ -149,6 +149,11 @@ $("#content").on('scroll', function(){
 				currentHashEl = hashElements[a]
 				console.log(pageSlug + " " + currentHashEl);
 				// var loction = $("#"+currentHashEl).scrollTop();
+				if(history.pushState) {
+					history.pushState(null, null, currentHashEl);
+				}else {
+					location.hash = currentHashEl;
+				}
 				window.location.hash = currentHashEl;
 				// $("#"+currentHashEl).scrollTop(loction);
 				ga('send', 'pageview', {

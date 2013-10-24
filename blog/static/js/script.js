@@ -148,18 +148,15 @@ $("#content").on('scroll', function(){
 			if(hashElements[a] != currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a]
 				console.log(pageSlug + " " + currentHashEl);
-				// var loction = $("#"+currentHashEl).scrollTop();
 				if(history.pushState) {
-					history.pushState(null, null, currentHashEl);
+					history.pushState(null, null, "#"+currentHashEl);
 				}else {
-					location.hash = currentHashEl;
+					location.hash = "#"+currentHashEl;
 				}
-				window.location.hash = currentHashEl;
-				// $("#"+currentHashEl).scrollTop(loction);
-				ga('send', 'pageview', {
-					'page': '/'+pageSlug+"/#"+currentHashEl,
-					'title': currentHashEl
-				});
+				// ga('send', 'pageview', {
+				// 	'page': '/'+pageSlug+"/#"+currentHashEl,
+				// 	'title': currentHashEl
+				// });
 			}
 		}
 	}

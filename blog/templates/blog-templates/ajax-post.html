@@ -12,17 +12,17 @@ $(function () {
             var hash = $(this).attr('href');
 
             if (distance < 30 && distance > -30 && currentHash != hash) {
-                alert(hash);
-                currentHash = hash;
-            }
-        });
-    });
+				alert(hash);
+				currentHash = hash;
+			}
+		});
+	});
 });
 
 </script>
 
 {%if meta.title != "Home" %}
-	<h1>{{ meta.title }}</h1>
+		<h1>{{ meta.title }}</h1>
 {% endif %}
 {%for sections in data%}
 	<div id="{{sections.slug}}" class="background" style="background-image: url(/{{sections.bk}});">

@@ -1,4 +1,5 @@
 <script>
+	console.log("/{{ meta.title }} and {{ meta.title }}")
 	ga('send', 'pageview', {
 		'page': '/{{ meta.title }}',
 		'title': '{{ meta.title }}'
@@ -46,5 +47,6 @@
 		"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}
 	{%endfor%}
 	]
+	console.log(hashElements);
 </script>
 </nav>

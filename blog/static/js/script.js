@@ -147,9 +147,12 @@ $("#content").on('scroll', function(){
 			//if the scroll point is less than then next but greater than current
 			if(hashElements[a] != currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a]
+				console.log(pageSlug + " " + currentHashEl);
+				// var loction = $("#"+currentHashEl).scrollTop();
 				window.location.hash = currentHashEl;
+				// $("#"+currentHashEl).scrollTop(loction);
 				ga('send', 'pageview', {
-					'page': '/'+pageSlug,
+					'page': '/'+pageSlug+"/#"+currentHashEl,
 					'title': currentHashEl
 				});
 			}

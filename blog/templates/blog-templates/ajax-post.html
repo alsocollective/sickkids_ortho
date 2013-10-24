@@ -5,10 +5,11 @@
 		'title': '{{ meta.title }}'
 	});
 	pageSlug = "{{ meta.slug }}"
+
 </script>
 
 {%if meta.title != "Home" %}
-	<h1>{{ meta.title }}</h1>
+		<h1>{{ meta.title }}</h1>
 {% endif %}
 {%for sections in data%}
 	<div id="{{sections.slug}}" {%if sections.bk%} class="background" style="background-image: url(/{{sections.bk}});"{%endif%}>

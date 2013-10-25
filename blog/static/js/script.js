@@ -1,13 +1,8 @@
+/*global triggersPoints: [], hashElements: [], currentHashEl: "some string", contentScrollTop: 200 */
 var loadingElement = $("#loading")[0];
 var animating = false;
-resizeRows();
-
-$( window ).resize(function() {
-	resizeRows();
-});
 
 function resizeRows(){
-	// console.log("resize Rows");
 	var rows = $(".row");
 	rows.each(function(index){
 		var children = $(rows[index]).children();
@@ -17,7 +12,7 @@ function resizeRows(){
 			if(nheight > height){
 				height = nheight;
 			}
-			if(children[a].nodeName == "IMG"){
+			if(children[a].nodeName === "IMG"){
 				children[a].onload = resizeRows;
 			}
 		}
@@ -26,7 +21,13 @@ function resizeRows(){
 	findTriggerPoints();
 }
 
-setupnav();
+resizeRows();
+
+$( window ).resize(function() {
+	resizeRows();
+});
+
+
 function setupnav(){
 	// console.log("setup Nav");
 	var links = $(".link-to-page");
@@ -35,7 +36,7 @@ function setupnav(){
 			// event.preventDefault();
 			if(!animating){
 				animating = true;
-				var linkto = this.getAttribute("href").split("/")
+				var linkto = this.getAttribute("href").split("/");
 				clearHighLight();
 				heighLightEl(this);
 				linkto = linkto[linkto.length-1];
@@ -47,6 +48,8 @@ function setupnav(){
 
 	$("#nav img").on("click",loadNextPage);
 }
+setupnav();
+
 
 
 var slideMenu;
@@ -63,7 +66,7 @@ $(window).load(function() {
 		} else {
 			slideMenu.enable();
 		}
-	})
+	});
 });
 
 
@@ -71,12 +74,11 @@ function loadNextPage(address){
 	// console.log("load next page "+address );
 	loadingElement.style.display = "block";
 	var newPage = "";
-	if(typeof address != "object"){
+	if(typeof address !== "object"){
 		newPage = "/ajax/"+address+"/";
 	} else{
-		newPage = "/ajax/index/"
+		newPage = "/ajax/index/";
 	}
-	console.log(newPage ," new page");
 	var nextpage = $("#next-page");
 	nextpage.load(newPage,function(){
 
@@ -85,8 +87,8 @@ function loadNextPage(address){
 
 		$("#content")[0].className = "page animated slideOutLeft";
 		if (history && history.pushState) {
-			var newAddress = "/"
-			if(typeof address != "object"){
+			var newAddress = "/";
+			if(typeof address !== "object"){
 				newAddress = "/page/"+address+"/";
 			}
 			history.pushState("","",newAddress);
@@ -119,18 +121,18 @@ function clearAnimation(){
 	elements.removeClass('slideInRight');
 }
 
-function clearHighLight(){
+function clearHighLight() {
 	$(".heighlight").removeClass('heighlight');
 }
-function heighLightEl(element){
+function heighLightEl(element) {
 	$(element).addClass('heighlight');
 }
 
-function resetTheNames(){
+function resetTheNames() {
 	// console.log("reset the names");
 	loadingElement.style.display = "none";
-	var oldcontent = $("#content")[0]
-	var newcontent = $("#next-page")[0]
+	var oldcontent = $("#content")[0];
+	var newcontent = $("#next-page")[0];
 	oldcontent.id = "next-page";
 	oldcontent.style.left = "100%";
 	oldcontent.className = "page";
@@ -152,35 +154,8 @@ function resetTheNames(){
 //google analytics function
 //when ever we load in new content we replace the hashElements with the id's of the elements
 //we also then reload the height triggering points loading them into the triggersPoints array
-function scrollDetectionFunc(){
-	console.log("scrolling");
-	contentScrollTop = $(this).scrollTop();
-	//check if there is more than 1 point
-	if(triggersPoints.length > 1){
-		//for each point check if it crossed it
-		for(var a = 0; a < triggersPoints.length; a += 1){
-			//if the scroll point is less than then next but greater than current
-			if(hashElements[a] != currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
-				currentHashEl = hashElements[a]
-				console.log(pageSlug + " " + currentHashEl);
-				if(history.pushState) {
-					history.pushState(null, null, "#"+currentHashEl);
-				}else {
-					location.hash = "#"+currentHashEl;
-				}
-				// ga('send', 'pageview', {
-				// 	'page': '/'+pageSlug+"/#"+currentHashEl,
-				// 	'title': currentHashEl
-				// });
-			}
-		}
-	}
-}
-$("#content").on('scroll', scrollDetectionFunc);
-$("#next-page").on('scroll', scrollDetectionFunc);
-
 var offsetfindtrigger = -300;
-function findTriggerPoints(){
+function findTriggerPoints() {
 	triggersPoints = [];
 	for(var a = 0, max =  hashElements.length; a < max; a += 1){
 		triggersPoints.push($("#"+hashElements[a]).offset().top +offsetfindtrigger);
@@ -188,5 +163,25 @@ function findTriggerPoints(){
 			triggersPoints.push(triggersPoints[triggersPoints.length-1]+$("#"+hashElements[a]).height()+offsetfindtrigger);
 		}
 	}
-	console.log("trigger points = ", triggersPoints);
 }
+
+function scrollDetectionFunc(){
+	contentScrollTop = $(this).scrollTop();
+	//check if there is more than 1 point
+	if(triggersPoints.length > 1){
+		//for each point check if it crossed it
+		for(var a = 0; a < triggersPoints.length; a += 1){
+			//if the scroll point is less than then next but greater than current
+			if(hashElements[a] !== currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
+				currentHashEl = hashElements[a];
+				if(history.pushState) {
+					history.pushState(null, null, "#"+currentHashEl);
+				}else {
+					location.hash = "#"+currentHashEl;
+				}
+			}
+		}
+	}
+}
+$("#content").on('scroll', scrollDetectionFunc);
+$("#next-page").on('scroll', scrollDetectionFunc);

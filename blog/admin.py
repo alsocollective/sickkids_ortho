@@ -66,6 +66,9 @@ class sectionInline(admin.StackedInline):
 
 class PageAdmin(admin.ModelAdmin):
 	inlines = [sectionInline]
+	fieldsets = [('',
+					{'fields':[('title','order_of_page','number_of_coloums',),('backgroundImage',)]}#'showBackground'
+				),]
 	list_display = ('title','order_of_page')
 	list_editable = ('order_of_page',)
 

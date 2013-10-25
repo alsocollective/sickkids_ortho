@@ -119,7 +119,6 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 		out.append(smallout)
 	return out
 
-
 def post(request,post = None):
 	if(post == None):
 		out = getAllPages(Page.objects.all().order_by("order_of_page"))
@@ -136,6 +135,7 @@ def post(request,post = None):
 		"slug":thisPage.slug,
 		"coloumcount":thisPage.number_of_coloums,
 		"pages":getAllPages(page),
+		"bk": thisPage.backgroundImage
 	}
 	out = getSections(request,sections,AllTexts,AllImages,meta)
 
@@ -155,7 +155,8 @@ def ajaxpost(request,post = None):
 	meta = {
 		"title":page.title,
 		"coloumcount":page.number_of_coloums,
-		"slug":page.slug
+		"slug":page.slug,
+		"bk":page.backgroundImage
 	}
 	out = getSections(request,sections,AllTexts,AllImages,meta)
 

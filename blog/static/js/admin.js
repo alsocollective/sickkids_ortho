@@ -1,16 +1,30 @@
 // bkLib.onDomLoaded(nicEditors.allTextAreas);
 var niceditor;
 
-window.onload = function(){
-	niceditor = new nicEditor({buttonList:['bold','italic','underline','left','center','right','ol','ul',"removeformat",'xhtml']});
+window.onload = function () {
+	function updateTheTable() {
+		for(var a = 0; a < toGoInTable.length; ++a){
+			mytable.appendChild(toGoInTable[a].element);
+		}
+	}
 
-	$("#site-name")[0].innerHTML = "ALSO Blogger!!"
+	function reorganizeElements() {
+		toGoInTable.sort(function(a,b){return a.value.value-b.value.value;});
+		updateTheTable();
+	}
 
-	// var mytableContainer = document.createElement("div");
-	// $(mytableContainer).addClass('blog-table');
+	function hideFromDeleteButton(button){
+		$(button).on("click",function(){
+			$(this.parentNode.parentNode.nextSibling.nextSibling).toggleClass('hide');
+		});
+	}
+
+	niceditor = new nicEditor({buttonList: ['bold', 'italic', 'underline', 'left', 'center', 'right', 'ol', 'ul', "removeformat", 'xhtml']});
+
+	$("#site-name")[0].innerHTML = "ALSO Blogger!!";
+
 	var mytable = document.createElement("div");
-	$(mytable).addClass('articles-container')
-	// mytableContainer.appendChild(mytable);
+	$(mytable).addClass('articles-container');
 	$($("#section_form").children()[1]).children()[0].appendChild(mytable);
 
 	var toGoInTable = [];
@@ -21,7 +35,7 @@ window.onload = function(){
 
 	var listOfNewTextFields = [];
 	addButtons.each(function(index){
-		var parent = $(addButtons[index].parentNode)
+		var parent = $(addButtons[index].parentNode);
 		var selectedElements = $(parent).find(".inline-related");
 		var elCount = 0;
 		while(elCount < selectedElements.length-1){
@@ -34,10 +48,10 @@ window.onload = function(){
 				listOfNewTextFields.push(textFieldArea);
 			}
 			$(orderField).bind("change",reorganizeElements);
+			hideFromDeleteButton($(thisEl).find(".delete input")[0]);
 		}
 		$(parent[0].parentNode.parentNode.parentNode.parentNode).addClass("blog-third");
 	});
-	console.log(toGoInTable);
 	reorganizeElements();
 	for(var a = 0; a < listOfNewTextFields.length; ++a){
 		// niceditor.panelInstance(listOfNewTextFields[a][0].id);
@@ -57,42 +71,7 @@ window.onload = function(){
 		}
 		updateTheTable();
 	});
-
-	function updateTheTable(){
-		for(var a = 0; a < toGoInTable.length; ++a){
-			mytable.appendChild(toGoInTable[a]["element"]);
-		}
-	}
-
-	function reorganizeElements(){
-		toGoInTable.sort(function(a,b){return a["value"].value-b["value"].value})
-		console.log(toGoInTable);
-		updateTheTable();
-	}
-
-	function removeAllIframes(){
-		var iframes = $("iframe");
-		iframes.each(function(index){
-			iframes[index].parentNode.removeChild(iframes[index]);
-		});
-	}
-
-	function moveAllchildrenToNewDiv(elementIn){
-		var elementOut = document.createElement("div");
-		var elinChildren = $(elementIn).children();
-		console.log(elinChildren);
-		var loop = elinChildren.length;
-		for(var a = 0; a < loop; ++a){
-			elementOut.appendChild(elinChildren[a]);
-		}
-		// while(loop >= 0){
-		// 	elementOut.appendChild(elinChildren[loop]);
-		// 	--loop;
-		// }
-		// console.log(elementOut);
-		return elementOut;
-	}
+};
 
 
-}
 

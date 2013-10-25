@@ -17,5 +17,5 @@ urlpatterns = patterns('',
     url(r'^list/$','blog.views.list',name="bloglist"),
     url(r'^page/(?P<post>.*)/$','blog.views.post',name="rawpost"),
     url(r'^ajax/(?P<post>.*)/$','blog.views.ajaxpost',name="ajaxpost"),
-    url(r'$','blog.views.post',name="home"),
+    url(r'^$', 'blog.views.post', name='home'),
 )

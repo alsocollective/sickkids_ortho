@@ -1,5 +1,5 @@
 <script>
-	console.log("/{{ meta.title }} and {{ meta.title }}")
+	// console.log("/{{ meta.title }} and {{ meta.title }}")
 	ga('send', 'pageview', {
 		'page': '/{{ meta.title }}',
 		'title': '{{ meta.title }}'
@@ -11,24 +11,25 @@
 {%if meta.title != "Home" %}
 		<h1>{{ meta.title }}</h1>
 {% endif %}
+{%if meta.bk%}
+	<div class="background fullscreen fixed" style="background-image: url(/{{meta.bk}});"></div>
+{%endif%}
 {%for sections in data%}
 	<div id="{{sections.slug}}" {%if sections.bk%} class="background" style="background-image: url(/{{sections.bk}});"{%endif%}>
 	{% if sections.showTitle %}
 	<div class="row">
-		<h1 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h1>
+		<h2 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h2>
 	</div>
 	{% endif %}
 	{%for row in sections.content%}
 		<div class="row">
 		{%for section in row%}
 		{% if section.paragraph %}
-			{% if section.subTitle %}
-				<h2 class="absolute" style="left:{{section.coloum}}%;"> {{section.subTitle}} </h2>
-			{% endif %}
-			<div class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">{{section.paragraph|safe}}
-				{%if meta.title == "Home"%}
-					stuff in here like a canvas and js file reference
+			<div class="absolute" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
+				{% if section.subTitle %}
+					<h2> {{section.subTitle}} </h2>
 				{% endif %}
+				{{section.paragraph|safe}}
 			</div>{% else %}
 			<img class="absolute" src="/{{section.image}}" alt="{{section.imageAlt}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
 			{% endif %}
@@ -48,6 +49,5 @@
 		"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}
 	{%endfor%}
 	]
-	console.log(hashElements);
 </script>
 </nav>

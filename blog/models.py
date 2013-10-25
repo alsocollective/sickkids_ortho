@@ -19,10 +19,21 @@ class Page(models.Model):
 	slug = models.SlugField(blank=True)
 	order_of_page = models.IntegerField(default=1)
 	number_of_coloums = models.IntegerField(default=8)
+	backgroundImage = ThumbnailerImageField(upload_to='static/photos',blank=True)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Page, self).save(*args, **kwargs)
+
+	def showBackground(self):
+		if self.backgroundImage:
+			return '<img style="width:200px;height:auto;" src="/%s"/>' % self.backgroundImage
+		return "not an image"
+
+	showBackground.short_description = 'BackgroundImage'
+	showBackground.allow_tags = True
+	def __unicode__(self):
+		return self.title
 
 class Section(models.Model):
 	parent = models.ForeignKey(Page)

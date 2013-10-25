@@ -44,6 +44,8 @@ function setupnav(){
 			return false;
 		});
 	});
+
+	$("#nav img").on("click",loadNextPage);
 }
 
 
@@ -68,15 +70,26 @@ $(window).load(function() {
 function loadNextPage(address){
 	// console.log("load next page "+address );
 	loadingElement.style.display = "block";
+	var newPage = "";
+	if(typeof address != "object"){
+		newPage = "/ajax/"+address+"/";
+	} else{
+		newPage = "/ajax/index/"
+	}
+	console.log(newPage ," new page");
 	var nextpage = $("#next-page");
-	nextpage.load("/ajax/"+address+"/",function(){
+	nextpage.load(newPage,function(){
 
 		this.style.left = "0%";
 		this.className = "page animated slideInRight";
 
 		$("#content")[0].className = "page animated slideOutLeft";
 		if (history && history.pushState) {
-			history.pushState("","","/page/"+address+"/");
+			var newAddress = "/"
+			if(typeof address != "object"){
+				newAddress = "/page/"+address+"/";
+			}
+			history.pushState("","",newAddress);
 		}
 		var newSubnav = $("#subnav-new")[0];
 		var oldSubnav = $("#subnav")[0];
@@ -89,6 +102,7 @@ function loadNextPage(address){
 		setTimeout(clearAnimation,1000);
 		setTimeout(resetTheNames,1001);
 		findTriggerPoints();
+		currentHashEl="";
 	});
 	nextpage.addClass(address);
 }
@@ -138,7 +152,8 @@ function resetTheNames(){
 //google analytics function
 //when ever we load in new content we replace the hashElements with the id's of the elements
 //we also then reload the height triggering points loading them into the triggersPoints array
-$("#content").on('scroll', function(){
+function scrollDetectionFunc(){
+	console.log("scrolling");
 	contentScrollTop = $(this).scrollTop();
 	//check if there is more than 1 point
 	if(triggersPoints.length > 1){
@@ -160,7 +175,9 @@ $("#content").on('scroll', function(){
 			}
 		}
 	}
-});
+}
+$("#content").on('scroll', scrollDetectionFunc);
+$("#next-page").on('scroll', scrollDetectionFunc);
 
 var offsetfindtrigger = -300;
 function findTriggerPoints(){

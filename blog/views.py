@@ -29,23 +29,6 @@ def getAllPages(pages):
 		out.append(outP)
 	return out
 
-def post(request,post = None):
-	page = Page.objects.all().order_by("order_of_page");
-	thisPage = page.filter(slug=post)[0]
-	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
-	AllTexts = Text.objects.all().order_by('order_of_content')
-	AllImages = Image.objects.all().order_by('order_of_content')
-
-	meta = {
-		"title":thisPage.title,
-		"slug":thisPage.slug,
-		"coloumcount":thisPage.number_of_coloums,
-		"pages":getAllPages(page),
-	}
-	out = getSections(request,sections,AllTexts,AllImages,meta)
-
-	return render_to_response('blog-templates/blogpost.html',{"data":out,"meta":meta})
-
 def getRowsOfEl(textObject,imageObject, cc, request):
 	allElements = getElements(textObject,imageObject,cc, request)
 	sortedEl = []
@@ -136,7 +119,34 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 		out.append(smallout)
 	return out
 
+
+def post(request,post = None):
+	if(post == None):
+		out = getAllPages(Page.objects.all().order_by("order_of_page"))
+		print out
+		return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
+	page = Page.objects.all().order_by("order_of_page")
+	thisPage = page.filter(slug=post)[0]
+	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
+	AllTexts = Text.objects.all().order_by('order_of_content')
+	AllImages = Image.objects.all().order_by('order_of_content')
+
+	meta = {
+		"title":thisPage.title,
+		"slug":thisPage.slug,
+		"coloumcount":thisPage.number_of_coloums,
+		"pages":getAllPages(page),
+	}
+	out = getSections(request,sections,AllTexts,AllImages,meta)
+
+	return render_to_response('blog-templates/blogpost.html',{"data":out,"meta":meta})
+
+
 def ajaxpost(request,post = None):
+	print "about to print the post name"
+	print post
+	if post == "index":
+		return render_to_response('blog-templates/index.html')
 	page = Page.objects.filter(slug=post)[0]
 	sections = Section.objects.filter(parent=page).order_by('order_of_section')
 	AllTexts = Text.objects.all().order_by('order_of_content')
@@ -150,4 +160,7 @@ def ajaxpost(request,post = None):
 	out = getSections(request,sections,AllTexts,AllImages,meta)
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
+
+
+
 

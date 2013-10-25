@@ -38,7 +38,10 @@
 <div id="loading" class="page"></div>
 <section id="next-page" class="page"></section>
 <section id="content" class="page animate {{meta.slug}}">
-	{% include "blog-templates/ajax-post.html" %}
+	{% block ajaxPart %}
+		{% include "blog-templates/ajax-post.html" %}
+	{% endblock %}
+
 </section>
 
 <script type="text/javascript" src="/static/js/pullSlider-Jquery.js"></script>

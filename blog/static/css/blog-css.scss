@@ -29,6 +29,7 @@ $text_color_grey: #99f;
     @media (max-width: 650px)  { @content; }
   }
 }
+
 // example of how to use this break point thing...
 // @include breakpoint(huge) { background-color: #f00; }
 // @include breakpoint(tablet) { background-color: #0f0; }

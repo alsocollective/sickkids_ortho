@@ -1,6 +1,4 @@
 /*global triggersPoints: [], hashElements: [], currentHashEl: "some string", contentScrollTop: 200 */
-var loadingElement = $("#loading")[0];
-var animating = false;
 
 function resizeRows(){
 	var rows = $(".row");
@@ -21,7 +19,7 @@ function resizeRows(){
 	findTriggerPoints();
 }
 
-resizeRows();
+// resizeRows();
 
 $( window ).resize(function() {
 	resizeRows();
@@ -29,7 +27,6 @@ $( window ).resize(function() {
 
 
 function setupnav(){
-	// console.log("setup Nav");
 	var links = $(".link-to-page");
 	links.each(function(index){
 		$(links[index]).click(function(){
@@ -48,7 +45,6 @@ function setupnav(){
 
 	$("#nav img").on("click",loadNextPage);
 }
-setupnav();
 
 
 
@@ -71,7 +67,6 @@ $(window).load(function() {
 
 
 function loadNextPage(address){
-	// console.log("load next page "+address );
 	loadingElement.style.display = "block";
 	var newPage = "";
 	if(typeof address !== "object"){
@@ -103,7 +98,6 @@ function loadNextPage(address){
 		resizeRows();
 		setTimeout(clearAnimation,1000);
 		setTimeout(resetTheNames,1001);
-		findTriggerPoints();
 		currentHashEl="";
 	});
 	nextpage.addClass(address);
@@ -115,7 +109,6 @@ function moveButtonDown(){
 }
 
 function clearAnimation(){
-	// console.log("clear animation");
 	var elements = $(".animated");
 	elements.removeClass('animated');
 	elements.removeClass('slideInRight');
@@ -154,11 +147,11 @@ function resetTheNames() {
 //google analytics function
 //when ever we load in new content we replace the hashElements with the id's of the elements
 //we also then reload the height triggering points loading them into the triggersPoints array
-var offsetfindtrigger = -300;
 function findTriggerPoints() {
 	triggersPoints = [];
+	var offset = $("#content").scrollTop();
 	for(var a = 0, max =  hashElements.length; a < max; a += 1){
-		triggersPoints.push($("#"+hashElements[a]).offset().top +offsetfindtrigger);
+		triggersPoints.push($("#"+hashElements[a]).offset().top +offsetfindtrigger + offset);
 		if(a+1 >= max){
 			triggersPoints.push(triggersPoints[triggersPoints.length-1]+$("#"+hashElements[a]).height()+offsetfindtrigger);
 		}
@@ -182,14 +175,7 @@ function scrollDetectionFunc(){
 					}
 					history.pushState(currentHashEl,"",newAddress);
 				}
-				// if(history.pushState) {
-				// 	history.pushState(null, null, "#"+currentHashEl);
-				// }else {
-				// 	location.hash = "#"+currentHashEl;
-				// }
 			}
 		}
 	}
 }
-$("#content").on('scroll', scrollDetectionFunc);
-$("#next-page").on('scroll', scrollDetectionFunc);

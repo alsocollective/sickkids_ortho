@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from blog.models import *
 from itertools import chain
 from django.core.urlresolvers import reverse
@@ -90,7 +90,6 @@ def getImageElements(imageObject,cC,request):
 				front = front + "/" + splited[a]
 			front = front[1:]
 			locDic["image"] = front+"/mobile"+end
-			print front
 		else:
 			locDic["image"] = str(image.payload)
 		imageOut.append(locDic)
@@ -113,6 +112,7 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"content":getRowsOfEl(texts,images,meta["coloumcount"],request),
+			"showInSidebar":section.show_in_sidebar,
 		}
 		if section.backgroundImage:
 			smallout["bk"] = section.backgroundImage
@@ -122,11 +122,9 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 def post(request,post = None):
 	if(post == None):
 		out = getAllPages(Page.objects.all().order_by("order_of_page"))
-		print out
 		return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
 	else:
 		post = post.split("/")[0]
-	print post
 	page = Page.objects.all().order_by("order_of_page")
 	thisPage = page.filter(slug=post)[0]
 	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
@@ -146,8 +144,6 @@ def post(request,post = None):
 
 
 def ajaxpost(request,post = None):
-	print "about to print the post name"
-	print post
 	if post == "index":
 		return render_to_response('blog-templates/index.html')
 	page = Page.objects.filter(slug=post)[0]
@@ -165,6 +161,18 @@ def ajaxpost(request,post = None):
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
 
+def siteMap(request):
+	out = []
+	pages = Page.objects.all().order_by("order_of_page")
+	sections = Section.objects.all().order_by('order_of_section');
+	for page in pages:
+		out.append({"loc":page.slug,"lastmod":page.updated_at,"priority":"1.0"})
+		thisSections = sections.filter(parent = page)
+		for section in thisSections:
+			out.append({"loc":page.slug+"/"+section.slug,"lastmod":section.updated_at,"priority":"0.5"})
 
+
+
+	return render(request, 'blog-templates/sitemap.xml', {"data":out},content_type="application/xhtml+xml")
 
 

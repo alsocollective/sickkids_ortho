@@ -22,6 +22,8 @@
 			triggersPoints,
 			contentScrollTop = 0;
 	</script>
+	<script type="text/javascript" src="/static/js/pullSlider-Jquery.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
 </head>
 <body>
 <nav id="nav">
@@ -29,7 +31,9 @@
 	<div class="deviding-block"> </div>
 	<nav id="subnav">
 		{%for sections in data%}
+			{% if sections.showInSidebar %}
 			<a href="#{{sections.slug}}">{{sections.title}}</a>
+			{% endif %}
 		{% endfor %}
 	</nav>
 	<div class="last-button">click here to expand</div>
@@ -44,9 +48,21 @@
 
 </section>
 
-<script type="text/javascript" src="/static/js/pullSlider-Jquery.js"></script>
-
-<script type="text/javascript" src="/static/js/script.js"></script>
+<script type="text/javascript">
+/*Load ready functions... */
+	var loadingElement = $("#loading")[0];
+	var animating = false;
+	var offsetfindtrigger = -300;
+	setupnav();
+	resizeRows();
+	$("#content").on('scroll', scrollDetectionFunc);
+	$("#next-page").on('scroll', scrollDetectionFunc);
+	currentHashEl = (document.URL).split("/");
+	if(currentHashEl.length > 6){
+		currentHashEl = currentHashEl[currentHashEl.length-2]
+		$("#content").scrollTop($("#"+currentHashEl).offset().top-100);
+	}
+</script>
 
 </body>
 </html>

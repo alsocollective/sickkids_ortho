@@ -40,14 +40,12 @@
 {%endfor%}
 <nav id="subnav-new" style="display:none;">
 {%for sections in data%}
+	{% if sections.showInSidebar %}
 	<a href="#{{sections.slug}}">{{sections.title}}</a>
+	{% endif %}
 {%endfor%}
 
 <script type="text/javascript">
-	hashElements = [
-	{%for sections in data%}
-		"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}
-	{%endfor%}
-	]
+	hashElements = [{%for sections in data%}"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}{%endfor%}]
 </script>
 </nav>

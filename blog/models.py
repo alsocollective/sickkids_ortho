@@ -20,7 +20,8 @@ class Page(models.Model):
 	order_of_page = models.IntegerField(default=1)
 	number_of_coloums = models.IntegerField(default=8)
 	backgroundImage = ThumbnailerImageField(upload_to='static/photos',blank=True)
-
+	created_at = models.DateTimeField(auto_now_add = True)
+	updated_at = models.DateTimeField(auto_now = True)
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Page, self).save(*args, **kwargs)
@@ -42,6 +43,7 @@ class Section(models.Model):
 	show_title = models.BooleanField(default=True)
 	subTitle = models.CharField(max_length = 300)
 	show_subTitle = models.BooleanField(default=True)
+	show_in_sidebar = models.BooleanField(default=True)
 
 	order_of_section = models.IntegerField(default=1)
 	pub_date = models.DateTimeField(auto_now=True)
@@ -49,6 +51,8 @@ class Section(models.Model):
 	coloum_from = models.IntegerField(default=0)
 	coloum_to = models.IntegerField(default=8)
 
+	created_at = models.DateTimeField(auto_now_add = True)
+	updated_at = models.DateTimeField(auto_now = True)
 	# paragraph = models.TextField()
 
 	subTitle = models.CharField(max_length = 600,blank=True)
@@ -78,6 +82,10 @@ class Text(models.Model):
 
 	order_of_content = models.IntegerField(default=1)
 	date_changed = models.DateTimeField(auto_now=True)
+
+	created_at = models.DateTimeField(auto_now_add = True)
+	updated_at = models.DateTimeField(auto_now = True)
+
 	def save(self, *args, **kwargs):
 		datechanged = datetime.datetime.today()
 		super(Text, self).save(*args, **kwargs)
@@ -104,6 +112,9 @@ class Image(models.Model):
 	style = models.ManyToManyField(Style,blank=True)
 	image_height = models.IntegerField(default=0)
 	image_width = models.IntegerField(default=0)
+
+	created_at = models.DateTimeField(auto_now_add = True)
+	updated_at = models.DateTimeField(auto_now = True)
 
 	def showImage(self):
 		if self.payload:

@@ -174,11 +174,19 @@ function scrollDetectionFunc(){
 			//if the scroll point is less than then next but greater than current
 			if(hashElements[a] !== currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a];
-				if(history.pushState) {
-					history.pushState(null, null, "#"+currentHashEl);
-				}else {
-					location.hash = "#"+currentHashEl;
+
+				if (history && history.pushState) {
+					var newAddress = "/";
+					if(typeof address !== "object"){
+						newAddress = "/page/"+pageSlug+"/"+currentHashEl+"/";
+					}
+					history.pushState(currentHashEl,"",newAddress);
 				}
+				// if(history.pushState) {
+				// 	history.pushState(null, null, "#"+currentHashEl);
+				// }else {
+				// 	location.hash = "#"+currentHashEl;
+				// }
 			}
 		}
 	}

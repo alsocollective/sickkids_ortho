@@ -124,6 +124,9 @@ def post(request,post = None):
 		out = getAllPages(Page.objects.all().order_by("order_of_page"))
 		print out
 		return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
+	else:
+		post = post.split("/")[0]
+	print post
 	page = Page.objects.all().order_by("order_of_page")
 	thisPage = page.filter(slug=post)[0]
 	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')

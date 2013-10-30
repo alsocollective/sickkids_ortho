@@ -8,6 +8,7 @@ ADMINS = (
     ('Bohdan Anderson', 'bohdan@alsocollective.com'),
 )
 
+import os
 import os.path
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -101,7 +102,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.gzip.GZipMiddleware', # Added GZip for what Django serves, static is managed through vhost
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -119,7 +120,7 @@ ROOT_URLCONF = 'sickkids_ortho.urls'
 WSGI_APPLICATION = 'sickkids_ortho.wsgi.application'
 
 TEMPLATE_DIRS = (
-    SITE_ROOT + '/../templates',
+    SITE_ROOT + '/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

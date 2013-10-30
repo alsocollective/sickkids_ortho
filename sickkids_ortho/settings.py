@@ -4,9 +4,11 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Symon Oliver', 'symon@alsocollective.com'),
+    ('Bohdan Anderson', 'bohdan@alsocollective.com'),
 )
 
+import os
 import os.path
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -26,17 +28,20 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.sickkidsorthofellowship.ca',
+    'www.sickkidsorthofellowship.ca',
+]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Canada/Eastern'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-CA'
 
 SITE_ID = 1
 
@@ -97,7 +102,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.gzip.GZipMiddleware', # Added GZip for what Django serves, static is managed through vhost
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,7 +121,7 @@ ROOT_URLCONF = 'sickkids_ortho.urls'
 WSGI_APPLICATION = 'sickkids_ortho.wsgi.application'
 
 TEMPLATE_DIRS = (
-    SITE_ROOT + '/../templates',
+    SITE_ROOT + '/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

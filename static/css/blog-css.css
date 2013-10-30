@@ -1,0 +1,185 @@
+/* Variables */
+/* Mixins */
+/* Utility functions */
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+  color: #9999ff; }
+
+body {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.absolute {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  vertical-align: top;
+  padding: 0;
+  margin: 0; }
+  @media (max-width: 650px) {
+    .absolute {
+      position: static;
+      width: 100% !important; } }
+
+.fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%; }
+
+.row {
+  height: 200px;
+  position: relative; }
+
+img.absolute {
+  height: auto;
+  width: auto; }
+
+.background {
+  background-position: center;
+  -webkit-background-position: cover;
+  -moz-background-position: cover;
+  -ms-background-position: cover;
+  -o-background-position: cover;
+  background-position: cover; }
+
+#next-page .background {
+  display: none; }
+
+.animated .background {
+  display: block !important; }
+
+/* page views */
+.page {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  -moz-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  -o-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  -webkit-background-position: cover;
+  -moz-background-position: cover;
+  -ms-background-position: cover;
+  -o-background-position: cover;
+  background-position: cover; }
+
+h1 {
+  font-size: 2em;
+  padding: 2em 0 2em 0; }
+
+/* nav */
+#nav {
+  position: absolute;
+  /* we need absolute as a fall back */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 88;
+  width: 100%;
+  background-color: #ea636e; }
+  #nav h1 {
+    display: inline-block;
+    padding: 0.5em;
+    background-color: #fff;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    zoom: 1;
+    display: inline; }
+  #nav a {
+    display: inline-block;
+    padding: 1em;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    vertical-align: top; }
+  #nav img {
+    padding: 0.5em 0.8em 0.5em 0.5em;
+    margin: 0;
+    background-color: #ea636e; }
+  #nav a:hover {
+    background-color: #ca444e; }
+  #nav #subnav, #nav #subnav-new {
+    position: absolute; }
+  #nav #subnav a, #nav #subnav-new a {
+    display: block; }
+  #nav .heighlight {
+    background-color: #ff838e; }
+  #nav .last-button {
+    display: none; }
+  #nav .bigger-than-window {
+    height: 100%;
+    overflow: scroll !important; }
+  #nav .bigger-than-window-noscroll {
+    overflow: hidden; }
+  @media (max-width: 650px) {
+    #nav {
+      position: fixed;
+      width: 100%; }
+      #nav a {
+        position: static;
+        display: block;
+        width: 90%;
+        padding: 5%;
+        z-index: 1; }
+      #nav .last-button {
+        position: static;
+        display: block;
+        padding: 5%;
+        width: 90%;
+        background-color: #ccc; }
+      #nav #subnav {
+        width: 100%;
+        position: static;
+        display: none !important; }
+      #nav #subnav-new {
+        display: none !important;
+        width: 100%; }
+        #nav #subnav-new a {
+          width: 100%; }
+      #nav .selected {
+        /*background-color: #999;*/ } }
+
+/* ` */
+#content {
+  left: 0%;
+  overflow: scroll; }
+
+.page > h1 {
+  padding-top: 2em;
+  width: 100%;
+  display: block;
+  text-align: center; }
+
+/* other pages */
+#loading {
+  display: none;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+#next-page {
+  left: 0%; }
+
+#prev-page {
+  left: -100%; }
+
+/* Media Queries */
+.nav-animate {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }

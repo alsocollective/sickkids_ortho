@@ -50,18 +50,30 @@
 
 <script type="text/javascript">
 /*Load ready functions... */
-	var loadingElement = $("#loading")[0];
-	var animating = false;
-	var offsetfindtrigger = -300;
-	setupnav();
-	resizeRows();
-	$("#content").on('scroll', scrollDetectionFunc);
-	$("#next-page").on('scroll', scrollDetectionFunc);
-	currentHashEl = (document.URL).split("/");
-	if(currentHashEl.length > 6){
-		currentHashEl = currentHashEl[currentHashEl.length-2]
-		$("#content").scrollTop($("#"+currentHashEl).offset().top-100);
-	}
+	//sets up the variables
+		var loadingElement = $("#loading")[0];
+		var animating = false;
+		var offsetfindtrigger = -300;
+		var mobileWidth = 650;
+
+	//initialize the page
+		setupnav();
+		resizeRows();
+		$("#content").on('scroll', scrollDetectionFunc);
+		$("#next-page").on('scroll', scrollDetectionFunc);
+
+	//jumps to the position of page relating to the content
+		currentHashEl = (document.URL).split("/");
+		if(currentHashEl.length > 6){
+			currentHashEl = currentHashEl[currentHashEl.length-2]
+			$("#content").scrollTop($("#"+currentHashEl).offset().top-100);
+		}
+	//when back button pressed will refresh the page
+		window.onpopstate = function(e){
+			if(e.state !== null) {
+				location.reload();
+			}
+		}
 </script>
 
 </body>

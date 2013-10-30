@@ -104,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'microdetector.Middleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -132,6 +133,7 @@ INSTALLED_APPS = (
     'blog',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'debug_toolbar',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -170,4 +172,12 @@ THUMBNAIL_ALIASES = {
         'avatar': {'size': (50, 50), 'crop': True},
         'mobile': {'size':(600,600), 'crop': False},
     },
+}
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
 }

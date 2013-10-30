@@ -125,7 +125,7 @@ def post(request,post = None):
 		return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
 	else:
 		post = post.split("/")[0]
-	page = Page.objects.all().order_by("order_of_page")
+	page = Page.objects.order_by("order_of_page").all()
 	thisPage = page.filter(slug=post)[0]
 	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
 	AllTexts = Text.objects.all().order_by('order_of_content')

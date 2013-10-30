@@ -50,14 +50,14 @@ function setupnav(){
 
 var slideMenu;
 $(window).load(function() {
-	if($(window).width()>480){
+	if($(window).width()>mobileWidth){
 		slideMenu = $("#nav").pullSlider({inmode:false});
 	} else {
 		slideMenu = $("#nav").pullSlider({inmode:true});
 	}
 
 	$(window).on("resize",function(){
-		if($(window).width()>480){
+		if($(window).width()>mobileWidth){
 			slideMenu.disable();
 		} else {
 			slideMenu.enable();
@@ -79,7 +79,8 @@ function loadNextPage(address){
 
 		this.style.left = "0%";
 		this.className = "page animated slideInRight";
-
+		$(this).scrollTop(0);
+		$("#content").scrollTop(0);
 		$("#content")[0].className = "page animated slideOutLeft";
 		if (history && history.pushState) {
 			var newAddress = "/";

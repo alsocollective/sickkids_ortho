@@ -1,5 +1,5 @@
 from django.db import models
-from easy_thumbnails.fields import ThumbnailerImageField
+# from easy_thumbnails.fields import ThumbnailerImageField
 from django.template.defaultfilters import slugify
 import datetime
 import os.path
@@ -19,7 +19,7 @@ class Page(models.Model):
 	slug = models.SlugField(blank=True)
 	order_of_page = models.IntegerField(default=1)
 	number_of_coloums = models.IntegerField(default=8)
-	backgroundImage = ThumbnailerImageField(upload_to='static/photos',blank=True)
+	backgroundImage = models.ImageField(upload_to='static/photos',blank=True)
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True)
 	def save(self,*args, **kwargs):
@@ -56,7 +56,7 @@ class Section(models.Model):
 	# paragraph = models.TextField()
 
 	subTitle = models.CharField(max_length = 600,blank=True)
-	backgroundImage = ThumbnailerImageField(upload_to='static/photos',blank=True)
+	backgroundImage = models.ImageField(upload_to='static/photos',blank=True)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
@@ -103,7 +103,8 @@ from PIL import Image as Img
 
 class Image(models.Model):
 	parent = models.ForeignKey(Section)
-	payload = ThumbnailerImageField(upload_to='static/photos')
+	# payload = ThumbnailerImageField(upload_to='static/photos')
+	payload = models.ImageField(upload_to='static/photos')
 	order_of_content = models.IntegerField(default=1)
 	datechanged = models.DateTimeField(auto_now=True)
 	coloum_from = models.IntegerField(default=0)

@@ -1,13 +1,3 @@
-<script>
-	// console.log("/{{ meta.title }} and {{ meta.title }}")
-	ga('send', 'pageview', {
-		'page': '/{{ meta.title }}',
-		'title': '{{ meta.title }}'
-	});
-	pageSlug = "{{ meta.slug }}"
-
-</script>
-
 {%if meta.title != "Home" %}
 		<h1>{{ meta.title }}</h1>
 {% endif %}

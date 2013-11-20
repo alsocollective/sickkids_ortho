@@ -16,7 +16,7 @@ body {
   top: 0; }
 
 .absolute {
-  position: relative;
+  position: absolute;
   display: inline-block;
   top: 0;
   vertical-align: top;

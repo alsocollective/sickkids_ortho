@@ -115,6 +115,11 @@ function clearAnimation(){
 	elements.removeClass('slideInRight');
 }
 
+function setupNav(){
+	var subNav = $("#subnav");
+}
+
+
 function clearHighLight() {
 	$(".heighlight").removeClass('heighlight');
 }
@@ -140,10 +145,22 @@ function resetTheNames() {
 	parent.removeChild(oldSubnav);
 	newSubnav.id = "subnav";
 	newSubnav.className = "";
+	setupNavClicks(newSubnav);
 
 	slideMenu.refindHeight();
 }
 
+function setupNavClicks(element){
+	var elements = $(element).children();
+	for(var a = 0, max = elements.length; a<max; a += 1 ){
+		$(elements[a]).click(function(event){
+			event.preventDefault();
+			currentHashEl = this.href.split("#")[1];
+			jumpToLocation();
+			setURL();
+		});
+	}
+}
 
 //google analytics function
 //when ever we load in new content we replace the hashElements with the id's of the elements
@@ -168,15 +185,24 @@ function scrollDetectionFunc(){
 			//if the scroll point is less than then next but greater than current
 			if(hashElements[a] !== currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a];
-
-				if (history && history.pushState) {
-					var newAddress = "/";
-					if(typeof address !== "object"){
-						newAddress = "/page/"+pageSlug+"/"+currentHashEl+"/";
-					}
-					history.pushState(currentHashEl,"",newAddress);
-				}
+				setURL();
 			}
 		}
 	}
 }
+
+function setURL(){
+	if (history && history.pushState) {
+		var newAddress = "/";
+		if(typeof address !== "object"){
+			newAddress = "/page/"+pageSlug+"/"+currentHashEl+"/";
+		}
+		history.pushState(currentHashEl,"",newAddress);
+	}
+}
+
+function jumpToLocation(){
+	$("#content").scrollTop($("#"+currentHashEl).offset().top-100);
+}
+
+

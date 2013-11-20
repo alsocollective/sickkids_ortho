@@ -10,7 +10,6 @@ ADMINS = (
 
 import os
 import os.path
-
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 MANAGERS = ADMINS
@@ -30,8 +29,8 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = [
-    '.alsocollective.com',
-    'www.alsocollective.com',
+    '.sickkidsorthofellowship.ca',
+    'www.sickkidsorthofellowship.ca',
 ]
 
 # Local time zone for this installation. Choices can be found here:
@@ -173,6 +172,15 @@ LOGGING = {
     }
 }
 
+def show_toolbar(request):
+
+    return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    # Rest of config
+}
+
 THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (50, 50), 'crop': True},
@@ -180,7 +188,7 @@ THUMBNAIL_ALIASES = {
     },
 }
 
-INTERNAL_IPS = ('198.74.53.119',)
+#INTERNAL_IPS = ('127.0.0.1',)
 
 CACHES = {
     'default': {

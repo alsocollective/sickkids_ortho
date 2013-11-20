@@ -179,7 +179,7 @@ THUMBNAIL_ALIASES = {
     },
 }
 
-INTERNAL_IPS = ('127.0.0.1', 'alsocollective.com')
+INTERNAL_IPS = ('127.0.0.1', '198.74.53.119')
 
 CACHES = {
     'default': {

@@ -1,0 +1,248 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "base";
+@import "compass/reset";
+
+/* Variables */
+$sk_red: #ea636e;
+$sk_red_fade: #ff838e;
+$hover_button: #ca444e;
+$text_color_grey: #99f;
+
+/* Mixins */
+
+/* Utility functions */
+@mixin vendorize($property, $value) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+// example of how to use this break point thing...
+// @include vendorize(overflow-scrolling, touch);
+
+
+@mixin breakpoint($point) {
+  @if $point == huge {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == phone {
+    @media (max-width: 650px)  { @content; }
+  }
+}
+
+// example of how to use this break point thing...
+// @include breakpoint(huge) { background-color: #f00; }
+// @include breakpoint(tablet) { background-color: #0f0; }
+// @include breakpoint(phone) { background-color: #00f; }
+
+body,html{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	font-family: "franklin-gothic-urw",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	color: $text_color_grey;
+}
+
+body{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.absolute{
+	position: relative;
+	display: inline-block;
+	top: 0;
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+
+	@include breakpoint(phone) {
+		position: static;
+		width: 100% !important;
+	}
+}
+.fixed{
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.row{
+	height: 200px;
+	position: relative;
+}
+img.absolute{
+	height: auto;
+	width: auto;
+}
+
+
+// we need to do some trickery so that when the image is off screen it is hidden and comes in being displayed
+.background{
+	background-position: center;
+	@include vendorize(background-position, cover);
+}
+#next-page .background{
+	display: none;
+}
+.animated .background{
+	display: block !important;
+}
+
+/* page views */
+	.page{
+		background-color: #fff;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: scroll;
+		@include vendorize(overflow-scrolling, touch);
+		@include vendorize(background-position, cover);
+	}
+
+h1{
+	font-size: 2em;
+	padding: 2em 0 2em 0;
+}
+
+/* nav */
+#nav{
+	position: absolute;/* we need absolute as a fall back */
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 88;
+	width: 100%;
+	background-color: $sk_red;
+
+	h1{
+		display: inline-block;
+		padding: 0.5em;
+		background-color: #fff;
+		margin: 0;
+		position: relative;
+		z-index: 2;
+		zoom: 1;
+		display: inline;
+	}
+	a{
+		display: inline-block;
+		padding: 1em;
+		text-decoration: none;
+		color: inherit;
+		background-color: #fff;
+		vertical-align: top;
+	}
+	img {
+		padding: 0.5em 0.8em 0.5em 0.5em;
+		margin: 0;
+		background-color: $sk_red;
+	}
+	a:hover{
+		background-color: $hover_button;
+	}
+	#subnav, #subnav-new{
+		position: absolute;
+	}
+	#subnav a, #subnav-new a{
+		display: block;
+	}
+
+	.heighlight{
+		background-color: $sk_red_fade;
+	}
+	.last-button{
+		display: none;
+	}
+	.bigger-than-window {
+		height: 100%;
+		overflow: scroll !important;
+	}
+	.bigger-than-window-noscroll{
+		overflow: hidden;
+	}
+	@include breakpoint(phone) {
+		position: fixed;
+		width: 100%;
+		a{
+			position: static;
+			display: block;
+			width: 90%;
+			padding: 5%;
+			z-index: 1;
+		}
+		.last-button{
+			position: static;
+			display: block;
+			padding: 5%;
+			width: 90%;
+			background-color: #ccc;
+		}
+		#subnav{
+			width: 100%;
+			position: static;
+			display: none !important;
+		}
+		#subnav-new{
+			display: none !important;
+			width: 100%;
+			a{
+				width: 100%;
+			}
+		}
+		.selected{
+			/*background-color: #999;*/
+		}
+	}
+
+}
+
+
+/* ` */
+	#content{
+		left: 0%;
+		// background-color: #fff;
+		overflow: scroll;
+	}
+	.page > h1 {
+		padding-top: 2em;
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
+
+/* other pages */
+	#loading{
+		display: none;
+		left:0;
+		background-color: rgba(255,255,255,0.5);
+	}
+	#next-page{
+		left:0%;
+		// background-color: #fff;
+	}
+	#prev-page{
+		left: -100%;
+	}
+
+
+/* Media Queries */
+.nav-animate{
+	@include vendorize(transition, all 0.5s);
+}

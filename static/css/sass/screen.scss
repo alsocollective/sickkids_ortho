@@ -140,6 +140,17 @@ img.absolute{
 		text-align: center;
 	}
 	
+	h2{
+		font-size: 6em;
+		//letter-spacing: 0.05em;
+		font-weight: 700;
+		padding: 0.1em 0.2em 0.1em 0.2em;
+		border: solid 2px #111;
+		margin-bottom: 3em;
+		display: inline-flex;
+		text-align: center;
+	}
+	
 	.cover{
 		
 		h1{
@@ -149,16 +160,7 @@ img.absolute{
 			letter-spacing: 0.05em;
 		}
 		
-		h2{
-			font-size: 2em;
-			//letter-spacing: 0.05em;
-			font-weight: 700;
-			padding: 0.1em 0.2em 0.1em 0.2em;
-			border: solid 2px #111;
-			margin-bottom: 3em;
-			display: inline-flex;
-			text-align: center;
-		}
+		
 		
 		strong{
 			font-weight: 700;
@@ -205,8 +207,8 @@ img.absolute{
 		padding: 1em;
 		text-decoration: none;
 		font-weight: 400;
-		color: $text_color_grey;
-		background-color: $normalBackground;
+		color: #fff;
+		//background-color: $normalBackground;
 		vertical-align: top;
 	}
 	img {

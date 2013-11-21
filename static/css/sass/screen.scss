@@ -141,7 +141,7 @@ img.absolute{
 	}
 	
 	h2.absolute{
-		margin: 2em 0 1em 0;
+		margin: 2em 0 1em 5%;
 		border: solid 2px $sk_red;
 		box-sizing: border-box;
 		font-size: 1em;
@@ -151,6 +151,12 @@ img.absolute{
 		width: initial !important;
 		text-transform: uppercase;
 		color: $sk_red;
+	}
+	
+	blockquote{
+		color: $sk_red;
+		font-size: 2em;
+		
 	}
 	
 	

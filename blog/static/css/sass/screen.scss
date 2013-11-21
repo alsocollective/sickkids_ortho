@@ -10,33 +10,7 @@
 $sk_red: #ea636e;
 $sk_red_fade: #ff838e;
 $hover_button: #ca444e;
-$text_color_grey: #99f;
-
-/* Mixins */
-
-/* Utility functions */
-@mixin vendorize($property, $value) {
-	-webkit-#{$property}: $value;
-	-moz-#{$property}: $value;
-	-ms-#{$property}: $value;
-	-o-#{$property}: $value;
-	#{$property}: $value;
-}
-// example of how to use this break point thing...
-// @include vendorize(overflow-scrolling, touch);
-
-
-@mixin breakpoint($point) {
-  @if $point == huge {
-    @media (max-width: 1600px) { @content; }
-  }
-  @else if $point == tablet {
-    @media (max-width: 1250px) { @content; }
-  }
-  @else if $point == phone {
-    @media (max-width: 650px)  { @content; }
-  }
-}
+$text_color_grey: #111;
 
 // example of how to use this break point thing...
 // @include breakpoint(huge) { background-color: #f00; }
@@ -50,8 +24,7 @@ body,html{
 	margin: 0;
 	overflow: hidden;
 	font-family: "franklin-gothic-urw",sans-serif;
-	font-style: normal;
-	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
 	color: $text_color_grey;
 }
 
@@ -61,8 +34,46 @@ body{
 	top: 0;
 }
 
+table{
+	
+	width: 100%;
+	
+	thead{
+		background-color: $sk_red;
+		color: #fff;
+		text-transform: uppercase;
+		
+		tr{
+			border-bottom: none;
+			height: 1.5em;
+		}
+		
+		td{
+			padding: 0.15em 0 0.15em 0.25em;
+		}
+	}
+	
+	colgroup{
+		#row-one{
+			width: 40%;
+		}
+		#row-two{
+			width: 30%;
+		}
+		#row-three{
+			width: 20%;
+		}
+	}
+	
+	tr{
+		height: 2em;
+		border-bottom: dotted #666 1px;
+	}
+}
+
 .absolute{
-	position: relative;
+	//position: relative;
+	position: absolute;
 	display: inline-block;
 	top: 0;
 	vertical-align: top;
@@ -115,11 +126,54 @@ img.absolute{
 		@include vendorize(overflow-scrolling, touch);
 		@include vendorize(background-position, cover);
 	}
+	
+	#content{
+		left: 0%;
+		// background-color: #fff;
+		overflow: scroll;
+	}
+	.page > h1 {
+		padding-top: 2em;
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
+	
+	.cover{
+		
+		h1{
+			font-weight: 700;
+			font-size: 4em;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+		
+		h2{
+			font-size: 2em;
+			//letter-spacing: 0.05em;
+			font-weight: 700;
+			padding: 0.1em 0.2em 0.1em 0.2em;
+			border: solid 2px #111;
+			margin-bottom: 3em;
+			display: inline-flex;
+			text-align: center;
+		}
+		
+		strong{
+			font-weight: 700;
+			text-transform: uppercase;
+			margin-top: 2em;
+		}
+		
+		p{
+			text-align: center;
+		}
+	}
 
-h1{
-	font-size: 2em;
-	padding: 2em 0 2em 0;
-}
+	h1{
+		font-size: 2em;
+		padding: 2em 0 2em 0;
+	}
 
 /* nav */
 #nav{
@@ -145,13 +199,15 @@ h1{
 		display: inline-block;
 		padding: 1em;
 		text-decoration: none;
-		color: inherit;
-		background-color: #fff;
+		font-weight: 400;
+		color: #fff;
+		//background-color: #fff;
 		vertical-align: top;
 	}
 	img {
 		padding: 0.5em 0.8em 0.5em 0.5em;
 		margin: 0;
+		margin-right: 3em;
 		background-color: $sk_red;
 	}
 	a:hover{
@@ -177,6 +233,8 @@ h1{
 	.bigger-than-window-noscroll{
 		overflow: hidden;
 	}
+	
+	// Include breakpoint mixin for media queries
 	@include breakpoint(phone) {
 		position: fixed;
 		width: 100%;
@@ -210,22 +268,10 @@ h1{
 			/*background-color: #999;*/
 		}
 	}
-
 }
 
-
 /* ` */
-	#content{
-		left: 0%;
-		// background-color: #fff;
-		overflow: scroll;
-	}
-	.page > h1 {
-		padding-top: 2em;
-		width: 100%;
-		display: block;
-		text-align: center;
-	}
+
 
 /* other pages */
 	#loading{

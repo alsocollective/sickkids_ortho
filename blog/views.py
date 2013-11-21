@@ -184,4 +184,5 @@ def siteMap(request):
 
 	return render(request, 'blog-templates/sitemap.xml', {"data":out},content_type="application/xhtml+xml")
 
-
+def map(request):
+	return render_to_response('blog-templates/map.html',{"data":0})

@@ -1,0 +1,327 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html,body{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#google-maps{
+		width: 100%;
+		height: 100%;
+	}
+	.gmap-overlay{
+		background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
+	}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- 
+	<script src="http://alsocollective.github.io/also-cdn/js/j-map/j-map.js"></script>
+	 -->
+	 <script type="text/javascript" src="http://localhost:8000/j-map.js"></script>
+	<script src="http://alsocollective.github.io/also-cdn/js/j-map/infobubble.js"></script>
+	<script src="http://alsocollective.github.io/also-cdn/js/j-map/markerclusterer.js"></script>
+</head>
+<body>
+<div id="google-maps"></div>
+
+<script type="text/javascript">
+
+
+var myMapStyle = [
+  {
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#EA636E" }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#ffffff" }
+    ]
+  }
+]
+
+//use http://itouchmap.com/latlong.html to determine LON and LAT
+var jsonRequestData = {"data":[
+	//2005
+	{
+		name:"KEVIN LIM",
+		lat:1.352083,
+		lon:103.819836,
+		icon: 0,
+		description: name + " " + 2005 + " KK Women's and Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"WARREN TERRY",
+		lat:-8.783195,
+		lon:34.508523,
+		icon: 0,
+		description:"Mission Work",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MAHZAD JAVID",
+		lat:32.427908,
+		lon:53.688046,
+		icon: 0,
+		description:"Paediatric Orthopaedist",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"JOSEPH JANICKY",
+		lat:41.878114,
+		lon:-87.629798,
+		icon: 0,
+		description:"Children's Memorial Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SIMON THOMAS",
+		lat:51.454513,
+		lon:-2.587910,
+		icon: 0,
+		description:"Bristol Royal Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ATUL BHASKAR",
+		lat:19.075984,
+		lon:72.877656,
+		icon: 0,
+		description:"Children's Specialty Orthopaedic Clinic",
+		interAction:["mouseover","mouseout"]
+	},
+	//2006
+	{
+		name:"SUBIR JHAVERI",
+		lat:23.039568,
+		lon:72.566004,
+		icon: 1,
+		description:"Dr. Subir Jhaveri's Spine Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SCOTT MACKIE",
+		lat:-42.894523,
+		lon:147.309491,
+		icon: 1,
+		description:"St. Johns Private Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"LEONHARD RAMSEIER",
+		lat:47.368650,
+		lon:8.539183,
+		icon: 1,
+		description:"University Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"FABIO FERRI-DE-BARROS",
+		lat:51.045325,
+		lon:-114.058101,
+		icon: 1,
+		description:"Alberta Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"PAUL JELLICOE",
+		lat:49.899754,
+		lon:-97.137494,
+		icon: 1,
+		description:"Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"EYAL MERCADO",
+		lat:32.830361,
+		lon:34.974338,
+		icon: 1,
+		description:"Carmel Hospital, Paediatric Orthopaedic Service",
+		interAction:["mouseover","mouseout"]
+	},
+	//2007
+	{
+		name:"SHAHRYAR NOORDIN",
+		lat:24.893379,
+		lon:67.028061,
+		icon: 2,
+		description:"Aga Khan University",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"OM PRAKASH SHARMA",
+		lat:43.653226,
+		lon:-79.383184,
+		icon: 2,
+		description:"Mt. Sinai Hospital, Clinical Fellowship",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"FEDERICO CANAVESE",
+		lat:45.777222,
+		lon:3.087025,
+		icon: 2,
+		description:"University Hospital of Clermont-Ferrand",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ANDREW GONG",
+		lat:-37.875922,
+		lon:145.129305,
+		icon: 2,
+		description:"Waverley Private Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"RICHARD HOCKING",
+		lat:-35.282000,
+		lon:149.128684,
+		icon: 2,
+		description:"Capital Orthopaedics,",
+		interAction:["mouseover","mouseout"]
+	},
+	//2008
+	{
+		name:"MICHAEL SEGBEFIA",
+		lat:5.555717,
+		lon:-0.196306,
+		icon: 3,
+		description:"Korle-Bu Teaching Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MAULIN SHAH",
+		lat:23.039568,
+		lon:72.566004,
+		icon: 3,
+		description:"Sterling Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"CRISTINA ALVES",
+		lat:40.202379,
+		lon:-8.447156,
+		icon: 3,
+		description:"Staff position",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SIMON KELLEY",
+		lat:43.653226,
+		lon:-79.383184,
+		icon: 3,
+		description:"The Hospital for Sick Children",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"KARL LOGAN",
+		lat:44.648862,
+		lon:-63.575320,
+		icon: 3,
+		description:"IWK Health Centre",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MICHAEL ZAIDMAN",
+		lat:32.830361,
+		lon:34.974338,
+		icon: 3,
+		description:"Rambam Medical Centre",
+		interAction:["mouseover","mouseout"]
+	}
+
+	// ,
+	// {
+	// 	name:"base",
+	// 	lat:num,
+	// 	lon:num,
+	// 	icon: 3,
+	// 	description:"words",
+	// 	interAction:["mouseover","mouseout"
+	// }
+	// ,
+	// {
+	// 	name:"base",
+	// 	lat:num,
+	// 	lon:num,
+	// 	icon: 0,
+	// 	"altIcon":1,
+	// 	description:"words"
+	// }
+]}
+
+var myMap = $("#google-maps").Jmap({
+    defaultZoom:3,
+    locationLat:43.648616,
+    locaiotnLon:-79.396644,
+    mapStyles:myMapStyle,
+    debugMode:true,
+    infoDisableAutoPan:true,
+    funOnClick:function(id,settings){
+		settings.dataObjectList[id][1].open(settings.activeMap, settings.dataObjectList[id][0]);
+		settings.dataObjectList[id][0].displayInfo = true;
+    	return false;
+    },
+    funOffClick:function(id,settings){
+		settings.dataObjectList[id][1].close(settings.activeMap, settings.dataObjectList[id][0]);
+		settings.dataObjectList[id][0].displayInfo = false;
+		return false;
+    }
+});
+function JmapGoogleReady(){
+    myMap.init();
+    myMap.setupOverlay();
+
+    myMap.addMarkerType({
+        url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/takeaction-btn.png',
+        size: [100,100],
+        origin: [0,0],
+        anchor: [20,90],
+        scaledSize:[100,100]
+    })
+    myMap.addMarkerType({
+		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
+        size: [22,33],
+        origin: [0,0],
+        anchor: [11,33],
+        scaledSize:[22,33]
+    })
+    myMap.addMarkerType({
+		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
+        size: [22,33],
+        origin: [0,0],
+        anchor: [11,33],
+        scaledSize:[22,33]
+    })
+    myMap.addMarkerType({
+		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
+        size: [22,33],
+        origin: [0,0],
+        anchor: [11,33],
+        scaledSize:[22,33]
+    })
+
+    myMap.loadData(jsonRequestData);
+	myMap.useCluster({
+		imagePath: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/base-',
+		imageSizes: [100,100],
+		averageCenter:true
+	});
+}
+</script>
+
+</body>
+</html>

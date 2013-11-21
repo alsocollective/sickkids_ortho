@@ -111,7 +111,9 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 			"order":section.order_of_section,
 			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
-			"content":getRowsOfEl(texts,images,meta["coloumcount"],request),
+			"coloumCount":section.coloum_to,
+			"content":getRowsOfEl(texts,images,section.coloum_to,request),
+			# "content":getRowsOfEl(texts,images,meta["coloumcount"],request),
 			"showInSidebar":section.show_in_sidebar,
 			"fullPage":section.fullPage,
 		}
@@ -119,6 +121,11 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 			smallout["bk"] = section.backgroundImage
 		out.append(smallout)
 	return out
+
+def combineSection(sections):
+	ordered = []
+	for s in sections:
+		print s
 
 def post(request,post = None):
 	if(post == None):

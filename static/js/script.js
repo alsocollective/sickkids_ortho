@@ -6,7 +6,7 @@ function resizeRows(){
 		var children = $(rows[index]).children();
 		var height = 0;
 		for(var a = 0, max = children.length; a < max; ++a){
-			var nheight = $(children[a]).height();
+			var nheight = $(children[a]).outerHeight(true);
 			if(nheight > height){
 				height = nheight;
 			}
@@ -79,7 +79,7 @@ function loadNextPage(address){
 	nextpage.load(newPage,function(){
 
 		this.style.left = "0%";
-		this.className = "page animated slideInRight";
+		this.className = "page animated slideInRight " + address;
 		$(this).scrollTop(0);
 		$("#content").scrollTop(0);
 		$("#content")[0].className = "page animated slideOutLeft";

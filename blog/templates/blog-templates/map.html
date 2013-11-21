@@ -268,7 +268,7 @@ var myMap = $("#google-maps").Jmap({
     locationLat:43.648616,
     locaiotnLon:-79.396644,
     mapStyles:myMapStyle,
-    debugMode:true,
+    // debugMode:true,
     infoDisableAutoPan:true,
     funOnClick:function(id,settings){
 		settings.dataObjectList[id][1].open(settings.activeMap, settings.dataObjectList[id][0]);
@@ -286,32 +286,36 @@ function JmapGoogleReady(){
     myMap.setupOverlay();
 
     myMap.addMarkerType({
-        url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/takeaction-btn.png',
-        size: [100,100],
-        origin: [0,0],
-        anchor: [20,90],
-        scaledSize:[100,100]
+		type:"svg",
+		path: google.maps.SymbolPath.CIRCLE,
+		fillOpacity: 1,
+		fillColor: 'ff0000',
+		strokeWeight:0,
+		scale: 10
     })
     myMap.addMarkerType({
-		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
-        size: [22,33],
-        origin: [0,0],
-        anchor: [11,33],
-        scaledSize:[22,33]
+		type:"svg",
+		path: google.maps.SymbolPath.CIRCLE,
+		fillOpacity: 1,
+		fillColor: 'ff2222',
+		strokeWeight:0,
+		scale: 10
     })
     myMap.addMarkerType({
-		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
-        size: [22,33],
-        origin: [0,0],
-        anchor: [11,33],
-        scaledSize:[22,33]
+		type:"svg",
+		path: google.maps.SymbolPath.CIRCLE,
+		fillOpacity: 1,
+		fillColor: 'ff4444',
+		strokeWeight:0,
+		scale: 10
     })
     myMap.addMarkerType({
-		url: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/entry.png',
-        size: [22,33],
-        origin: [0,0],
-        anchor: [11,33],
-        scaledSize:[22,33]
+		type:"svg",
+		path: google.maps.SymbolPath.CIRCLE,
+		fillOpacity: 1,
+		fillColor: 'ff6666',
+		strokeWeight:0,
+		scale: 10
     })
 
     myMap.loadData(jsonRequestData);

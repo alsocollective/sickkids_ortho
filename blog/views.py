@@ -122,8 +122,9 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 
 def post(request,post = None):
 	if(post == None):
-		out = getAllPages(Page.objects.all().order_by("order_of_page"))
-		return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
+		post = "home";
+		# out = getAllPages(Page.objects.all().order_by("order_of_page"))
+		# return render_to_response('blog-templates/index-home.html',{"meta":{"pages":out}})
 	else:
 		post = post.split("/")[0]
 	page = Page.objects.order_by("order_of_page").all()

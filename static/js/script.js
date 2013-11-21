@@ -203,7 +203,6 @@ function setURL(){
 }
 
 function jumpToLocation(){
-	console.log(currentHashEl);
-	$("#content").scrollTop($("#"+currentHashEl).offset().top);
+	$("#content").scrollTop($("#"+currentHashEl).offset().top + $("#content").scrollTop());
 }
 

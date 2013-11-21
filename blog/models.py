@@ -57,6 +57,7 @@ class Section(models.Model):
 
 	subTitle = models.CharField(max_length = 600,blank=True)
 	backgroundImage = models.ImageField(upload_to='static/photos',blank=True)
+	fullPage = models.BooleanField(default=False)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)

@@ -113,6 +113,7 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"content":getRowsOfEl(texts,images,meta["coloumcount"],request),
 			"showInSidebar":section.show_in_sidebar,
+			"fullPage":section.fullPage,
 		}
 		if section.backgroundImage:
 			smallout["bk"] = section.backgroundImage

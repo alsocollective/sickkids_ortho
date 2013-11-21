@@ -11,6 +11,7 @@ $sk_red: #ea636e;
 $sk_red_fade: #ff838e;
 $hover_button: #ca444e;
 $text_color_grey: #111;
+$normalBackground: #fff;
 
 // example of how to use this break point thing...
 // @include breakpoint(huge) { background-color: #f00; }
@@ -175,6 +176,10 @@ img.absolute{
 		padding: 2em 0 2em 0;
 	}
 
+	.full-page{
+		height: 90%;
+	}
+
 /* nav */
 #nav{
 	position: absolute;/* we need absolute as a fall back */
@@ -200,8 +205,8 @@ img.absolute{
 		padding: 1em;
 		text-decoration: none;
 		font-weight: 400;
-		color: #fff;
-		//background-color: #fff;
+		color: $text_color_grey;
+		background-color: $normalBackground;
 		vertical-align: top;
 	}
 	img {

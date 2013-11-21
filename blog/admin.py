@@ -32,7 +32,7 @@ class sectionAdmin(admin.ModelAdmin):
 	readonly_fields = ('showBackground',)
 	fieldsets = [
 		('',{
-			'fields':[('title','show_title','coloum_from','coloum_to','order_of_section','subTitle','backgroundImage','showBackground','show_in_sidebar',)]}
+			'fields':[('title','show_title','coloum_from','coloum_to','order_of_section','subTitle','backgroundImage','showBackground','show_in_sidebar','fullPage')]}
 		),]
 	inlines = [textInline,imageInline]
 	class Media:

@@ -30,15 +30,11 @@ function setupnav(){
 	var links = $(".link-to-page");
 	links.each(function(index){
 		$(links[index]).click(function(){
-			// event.preventDefault();
-			if(!animating){
-				animating = true;
-				var linkto = this.getAttribute("href").split("/");
-				clearHighLight();
-				heighLightEl(this);
-				linkto = linkto[linkto.length-1];
-				loadNextPage(linkto);
-			}
+			var linkto = this.getAttribute("href").split("/");
+			clearHighLight();
+			heighLightEl(this);
+			linkto = linkto[linkto.length-1];
+			loadNextPage(linkto);
 			return false;
 		});
 	});
@@ -68,7 +64,7 @@ $(window).load(function() {
 
 
 function loadNextPage(address){
-	if(loading){
+	if(loading || address == pageSlug){
 		return false;
 	}
 	loading = true;
@@ -133,7 +129,6 @@ function heighLightEl(element) {
 }
 
 function resetTheNames() {
-	// console.log("reset the names");
 	loadingElement.style.display = "none";
 	var oldcontent = $("#content")[0];
 	var newcontent = $("#next-page")[0];
@@ -143,7 +138,6 @@ function resetTheNames() {
 	newcontent.id = "content";
 
 	newcontent.parentNode.appendChild(newcontent);
-	animating = false;
 	var newSubnav = $("#subnav-new")[0];
 	var oldSubnav = $("#subnav")[0];
 	var parent = oldSubnav.parentNode;
@@ -162,7 +156,6 @@ function setupNavClicks(element){
 		$(elements[a]).click(function(event){
 			event.preventDefault();
 			currentHashEl = this.href.split("#")[1];
-			console.log(currentHashEl)
 			jumpToLocation();
 			// setURL();
 		});

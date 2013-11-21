@@ -36,6 +36,7 @@
 {%endfor%}
 
 <script type="text/javascript">
+	pageSlug = "{{meta.slug}}";
 	hashElements = [{%for sections in data%}"{{sections.slug}}"{% if forloop.last %}{%else%},{%endif%}{%endfor%}]
 </script>
 </nav>

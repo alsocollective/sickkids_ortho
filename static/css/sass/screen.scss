@@ -140,15 +140,17 @@ img.absolute{
 		text-align: center;
 	}
 	
-	h2{
-		font-size: 2em;
-		//letter-spacing: 0.05em;
-		font-weight: 700;
-		padding: 0.1em 0.2em 0.1em 0.2em;
-		//border: solid 2px #111;
-		margin-bottom: 3em;
-		//display: inline-flex;
+	h2.absolute{
+		margin: 2em 0 1em 0;
+		border: solid 2px $sk_red;
+		box-sizing: border-box;
+		font-size: 1em;
 		text-align: center;
+		padding: 0.1em 0.2em 0.1em 0.2em;
+		font-weight: 700;
+		width: initial !important;
+		text-transform: uppercase;
+		color: $sk_red;
 	}
 	
 	
@@ -173,7 +175,7 @@ img.absolute{
 				columns:2;
 				-webkit-columns:2; /* Safari and Chrome */
 				-moz-columns:2; /* Firefox */
-				margin: 0 0 0 0.6em;
+				//margin: 0 0 0 0.6em;
 			}
 		}
 	}

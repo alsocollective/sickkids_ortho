@@ -141,14 +141,57 @@ img.absolute{
 	}
 	
 	h2{
-		font-size: 6em;
+		font-size: 2em;
 		//letter-spacing: 0.05em;
 		font-weight: 700;
 		padding: 0.1em 0.2em 0.1em 0.2em;
-		border: solid 2px #111;
+		//border: solid 2px #111;
 		margin-bottom: 3em;
-		display: inline-flex;
+		//display: inline-flex;
 		text-align: center;
+	}
+	
+	
+	/* Custom Page Sections */
+	
+	strong{
+		font-weight: 700;
+	}
+	
+	#interview {
+		
+		background-color: #555;
+		padding: 2em 0 0 0;
+		
+		h4{
+			text-decoration: none;
+			color: #fff;
+		}
+		
+		div:nth-child(2){
+			div:nth-child(1) {
+				columns:2;
+				-webkit-columns:2; /* Safari and Chrome */
+				-moz-columns:2; /* Firefox */
+				margin: 0 0 0 0.6em;
+			}
+		}
+	}
+	
+	#special-procedure{
+		div:nth-child(2){
+			div:nth-child(1){
+				z-index:1;
+			}
+		}
+	}
+	
+	h4{
+		font-weight: 700;
+		text-decoration: underline;
+		text-transform: uppercase;
+		margin: 1em 0 0.5em 0;
+		font-size: 0.9em;
 	}
 	
 	.cover{
@@ -159,8 +202,6 @@ img.absolute{
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
 		}
-		
-		
 		
 		strong{
 			font-weight: 700;

@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url(r'^page/(?P<post>.*)/.','blog.views.post',name="rawpost"),
     url(r'^ajax/(?P<post>.*)/$','blog.views.ajaxpost',name="ajaxpost"),
     url(r'^map/$','blog.views.map',name="map"),
+    url(r'^treemap/$','blog.views.treemap',name="treemap"),
     url(r'^$', 'blog.views.post', name='home'),
 )

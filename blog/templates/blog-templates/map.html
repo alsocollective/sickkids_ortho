@@ -19,9 +19,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/j-map.js"></script>
-	<!-- 
-	<script type="text/javascript" src="http://localhost:8000/j-map.js"></script>
-	 -->
+
+	 <!--<script type="text/javascript" src="http://localhost:8000/j-map.js"></script>-->
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/infobubble.js"></script>
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/markerclusterer.js"></script>
 </head>
@@ -270,6 +269,7 @@ var myMap = $("#google-maps").Jmap({
     locaiotnLon:-79.396644,
     mapStyles:myMapStyle,
     // debugMode:true,
+	disableDefaultUI:false,
     infoDisableAutoPan:true,
     funOnClick:function(id,settings){
 		settings.dataObjectList[id][1].open(settings.activeMap, settings.dataObjectList[id][0]);

@@ -48,3 +48,15 @@
 	padding: 0;
 	margin: 0;
 }
+.inline-group h2{
+	display: none;
+}
+.submit-row{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 0;
+	margin: 0;
+	width:calc(100% - 405px);
+	border: none;
+}

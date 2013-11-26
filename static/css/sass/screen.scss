@@ -140,6 +140,7 @@ img.absolute{
 // we need to do some trickery so that when the image is off screen it is hidden and comes in being displayed
 .background{
 	background-position: center;
+	background-repeat: no-repeat;
 	@include vendorize(background-position, cover);
 	z-index: -1;
 }
@@ -198,7 +199,19 @@ img.absolute{
 	blockquote{
 		color: $text_color_grey;
 		font-size: 2em;
-		margin-top: 2em;
+		margin-top: 3em;
+	}
+	
+	.quoted {
+		position: absolute;
+		margin-top: 0.5em;
+		right: 0px;
+		font-size: 0.7em;
+		font-weight: 600;
+	}
+	
+	i {
+		line-height: 1.2em;
 	}
 	
 	
@@ -323,7 +336,7 @@ img.absolute{
 		vertical-align: top;
 	}
 	img {
-		padding: 0.5em 0.8em 0.5em 0.5em;
+		padding: 0.5em 0.8em 0 0.5em;
 		margin: 0;
 		margin-right: 3em;
 		background-color: $sk_red;
@@ -388,10 +401,10 @@ img.absolute{
 	}
 }
 
-.home .background {
+/*.home .background {
 	background: no-repeat;
 	background-position: center;
-}
+}*/
 
 /* ` */
 

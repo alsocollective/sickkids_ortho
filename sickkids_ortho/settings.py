@@ -172,14 +172,13 @@ LOGGING = {
     }
 }
 
-#def show_toolbar(request):
+def show_toolbar(request):
+    return True
 
-    #return True
-
-#DEBUG_TOOLBAR_CONFIG = {
- #   'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+DEBUG_TOOLBAR_CONFIG = {
+   'SHOW_TOOLBAR_CALLBACK': show_toolbar,
     # Rest of config
-#}
+}
 
 THUMBNAIL_ALIASES = {
     '': {

@@ -1,6 +1,7 @@
 {%if meta.title != "Home" %}
 		<h1>{{ meta.title }}</h1>
 {% endif %}
+
 {%if meta.bk%}
 	<div class="background fullscreen fixed" style="background-image: url(/{{meta.bk}});"></div>
 {%endif%}
@@ -20,7 +21,30 @@
 					<h2> {{section.subTitle}} </h2>
 				{% endif %}
 				{{section.paragraph|safe}}
-			</div>{% else %}
+			</div>{% elif section.section %}
+			<div id="{{section.slug}}" class="absolute sub-section {%if section.bk%}background{%endif%}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;" {%if sections.bk%}style="background-image: url(/{{sections.bk}});"{%endif%}>
+				{% if section.showTitle %}
+				<div class="sub-row">
+					<h2 class="absolute">{{section.title}}</h2>
+				</div>
+				{% endif %}
+				{% for subRow in section.content %}
+					<div class="sub-row">
+					{% for subSection in subRow %}
+					{% if subSection.paragraph %}
+						<div class="absolute" style="left:{{subSection.coloum}}%; width:{{subSection.coloumWidth}}%;">
+						{% if subSection.subTitle %}
+							<h2> {{subSection.subTitle}} </h2>
+						{% endif %}
+						{{subSection.paragraph|safe}}
+						</div>{% else %}
+						<img class="absolute" src="/{{subSection.image}}" alt="{{subSection.imageAlt}}" style="left:{{subSection.coloum}}%; width:{{subSection.coloumWidth}}%;">
+						{% endif %}
+					{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+			{% else %}
 			<img class="absolute" src="/{{section.image}}" alt="{{section.imageAlt}}" style="left:{{section.coloum}}%; width:{{section.coloumWidth}}%;">
 			{% endif %}
 		{%endfor%}

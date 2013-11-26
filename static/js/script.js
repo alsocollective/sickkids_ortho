@@ -1,22 +1,33 @@
 /*global triggersPoints: [], hashElements: [], currentHashEl: "some string", contentScrollTop: 200 */
 
 function resizeRows(){
+	var subRows = $(".sub-row");
+	subRows.each(function(index){
+		var height = findChildrenHeight(subRows[index]);
+		subRows[index].style.height = height+"px";
+	});
+
 	var rows = $(".row");
 	rows.each(function(index){
-		var children = $(rows[index]).children();
-		var height = 0;
-		for(var a = 0, max = children.length; a < max; ++a){
-			var nheight = $(children[a]).outerHeight(true);
-			if(nheight > height){
-				height = nheight;
-			}
-			if(children[a].nodeName === "IMG"){
-				children[a].onload = resizeRows;
-			}
-		}
+		var height = findChildrenHeight(rows[index]);
 		rows[index].style.height = height+"px";
 	});
 	findTriggerPoints();
+}
+
+function findChildrenHeight(parent){
+	var children = $(parent).children();
+	var height = 0;
+	for(var a = 0, max = children.length; a < max; ++a){
+		var nheight = $(children[a]).outerHeight(true);
+		if(nheight > height){
+			height = nheight;
+		}
+		if(children[a].nodeName === "IMG"){
+			children[a].onload = resizeRows;
+		}
+	}
+	return height;
 }
 
 // resizeRows();

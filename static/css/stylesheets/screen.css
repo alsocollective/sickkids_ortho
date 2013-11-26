@@ -412,7 +412,7 @@ h1 {
 
 /* line 305, ../sass/screen.scss */
 .full-page {
-  height: 90%;
+  min-height: 90%;
 }
 
 /* nav */
@@ -526,31 +526,33 @@ h1 {
   }
 }
 
-/*.home .background {
-	background: no-repeat;
-	background-position: center;
-}*/
 /* ` */
 /* other pages */
-/* line 413, ../sass/screen.scss */
+/* line 408, ../sass/screen.scss */
 #loading {
   display: none;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 999;
 }
 
-/* line 418, ../sass/screen.scss */
+/* line 414, ../sass/screen.scss */
 #next-page {
   left: 0%;
 }
 
-/* line 422, ../sass/screen.scss */
+/* line 418, ../sass/screen.scss */
 #prev-page {
   left: -100%;
 }
 
+/* Custom Sections */
+/* line 425, ../sass/screen.scss */
+#faculty-bios.div > div * {
+  background-color: #ff0;
+}
+
 /* Media Queries */
-/* line 428, ../sass/screen.scss */
+/* line 430, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

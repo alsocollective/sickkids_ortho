@@ -303,7 +303,7 @@ img.absolute{
 	}
 
 	.full-page{
-		height: 90%;
+		min-height: 90%;
 	}
 
 /* nav */
@@ -401,28 +401,30 @@ img.absolute{
 	}
 }
 
-/*.home .background {
-	background: no-repeat;
-	background-position: center;
-}*/
-
 /* ` */
 
 
 /* other pages */
-	#loading{
-		display: none;
-		left:0;
-		background-color: rgba(255,255,255,0.5);
-	}
-	#next-page{
-		left:0%;
-		// background-color: #fff;
-	}
-	#prev-page{
-		left: -100%;
-	}
+#loading{
+	display: none;
+	left:0;
+	//background-color: rgba(255,255,255,0.5);
+	z-index: 999;
+}
+#next-page{
+	left:0%;
+	// background-color: #fff;
+}
+#prev-page{
+	left: -100%;
+}
+	
 
+/* Custom Sections */
+
+#faculty-bios.div > div *{
+	background-color: #ff0;
+}
 
 /* Media Queries */
 .nav-animate{

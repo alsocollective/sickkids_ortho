@@ -546,13 +546,14 @@ h1 {
 }
 
 /* Custom Sections */
-/* line 425, ../sass/screen.scss */
-#faculty-bios.div > div * {
-  background-color: #ff0;
+/* line 426, ../sass/screen.scss */
+#faculty-bios blockquote {
+  font-size: 1em;
+  font-style: italic;
 }
 
 /* Media Queries */
-/* line 430, ../sass/screen.scss */
+/* line 433, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

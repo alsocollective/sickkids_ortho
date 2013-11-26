@@ -422,8 +422,11 @@ img.absolute{
 
 /* Custom Sections */
 
-#faculty-bios.div > div *{
-	background-color: #ff0;
+#faculty-bios {
+	blockquote{
+		font-size:1em;
+		font-style:italic;
+	}
 }
 
 /* Media Queries */

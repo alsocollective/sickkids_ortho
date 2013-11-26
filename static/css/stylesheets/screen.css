@@ -212,7 +212,7 @@ table tr {
 }
 
 /* line 130, ../sass/screen.scss */
-.row {
+.row, .sub-row {
   height: 200px;
   position: relative;
 }

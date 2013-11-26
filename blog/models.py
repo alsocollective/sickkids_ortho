@@ -37,7 +37,7 @@ class Page(models.Model):
 		return self.title
 
 class Section(models.Model):
-	parent = models.ForeignKey(Page)
+	parent = models.ForeignKey(Page, null=True)
 
 	title = models.CharField(max_length = 300)
 	show_title = models.BooleanField(default=True)
@@ -58,6 +58,9 @@ class Section(models.Model):
 	subTitle = models.CharField(max_length = 600,blank=True)
 	backgroundImage = models.ImageField(upload_to='static/photos',blank=True)
 	fullPage = models.BooleanField(default=False)
+
+	sectionField = models.ForeignKey("self", null=True)
+
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)

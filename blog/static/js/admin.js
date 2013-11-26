@@ -42,6 +42,9 @@ window.onload = function () {
 			var thisEl = selectedElements[elCount];
 			elCount = elCount + 1;
 			var orderField = $(thisEl).find(".form-row .field-order_of_content input")[0];
+			if(!orderField){
+				orderField = $(thisEl).find(".form-row .field-order_of_section input")[0];
+			}
 			toGoInTable.push({"element":thisEl,"value":orderField});
 			var textFieldArea = $(thisEl).find(".vLargeTextField");
 			if(textFieldArea.length > 0){
@@ -63,6 +66,9 @@ window.onload = function () {
 		if(tableRow.length>0){
 			var thisEl = tableRow[0];
 			var orderField = $(thisEl).find(".form-row .field-order_of_content input")[0];
+			if(!orderField){
+				orderField = $(thisEl).find(".form-row .field-order_of_section input")[0];
+			}
 			toGoInTable.push({"element":thisEl,"value":orderField});
 			var textFieldArea = $(thisEl).find(".vLargeTextField");
 			if(textFieldArea.length > 0){

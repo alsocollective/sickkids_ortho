@@ -29,8 +29,8 @@ def getAllPages(pages):
 		out.append(outP)
 	return out
 
-def getRowsOfEl(textObject,imageObject, cc, request):
-	allElements = getElements(textObject,imageObject,cc, request)
+def getRowsOfEl(textObject,imageObject,subSections,cc, request, AllTexts, AllImages):
+	allElements = getElements(textObject,imageObject,subSections,cc, request, AllTexts, AllImages)
 	sortedEl = []
 	lastOrder = -1;
 	for el in allElements:
@@ -45,10 +45,13 @@ def sortbycoloums(inlist):
 	outList = inlist
 	return outList
 
-def getElements(textObject, imageObject, cc, request):
+def getElements(textObject, imageObject,subSections, cc, request, AllTexts, AllImages):
 	texts = getTextElements(textObject,cc)
 	images = getImageElements(imageObject,cc,request)
-	combined = texts + images
+	sections = []
+	if subSections:
+		sections = getSubSections(subSections,cc,request, AllTexts, AllImages)
+	combined = texts + images + sections
 	def numberic_compare(x,y):
 		if x["order"] > y["order"]:
 			return 1
@@ -95,12 +98,36 @@ def getImageElements(imageObject,cC,request):
 		imageOut.append(locDic)
 	return imageOut
 
-def getSections(request,sections,AllTexts,AllImages,meta):
+def getSubSections(subSections,cC,request,AllTexts,AllImages):
+	sectionsOut = []
+	print cC
+	for section in subSections:
+		texts = AllTexts.filter(parent = section)
+		images = AllImages.filter(parent = section)
+
+		smallout = {
+			"section":True,
+			"title":section.title,
+			"showTitle":section.show_title,
+			"subTitle":section.subTitle,
+			"showSubTitle":section.show_subTitle,
+			"slug":section.slug,
+			"order":section.order_of_section,
+			"coloum":(section.coloum_from+0.0)/cC*100,
+			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/cC*100,
+			"content":getRowsOfEl(texts,images,None,16,request,None,None),
+		}
+		sectionsOut.append(smallout)
+	return sectionsOut
+
+
+def getSections(request,sections,AllTexts,AllImages,AllSections,meta):
 	out = []
 
 	for section in sections:
 		texts = AllTexts.filter(parent = section)
 		images = AllImages.filter(parent = section)
+		subSections = AllSections.filter(sectionField = section)
 
 		smallout = {
 			"title":section.title,
@@ -112,7 +139,7 @@ def getSections(request,sections,AllTexts,AllImages,meta):
 			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
 			"coloumCount":section.coloum_to,
-			"content":getRowsOfEl(texts,images,section.coloum_to,request),
+			"content":getRowsOfEl(texts,images,subSections,section.coloum_to,request,AllTexts,AllImages),
 			# "content":getRowsOfEl(texts,images,meta["coloumcount"],request),
 			"showInSidebar":section.show_in_sidebar,
 			"fullPage":section.fullPage,
@@ -139,6 +166,7 @@ def post(request,post = None):
 	sections = Section.objects.filter(parent=thisPage).order_by('order_of_section')
 	AllTexts = Text.objects.all().order_by('order_of_content')
 	AllImages = Image.objects.all().order_by('order_of_content')
+	AllSections = Section.objects.all().order_by('order_of_section')
 
 	meta = {
 		"title":thisPage.title,
@@ -147,7 +175,7 @@ def post(request,post = None):
 		"pages":getAllPages(page),
 		"bk": thisPage.backgroundImage
 	}
-	out = getSections(request,sections,AllTexts,AllImages,meta)
+	out = getSections(request,sections,AllTexts,AllImages,AllSections,meta)
 
 	return render_to_response('blog-templates/blogpost.html',{"data":out,"meta":meta})
 
@@ -159,6 +187,7 @@ def ajaxpost(request,post = None):
 	sections = Section.objects.filter(parent=page).order_by('order_of_section')
 	AllTexts = Text.objects.all().order_by('order_of_content')
 	AllImages = Image.objects.all().order_by('order_of_content')
+	AllSections = Section.objects.all().order_by('order_of_section')
 
 	meta = {
 		"title":page.title,
@@ -166,7 +195,7 @@ def ajaxpost(request,post = None):
 		"slug":page.slug,
 		"bk":page.backgroundImage
 	}
-	out = getSections(request,sections,AllTexts,AllImages,meta)
+	out = getSections(request,sections,AllTexts,AllImages,AllSections,meta)
 
 	return render_to_response('blog-templates/ajax-post.html',{"data":out,"meta":meta})
 

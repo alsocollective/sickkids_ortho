@@ -25,6 +25,19 @@ class imageInline(admin.StackedInline):
 		}),
 	]
 
+class sectionInline(admin.StackedInline):
+	model = Section
+	extra = 0
+	readonly_fields = ['changeform_link', ]
+	fieldsets = [('', {'fields':[('changeform_link','title','order_of_section','coloum_from','coloum_to',)]	}),]
+	def changeform_link(self,instance):
+		print "test"
+		print instance
+		if instance.id:
+			return u'<a href="/admin/blog/section/%s" target="_blank">Details</a>' % instance.id
+		return u'The link is not available till after we save'
+	changeform_link.allow_tags = True
+	changeform_link.short_description = 'Link'
 
 class sectionAdmin(admin.ModelAdmin):
 	model = Section
@@ -34,7 +47,7 @@ class sectionAdmin(admin.ModelAdmin):
 		('',{
 			'fields':[('title','show_title','coloum_from','coloum_to','order_of_section','subTitle','backgroundImage','showBackground','show_in_sidebar','fullPage')]}
 		),]
-	inlines = [textInline,imageInline]
+	inlines = [textInline,imageInline,sectionInline]
 	class Media:
 		js = ('/static/js/nicEdit.js','/static/js/jquery.js','/static/js/admin.js')
 		css = {

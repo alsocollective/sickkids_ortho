@@ -40,7 +40,7 @@ function setupnav(){
 	});
 
 	//$("#nav img").on("click",loadNextPage);//for the home being the index page
-	$("#nav img").on("click",function(){loadNextPage("home")});
+	$("#nav img").on("click",function(){clearHighLight();loadNextPage("home");});
 }
 
 

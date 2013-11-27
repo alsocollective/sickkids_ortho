@@ -1,0 +1,214 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Point-Along-Path Interpolation</title>
+	<script type="text/javascript" src="/static/js/jquery.js"></script>
+	<script type="text/javascript" src="/static/js/d3.v3.min"></script>
+	<style type="text/css">
+
+		body,html{
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#my-svg{
+			width: 100%;
+			height: 100%;
+		}
+
+		path {
+			stroke: #666;
+			stroke-width: 1.5px;
+		}
+
+		#my-key{
+			width: 150px;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+
+		.heighlight{
+			stroke: #008;
+			stroke-width: 3px;
+		}
+/*
+		circle {
+			fill: steelblue;
+			stroke: white;
+			stroke-width: 0px;
+		}
+*/
+
+
+
+	</style>
+</head>
+<body>
+	<div id="my-svg"></div>
+	<div id="my-key"></div>
+<script type="text/javascript">
+	$(window).on("resize",function(){
+		$(circleSettings.parentElement)[0].innerHTML = "";
+		circleSettings.updateSizes();
+		circleSettings.init();
+	});
+	var circleSettings = {
+		squareSize:30,
+		parentElement:"#my-svg",
+		dataLocation:"/static/data/2012-publication.json",
+		updateSizes:function(){
+			circleSettings.width = $(circleSettings.parentElement).width()
+			circleSettings.height = $(circleSettings.parentElement).height()
+			circleSettings.radius = Math.min(circleSettings.width,circleSettings.height)/2
+		},
+		parentKey:"#my-key",
+		keySetup:false,
+		setUpHTMLEls:function(){
+			if(!circleSettings.keySetup){
+			// console.log(circleSettings.g)
+				var parent = $(circleSettings.parentKey)[0];
+				for(var a = 0, max = circleSettings.g[0].length; a < max; a += 1){
+					var name = circleSettings.g[0][a].__data__.data.name
+					var slug = convertToSlug(name);
+					if($(parent).children('#'+slug).length == 0){
+						var colour = circleSettings.g[0][a].lastChild.style.fill;
+						var container = document.createElement("li");
+						container.innerHTML = name;
+						container.id = slug;
+						container.style.backgroundColor = colour;
+						$(container).on("mouseover",showSameClassAsThisId);
+						$(container).on("mouseout",removeSameClassAsThisId)
+						parent.appendChild(container);
+					}
+				}
+				circleSettings.keySetup = true;
+			}
+		}
+	}
+
+	function showSameClassAsThisId(){
+		$("."+this.id).attr("class",this.id+" heighlight");
+	}
+	function removeSameClassAsThisId(){
+		$("."+this.id).attr("class",this.id);
+	}
+
+	circleSettings.updateSizes();
+
+	function dynamicSort(property) {
+		var sortOrder = 1;
+			if(property[0] === "-") {
+			sortOrder = -1;
+			property = property.substr(1);
+		}
+		return function (a,b) {
+			var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+			return result * sortOrder;
+		}
+	}
+
+
+	circleSettings.load = function(){
+		d3.json(circleSettings.dataLocation,function(data){
+			data.sort(dynamicSort("paper"));
+			circleSettings.data = data;
+			circleSettings.init();
+		});
+	}
+	circleSettings.init = function(){
+		circleSettings.color = d3.scale.ordinal().range(["#ccc","#c00","#0c0","#00c","#000"])
+		circleSettings.arc = d3.svg.arc()
+			.outerRadius(circleSettings.radius - 29)
+			.innerRadius(circleSettings.radius - 30);
+		circleSettings.pie = d3.layout.pie()
+			.value(function(d){ return 1;})
+			.sort(null);
+		circleSettings.svg = d3.select(circleSettings.parentElement).append("svg")
+			.attr("with",circleSettings.width)
+			.attr('height', circleSettings.height)
+			.append("g")
+			.attr("transform","translate("+circleSettings.width/2+","+circleSettings.height/2+")");
+
+		circleSettings.g = circleSettings.svg.selectAll(".arc")
+			.data(circleSettings.pie(circleSettings.data))
+			.enter().append("g")
+			.attr("class","arc");
+
+		circleSettings.g.append("path")
+			.attr('d', function(d,i){
+				if(circleSettings.g[0][i+1] && circleSettings.g[0][i+1].__data__.data.paper == d.data.paper){
+					var inToArc = Object.create(d);
+					inToArc.startAngle += circleSettings.g[0][0].__data__.endAngle/2;
+					inToArc.endAngle += circleSettings.g[0][0].__data__.endAngle/2;
+					return circleSettings.arc(inToArc,i);
+				} else {
+					prev = d;
+				}
+				return null;
+			});
+
+		circleSettings.g.append('circle')
+		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
+		.attr("r", function(d) { return d.data.impact; })
+		.style("text-anchor", "middle")
+		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.on('mouseover',function(d){
+			this.nextSibling.style.display = "inherit";
+		})
+		.on('mouseout',function(d){
+			this.nextSibling.style.display = "none";
+		})
+		.attr('class', function(d){
+			return convertToSlug(d.data.name);
+		})
+
+
+		circleSettings.g.append("text")
+		.attr("dy", ".35em")
+		.style("text-anchor", "middle")
+		.style("display","none")
+		.text(function(d) { return d.data.name + " " + d.data.paper; });
+
+
+		circleSettings.g.append('rect')
+		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
+		.attr('x', -circleSettings.squareSize/2)
+		.attr('y', -circleSettings.squareSize/2)
+		.attr("width", function(d) {
+			if(!d.data.impact){
+				return circleSettings.squareSize;
+			}
+			return 0;
+		})
+		.attr("height", function(d) {
+			if(!d.data.impact){
+				return circleSettings.squareSize;
+			}
+			return 0;
+		})
+		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.on('mouseover',function(d){
+			this.previousSibling.style.display = "inherit";
+		})
+		.on('mouseout',function(d){
+			this.previousSibling.style.display = "none";
+		})
+		.attr('class', function(d){
+			return convertToSlug(d.data.name);
+		})
+		circleSettings.setUpHTMLEls();
+	}
+	circleSettings.load();
+	function convertToSlug(Text)
+	{
+		return Text
+			.toLowerCase()
+			.replace(/ /g,'-')
+			.replace(/[^\w-]+/g,'');
+	}
+</script>
+</body>
+</html>

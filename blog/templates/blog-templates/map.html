@@ -17,10 +17,11 @@
 	}
 	</style>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!--
+
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/j-map.js"></script>
- -->
+<!-- 
 	<script type="text/javascript" src="http://localhost:8000/js/j-map/j-map.js"></script>
+ -->
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/infobubble.js"></script>
 	<script src="http://alsocollective.github.io/also-cdn/js/j-map/markerclusterer.js"></script>
 </head>
@@ -459,11 +460,7 @@ var from12 = {"data":[
 	]}
 
 
-
-
-
-
-
+var allData={data:from05.data.concat(from06.data.concat(from07.data.concat(from08.data.concat(from09.data.concat(from10.data.concat(from11.data.concat(from12.data)))))))};
 	// ,
 	// {
 	// 	name:"base",
@@ -508,77 +505,78 @@ function JmapGoogleReady(){
 
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'ff0000',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'ff2222',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'ff4444',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'ff6666',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: '888',
-		strokeWeight:5,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'f0a',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'f0c',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
     myMap.addMarkerType({
 		type:"svg",
-		path:  "M-5,-5 a10,10 0 1,0 1,0 z",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
 		fillColor: 'f0f',
-		strokeWeight:0,
+		strokeWeight:0,strokeColor:'fff',
+		strokeColor:'fff',
 		scale: 1
     })
-
-    myMap.loadData(from05,true);
-    myMap.loadData(from06,true);
-    myMap.loadData(from07,true);
-    myMap.loadData(from08,true);
-    myMap.loadData(from09,true);
-    myMap.loadData(from10,true);
-    myMap.loadData(from11,true);
-    myMap.loadData(from12,true);
+    myMap.loadData(allData,true);
+    // myMap.loadData(from05,true);
+    // myMap.loadData(from06,true);
+    // myMap.loadData(from07,true);
+    // myMap.loadData(from08,true);
+    // myMap.loadData(from09,true);
+    // myMap.loadData(from10,true);
+    // myMap.loadData(from11,true);
+    // myMap.loadData(from12,true);
 
 	// myMap.useCluster({
 	// 	imagePath: 'http://alsocollective.github.io/also-cdn/js/j-map/static/img/base-',

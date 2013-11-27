@@ -215,6 +215,9 @@ def siteMap(request):
 
 def map(request):
 	return render_to_response('blog-templates/map.html',{"data":0})
-    
+def circle(request):
+	return render_to_response('blog-templates/d3-circles.html',{"data":0})
+
+
 def treemap(request):
 	return render_to_response('blog-templates/treemap-2013.html',{"data":0})

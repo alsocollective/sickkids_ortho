@@ -1,9 +1,18 @@
 // Utility functions
-function showSameClassAsThisId(){
-	$("."+this.id).attr("class",this.id+" heighlight");
+function showSameClassAsThisId(element){
+	if(!element){
+		$("."+this.id).attr("class",this.id+" heighlight");
+	} else {
+		$("."+element.classList[0]).attr("class",element.classList[0]+" heighlight");
+	}
 }
-function removeSameClassAsThisId(){
-	$("."+this.id).attr("class",this.id);
+function removeSameClassAsThisId(element){
+	if(!element){
+		$("."+this.id).attr("class",this.id);
+	} else {
+		console.log(element.classList);
+		$("."+element.classList[0]).attr("class",element.classList[0]);
+	}
 }
 
 function convertToSlug(Text)
@@ -83,7 +92,6 @@ var referrals = {
 			})
 			.attr("d",referrals.arc)
 			.each(function(d) { this._current = d; });
-		console.log(referrals.path);
 	},
 	switchDataSets:function(){
 		var value = this.value;
@@ -100,8 +108,7 @@ var referrals = {
 	},
 
 	setupKeys:function(){
-		if(!referrals.keySetup){
-			referrals.keySetup = true;
+		if($(referrals.parentKey).children().length == 0){
 			var parent = $(referrals.parentKey)[0];
 			var form = document.createElement("form");
 			var input = document.createElement("input");
@@ -122,7 +129,6 @@ var referrals = {
 				slug = convertToSlug(name);
 				if($(parent).children('#'+slug).length == 0){
 					var colour = referrals.path[0][a].attributes.fill.value;
-					console.log(colour);
 					var container = document.createElement("li");
 					container.innerHTML = name;
 					container.id = slug;
@@ -157,12 +163,6 @@ var referrals = {
 
 
 // Pie Circle....
-
-$(window).on("resize",function(){
-	$(circleSettings.parentElement)[0].innerHTML = "";
-	circleSettings.updateSizes();
-	circleSettings.init();
-});
 var circleSettings = {
 	squareSize:30,
 	parentElement:"#my-svg",
@@ -175,8 +175,7 @@ var circleSettings = {
 		circleSettings.radius = Math.min(circleSettings.width,circleSettings.height)/2
 	},
 	setUpHTMLEls:function(){
-		if(!circleSettings.keySetup){
-		// console.log(circleSettings.g)
+		if($(circleSettings.parentKey).children().length == 0){
 			var parent = $(circleSettings.parentKey)[0];
 			for(var a = 0, max = circleSettings.g[0].length; a < max; a += 1){
 				var name = circleSettings.g[0][a].__data__.data.name
@@ -207,6 +206,11 @@ var circleSettings = {
 		}
 	},
 	load:function(){
+		$(window).on("resize",function(){
+			$(circleSettings.parentElement)[0].innerHTML = "";
+			circleSettings.updateSizes();
+			circleSettings.init();
+		});
 		d3.json(circleSettings.dataLocation,function(data){
 			data.sort(circleSettings.dynamicSort("paper"));
 			circleSettings.data = data;
@@ -252,9 +256,11 @@ var circleSettings = {
 		.style("fill", function(d) { return circleSettings.color(d.data.name); })
 		.on('mouseover',function(d){
 			this.nextSibling.style.display = "inherit";
+			showSameClassAsThisId(this);
 		})
 		.on('mouseout',function(d){
 			this.nextSibling.style.display = "none";
+			removeSameClassAsThisId(this);
 		})
 		.attr('class', function(d){
 			return convertToSlug(d.data.name);
@@ -287,9 +293,11 @@ var circleSettings = {
 		.style("fill", function(d) { return circleSettings.color(d.data.name); })
 		.on('mouseover',function(d){
 			this.previousSibling.style.display = "inherit";
+			showSameClassAsThisId(this);
 		})
 		.on('mouseout',function(d){
 			this.previousSibling.style.display = "none";
+			removeSameClassAsThisId(this);
 		})
 		.attr('class', function(d){
 			return convertToSlug(d.data.name);

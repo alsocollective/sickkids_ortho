@@ -144,7 +144,21 @@ img.absolute{
 	background-repeat: no-repeat;
 	@include vendorize(background-position, cover);
 	z-index: -1;
+	background-size: inherit;
 }
+
+@include breakpoint(phone) {
+	.background {
+		background-size: 90%;
+	}
+}
+
+#launching{
+	font-size: 0.5em;
+	letter-spacing: 0.04em;
+	text-transform: initial;
+}
+
 #next-page .background{
 	display: none;
 }
@@ -273,7 +287,7 @@ img.absolute{
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
 		}
-		
+				
 		h3 {
 			margin: 2em auto 1em auto;
 			border: solid 2px $text_color_grey;
@@ -295,6 +309,17 @@ img.absolute{
 		
 		p{
 			text-align: center;
+		}
+		
+		@include breakpoint(phone) {
+
+			h1{
+				font-size: 2.5em;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				text-align: center;
+				padding: 1.2em 0 0.6em 0;
+			}
 		}
 	}
 

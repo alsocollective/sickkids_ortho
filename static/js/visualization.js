@@ -1,13 +1,13 @@
 // Utility functions
 function showSameClassAsThisId(element){
-	if(!element){
+	if(!element.classList){
 		$("."+this.id).attr("class",this.id+" heighlight");
 	} else {
 		$("."+element.classList[0]).attr("class",element.classList[0]+" heighlight");
 	}
 }
 function removeSameClassAsThisId(element){
-	if(!element){
+	if(!element.classList){
 		$("."+this.id).attr("class",this.id);
 	} else {
 		console.log(element.classList);

@@ -18,13 +18,22 @@ function resizeRows(){
 function findChildrenHeight(parent){
 	var children = $(parent).children();
 	var height = 0;
-	for(var a = 0, max = children.length; a < max; ++a){
-		var nheight = $(children[a]).outerHeight(true);
-		if(nheight > height){
-			height = nheight;
+	if($(children[0]).css("position") == "absolute"){
+		for(var a = 0, max = children.length; a < max; ++a){
+			var nheight = $(children[a]).outerHeight(true);
+			if(nheight > height){
+				height = nheight;
+			}
+			if(children[a].nodeName === "IMG"){
+				children[a].onload = resizeRows;
+			}
 		}
-		if(children[a].nodeName === "IMG"){
-			children[a].onload = resizeRows;
+	} else {
+		for(var a = 0, max = children.length; a < max; ++a){
+			height += $(children[a]).outerHeight(true);
+			if(children[a].nodeName === "IMG"){
+				children[a].onload = resizeRows;
+			}
 		}
 	}
 	return height;

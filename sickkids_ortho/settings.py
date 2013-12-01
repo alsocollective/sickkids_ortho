@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'microdetector.Middleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -138,7 +138,7 @@ INSTALLED_APPS = (
     'blog',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    'debug_toolbar',
+    #'debug_toolbar',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -172,13 +172,13 @@ LOGGING = {
     }
 }
 
-def show_toolbar(request):
-    return True
+#def show_toolbar(request):
+ #   return True
 
-DEBUG_TOOLBAR_CONFIG = {
-   'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+#DEBUG_TOOLBAR_CONFIG = {
+ #  'SHOW_TOOLBAR_CALLBACK': show_toolbar,
     # Rest of config
-}
+#}
 
 THUMBNAIL_ALIASES = {
     '': {

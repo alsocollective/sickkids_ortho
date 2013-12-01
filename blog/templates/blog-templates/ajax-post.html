@@ -1,5 +1,8 @@
 {%if meta.title != "Home" %}
 		<h1>{{ meta.title }}</h1>
+		<script type="text/javascript">
+			_gaq.push(['_trackPageview', '{{ meta.title }}']);
+		</script>
 {% endif %}
 
 {%if meta.bk%}

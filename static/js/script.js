@@ -234,6 +234,18 @@ function jumpToLocation(){
 	$("#content").scrollTop($("#"+currentHashEl).offset().top + $("#content").scrollTop());
 }
 
+function trackOutboundLink(link, category, action) { 
+ 
+try { 
+_gaq.push(['_trackEvent', category , action]); 
+} catch(err){}
+ 
+setTimeout(function() {
+document.location.href = link.href;
+}, 100);
+}
+
+var link = document.getElementById('my-link-id');
 
 //Google Analytics Snippet
 var _gaq = _gaq || [];

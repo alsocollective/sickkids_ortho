@@ -424,6 +424,15 @@ img.absolute{
 		.selected{
 			/*background-color: #999;*/
 		}
+		.last-button{
+			background-color: $sk_red;
+			background-image: url(/static/img/pull-arrow.png);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		img{
+			//background-color: #f00;
+		}
 	}
 }
 

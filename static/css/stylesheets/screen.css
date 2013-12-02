@@ -548,36 +548,43 @@ h1 {
   #nav .selected {
     /*background-color: #999;*/
   }
+  /* line 427, ../sass/screen.scss */
+  #nav .last-button {
+    background-color: #ea636e;
+    background-image: url(/static/img/pull-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 /* ` */
 /* other pages */
-/* line 434, ../sass/screen.scss */
+/* line 443, ../sass/screen.scss */
 #loading {
   display: none;
   left: 0;
   z-index: 999;
 }
 
-/* line 440, ../sass/screen.scss */
+/* line 449, ../sass/screen.scss */
 #next-page {
   left: 0%;
 }
 
-/* line 444, ../sass/screen.scss */
+/* line 453, ../sass/screen.scss */
 #prev-page {
   left: -100%;
 }
 
 /* Custom Sections */
-/* line 452, ../sass/screen.scss */
+/* line 461, ../sass/screen.scss */
 #faculty-bios blockquote {
   font-size: 1em;
   font-style: italic;
 }
 
 /* Media Queries */
-/* line 459, ../sass/screen.scss */
+/* line 468, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

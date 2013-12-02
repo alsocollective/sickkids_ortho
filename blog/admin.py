@@ -34,7 +34,7 @@ class sectionInline(admin.StackedInline):
 		print "test"
 		print instance
 		if instance.id:
-			return u'<a href="/admin/blog/section/%s" target="_blank">Details</a>' % instance.id
+			return u'<a href="/admin/blog/section/%s/" target="_blank">Details</a>' % instance.id
 		return u'The link is not available till after we save'
 	changeform_link.allow_tags = True
 	changeform_link.short_description = 'Link'
@@ -69,7 +69,7 @@ class sectionInline(admin.StackedInline):
 		print "test"
 		print instance
 		if instance.id:
-			return u'<a href="/admin/blog/section/%s" target="_blank">Details</a>' % instance.id
+			return u'<a href="/admin/blog/section/%s/" target="_blank">Details</a>' % instance.id
 		return u'The link is not available till after we save'
 	changeform_link.allow_tags = True
 	changeform_link.short_description = 'Link'

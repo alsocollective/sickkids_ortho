@@ -149,19 +149,6 @@ var referrals = {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Pie Circle....
 var circleSettings = {
 	squareSize:30,

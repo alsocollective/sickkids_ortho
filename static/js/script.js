@@ -1,4 +1,9 @@
-/*global triggersPoints: [], hashElements: [], currentHashEl: "some string", contentScrollTop: 200 */
+/*global
+	triggersPoints: [],
+	hashElements: [],
+	currentHashEl: "some string",
+	contentScrollTop: 200
+*/
 
 function resizeRows(){
 	var subRows = $(".sub-row");
@@ -205,7 +210,7 @@ function scrollDetectionFunc(){
 			//if the scroll point is less than then next but greater than current
 			if(hashElements[a] !== currentHashEl && triggersPoints[a] < contentScrollTop &&triggersPoints[a+1] > contentScrollTop){
 				currentHashEl = hashElements[a];
-				// setURL();
+				setURL();
 			}
 		}
 	}

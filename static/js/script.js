@@ -111,7 +111,7 @@ function loadNextPage(address){
 		if (history && history.pushState) {
 			var newAddress = "/";
 			if(typeof address !== "object"){
-				newAddress = "/page/"+address+"/";
+				newAddress = "/"+address+"/";
 			}
 			history.pushState("","",newAddress);
 		}
@@ -221,8 +221,8 @@ function setURL(){
 		var newAddress = "/";
 		var gaAddress = "/";
 		if(typeof address !== "object"){
-			newAddress = pageSlug+"/"+currentHashEl+"/";
-			gaAddress = pageSlug+"/"+currentHashEl;
+			newAddress = "/"+pageSlug+"/"+currentHashEl+"/";
+			gaAddress = "/" +pageSlug+"/"+currentHashEl;
 		}
 		history.pushState(currentHashEl,"",newAddress);
 		//console.log(newAddress);

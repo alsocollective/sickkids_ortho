@@ -221,3 +221,7 @@ def circle(request):
 
 def treemap(request):
 	return render_to_response('blog-templates/treemap-2013.html',{"data":0})
+
+
+def static(request):
+	return render_to_response('blog-templates/index-static.html',{"data":0})

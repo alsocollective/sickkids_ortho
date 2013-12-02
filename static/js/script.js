@@ -219,10 +219,14 @@ function scrollDetectionFunc(){
 function setURL(){
 	if (history && history.pushState) {
 		var newAddress = "/";
+		var gaAddress = "/";
 		if(typeof address !== "object"){
-			newAddress = "/page/"+pageSlug+"/"+currentHashEl+"/";
+			newAddress = pageSlug+"/"+currentHashEl+"/";
+			gaAddress = pageSlug+"/"+currentHashEl;
 		}
 		history.pushState(currentHashEl,"",newAddress);
+		//console.log(newAddress);
+		_gaq.push(['_trackPageview', gaAddress ]);
 	}
 }
 
@@ -235,8 +239,7 @@ function jumpToLocation(){
 var _gaq = _gaq || [];
 
 _gaq.push(['_setAccount', 'UA-39447542-1']);
-//_gaq.push(['_setDomainName', 'none']);
-
+_gaq.push(['_setDomainName', 'none']);
 
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

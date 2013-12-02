@@ -182,7 +182,7 @@ function setupNavClicks(element){
 			event.preventDefault();
 			currentHashEl = this.href.split("#")[1];
 			jumpToLocation();
-			// setURL();
+			setURL();
 		});
 	}
 }

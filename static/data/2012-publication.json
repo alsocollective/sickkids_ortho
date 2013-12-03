@@ -1,0 +1,92 @@
+[
+	{
+		"name":"name of Person",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person 2",
+		"impact":10,
+		"paper":"in something"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":5,
+		"paper":"insomething ELSE!"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person 4",
+		"impact":16,
+		"paper":"wad wad wad"
+	},
+	{
+		"name":"name of Person 5",
+		"impact":22,
+		"paper":"insomething ELSE!"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":15,
+		"paper":"wad wad wad"
+	},
+	{
+		"name":"name of Person",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person 2",
+		"impact":10,
+		"paper":"in something"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":5,
+		"paper":"insomething ELSE!"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person 4",
+		"impact":16,
+		"paper":"wad wad wad"
+	},
+	{
+		"name":"name of Person 5",
+		"impact":22,
+		"paper":"insomething ELSE!"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":15,
+		"paper":"wad wad wad"
+	},
+	{
+		"name":"name of Person",
+		"impact":25,
+		"paper":"paper published"
+	},
+	{
+		"name":"name of Person 5",
+		"impact":null,
+		"paper":"special paper 1"
+	},
+	{
+		"name":"name of Person 3",
+		"impact":null,
+		"paper":"special paper 2"
+	}
+]

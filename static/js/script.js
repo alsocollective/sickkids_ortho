@@ -258,3 +258,514 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+
+
+
+
+
+
+
+
+
+// MAP STUFF!!!
+var myMapStyle = [
+  {
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#EA636E" }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#ffffff" }
+    ]
+  }
+]
+
+//use http://itouchmap.com/latlong.html to determine LON and LAT
+var from05 = {"data":[
+	//2005
+	{
+		name:"KEVIN LIM",
+		lat:1.352083,
+		lon:103.819836,
+		icon: 0,
+		description:"KK Women's and Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"WARREN TERRY",
+		lat:-8.783195,
+		lon:34.508523,
+		icon: 0,
+		description:"Mission Work",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MAHZAD JAVID",
+		lat:32.427908,
+		lon:53.688046,
+		icon: 0,
+		description:"Paediatric Orthopaedist",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"JOSEPH JANICKY",
+		lat:41.878114,
+		lon:-87.629798,
+		icon: 0,
+		description:"Children's Memorial Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SIMON THOMAS",
+		lat:51.454513,
+		lon:-2.587910,
+		icon: 0,
+		description:"Bristol Royal Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ATUL BHASKAR",
+		lat:19.075984,
+		lon:72.877656,
+		icon: 0,
+		description:"Children's Specialty Orthopaedic Clinic",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+
+var from06 = {"data":[
+	{
+		name:"SUBIR JHAVERI",
+		lat:23.039568,
+		lon:72.566004,
+		icon: 1,
+		description:"Dr. Subir Jhaveri's Spine Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SCOTT MACKIE",
+		lat:-42.894523,
+		lon:147.309491,
+		icon: 1,
+		description:"St. Johns Private Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"LEONHARD RAMSEIER",
+		lat:47.368650,
+		lon:8.539183,
+		icon: 1,
+		description:"University Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"FABIO FERRI-DE-BARROS",
+		lat:51.045325,
+		lon:-114.058101,
+		icon: 1,
+		description:"Alberta Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"PAUL JELLICOE",
+		lat:49.899754,
+		lon:-97.137494,
+		icon: 1,
+		description:"Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"EYAL MERCADO",
+		lat:32.830361,
+		lon:34.974338,
+		icon: 1,
+		description:"Carmel Hospital, Paediatric Orthopaedic Service",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+var from07 = {"data":[
+	{
+		name:"SHAHRYAR NOORDIN",
+		lat:24.893379,
+		lon:67.028061,
+		icon: 2,
+		description:"Aga Khan University",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"OM PRAKASH SHARMA",
+		lat:43.653226,
+		lon:-79.383184,
+		icon: 2,
+		description:"Mt. Sinai Hospital, Clinical Fellowship",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"FEDERICO CANAVESE",
+		lat:45.777222,
+		lon:3.087025,
+		icon: 2,
+		description:"University Hospital of Clermont-Ferrand",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ANDREW GONG",
+		lat:-37.875922,
+		lon:145.129305,
+		icon: 2,
+		description:"Waverley Private Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"RICHARD HOCKING",
+		lat:-35.282000,
+		lon:149.128684,
+		icon: 2,
+		description:"Capital Orthopaedics,",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+var from08 = {"data":[
+	{
+		name:"MICHAEL SEGBEFIA",
+		lat:5.555717,
+		lon:-0.196306,
+		icon: 3,
+		description:"Korle-Bu Teaching Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MAULIN SHAH",
+		lat:23.039568,
+		lon:72.566004,
+		icon: 3,
+		description:"Sterling Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"CRISTINA ALVES",
+		lat:40.202379,
+		lon:-8.447156,
+		icon: 3,
+		description:"Staff position",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"SIMON KELLEY",
+		lat:43.653226,
+		lon:-79.383184,
+		icon: 3,
+		description:"The Hospital for Sick Children",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"KARL LOGAN",
+		lat:44.648862,
+		lon:-63.575320,
+		icon: 3,
+		description:"IWK Health Centre",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"MICHAEL ZAIDMAN",
+		lat:32.830361,
+		lon:34.974338,
+		icon: 3,
+		description:"Rambam Medical Centre",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+var from09 = {"data":[
+	{
+		name:"BENJAMIN HOLROYD",
+		lat:50.375456,
+		lon:-4.142656,
+		icon: 4,
+		description:"Derriford Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"DOMINIQUE KNIGHT",
+		lat:55.953252,
+		lon:-3.188267,
+		icon: 4,
+		description:"The Royal Infirmary of Edinburgh",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"FRANCISCO NYIIRO",
+		lat:9.022736,
+		lon:38.746799,
+		icon: 4,
+		description:"CURE Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ANNA CUOMO",
+		lat:34.052234,
+		lon:-118.243685,
+		icon: 4,
+		description:"Shriners Hospital for Children",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"KATHRYN DOUGHTY",
+		lat:34.052234,
+		lon:-118.243685,
+		icon: 4,
+		description:"Shriners Hospital for Children",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"THOMAS PALOCAREN",
+		lat:12.916517,
+		lon:79.132499,
+		icon: 4,
+		description:"Christian Medical College Vellore",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"AHMED AL JAHWARI",
+		lat:23.610000,
+		lon:58.540000,
+		icon: 4,
+		description:"Muscat City Centre",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+var from10 = {"data":[
+	{
+		name:"JASON DONOVAN",
+		lat:-37.787001,
+		lon:175.279253,
+		icon: 5,
+		description:"Waikato Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"STEPHEN COOKE",
+		lat:52.406822,
+		lon:-1.519693,
+		icon: 5,
+		description:"University Hostpitals Coventry and Warwickshire",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"EMILY DODWELL",
+		lat:40.714353,
+		lon:-74.005973,
+		icon: 5,
+		description:"Hospital for Special Surgery",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"DAVID WRIGHT",
+		lat:53.193392,
+		lon:-2.893075,
+		icon: 5,
+		description:"Countess of Chester Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"TALAL IBRAHIM",
+		lat:-33.867487,
+		lon:151.206990,
+		icon: 5,
+		description:"Sydney Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"WALTER TRUONG",
+		lat:44.953703,
+		lon:-93.089958,
+		icon: 5,
+		description:"Gilette Children's Specialty Healthcare",
+		interAction:["mouseover","mouseout"]
+	}
+]}
+
+var from11 = {"data":[
+	{
+		name:"ZAID AL-AUBAIDI",
+		lat:55.403756,
+		lon:10.402370,
+		icon: 6,
+		description:"Odense UNiversity Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"HENRY ELLIS",
+		lat:32.780140,
+		lon:-96.800451,
+		icon: 6,
+		description:"Texas Scottish Rite Hospital, Children's Medical Center",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"ABDELSALAM HEGAZY",
+		lat:25.280282,
+		lon:51.522476,
+		icon: 6,
+		description:"Sidra Medical and Research Center",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"KRISTOPHER LUNDINE",
+		lat:48.428421,
+		lon:-123.365644,
+		icon: 6,
+		description:"Royal Jubilee Hospital, Victoria General Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"CHARLES POPKIN",
+		lat:40.714353,
+		lon:-74.005973,
+		icon: 6,
+		description:"Columbia University",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"LIN FENG",
+		lat:24.479834,
+		lon:118.089425,
+		icon: 6,
+		description:"Xiamen Women and Children's Hospital",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+
+var from12 = {"data":[
+	{
+		name:"Brant Sachleben",
+		lat:42.358431,
+		lon:-71.059773,
+		icon: 7,
+		description:"Boston Children’s Hospital (Fellowship)",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"Sonia Chaudhry",
+		lat:41.763711,
+		lon:-72.685093,
+		icon: 7,
+		description:"Connecticut Children's Medical Center",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"Richard Gardner",
+		lat:9.022736,
+		lon:38.746799,
+		icon: 7,
+		description:"CURE Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"Michael Bensimon",
+		lat:44.983334,
+		lon:-93.266670,
+		icon: 7,
+		description:"Twin Cities Shriners Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"Mohamed Kenawey",
+		lat:26.559074,
+		lon:31.695671,
+		icon: 7,
+		description:"Sohag University Hospital",
+		interAction:["mouseover","mouseout"]
+	},
+	{
+		name:"Sattar Alshryda",
+		lat:53.479324,
+		lon:-2.248485,
+		icon: 7,
+		description:"Royal Manchester Children Hospital",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
+
+
+function JmapGoogleReady(){
+    myMap.init();
+    myMap.setupOverlay();
+
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'ff0000',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'ff2222',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'ff4444',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'ff6666',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: '888',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'f0a',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'f0c',
+		strokeWeight:0,strokeColor:'fff',
+		scale: 1
+    })
+    myMap.addMarkerType({
+		type:"svg",
+		path:  "M5,5 a10,10 0 1,0 1,0 z",
+		fillOpacity: 1,
+		fillColor: 'f0f',
+		strokeWeight:0,strokeColor:'fff',
+		strokeColor:'fff',
+		scale: 1
+    })
+    myMap.loadData(allData,true);
+}

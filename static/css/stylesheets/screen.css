@@ -344,7 +344,7 @@ strong {
 /* line 239, ../sass/screen.scss */
 #interview {
   background-color: #555;
-  padding: 2em 0 0 0;
+  padding: 2em 0 4em 0;
 }
 /* line 244, ../sass/screen.scss */
 #interview h4 {
@@ -406,19 +406,20 @@ h4 {
   width: 3em;
   text-transform: uppercase;
   color: #111111;
+  text-decoration: none;
 }
-/* line 304, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 #cover strong {
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 2em;
 }
-/* line 310, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 #cover p {
   text-align: center;
 }
 @media (max-width: 650px) {
-  /* line 316, ../sass/screen.scss */
+  /* line 317, ../sass/screen.scss */
   #cover h1 {
     font-size: 2.5em;
     text-transform: uppercase;
@@ -428,19 +429,23 @@ h4 {
   }
 }
 
-/* line 326, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 h1 {
   font-size: 2em;
   padding: 2em 0 2em 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* line 331, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 .full-page {
   min-height: 90%;
+  background-size: 100%;
 }
 
 /* nav */
-/* line 336, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 #nav {
   position: absolute;
   /* we need absolute as a fall back */
@@ -451,7 +456,7 @@ h1 {
   width: 100%;
   background-color: #ea636e;
 }
-/* line 345, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 #nav h1 {
   display: inline-block;
   padding: 0.5em;
@@ -462,7 +467,7 @@ h1 {
   zoom: 1;
   display: inline;
 }
-/* line 355, ../sass/screen.scss */
+/* line 360, ../sass/screen.scss */
 #nav a {
   display: inline-block;
   padding: 1em;
@@ -471,49 +476,49 @@ h1 {
   color: #fff;
   vertical-align: top;
 }
-/* line 364, ../sass/screen.scss */
+/* line 369, ../sass/screen.scss */
 #nav img {
   padding: 0.5em 0.8em 0 0.5em;
   margin: 0;
   margin-right: 3em;
   background-color: #ea636e;
 }
-/* line 370, ../sass/screen.scss */
+/* line 375, ../sass/screen.scss */
 #nav a:hover {
   background-color: #ca444e;
 }
-/* line 373, ../sass/screen.scss */
+/* line 378, ../sass/screen.scss */
 #nav #subnav, #nav #subnav-new {
   position: absolute;
 }
-/* line 376, ../sass/screen.scss */
+/* line 381, ../sass/screen.scss */
 #nav #subnav a, #nav #subnav-new a {
   display: block;
 }
-/* line 380, ../sass/screen.scss */
+/* line 385, ../sass/screen.scss */
 #nav .heighlight {
   background-color: #ff838e;
 }
-/* line 383, ../sass/screen.scss */
+/* line 388, ../sass/screen.scss */
 #nav .last-button {
   display: none;
 }
-/* line 386, ../sass/screen.scss */
+/* line 391, ../sass/screen.scss */
 #nav .bigger-than-window {
   height: 100%;
   overflow: scroll !important;
 }
-/* line 390, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 #nav .bigger-than-window-noscroll {
   overflow: hidden;
 }
 @media (max-width: 650px) {
-  /* line 336, ../sass/screen.scss */
+  /* line 341, ../sass/screen.scss */
   #nav {
     position: fixed;
     width: 100%;
   }
-  /* line 398, ../sass/screen.scss */
+  /* line 403, ../sass/screen.scss */
   #nav a {
     position: static;
     display: block;
@@ -521,7 +526,7 @@ h1 {
     padding: 5%;
     z-index: 1;
   }
-  /* line 405, ../sass/screen.scss */
+  /* line 410, ../sass/screen.scss */
   #nav .last-button {
     position: static;
     display: block;
@@ -529,26 +534,26 @@ h1 {
     width: 90%;
     background-color: #ccc;
   }
-  /* line 412, ../sass/screen.scss */
+  /* line 417, ../sass/screen.scss */
   #nav #subnav {
     width: 100%;
     position: static;
     display: none !important;
   }
-  /* line 417, ../sass/screen.scss */
+  /* line 422, ../sass/screen.scss */
   #nav #subnav-new {
     display: none !important;
     width: 100%;
   }
-  /* line 420, ../sass/screen.scss */
+  /* line 425, ../sass/screen.scss */
   #nav #subnav-new a {
     width: 100%;
   }
-  /* line 424, ../sass/screen.scss */
+  /* line 429, ../sass/screen.scss */
   #nav .selected {
     /*background-color: #999;*/
   }
-  /* line 427, ../sass/screen.scss */
+  /* line 432, ../sass/screen.scss */
   #nav .last-button {
     background-color: #ea636e;
     background-image: url(/static/img/pull-arrow.png);
@@ -559,32 +564,124 @@ h1 {
 
 /* ` */
 /* other pages */
-/* line 443, ../sass/screen.scss */
+/* line 448, ../sass/screen.scss */
 #loading {
   display: none;
   left: 0;
   z-index: 999;
 }
 
-/* line 449, ../sass/screen.scss */
+/* line 454, ../sass/screen.scss */
 #next-page {
   left: 0%;
 }
 
-/* line 453, ../sass/screen.scss */
+/* line 458, ../sass/screen.scss */
 #prev-page {
   left: -100%;
 }
 
 /* Custom Sections */
-/* line 461, ../sass/screen.scss */
+/* line 465, ../sass/screen.scss */
+#faculty-bios ul {
+  margin: 0 0 1em 0;
+}
+/* line 468, ../sass/screen.scss */
 #faculty-bios blockquote {
   font-size: 1em;
   font-style: italic;
+  margin: 1em 0 0 0;
+  color: #ea636e;
+}
+/* line 474, ../sass/screen.scss */
+#faculty-bios h3 {
+  font-weight: 700;
+  margin: 1em 0 0.6em 0;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+/* line 480, ../sass/screen.scss */
+#faculty-bios h4 {
+  margin: 1.4em 0 0.4em 0;
+}
+/* line 485, ../sass/screen.scss */
+#faculty-bios .row div > div:nth-child(2) div:nth-child(1) {
+  z-index: 1;
+}
+
+/* line 492, ../sass/screen.scss */
+#faculty-presentations-and-courses-20122013 {
+  background-size: 50%;
+  background-color: #777;
+}
+/* line 495, ../sass/screen.scss */
+#faculty-presentations-and-courses-20122013 ol {
+  counter-reset: list-counter;
+  list-style: none;
+  font-size: 0.8em;
+  color: #fff;
+}
+/* line 500, ../sass/screen.scss */
+#faculty-presentations-and-courses-20122013 ol li {
+  margin: 0 0 0.5em 0;
+}
+/* line 503, ../sass/screen.scss */
+#faculty-presentations-and-courses-20122013 ol li:before {
+  content: counter(list-counter);
+  counter-increment: list-counter;
+  color: #000;
+  position: absolute;
+  left: -3em;
+  width: 2em;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* line 517, ../sass/screen.scss */
+#selected-faculty-publications-20122013 h3 {
+  font-weight: 700;
+  margin: 1em 0 0.6em 0;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+/* line 524, ../sass/screen.scss */
+#selected-faculty-publications-20122013 ol li {
+  margin: 0 0 1em 0;
+}
+
+/* line 530, ../sass/screen.scss */
+#previous-annuals {
+  text-align: center;
+  font-size: 1em;
+}
+/* line 534, ../sass/screen.scss */
+#previous-annuals img {
+  width: 100%;
+  box-shadow: 0px 0px 15px #999;
+  margin: 0 0 1em 0;
+}
+
+/* Custom Padding */
+/* line 542, ../sass/screen.scss */
+#pre-requisites {
+  padding-bottom: 4em;
+}
+
+/* line 546, ../sass/screen.scss */
+a {
+  color: #ea636e;
+}
+
+/* line 550, ../sass/screen.scss */
+h3 {
+  font-weight: 700;
+  margin: 1em 0 0.6em 0;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 /* Media Queries */
-/* line 468, ../sass/screen.scss */
+/* line 558, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

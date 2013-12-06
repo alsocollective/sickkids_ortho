@@ -239,7 +239,7 @@ img.absolute{
 	#interview {
 		
 		background-color: #555;
-		padding: 2em 0 0 0;
+		padding: 2em 0 4em 0;
 		
 		h4{
 			text-decoration: none;
@@ -299,6 +299,7 @@ img.absolute{
 			width: 3em;
 			text-transform: uppercase;
 			color: $text_color_grey;
+			text-decoration: none;
 		}
 		
 		strong{
@@ -326,10 +327,14 @@ img.absolute{
 	h1{
 		font-size: 2em;
 		padding: 2em 0 2em 0;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
 	}
 
 	.full-page{
 		min-height: 90%;
+		background-size: 100%;
 	}
 
 /* nav */
@@ -453,15 +458,100 @@ img.absolute{
 #prev-page{
 	left: -100%;
 }
-	
 
 /* Custom Sections */
 
 #faculty-bios {
+	ul{
+		margin: 0 0 1em 0;
+	}
 	blockquote{
 		font-size:1em;
 		font-style:italic;
+		margin: 1em 0 0 0;
+		color: $sk-red;
 	}
+	h3{
+		font-weight: 700;
+		margin: 1em 0 0.6em 0;
+		text-transform: uppercase;
+		text-decoration: underline;
+	}
+	h4{
+		margin:1.4em 0 0.4em 0;
+	}
+	.row {
+		div > div:nth-child(2) {
+			div:nth-child(1) {
+				z-index: 1;
+			}
+		}
+	}
+}
+
+#faculty-presentations-and-courses-20122013{
+	background-size: 50%;
+	background-color: #777;
+	ol{
+		counter-reset: list-counter;
+		list-style: none;
+		font-size: 0.8em;
+		color: #fff;
+		li{
+			margin: 0 0 0.5em 0;
+		}
+		li:before{
+			content: counter(list-counter);
+			counter-increment: list-counter;
+			color: #000;
+			position: absolute;
+			left: -3em;
+			width: 2em;
+			font-weight: bold;
+			text-align: right;
+		}
+	}
+}
+
+#selected-faculty-publications-20122013 {
+	h3{
+		font-weight: 700;
+		margin: 1em 0 0.6em 0;
+		text-transform: uppercase;
+		text-decoration: underline;
+	}
+	ol{
+		li{
+			margin: 0 0 1em 0;
+		}
+	}
+}
+
+#previous-annuals {
+	text-align: center;
+	font-size: 1em;
+	
+	img{
+		width:100%;
+		box-shadow: 0px 0px 15px #999;
+		margin: 0 0 1em 0;
+	}
+}
+
+/* Custom Padding */
+#pre-requisites{
+	padding-bottom: 4em;
+}
+
+a{
+	color: $sk-red;
+}
+
+h3 {
+	font-weight: 700;
+	margin: 1em 0 0.6em 0;
+	text-transform: uppercase;
+	text-decoration: underline;
 }
 
 /* Media Queries */

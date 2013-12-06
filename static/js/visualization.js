@@ -24,10 +24,6 @@ function convertToSlug(Text)
 }
 
 
-
-
-
-
 // Referrals
 
 var referrals = {
@@ -292,4 +288,5 @@ var circleSettings = {
 		circleSettings.setUpHTMLEls();
 	}
 }
+
 

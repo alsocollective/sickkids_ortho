@@ -3,7 +3,9 @@ from django.shortcuts import render_to_response, get_object_or_404, render
 from blog.models import *
 from itertools import chain
 from django.core.urlresolvers import reverse
+from django.core.servers.basehttp import FileWrapper
 import requests
+import os
 
 
 def list(request):
@@ -225,3 +227,13 @@ def treemap(request):
 
 def static(request):
 	return render_to_response('blog-templates/index-static.html',{"data":0})
+
+def pdf_download(request, filename):
+    path = os.path.expanduser('/static/data/')
+    basename = filename
+    filename = os.path.dirname(os.path.realpath(__file__)) + "/../static/data/" + filename
+    wrapper = FileWrapper(file(filename,'rb'))
+    response = HttpResponse(wrapper, content_type='application/pdf')
+    response['Content-Length'] = os.path.getsize(filename)
+    response['Content-Disposition'] = 'attachment; filename=' + basename
+    return response

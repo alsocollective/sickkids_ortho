@@ -65,6 +65,9 @@ table{
 		#row-three{
 			width: 20%;
 		}
+		#row-four{
+			width: 10%;
+		}
 	}
 	
 	tr{
@@ -246,14 +249,14 @@ img.absolute{
 			color: #fff;
 		}
 		
-		div:nth-child(2){
-			div:nth-child(1) {
-				columns:2;
-				-webkit-columns:2; /* Safari and Chrome */
-				-moz-columns:2; /* Firefox */
-				//margin: 0 0 0 0.6em;
-			}
-		}
+		//div:nth-child(2){
+		//	div:nth-child(1) {
+		//		columns:2;
+		//		-webkit-columns:2; /* Safari and Chrome */
+		//		-moz-columns:2; /* Firefox */
+		//		//margin: 0 0 0 0.6em;
+		//	}
+		//}
 	}
 	
 	#special-procedure{
@@ -334,7 +337,7 @@ img.absolute{
 
 	.full-page{
 		min-height: 90%;
-		background-size: 100%;
+		//background-size: 100%;
 	}
 
 /* nav */
@@ -501,7 +504,44 @@ img.absolute{
 			margin: 0 0 0.5em 0;
 		}
 		li:before{
-			content: counter(list-counter);
+			content: counter(list-counter)".";
+			counter-increment: list-counter;
+			color: #000;
+			position: absolute;
+			left: -3em;
+			width: 2em;
+			font-weight: bold;
+			text-align: right;
+		}
+	}
+}
+
+#contact-information {
+	.row{
+		background-color: rgba(255,255,255,0.5);
+		padding-bottom: 2em;	
+	}
+}
+
+.fellowship {
+	#about-fellowship,#curriculum,#research-opportunities,#fellow-publications, #fellowships-available, #social-events{
+		padding: 2em 0 4em 0;
+	}
+	//This actaully needs a class
+}
+
+#curriculum{
+	background-color: #666;
+	ol{
+		counter-reset: list-counter;
+		list-style: none;
+		font-size: 0.8em;
+		color: #fff;
+		li{
+			margin: 0 0 0.5em 0;
+		}
+		li:before{
+			content: counter(list-counter)".";
 			counter-increment: list-counter;
 			color: #000;
 			position: absolute;
@@ -554,6 +594,49 @@ h3 {
 	text-decoration: underline;
 }
 
+#about{
+	.sub-row{
+		text-align: center;
+	}
+	img{
+		//width: 44% !important;
+	}
+	h5{
+		font-weight: 700;
+		font-size: 3.5em;
+		text-align: center;
+		width: 100%;
+		margin: 0.25em 0 0 0;
+	}
+}
+
+#about-fellowship {
+	
+	.vert-top{
+		vertical-align: top;
+		padding-top: 0.45em;
+	}
+	
+	colgroup{
+		#row-one{
+			width: 5%;
+		}
+		#row-two{
+			width: 15%;
+		}
+		#row-three{
+			width: 30%;
+		}
+		#row-four{
+			width: 10%;
+		}
+	}
+	.tr-no-dots{
+		height: 2em;
+		border-bottom: none;
+	}
+}
+
 /* Media Queries */
 .nav-animate{
 	@include vendorize(transition, all 0.5s);
@@ -564,6 +647,7 @@ h3 {
 	width: 100%;
 	height: 800px;
 }
+
 .gmap-overlay{
 	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
 }

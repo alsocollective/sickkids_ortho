@@ -279,7 +279,7 @@ var myMapStyle = [
     "elementType": "geometry",
     "stylers": [
       { "visibility": "on" },
-      { "color": "#EA636E" }
+      { "color": "#F7A4A6" }
     ]
   },{
     "featureType": "landscape.natural",
@@ -706,7 +706,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'ff0000',
+		fillColor: 'FAC2C3',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -714,7 +714,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'ff2222',
+		fillColor: 'F7A4A6',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -722,7 +722,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'ff4444',
+		fillColor: 'F18489',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -730,7 +730,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'ff6666',
+		fillColor: 'EA636E',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -738,7 +738,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: '888',
+		fillColor: 'A1585C',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -746,7 +746,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'f0a',
+		fillColor: '792B34',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -754,7 +754,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'f0c',
+		fillColor: '52161A',
 		strokeWeight:0,strokeColor:'fff',
 		scale: 1
     })
@@ -762,7 +762,7 @@ function JmapGoogleReady(){
 		type:"svg",
 		path:  "M5,5 a10,10 0 1,0 1,0 z",
 		fillOpacity: 1,
-		fillColor: 'f0f',
+		fillColor: '000000',
 		strokeWeight:0,strokeColor:'fff',
 		strokeColor:'fff',
 		scale: 1

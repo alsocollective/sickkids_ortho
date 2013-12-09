@@ -317,7 +317,6 @@ You can use origin on a sprite sheet to use one image for all your icons
 	}
 
 	function makeMarker(values){
-		console.log(values)
 		var id = settings.dataObjectList.length;
 		var pos = new google.maps.LatLng(values.lat,values.lon);
 
@@ -523,6 +522,44 @@ Be sure to create the icon types before loading.
 			if(settings.debugMode) console.log("running auto run");
 			JmapGoogleReady();
 		}
+	}
+
+	this.createZoomButtons = function(){
+		var buttonConatier = document.createElement("div");
+		buttonConatier.id="zoom-button-container";
+		var zoomIn = document.createElement("a");
+		zoomIn.href="#zoomin";
+		zoomIn.id = "zoom-in";
+		zoomIn.innerHTML = "+";
+		$(zoomIn).click(function(event){
+			event.preventDefault();
+			settings.defaultZoom += 1;
+			if(settings.defaultZoom > settings.maxZoom){
+				settings.defaultZoom = settings.maxZoom;
+			}
+			console.log("zoom out "+settings.defaultZoom);
+			settings.activeMap.setZoom(settings.defaultZoom);
+			return null;
+		});
+
+		var zoomOut = document.createElement("a");
+		zoomOut.id = "zoom-out";
+		zoomOut.innerHTML = "-";
+		zoomOut.href="#zoomout";
+		$(zoomOut).click(function(event){
+			event.preventDefault();
+			settings.defaultZoom -= 1;
+			if(settings.defaultZoom < settings.minZoom){
+				settings.defaultZoom = settings.minZoom;
+			}
+			console.log("zoom in "+settings.defaultZoom);
+			settings.activeMap.setZoom(settings.defaultZoom);
+			return null;
+		});
+
+		buttonConatier.appendChild(zoomIn);
+		buttonConatier.appendChild(zoomOut);
+		settings.selectedElement.parentNode.appendChild(buttonConatier);
 	}
 
 	return this;

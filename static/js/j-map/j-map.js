@@ -535,7 +535,6 @@ Be sure to create the icon types before loading.
 			if(settings.defaultZoom > settings.maxZoom){
 				settings.defaultZoom = settings.maxZoom;
 			}
-			console.log("zoom out "+settings.defaultZoom);
 			settings.activeMap.setZoom(settings.defaultZoom);
 			return null;
 		});
@@ -550,7 +549,6 @@ Be sure to create the icon types before loading.
 			if(settings.defaultZoom < settings.minZoom){
 				settings.defaultZoom = settings.minZoom;
 			}
-			console.log("zoom in "+settings.defaultZoom);
 			settings.activeMap.setZoom(settings.defaultZoom);
 			return null;
 		});

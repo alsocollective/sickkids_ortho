@@ -290,3 +290,142 @@ var circleSettings = {
 }
 
 
+
+
+
+
+//TREEEEEEEEEEEEEEEEE chart
+//have next lines in the box...
+/*
+first 
+
+<div id="tree-area-key"></div>
+
+then 
+
+
+<div id="tree-area"></div>
+<script type="text/javascript">
+treeChart.setup();
+</script>
+*/
+
+var treeData = {"name":"Number of Procedures", "children": [
+	{"name": "Trauma", "size": 325, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Hip", "size": 161, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Spine", "size": 141, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Limb Reconstruction", "size": 140, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Neuromuscular", "size": 135, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Tumor", "size": 128, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Foot & Ankle", "size": 123, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Infection", "size": 81, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Sports", "size": 71, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Upper Limb", "size": 50, "info":"dsfdsfdfsasdfasdfafsdasdf"},
+	{"name": "Genetic and Metabolic", "size": 35, "info":"dsfdsfdfsasdfasdfafsdasdf"}
+]}
+
+
+var treeChart = {
+	width:450,
+	height:630,
+	treemap:null,
+	parentDiv:null,
+	location:"#tree-area",
+	keyLocation:"#tree-area-key",
+	dataLocation:"/static/data/2012-breakdown.json",
+	setup:function(){
+		treeChart.setWH();
+		treeChart.treemap = d3.layout.treemap()
+			.size([treeChart.width, treeChart.height])
+			.sticky(true)
+			.value(function(d) { return d.size; });
+		treeChart.parentDiv = d3.select(treeChart.location).append("div")
+			.style("width", (treeChart.width) + "px")
+			.style("height", (treeChart.height) + "px")
+			.attr("class","tree-chart");
+		// d3.json(treeChart.dataLocation,treeChart.loadData);
+		treeChart.loadData("none",treeData);
+		treeChart.generateList();
+		// $(window).on("resize",treeChart.onResizeChart);
+	},
+	inputData:null,
+	divs:null,
+	loadData:function(erro,data){
+		treeChart.inputData = data;
+		treeChart.divs = treeChart.parentDiv.datum(data).selectAll("div")
+			.data(treeChart.treemap(data))
+			.enter().append("div")
+			.attr("class", function(d){return convertToSlug(d.name) + " node";})
+			.call(treeChart.setSize)
+			.text(function(d) { return d.size; });
+	},
+	setSize:function(){
+		this.style("left", function(d) { return d.x + "px"; })
+			.style("top", function(d) { return d.y + "px"; })
+			.style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
+			.style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+	},
+	generateList:function(){
+		var listParent = document.createElement("ul"),
+		elements = treeData.children,
+		listItem = null,
+		icon = null,
+		content = null,
+		header = null,
+		info = null;
+		listParent.id = "tree-key-chart";
+		for(var a = 0, max = elements.length; a < max; a += 1){
+			listItem = document.createElement("li");
+			icon = document.createElement("div")
+			icon.className = "list-icon " + convertToSlug(elements[a].name);
+			listItem.appendChild(icon);
+
+			content = document.createElement("div");
+			listItem.appendChild(content);
+
+			header = document.createElement("h3");
+			header.innerHTML = elements[a].name+ ":";
+			content.appendChild(header);
+
+			info = document.createElement("span");
+			info.innerHTML = elements[a].info
+			content.appendChild(info)
+
+			listParent.appendChild(listItem);
+		}
+		// d3.select(treeChart.location)[0][0].appendChild(listParent);
+		$(treeChart.keyLocation)[0].appendChild(listParent);
+		$(listParent).children().on("mouseover",treeChart.heighLight);
+	},
+	heighLight:function(){
+		treeChart.unHeighLight();
+		var list = $(this).children('.list-icon')[0].className.split(" ");
+		for( var a = 0, max = list.length; a < max; a += 1){
+			if(list[a]!="list-icon"){
+				$(this).addClass('tree-graph-heigh-lighted');
+				$("."+list[a]).addClass('tree-graph-heigh-lighted');
+			}
+		}
+	},
+	unHeighLight:function(){
+		$(".tree-graph-heigh-lighted").removeClass("tree-graph-heigh-lighted");
+	},
+	setWH:function(){
+		treeChart.width = $(treeChart.location).outerWidth();
+		treeChart.height = $(treeChart.location).outerHeight();
+	},
+	onResizeChart:function(){
+		treeChart.setWH();
+		treeChart.treemap.size([treeChart.width, treeChart.height]);
+		treeChart.parentDiv = d3.select(treeChart.location).append("div")
+			.style("width", (treeChart.width) + "px")
+			.style("height", (treeChart.height) + "px")
+			.attr("class","tree-chart");
+		treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
+			.data(treeChart.treemap(treeChart.inputData))
+			.enter().append("div")
+			.attr("class", function(d){return convertToSlug(d.name) + " node";})
+			.call(treeChart.setSize)
+			.text(function(d) { return d.size; });
+	}
+}

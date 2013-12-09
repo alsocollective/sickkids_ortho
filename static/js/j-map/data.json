@@ -1,0 +1,17 @@
+{"data":[
+	{
+		"name":"bohdan",
+		"exe":"runMe",
+		"icon": "takeaction-btn.png",
+		"active": "iconTwo",
+		"activeInfo":"Some stuff here for the active data"
+	},
+	{
+		"name":"Awesome sauce",
+		"exe":"runMe",
+		"icon": "takeaction-btn.png",
+		"active": "iconTwo",
+		"activeInfo":"Other active icon data"
+	},
+
+]}

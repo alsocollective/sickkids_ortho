@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>j-map.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Jmap.html">Jmap</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Jmap.html">Jmap</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: j-map.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// this is using bohdan@alsocollective api access usage key: AIzaSyBkV96cb90IRP3z54fwmQlLH_Fpo4p4rbk
+// to run the docs localy use 
+// $yuidoc --server .
+/**
+Jmap simplified google maps project&lt;br&gt;
+&lt;h4&gt;Created by:&lt;/h4&gt;
+test
+
+@module Jmap
+
+**/
+
+
+/**
+Jmap is the container for all the action going on with this plugin for Jquery
+&lt;h4&gt;Created by:&lt;/h4&gt;
+&lt;a href=&quot;http://www.bohdananderson.com&quot; target=&quot;_blank&quot;&gt; Bohdan Anderson&lt;/a&gt; @ &lt;a href=&quot;http://www.alsocollective.com&quot; target=&quot;_blank&quot;&gt;Also Collective&lt;/a&gt;
+
+@namespcae JMAP
+@constructor
+@class Jmap
+@constructor
+@example
+@example
+	var myMap = $(&quot;#google-maps&quot;).Jmap({
+		defaultZoom:18,
+		locationLat:43.648616,
+		locaiotnLon:-79.396644,
+		funOnClick:function(id){
+			console.log(id)
+		}
+	});
+	function JmapGoogleReady(){
+		myMap.init();
+
+		//this marker type is added at #0, so for the data the icon must be set to #0
+		myMap.addMarkerType({
+			url: &#x27;/static/img/takeaction-btn.png&#x27;,
+			size: [100,100],
+			origin: [0,0],
+			anchor: [20,90],
+			scaledSize:[100,100]
+		})
+		myMap.addMarkerType({
+			url: &#x27;/static/img/entry.png&#x27;,
+			size: [22,33],
+			origin: [0,0],
+			anchor: [11,33],
+			scaledSize:[22,33]
+		})
+
+		myMap.setupOverlay();
+		myMap.loadData(jsonRequestData);
+	}
+
+@param {Object} [options] Data that specifies, the functionality and look of the plugin
+	@param {String} [options.apiKey] Needed for this plugin to work, go to google to get the api key
+	@param {Number} [options.locationLat] Latitude of map on load
+	@param {Number} [options.locaiotnLon] Longitude of map on load
+	@param {Boolean} [options.autoStart] If &#x27;true&#x27;, will start loading the map right way, &#x27;false&#x27;, will wait
+	@param {String} [options.mapStyles] Generate the Json format from &lt;a href=&quot;http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;
+	@param {Number} [options.defaultZoom] Default is 8, determines the zoom on load
+	@param {Boolean} [options.oneIconAtATime] Default is true, will hide all other info bubbles when opening a new one
+	@param {funciton} [options.funOnClick] this is ran when the marker is clicked
+	@param {funciton} [options.funOffClick] this is ran when an other marker is clicked
+
+
+	@param {Number} [options.infoPadding] px size
+	@param {Number} [options.infoArrowSize] px size
+	@param {Number} [options.infoArrowPosition] from bottom left px amount
+	@param {Number} [options.infoArrowStyle] 
+
+	@param {Number} [options.infoBorderRadius] px size
+	@param {Number} [options.infoBorderWidth] px size
+	@param {Color} [options.infoBorderColor] rgb or hex or w.e colour means you want
+	@param {Number} [options.infoShadowStyle] 0,1,2
+
+	@param {Color} [options.infoBackgroundColor] rgb or hex or w.e colour means you want
+	@param {String} [options.infoBackgroundClassName] string value, default is gmap-overlay
+
+	@param {Boolean} [options.infoHideCloseButton] Hide button...
+	@param {Boolean} [options.infoDisableAnimation] Pop in animation
+	@param {Boolean} [options.infoDisableAutoPan] Centers the map to location of marker when clicked
+**/
+
+(function ( $ ) {
+$.fn.Jmap = function( options ) {
+	var settings = $.extend({
+		autoStart:true,
+		activeMap:null,
+		mapContainer:null,
+		selectedElement:null,
+
+		locationLat:-34.397,
+		locaiotnLon:150.644,
+		defaultZoom:8,
+		mapStyles:null,
+		apiKey:&quot;AIzaSyBkV96cb90IRP3z54fwmQlLH_Fpo4p4rbk&quot;,
+
+		//loaded in data
+		dataObjectList:[],
+		markersList:[],
+		markers:true,
+		markerTypes:[],
+		oneIconAtATime:true,
+		funOnClick:function(){return null;},
+		funOffClick:function(){return null;},
+
+		//infobubble styles
+		infoShadowStyle: 0, //either 0, 1, or 3
+		infoPadding: 5,
+		infoBackgroundColor: &#x27;rgb(255,255,255)&#x27;,
+		infoBorderRadius: 0,
+		infoArrowSize: 12,
+		infoBorderWidth: 0,
+		infoBorderColor: &#x27;transparent&#x27;,
+		infoHideCloseButton: true,
+		infoArrowPosition: 0,
+		infoBackgroundClassName: &#x27;infobubble-bk&#x27;,
+		infoArrowStyle: 2,
+		infoDisableAnimation:true,
+		infoDisableAutoPan: false,
+
+		//Marker object
+		makerCluster:null
+
+
+	}, options );
+
+
+	loadScript();
+
+	function loadScript(){
+		if(!settings.selectedElement){
+			settings.selectedElement = document.getElementById(&quot;google-maps&quot;)
+		}
+		var script = document.createElement(&#x27;script&#x27;);
+		script.type = &#x27;text/javascript&#x27;;
+		script.src = &#x27;https://maps.googleapis.com/maps/api/js?key=&#x27;+ settings.apiKey +&#x27;&amp;sensor=false&amp;&#x27; + &#x27;callback=JmapGoogleReady&#x27;;
+		$(settings.selectedElement).after(script);
+	}
+/**
+To start the map, should only be called once the map api has been loaded, which is done auto by this plugin
+
+@method init
+@required
+@example
+	function JmapGoogleReady(){
+	    myMap.init();
+	}
+**/
+	this.init = function(){
+		var mapOptions = {
+			zoom: settings.defaultZoom,
+			center: new google.maps.LatLng(settings.locationLat,settings.locaiotnLon),
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			disableDefaultUI: true,
+		}
+		if(settings.mapStyles){
+			mapOptions.styles = map_styles
+		}
+		settings.activeMap = new google.maps.Map(settings.selectedElement, mapOptions);
+	}
+
+/**
+Initialized the over lay, added className &quot;gmap-overlay&quot;(by default) to each square of google map &lt;br&gt;
+Use this only once
+
+@method setupOverlay
+**/
+	this.setupOverlay = function(){
+		function CoordMapType(tileSize) {
+			this.tileSize = tileSize;
+		}
+		CoordMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
+			var div = ownerDocument.createElement(&#x27;div&#x27;);
+			div.className = &quot;gmap-overlay&quot;;
+			div.style.width = this.tileSize.width + &#x27;px&#x27;;
+			div.style.height = this.tileSize.height + &#x27;px&#x27;;
+			return div;
+		};
+
+		settings.activeMap.overlayMapTypes.insertAt(0, new CoordMapType(new google.maps.Size(256, 256)));
+	}
+
+/**
+Generates a new marker, &lt;br&gt;
+reference the created markers in order of creation starting with 0. &lt;br&gt;
+You can use origin on a sprite sheet to use one image for all your icons
+
+@example
+	myMap.addMarkerType({
+		url: &#x27;/static/img/takeaction-btn.png&#x27;,
+		size: [100,100],
+		origin: [0,0],
+		anchor: [20,90],
+		scaledSize:[100,100]
+	})
+
+@method addMarkerType
+@param {Object} options
+	@param {String} options.url Url of the icon to be used
+	@param {Array} options.size Size of the icon to be loaded, [100,100]
+	@param {Array} options.origin Origin, what corner should be thought of as zero, [0,0]
+	@param {Array} options.anchor Anchor, the moving location... I use this to zero, [20,90]
+	@param {Array} options.scaledSize ScaleSize, what size the icon should be shown as
+**/
+
+	this.addMarkerType = function(optionsin){
+		if(!optionsin.url){
+			console.log(&quot;need to have a url to the image for this to work&quot;)
+			return null
+		}
+		var locSettings = $.extend({
+			size: [100,100],
+			origin: [0,0],
+			anchor: [0,0],
+			scaledSize:[100,100]
+		}, optionsin);
+
+		var markerImage = {
+			url: optionsin.url,
+			size: new google.maps.Size(locSettings.size[0], locSettings.size[1]),
+			origin: new google.maps.Point(locSettings.origin[0], locSettings.origin[1]),
+			anchor: new google.maps.Point(locSettings.anchor[0],locSettings.anchor[1]),
+			scaledSize: new google.maps.Size(locSettings.scaledSize[0], locSettings.scaledSize[1])
+		};
+		settings.markerTypes.push(markerImage);
+	}
+
+	function makeMarker(lat,lon,iconNum,altIconNum,name,bubbleContent){
+		var id = settings.dataObjectList.length;
+		var pos = new google.maps.LatLng(lat,lon);
+		var marker =  new google.maps.Marker({
+			position: pos,
+			icon: settings.markerTypes[iconNum],
+			title: name,
+			map: settings.activeMap,
+			id : id,
+			displayInfo: false,
+			defIcon:iconNum,
+			altIcon:altIconNum
+		});
+
+		var infoBubble = new InfoBubble({
+			map: settings.activeMap,
+			content: bubbleContent,
+			position: pos,
+			shadowStyle: settings.infoShadowStyle,padding: settings.infoPadding,backgroundColor: settings.infoBackgroundColor,borderRadius: settings.infoBorderRadius,arrowSize: settings.infoArrowSize,borderWidth: settings.infoBorderWidth,borderColor: settings.infoBorderColor,hideCloseButton: settings.infoHideCloseButton,arrowPosition: settings.infoArrowPosition,backgroundClassName: settings.infoBackgroundClassName,arrowStyle: settings.infoArrowStyle,disableAnimation:settings.infoDisableAnimation,disableAutoPan:settings.infoDisableAutoPan,
+			id:id
+		});
+
+		settings.dataObjectList.push([marker,infoBubble])
+		settings.markersList.push(marker);
+
+		google.maps.event.addListener(marker, &quot;click&quot;, function() {
+			if(settings.dataObjectList[this.id][0].displayInfo == false){
+				if(settings.oneIconAtATime){
+					setAllIconsFalse();
+				}
+				settings.funOnClick(this.id);
+				show(this.id);
+			} else {
+				settings.funOffClick(this.id);
+				hideEl(this.id);
+			}
+		});
+	}
+
+	function setAllIconsFalse(){
+		for(var a=0; a &lt; settings.dataObjectList.length; ++a){
+			if(settings.dataObjectList[a][0].displayInfo){
+				hideEl(a);
+			}
+		}
+	}
+
+
+/**
+Makes the map cluster elements, &lt;br&gt;
+for more reference look at &lt;a href=&quot;http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.1.1/docs/reference.html&quot;&gt; link &lt;/a&gt;
+
+@example
+	myMap.useCluster({
+		imagePath: &#x27;/static/img/base-&#x27;,
+		imageSizes: [100,100],
+		averageCenter:true
+	});
+
+@method useCluster
+@param {Object} cOptions
+	@param {String} cOptions.imagePath Url of the icon to be used, this is a bit funny, for we don&#x27;t need to end the string with .png and 1 must be the last letter in the name of the file
+	@param {Array} cOptions.imageSizes Size of the icon to be loaded, [100,100]
+	@param {Boolean} cOptions.averageCenter
+**/
+	this.useCluster = function(cOptions){
+		var clusterSettings = $.extend({
+			imagePath: &#x27;/static/img/base-&#x27;,
+			imageSizes: [100,100],
+			averageCenter:true
+		}, cOptions);
+		settings.makerCluster = new MarkerClusterer(settings.activeMap,settings.markersList,clusterSettings);
+	}
+
+/**
+Loads Marker data into map. &lt;br&gt;
+Be sure to create the icon types before loading.
+
+@method loadData
+@param {Object} json location data
+	@param {String} json.name What will show up for mouse over, not really special
+	@param {Number} json.lat Latitude of marker
+	@param {Number} json.lon Longitude of marker
+	@param {Number} json.icon The numbers here relate to the order in which .addMarkerType are created
+	@param {Number} json.altIcon when clicked this Icon will be shown
+	@param {String} json.description The text will be displayed in the text box
+
+@example
+	{&quot;data&quot;:[
+		{
+			&quot;name&quot;:&quot;Us&quot;,
+			&quot;lat&quot;:43.649517,
+			&quot;lon&quot;:-79.397373,
+			&quot;icon&quot;: 0,
+			&quot;altIcon&quot;:1,
+			&quot;description&quot;:&quot;some test info&quot;
+		},
+		{
+			&quot;name&quot;:&quot;Them&quot;,
+			&quot;lat&quot;:43.648717,
+			&quot;lon&quot;:-79.396475,
+			&quot;icon&quot;: 0,
+			&quot;altIcon&quot;:1,
+			&quot;description&quot;:&quot;some test info&quot;
+		},
+
+	]}
+**/
+	this.loadData = function(json){
+		console.log(json[&quot;data&quot;]);
+		$.each(json[&quot;data&quot;],function(index,value){
+			makeMarker(value[&quot;lat&quot;],value[&quot;lon&quot;],value[&quot;icon&quot;],value[&quot;altIcon&quot;],value[&quot;name&quot;],value[&quot;description&quot;])
+			console.log(value);
+		})
+	}
+
+	function show(id) {
+		settings.dataObjectList[id][1].open(settings.activeMap, settings.dataObjectList[id][0]);
+		settings.dataObjectList[id][0].setIcon(settings.markerTypes[settings.dataObjectList[id][0].altIcon]);
+		settings.dataObjectList[id][0].displayInfo = true;
+	}
+	function hideEl(id){
+		settings.dataObjectList[id][1].close(settings.activeMap, settings.dataObjectList[id][0]);
+		settings.dataObjectList[id][0].setIcon(settings.markerTypes[settings.dataObjectList[id][0].defIcon]);
+		settings.dataObjectList[id][0].displayInfo = false;
+	}
+
+	// OVER LAY STUFF
+
+	return this;
+
+};
+
+}( jQuery ));
+
+
+
+
+
+
+
+
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

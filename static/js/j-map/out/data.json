@@ -1,0 +1,1933 @@
+{
+    "project": {},
+    "files": {
+        "j-map.js": {
+            "name": "j-map.js",
+            "modules": {
+                "Jmap": 1
+            },
+            "classes": {
+                "Jmap": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "markerclusterer.js": {
+            "name": "markerclusterer.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Jmap": {
+            "name": "Jmap",
+            "submodules": {},
+            "classes": {
+                "Jmap": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "j-map.js",
+            "line": 14,
+            "description": "Jmap simplified google maps project<br>\n<h4>Created by:</h4>\ntest"
+        }
+    },
+    "classes": {
+        "Jmap": {
+            "name": "Jmap",
+            "shortname": "Jmap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Jmap",
+            "namespace": "",
+            "file": "j-map.js",
+            "line": 14,
+            "description": "Jmap is the container for all the action going on with this plugin for Jquery\n<h4>Created by:</h4>\n<a href=\"http://www.bohdananderson.com\" target=\"_blank\"> Bohdan Anderson</a> @ <a href=\"http://www.alsocollective.com\" target=\"_blank\">Also Collective</a>",
+            "namespcae": "JMAP",
+            "is_constructor": 1,
+            "example": [
+                "\n\tvar myMap = $(\"#google-maps\").Jmap({\n\t\tdefaultZoom:18,\n\t\tlocationLat:43.648616,\n\t\tlocaiotnLon:-79.396644,\n\t\tfunOnClick:function(id){\n\t\t\tconsole.log(id)\n\t\t}\n\t});\n\tfunction JmapGoogleReady(){\n\t\tmyMap.init();\n\n\t\t//this marker type is added at #0, so for the data the icon must be set to #0\n\t\tmyMap.addMarkerType({\n\t\t\turl: '/static/img/takeaction-btn.png',\n\t\t\tsize: [100,100],\n\t\t\torigin: [0,0],\n\t\t\tanchor: [20,90],\n\t\t\tscaledSize:[100,100]\n\t\t})\n\t\tmyMap.addMarkerType({\n\t\t\turl: '/static/img/entry.png',\n\t\t\tsize: [22,33],\n\t\t\torigin: [0,0],\n\t\t\tanchor: [11,33],\n\t\t\tscaledSize:[22,33]\n\t\t})\n\n\t\tmyMap.setupOverlay();\n\t\tmyMap.loadData(jsonRequestData);\n\t}",
+                "\n\tvar myMap = $(\"#google-maps\").Jmap({\n\t\tdefaultZoom:18,\n\t\tlocationLat:43.648616,\n\t\tlocaiotnLon:-79.396644,\n\t\tfunOnClick:function(id){\n\t\t\tconsole.log(id)\n\t\t}\n\t});\n\tfunction JmapGoogleReady(){\n\t\tmyMap.init();\n\n\t\t//this marker type is added at #0, so for the data the icon must be set to #0\n\t\tmyMap.addMarkerType({\n\t\t\turl: '/static/img/takeaction-btn.png',\n\t\t\tsize: [100,100],\n\t\t\torigin: [0,0],\n\t\t\tanchor: [20,90],\n\t\t\tscaledSize:[100,100]\n\t\t})\n\t\tmyMap.addMarkerType({\n\t\t\turl: '/static/img/entry.png',\n\t\t\tsize: [22,33],\n\t\t\torigin: [0,0],\n\t\t\tanchor: [11,33],\n\t\t\tscaledSize:[22,33]\n\t\t})\n\n\t\tmyMap.setupOverlay();\n\t\tmyMap.loadData(jsonRequestData);\n\t}"
+            ],
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Data that specifies, the functionality and look of the plugin",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "apiKey",
+                            "description": "Needed for this plugin to work, go to google to get the api key",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "locationLat",
+                            "description": "Latitude of map on load",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "locaiotnLon",
+                            "description": "Longitude of map on load",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "autoStart",
+                            "description": "If 'true', will start loading the map right way, 'false', will wait",
+                            "type": "Boolean",
+                            "optional": true
+                        },
+                        {
+                            "name": "mapStyles",
+                            "description": "Generate the Json format from <a href=\"http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html\" target=\"_blank\">here</a>",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "defaultZoom",
+                            "description": "Default is 8, determines the zoom on load",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "oneIconAtATime",
+                            "description": "Default is true, will hide all other info bubbles when opening a new one",
+                            "type": "Boolean",
+                            "optional": true
+                        },
+                        {
+                            "name": "funOnClick",
+                            "description": "this is ran when the marker is clicked",
+                            "type": "Funciton",
+                            "optional": true
+                        },
+                        {
+                            "name": "funOffClick",
+                            "description": "this is ran when an other marker is clicked",
+                            "type": "Funciton",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoPadding",
+                            "description": "px size",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoArrowSize",
+                            "description": "px size",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoArrowPosition",
+                            "description": "from bottom left px amount",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoArrowStyle",
+                            "description": "",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoBorderRadius",
+                            "description": "px size",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoBorderWidth",
+                            "description": "px size",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoBorderColor",
+                            "description": "rgb or hex or w.e colour means you want",
+                            "type": "Color",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoShadowStyle",
+                            "description": "0,1,2",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoBackgroundColor",
+                            "description": "rgb or hex or w.e colour means you want",
+                            "type": "Color",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoBackgroundClassName",
+                            "description": "string value, default is gmap-overlay",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoHideCloseButton",
+                            "description": "Hide button...",
+                            "type": "Boolean",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoDisableAnimation",
+                            "description": "Pop in animation",
+                            "type": "Boolean",
+                            "optional": true
+                        },
+                        {
+                            "name": "infoDisableAutoPan",
+                            "description": "Centers the map to location of marker when clicked",
+                            "type": "Boolean",
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "j-map.js",
+            "line": 142,
+            "description": "To start the map, should only be called once the map api has been loaded, which is done auto by this plugin",
+            "itemtype": "method",
+            "name": "init",
+            "required": 1,
+            "example": [
+                "\n\tfunction JmapGoogleReady(){\n\t    myMap.init();\n\t}"
+            ],
+            "class": "Jmap",
+            "module": "Jmap"
+        },
+        {
+            "file": "j-map.js",
+            "line": 165,
+            "description": "Initialized the over lay, added className \"gmap-overlay\"(by default) to each square of google map <br>\nUse this only once",
+            "itemtype": "method",
+            "name": "setupOverlay",
+            "class": "Jmap",
+            "module": "Jmap"
+        },
+        {
+            "file": "j-map.js",
+            "line": 186,
+            "description": "Generates a new marker, <br>\nreference the created markers in order of creation starting with 0. <br>\nYou can use origin on a sprite sheet to use one image for all your icons",
+            "example": [
+                "\n\tmyMap.addMarkerType({\n\t\turl: '/static/img/takeaction-btn.png',\n\t\tsize: [100,100],\n\t\torigin: [0,0],\n\t\tanchor: [20,90],\n\t\tscaledSize:[100,100]\n\t})"
+            ],
+            "itemtype": "method",
+            "name": "addMarkerType",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "url",
+                            "description": "Url of the icon to be used",
+                            "type": "String"
+                        },
+                        {
+                            "name": "size",
+                            "description": "Size of the icon to be loaded, [100,100]",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "origin",
+                            "description": "Origin, what corner should be thought of as zero, [0,0]",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "anchor",
+                            "description": "Anchor, the moving location... I use this to zero, [20,90]",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "scaledSize",
+                            "description": "ScaleSize, what size the icon should be shown as",
+                            "type": "Array"
+                        }
+                    ]
+                }
+            ],
+            "class": "Jmap",
+            "module": "Jmap"
+        },
+        {
+            "file": "j-map.js",
+            "line": 279,
+            "description": "Makes the map cluster elements, <br>\nfor more reference look at <a href=\"http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.1.1/docs/reference.html\"> link </a>",
+            "example": [
+                "\n\tmyMap.useCluster({\n\t\timagePath: '/static/img/base-',\n\t\timageSizes: [100,100],\n\t\taverageCenter:true\n\t});"
+            ],
+            "itemtype": "method",
+            "name": "useCluster",
+            "params": [
+                {
+                    "name": "cOptions",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "imagePath",
+                            "description": "Url of the icon to be used, this is a bit funny, for we don't need to end the string with .png and 1 must be the last letter in the name of the file",
+                            "type": "String"
+                        },
+                        {
+                            "name": "imageSizes",
+                            "description": "Size of the icon to be loaded, [100,100]",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "averageCenter",
+                            "description": "",
+                            "type": "Boolean"
+                        }
+                    ]
+                }
+            ],
+            "class": "Jmap",
+            "module": "Jmap"
+        },
+        {
+            "file": "j-map.js",
+            "line": 305,
+            "description": "Loads Marker data into map. <br>\nBe sure to create the icon types before loading.",
+            "itemtype": "method",
+            "name": "loadData",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "location data",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "What will show up for mouse over, not really special",
+                            "type": "String"
+                        },
+                        {
+                            "name": "lat",
+                            "description": "Latitude of marker",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "lon",
+                            "description": "Longitude of marker",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "icon",
+                            "description": "The numbers here relate to the order in which .addMarkerType are created",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "altIcon",
+                            "description": "when clicked this Icon will be shown",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "description",
+                            "description": "The text will be displayed in the text box",
+                            "type": "String"
+                        }
+                    ]
+                }
+            ],
+            "example": [
+                "\n\t{\"data\":[\n\t\t{\n\t\t\t\"name\":\"Us\",\n\t\t\t\"lat\":43.649517,\n\t\t\t\"lon\":-79.397373,\n\t\t\t\"icon\": 0,\n\t\t\t\"altIcon\":1,\n\t\t\t\"description\":\"some test info\"\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Them\",\n\t\t\t\"lat\":43.648717,\n\t\t\t\"lon\":-79.396475,\n\t\t\t\"icon\": 0,\n\t\t\t\"altIcon\":1,\n\t\t\t\"description\":\"some test info\"\n\t\t},\n\n\t]}"
+            ],
+            "class": "Jmap",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 16,
+            "description": "Adds the icon to the DOM.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 48,
+            "description": "This event is fired when a cluster marker is clicked.",
+            "name": "",
+            "params": [
+                {
+                    "name": "c",
+                    "description": "The cluster that was clicked.",
+                    "type": "Cluster"
+                }
+            ],
+            "itemtype": "event",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 84,
+            "description": "This event is fired when the mouse moves over a cluster marker.",
+            "name": "",
+            "params": [
+                {
+                    "name": "c",
+                    "description": "The cluster that the mouse moved over.",
+                    "type": "Cluster"
+                }
+            ],
+            "itemtype": "event",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 95,
+            "description": "This event is fired when the mouse moves out of a cluster marker.",
+            "name": "",
+            "params": [
+                {
+                    "name": "c",
+                    "description": "The cluster that the mouse moved out of.",
+                    "type": "Cluster"
+                }
+            ],
+            "itemtype": "event",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 106,
+            "description": "Removes the icon from the DOM.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 120,
+            "description": "Draws the icon.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 132,
+            "description": "Hides the icon.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 143,
+            "description": "Positions and shows the icon.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 186,
+            "description": "Sets the icon styles to the appropriate element in the styles array.",
+            "params": [
+                {
+                    "name": "sums",
+                    "description": "The icon label text and styles index.",
+                    "type": "ClusterIconInfo"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 211,
+            "description": "Sets the position at which to center the icon.",
+            "params": [
+                {
+                    "name": "center",
+                    "description": "The latlng to set as the center.",
+                    "type": "google.maps.LatLng"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 221,
+            "description": "Creates the cssText style parameter based on the position of the icon.",
+            "params": [
+                {
+                    "name": "pos",
+                    "description": "The position of the icon.",
+                    "type": "google.maps.Point"
+                }
+            ],
+            "return": {
+                "description": "The CSS style text.",
+                "type": "String"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 236,
+            "description": "Returns the position at which to place the DIV depending on the latlng.",
+            "params": [
+                {
+                    "name": "latlng",
+                    "description": "The position in latlng.",
+                    "type": "google.maps.LatLng"
+                }
+            ],
+            "return": {
+                "description": "The position in pixels.",
+                "type": "google.maps.Point"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 252,
+            "description": "Creates a single cluster that manages a group of proximate markers.\n Used internally, do not call this constructor directly.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "mc",
+                    "description": "The <code>MarkerClusterer</code> object with which this\n cluster is associated.",
+                    "type": "MarkerClusterer"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 272,
+            "description": "Returns the number of markers managed by the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "return": {
+                "description": "The number of markers in the cluster.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 284,
+            "description": "Returns the array of markers managed by the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "return": {
+                "description": "The array of markers in the cluster.",
+                "type": "Array"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 296,
+            "description": "Returns the center of the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "return": {
+                "description": "The center of the cluster.",
+                "type": "google.maps.LatLng"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 308,
+            "description": "Returns the map with which the cluster is associated.",
+            "return": {
+                "description": "The map.",
+                "type": "google.maps.Map"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 319,
+            "description": "Returns the <code>MarkerClusterer</code> object with which the cluster is associated.",
+            "return": {
+                "description": "The associated marker clusterer.",
+                "type": "MarkerClusterer"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 330,
+            "description": "Returns the bounds of the cluster.",
+            "return": {
+                "description": "the cluster bounds.",
+                "type": "google.maps.LatLngBounds"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 347,
+            "description": "Removes the cluster from the map.",
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 359,
+            "description": "Adds a marker to the cluster.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to be added.",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "return": {
+                "description": "True if the marker was added.",
+                "type": "Boolean"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 417,
+            "description": "Determines if a marker lies within the cluster's bounds.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to check.",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "return": {
+                "description": "True if the marker lies in the bounds.",
+                "type": "Boolean"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 429,
+            "description": "Calculates the extended bounds of the cluster with the grid.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 438,
+            "description": "Updates the cluster icon.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 464,
+            "description": "Determines if a marker has already been added to the cluster.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to check.",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "return": {
+                "description": "True if the marker has already been added.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 543,
+            "description": "Implementation of the onAdd interface method.",
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 575,
+            "description": "Implementation of the onRemove interface method.\nRemoves map event listeners and all cluster icons from the DOM.\nAll managed markers are also put back on the map.",
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 608,
+            "description": "Implementation of the draw interface method.",
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 615,
+            "description": "Sets up the styles object.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 635,
+            "description": "Fits the map to the bounds of the markers managed by the clusterer.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 650,
+            "description": "Returns the value of the <code>gridSize</code> property.",
+            "return": {
+                "description": "The grid size.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 660,
+            "description": "Sets the value of the <code>gridSize</code> property.",
+            "params": [
+                {
+                    "name": "gridSize",
+                    "description": "The grid size.",
+                    "type": "Number"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 670,
+            "description": "Returns the value of the <code>minimumClusterSize</code> property.",
+            "return": {
+                "description": "The minimum cluster size.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 679,
+            "description": "Sets the value of the <code>minimumClusterSize</code> property.",
+            "params": [
+                {
+                    "name": "minimumClusterSize",
+                    "description": "The minimum cluster size.",
+                    "type": "Number"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 689,
+            "description": "Returns the value of the <code>maxZoom</code> property.",
+            "return": {
+                "description": "The maximum zoom level.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 699,
+            "description": "Sets the value of the <code>maxZoom</code> property.",
+            "params": [
+                {
+                    "name": "maxZoom",
+                    "description": "The maximum zoom level.",
+                    "type": "Number"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 709,
+            "description": "Returns the value of the <code>styles</code> property.",
+            "return": {
+                "description": "The array of styles defining the cluster markers to be used.",
+                "type": "Array"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 719,
+            "description": "Sets the value of the <code>styles</code> property.",
+            "params": [
+                {
+                    "name": "styles",
+                    "description": "The array of styles to use.",
+                    "type": "Array.<ClusterIconStyle>"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 729,
+            "description": "Returns the value of the <code>title</code> property.",
+            "return": {
+                "description": "The content of the title text.",
+                "type": "String"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 739,
+            "description": "Sets the value of the <code>title</code> property.",
+            "params": [
+                {
+                    "name": "title",
+                    "description": "The value of the title property.",
+                    "type": "String"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 749,
+            "description": "Returns the value of the <code>zoomOnClick</code> property.",
+            "return": {
+                "description": "True if zoomOnClick property is set.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 759,
+            "description": "Sets the value of the <code>zoomOnClick</code> property.",
+            "params": [
+                {
+                    "name": "zoomOnClick",
+                    "description": "The value of the zoomOnClick property.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 769,
+            "description": "Returns the value of the <code>averageCenter</code> property.",
+            "return": {
+                "description": "True if averageCenter property is set.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 779,
+            "description": "Sets the value of the <code>averageCenter</code> property.",
+            "params": [
+                {
+                    "name": "averageCenter",
+                    "description": "The value of the averageCenter property.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 789,
+            "description": "Returns the value of the <code>ignoreHidden</code> property.",
+            "return": {
+                "description": "True if ignoreHidden property is set.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 799,
+            "description": "Sets the value of the <code>ignoreHidden</code> property.",
+            "params": [
+                {
+                    "name": "ignoreHidden",
+                    "description": "The value of the ignoreHidden property.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 809,
+            "description": "Returns the value of the <code>enableRetinaIcons</code> property.",
+            "return": {
+                "description": "True if enableRetinaIcons property is set.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 819,
+            "description": "Sets the value of the <code>enableRetinaIcons</code> property.",
+            "params": [
+                {
+                    "name": "enableRetinaIcons",
+                    "description": "The value of the enableRetinaIcons property.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 829,
+            "description": "Returns the value of the <code>imageExtension</code> property.",
+            "return": {
+                "description": "The value of the imageExtension property.",
+                "type": "String"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 839,
+            "description": "Sets the value of the <code>imageExtension</code> property.",
+            "params": [
+                {
+                    "name": "imageExtension",
+                    "description": "The value of the imageExtension property.",
+                    "type": "String"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 849,
+            "description": "Returns the value of the <code>imagePath</code> property.",
+            "return": {
+                "description": "The value of the imagePath property.",
+                "type": "String"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 859,
+            "description": "Sets the value of the <code>imagePath</code> property.",
+            "params": [
+                {
+                    "name": "imagePath",
+                    "description": "The value of the imagePath property.",
+                    "type": "String"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 869,
+            "description": "Returns the value of the <code>imageSizes</code> property.",
+            "return": {
+                "description": "The value of the imageSizes property.",
+                "type": "Array"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 879,
+            "description": "Sets the value of the <code>imageSizes</code> property.",
+            "params": [
+                {
+                    "name": "imageSizes",
+                    "description": "The value of the imageSizes property.",
+                    "type": "Array"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 889,
+            "description": "Returns the value of the <code>calculator</code> property.",
+            "return": {
+                "description": "the value of the calculator property.",
+                "type": "Function"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 899,
+            "description": "Sets the value of the <code>calculator</code> property.",
+            "params": [
+                {
+                    "name": "calculator",
+                    "description": "The value\n of the calculator property.",
+                    "type": "function(Array.<google.maps.Marker>, number)"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 910,
+            "description": "Returns the value of the <code>batchSizeIE</code> property.",
+            "return": {
+                "description": "the value of the batchSizeIE property.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 920,
+            "description": "Sets the value of the <code>batchSizeIE</code> property.",
+            "params": [
+                {
+                    "name": "batchSizeIE",
+                    "description": "The value of the batchSizeIE property.",
+                    "type": "Number"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 930,
+            "description": "Returns the value of the <code>clusterClass</code> property.",
+            "return": {
+                "description": "the value of the clusterClass property.",
+                "type": "String"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 940,
+            "description": "Sets the value of the <code>clusterClass</code> property.",
+            "params": [
+                {
+                    "name": "clusterClass",
+                    "description": "The value of the clusterClass property.",
+                    "type": "String"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 950,
+            "description": "Returns the array of markers managed by the clusterer.",
+            "return": {
+                "description": "The array of markers managed by the clusterer.",
+                "type": "Array"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 960,
+            "description": "Returns the number of markers managed by the clusterer.",
+            "return": {
+                "description": "The number of markers.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 970,
+            "description": "Returns the current array of clusters formed by the clusterer.",
+            "return": {
+                "description": "The array of clusters formed by the clusterer.",
+                "type": "Array"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 980,
+            "description": "Returns the number of clusters formed by the clusterer.",
+            "return": {
+                "description": "The number of clusters formed by the clusterer.",
+                "type": "Number"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 990,
+            "description": "Adds a marker to the clusterer. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to add.",
+                    "type": "google.maps.Marker"
+                },
+                {
+                    "name": "opt_nodraw",
+                    "description": "Set to <code>true</code> to prevent redrawing.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1005,
+            "description": "Adds an array of markers to the clusterer. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>.",
+            "params": [
+                {
+                    "name": "markers",
+                    "description": "The markers to add.",
+                    "type": "Array.<google.maps.Marker>"
+                },
+                {
+                    "name": "opt_nodraw",
+                    "description": "Set to <code>true</code> to prevent redrawing.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1025,
+            "description": "Pushes a marker to the clusterer.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to add.",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1046,
+            "description": "Removes a marker from the cluster.  The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if the\n marker was removed from the clusterer.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to remove.",
+                    "type": "google.maps.Marker"
+                },
+                {
+                    "name": "opt_nodraw",
+                    "description": "Set to <code>true</code> to prevent redrawing.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "True if the marker was removed from the clusterer.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1066,
+            "description": "Removes an array of markers from the cluster. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if markers\n were removed from the clusterer.",
+            "params": [
+                {
+                    "name": "markers",
+                    "description": "The markers to remove.",
+                    "type": "Array.<google.maps.Marker>"
+                },
+                {
+                    "name": "opt_nodraw",
+                    "description": "Set to <code>true</code> to prevent redrawing.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "True if markers were removed from the clusterer.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1092,
+            "description": "Removes a marker and returns true if removed, false if not.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to remove",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "return": {
+                "description": "Whether the marker was removed or not",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1123,
+            "description": "Removes all clusters and markers from the map and also removes all markers\n managed by the clusterer.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1133,
+            "description": "Recalculates and redraws all the marker clusters from scratch.\n Call this after changing any properties.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1154,
+            "description": "Returns the current bounds extended by the grid size.",
+            "params": [
+                {
+                    "name": "bounds",
+                    "description": "The bounds to extend.",
+                    "type": "google.maps.LatLngBounds"
+                }
+            ],
+            "return": {
+                "description": "The extended bounds.",
+                "type": "google.maps.LatLngBounds"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1191,
+            "description": "Redraws all the clusters.",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1199,
+            "description": "Removes all clusters from the map. The markers are also removed from the map\n if <code>opt_hide</code> is set to <code>true</code>.",
+            "params": [
+                {
+                    "name": "opt_hide",
+                    "description": "Set to <code>true</code> to also remove the markers\n from the map.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1225,
+            "description": "Calculates the distance between two latlng locations in km.",
+            "params": [
+                {
+                    "name": "p1",
+                    "description": "The first lat lng point.",
+                    "type": "google.maps.LatLng"
+                },
+                {
+                    "name": "p2",
+                    "description": "The second lat lng point.",
+                    "type": "google.maps.LatLng"
+                }
+            ],
+            "return": {
+                "description": "The distance between the two points in km.",
+                "type": "Number"
+            },
+            "see": [
+                "http://www.movable-type.co.uk/scripts/latlong.html"
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1246,
+            "description": "Determines if a marker is contained in a bounds.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to check.",
+                    "type": "google.maps.Marker"
+                },
+                {
+                    "name": "bounds",
+                    "description": "The bounds to check against.",
+                    "type": "google.maps.LatLngBounds"
+                }
+            ],
+            "return": {
+                "description": "True if the marker is in the bounds.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1258,
+            "description": "Adds a marker to a cluster, or creates a new cluster.",
+            "params": [
+                {
+                    "name": "marker",
+                    "description": "The marker to add.",
+                    "type": "google.maps.Marker"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1289,
+            "description": "Creates the clusters. This is done in batches to avoid timeout errors\n in some browsers when there is a huge number of markers.",
+            "params": [
+                {
+                    "name": "iFirst",
+                    "description": "The index of the first marker in the batch of\n markers to be added to clusters.",
+                    "type": "Number"
+                }
+            ],
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1306,
+            "description": "This event is fired when the <code>MarkerClusterer</code> begins\n clustering markers.",
+            "name": "",
+            "params": [
+                {
+                    "name": "mc",
+                    "description": "The MarkerClusterer whose markers are being clustered.",
+                    "type": "MarkerClusterer"
+                }
+            ],
+            "itemtype": "event",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1351,
+            "description": "This event is fired when the <code>MarkerClusterer</code> stops\n clustering markers.",
+            "name": "",
+            "params": [
+                {
+                    "name": "mc",
+                    "description": "The MarkerClusterer whose markers are being clustered.",
+                    "type": "MarkerClusterer"
+                }
+            ],
+            "itemtype": "event",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1363,
+            "description": "Extends an object's prototype by another's.",
+            "params": [
+                {
+                    "name": "obj1",
+                    "description": "The object to be extended.",
+                    "type": "Object"
+                },
+                {
+                    "name": "obj2",
+                    "description": "The object to extend with.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The new extended object.",
+                "type": "Object"
+            },
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1382,
+            "description": "The default function for determining the label text and style\nfor a cluster icon.",
+            "params": [
+                {
+                    "name": "markers",
+                    "description": "The array of markers represented by the cluster.",
+                    "type": "Array.<google.maps.Marker>"
+                },
+                {
+                    "name": "numStyles",
+                    "description": "The number of marker styles available.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The information resource for the cluster.",
+                "type": "ClusterIconInfo"
+            },
+            "constant": "",
+            "ignore": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1412,
+            "description": "The number of markers to process in one batch.",
+            "type": "{number}",
+            "constant": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1421,
+            "description": "The number of markers to process in one batch (IE only).",
+            "type": "{number}",
+            "constant": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1430,
+            "description": "The default root name for the marker cluster images.",
+            "type": "{string}",
+            "constant": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1439,
+            "description": "The default extension name for the marker cluster images.",
+            "type": "{string}",
+            "constant": "",
+            "class": "",
+            "module": "Jmap"
+        },
+        {
+            "file": "markerclusterer.js",
+            "line": 1448,
+            "description": "The default array of sizes for the marker cluster images.",
+            "type": "{Array.<number>}",
+            "constant": "",
+            "class": "",
+            "module": "Jmap"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: namespcae",
+            "line": " j-map.js:14"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " markerclusterer.js:48"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " markerclusterer.js:84"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " markerclusterer.js:95"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:308"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:319"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:330"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:347"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:359"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:417"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:543"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:575"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:608"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:1154"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " markerclusterer.js:1306"
+        },
+        {
+            "message": "unknown tag: name",
+            "line": " markerclusterer.js:1351"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:1363"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1382"
+        },
+        {
+            "message": "unknown tag: ignore",
+            "line": " markerclusterer.js:1382"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1412"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1421"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1430"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1439"
+        },
+        {
+            "message": "unknown tag: constant",
+            "line": " markerclusterer.js:1448"
+        },
+        {
+            "message": "Missing item type\nAdds the icon to the DOM.",
+            "line": " markerclusterer.js:16"
+        },
+        {
+            "message": "Missing item type\nRemoves the icon from the DOM.",
+            "line": " markerclusterer.js:106"
+        },
+        {
+            "message": "Missing item type\nDraws the icon.",
+            "line": " markerclusterer.js:120"
+        },
+        {
+            "message": "Missing item type\nHides the icon.",
+            "line": " markerclusterer.js:132"
+        },
+        {
+            "message": "Missing item type\nPositions and shows the icon.",
+            "line": " markerclusterer.js:143"
+        },
+        {
+            "message": "Missing item type\nSets the icon styles to the appropriate element in the styles array.",
+            "line": " markerclusterer.js:186"
+        },
+        {
+            "message": "Missing item type\nSets the position at which to center the icon.",
+            "line": " markerclusterer.js:211"
+        },
+        {
+            "message": "Missing item type\nCreates the cssText style parameter based on the position of the icon.",
+            "line": " markerclusterer.js:221"
+        },
+        {
+            "message": "Missing item type\nReturns the position at which to place the DIV depending on the latlng.",
+            "line": " markerclusterer.js:236"
+        },
+        {
+            "message": "Missing item type\nCreates a single cluster that manages a group of proximate markers.\n Used internally, do not call this constructor directly.",
+            "line": " markerclusterer.js:252"
+        },
+        {
+            "message": "Missing item type\nReturns the number of markers managed by the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "line": " markerclusterer.js:272"
+        },
+        {
+            "message": "Missing item type\nReturns the array of markers managed by the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "line": " markerclusterer.js:284"
+        },
+        {
+            "message": "Missing item type\nReturns the center of the cluster. You can call this from\na <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler\nfor the <code>MarkerClusterer</code> object.",
+            "line": " markerclusterer.js:296"
+        },
+        {
+            "message": "Missing item type\nReturns the map with which the cluster is associated.",
+            "line": " markerclusterer.js:308"
+        },
+        {
+            "message": "Missing item type\nReturns the <code>MarkerClusterer</code> object with which the cluster is associated.",
+            "line": " markerclusterer.js:319"
+        },
+        {
+            "message": "Missing item type\nReturns the bounds of the cluster.",
+            "line": " markerclusterer.js:330"
+        },
+        {
+            "message": "Missing item type\nRemoves the cluster from the map.",
+            "line": " markerclusterer.js:347"
+        },
+        {
+            "message": "Missing item type\nAdds a marker to the cluster.",
+            "line": " markerclusterer.js:359"
+        },
+        {
+            "message": "Missing item type\nDetermines if a marker lies within the cluster's bounds.",
+            "line": " markerclusterer.js:417"
+        },
+        {
+            "message": "Missing item type\nCalculates the extended bounds of the cluster with the grid.",
+            "line": " markerclusterer.js:429"
+        },
+        {
+            "message": "Missing item type\nUpdates the cluster icon.",
+            "line": " markerclusterer.js:438"
+        },
+        {
+            "message": "Missing item type\nDetermines if a marker has already been added to the cluster.",
+            "line": " markerclusterer.js:464"
+        },
+        {
+            "message": "Missing item type\nImplementation of the onAdd interface method.",
+            "line": " markerclusterer.js:543"
+        },
+        {
+            "message": "Missing item type\nImplementation of the onRemove interface method.\nRemoves map event listeners and all cluster icons from the DOM.\nAll managed markers are also put back on the map.",
+            "line": " markerclusterer.js:575"
+        },
+        {
+            "message": "Missing item type\nImplementation of the draw interface method.",
+            "line": " markerclusterer.js:608"
+        },
+        {
+            "message": "Missing item type\nSets up the styles object.",
+            "line": " markerclusterer.js:615"
+        },
+        {
+            "message": "Missing item type\nFits the map to the bounds of the markers managed by the clusterer.",
+            "line": " markerclusterer.js:635"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>gridSize</code> property.",
+            "line": " markerclusterer.js:650"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>gridSize</code> property.",
+            "line": " markerclusterer.js:660"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>minimumClusterSize</code> property.",
+            "line": " markerclusterer.js:670"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>minimumClusterSize</code> property.",
+            "line": " markerclusterer.js:679"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>maxZoom</code> property.",
+            "line": " markerclusterer.js:689"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>maxZoom</code> property.",
+            "line": " markerclusterer.js:699"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>styles</code> property.",
+            "line": " markerclusterer.js:709"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>styles</code> property.",
+            "line": " markerclusterer.js:719"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>title</code> property.",
+            "line": " markerclusterer.js:729"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>title</code> property.",
+            "line": " markerclusterer.js:739"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>zoomOnClick</code> property.",
+            "line": " markerclusterer.js:749"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>zoomOnClick</code> property.",
+            "line": " markerclusterer.js:759"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>averageCenter</code> property.",
+            "line": " markerclusterer.js:769"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>averageCenter</code> property.",
+            "line": " markerclusterer.js:779"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>ignoreHidden</code> property.",
+            "line": " markerclusterer.js:789"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>ignoreHidden</code> property.",
+            "line": " markerclusterer.js:799"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>enableRetinaIcons</code> property.",
+            "line": " markerclusterer.js:809"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>enableRetinaIcons</code> property.",
+            "line": " markerclusterer.js:819"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>imageExtension</code> property.",
+            "line": " markerclusterer.js:829"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>imageExtension</code> property.",
+            "line": " markerclusterer.js:839"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>imagePath</code> property.",
+            "line": " markerclusterer.js:849"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>imagePath</code> property.",
+            "line": " markerclusterer.js:859"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>imageSizes</code> property.",
+            "line": " markerclusterer.js:869"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>imageSizes</code> property.",
+            "line": " markerclusterer.js:879"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>calculator</code> property.",
+            "line": " markerclusterer.js:889"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>calculator</code> property.",
+            "line": " markerclusterer.js:899"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>batchSizeIE</code> property.",
+            "line": " markerclusterer.js:910"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>batchSizeIE</code> property.",
+            "line": " markerclusterer.js:920"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the <code>clusterClass</code> property.",
+            "line": " markerclusterer.js:930"
+        },
+        {
+            "message": "Missing item type\nSets the value of the <code>clusterClass</code> property.",
+            "line": " markerclusterer.js:940"
+        },
+        {
+            "message": "Missing item type\nReturns the array of markers managed by the clusterer.",
+            "line": " markerclusterer.js:950"
+        },
+        {
+            "message": "Missing item type\nReturns the number of markers managed by the clusterer.",
+            "line": " markerclusterer.js:960"
+        },
+        {
+            "message": "Missing item type\nReturns the current array of clusters formed by the clusterer.",
+            "line": " markerclusterer.js:970"
+        },
+        {
+            "message": "Missing item type\nReturns the number of clusters formed by the clusterer.",
+            "line": " markerclusterer.js:980"
+        },
+        {
+            "message": "Missing item type\nAdds a marker to the clusterer. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>.",
+            "line": " markerclusterer.js:990"
+        },
+        {
+            "message": "Missing item type\nAdds an array of markers to the clusterer. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>.",
+            "line": " markerclusterer.js:1005"
+        },
+        {
+            "message": "Missing item type\nPushes a marker to the clusterer.",
+            "line": " markerclusterer.js:1025"
+        },
+        {
+            "message": "Missing item type\nRemoves a marker from the cluster.  The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if the\n marker was removed from the clusterer.",
+            "line": " markerclusterer.js:1046"
+        },
+        {
+            "message": "Missing item type\nRemoves an array of markers from the cluster. The clusters are redrawn unless\n <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if markers\n were removed from the clusterer.",
+            "line": " markerclusterer.js:1066"
+        },
+        {
+            "message": "Missing item type\nRemoves a marker and returns true if removed, false if not.",
+            "line": " markerclusterer.js:1092"
+        },
+        {
+            "message": "Missing item type\nRemoves all clusters and markers from the map and also removes all markers\n managed by the clusterer.",
+            "line": " markerclusterer.js:1123"
+        },
+        {
+            "message": "Missing item type\nRecalculates and redraws all the marker clusters from scratch.\n Call this after changing any properties.",
+            "line": " markerclusterer.js:1133"
+        },
+        {
+            "message": "Missing item type\nReturns the current bounds extended by the grid size.",
+            "line": " markerclusterer.js:1154"
+        },
+        {
+            "message": "Missing item type\nRedraws all the clusters.",
+            "line": " markerclusterer.js:1191"
+        },
+        {
+            "message": "Missing item type\nRemoves all clusters from the map. The markers are also removed from the map\n if <code>opt_hide</code> is set to <code>true</code>.",
+            "line": " markerclusterer.js:1199"
+        },
+        {
+            "message": "Missing item type\nCalculates the distance between two latlng locations in km.",
+            "line": " markerclusterer.js:1225"
+        },
+        {
+            "message": "Missing item type\nDetermines if a marker is contained in a bounds.",
+            "line": " markerclusterer.js:1246"
+        },
+        {
+            "message": "Missing item type\nAdds a marker to a cluster, or creates a new cluster.",
+            "line": " markerclusterer.js:1258"
+        },
+        {
+            "message": "Missing item type\nCreates the clusters. This is done in batches to avoid timeout errors\n in some browsers when there is a huge number of markers.",
+            "line": " markerclusterer.js:1289"
+        },
+        {
+            "message": "Missing item type\nExtends an object's prototype by another's.",
+            "line": " markerclusterer.js:1363"
+        },
+        {
+            "message": "Missing item type\nThe default function for determining the label text and style\nfor a cluster icon.",
+            "line": " markerclusterer.js:1382"
+        },
+        {
+            "message": "Missing item type\nThe number of markers to process in one batch.",
+            "line": " markerclusterer.js:1412"
+        },
+        {
+            "message": "Missing item type\nThe number of markers to process in one batch (IE only).",
+            "line": " markerclusterer.js:1421"
+        },
+        {
+            "message": "Missing item type\nThe default root name for the marker cluster images.",
+            "line": " markerclusterer.js:1430"
+        },
+        {
+            "message": "Missing item type\nThe default extension name for the marker cluster images.",
+            "line": " markerclusterer.js:1439"
+        },
+        {
+            "message": "Missing item type\nThe default array of sizes for the marker cluster images.",
+            "line": " markerclusterer.js:1448"
+        }
+    ]
+}

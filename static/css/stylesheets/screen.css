@@ -578,49 +578,53 @@ h1 {
 
 /* Custom Sections */
 /* line 468, ../sass/screen.scss */
+#faculty-bios img {
+  padding-top: 4em;
+}
+/* line 471, ../sass/screen.scss */
 #faculty-bios ul {
   margin: 0 0 1em 0;
 }
-/* line 471, ../sass/screen.scss */
+/* line 474, ../sass/screen.scss */
 #faculty-bios blockquote {
   font-size: 1em;
   font-style: italic;
   margin: 1em 0 0 0;
   color: #ea636e;
 }
-/* line 477, ../sass/screen.scss */
+/* line 480, ../sass/screen.scss */
 #faculty-bios h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
   text-transform: uppercase;
   text-decoration: underline;
 }
-/* line 483, ../sass/screen.scss */
+/* line 486, ../sass/screen.scss */
 #faculty-bios h4 {
   margin: 1.4em 0 0.4em 0;
 }
-/* line 488, ../sass/screen.scss */
+/* line 491, ../sass/screen.scss */
 #faculty-bios .row div > div:nth-child(2) div:nth-child(1) {
   z-index: 1;
 }
 
-/* line 495, ../sass/screen.scss */
+/* line 498, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 {
   background-size: 50%;
   background-color: #777;
 }
-/* line 498, ../sass/screen.scss */
+/* line 501, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol {
   counter-reset: list-counter;
   list-style: none;
   font-size: 0.8em;
   color: #fff;
 }
-/* line 503, ../sass/screen.scss */
+/* line 506, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol li {
   margin: 0 0 0.5em 0;
 }
-/* line 506, ../sass/screen.scss */
+/* line 509, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol li:before {
   content: counter(list-counter) ".";
   counter-increment: list-counter;
@@ -632,33 +636,33 @@ h1 {
   text-align: right;
 }
 
-/* line 520, ../sass/screen.scss */
+/* line 523, ../sass/screen.scss */
 #contact-information .row {
   background-color: rgba(255, 255, 255, 0.5);
   padding-bottom: 2em;
 }
 
-/* line 527, ../sass/screen.scss */
+/* line 530, ../sass/screen.scss */
 .fellowship #about-fellowship, .fellowship #curriculum, .fellowship #research-opportunities, .fellowship #fellow-publications, .fellowship #fellowships-available, .fellowship #social-events {
   padding: 2em 0 4em 0;
 }
 
-/* line 533, ../sass/screen.scss */
+/* line 536, ../sass/screen.scss */
 #curriculum {
   background-color: #666;
 }
-/* line 535, ../sass/screen.scss */
+/* line 538, ../sass/screen.scss */
 #curriculum ol {
   counter-reset: list-counter;
   list-style: none;
   font-size: 0.8em;
   color: #fff;
 }
-/* line 540, ../sass/screen.scss */
+/* line 543, ../sass/screen.scss */
 #curriculum ol li {
   margin: 0 0 0.5em 0;
 }
-/* line 543, ../sass/screen.scss */
+/* line 546, ../sass/screen.scss */
 #curriculum ol li:before {
   content: counter(list-counter) ".";
   counter-increment: list-counter;
@@ -670,24 +674,24 @@ h1 {
   text-align: right;
 }
 
-/* line 557, ../sass/screen.scss */
+/* line 560, ../sass/screen.scss */
 #selected-faculty-publications-20122013 h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
   text-transform: uppercase;
   text-decoration: underline;
 }
-/* line 564, ../sass/screen.scss */
+/* line 567, ../sass/screen.scss */
 #selected-faculty-publications-20122013 ol li {
   margin: 0 0 1em 0;
 }
 
-/* line 570, ../sass/screen.scss */
+/* line 573, ../sass/screen.scss */
 #previous-annuals {
   text-align: center;
   font-size: 1em;
 }
-/* line 574, ../sass/screen.scss */
+/* line 577, ../sass/screen.scss */
 #previous-annuals img {
   width: 100%;
   box-shadow: 0px 0px 15px #999;
@@ -695,17 +699,17 @@ h1 {
 }
 
 /* Custom Padding */
-/* line 582, ../sass/screen.scss */
+/* line 585, ../sass/screen.scss */
 #pre-requisites {
   padding-bottom: 4em;
 }
 
-/* line 586, ../sass/screen.scss */
+/* line 589, ../sass/screen.scss */
 a {
   color: #ea636e;
 }
 
-/* line 590, ../sass/screen.scss */
+/* line 593, ../sass/screen.scss */
 h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
@@ -713,11 +717,11 @@ h3 {
   text-decoration: underline;
 }
 
-/* line 598, ../sass/screen.scss */
+/* line 601, ../sass/screen.scss */
 #about .sub-row {
   text-align: center;
 }
-/* line 604, ../sass/screen.scss */
+/* line 607, ../sass/screen.scss */
 #about h5 {
   font-weight: 700;
   font-size: 3.5em;
@@ -726,35 +730,35 @@ h3 {
   margin: 0.25em 0 0 0;
 }
 
-/* line 615, ../sass/screen.scss */
+/* line 618, ../sass/screen.scss */
 #about-fellowship .vert-top {
   vertical-align: top;
   padding-top: 0.45em;
 }
-/* line 621, ../sass/screen.scss */
+/* line 624, ../sass/screen.scss */
 #about-fellowship colgroup #row-one {
   width: 5%;
 }
-/* line 624, ../sass/screen.scss */
+/* line 627, ../sass/screen.scss */
 #about-fellowship colgroup #row-two {
   width: 15%;
 }
-/* line 627, ../sass/screen.scss */
+/* line 630, ../sass/screen.scss */
 #about-fellowship colgroup #row-three {
   width: 30%;
 }
-/* line 630, ../sass/screen.scss */
+/* line 633, ../sass/screen.scss */
 #about-fellowship colgroup #row-four {
   width: 10%;
 }
-/* line 634, ../sass/screen.scss */
+/* line 637, ../sass/screen.scss */
 #about-fellowship .tr-no-dots {
   height: 2em;
   border-bottom: none;
 }
 
 /* Media Queries */
-/* line 641, ../sass/screen.scss */
+/* line 644, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -763,19 +767,25 @@ h3 {
   transition: all 0.5s;
 }
 
-/* line 646, ../sass/screen.scss */
+/* line 649, ../sass/screen.scss */
 #google-maps {
   width: 100%;
-  height: 800px;
+  height: 600px;
 }
 
-/* line 651, ../sass/screen.scss */
+/* line 654, ../sass/screen.scss */
 #contact-maps {
   width: 100%;
-  height: 300px;
+  height: 600px;
 }
 
-/* line 656, ../sass/screen.scss */
+/* line 659, ../sass/screen.scss */
+.infobubble-bk {
+  color: #fff;
+  font-weight: 700 !important;
+}
+
+/* line 664, ../sass/screen.scss */
 .gmap-overlay {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
 }

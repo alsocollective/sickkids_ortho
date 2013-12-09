@@ -239,8 +239,79 @@ _gaq.push(['_setDomainName', 'none']);
 
 
 
+//Contact Map Shop
 
-
+var myContactStyle = [
+  {
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#a1585b" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#fac2c2" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#f7a4a7" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#ea646f" }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#fae6e6" }
+    ]
+  },{
+    "featureType": "poi.medical",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#f18383" }
+    ]
+  },{
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#ffffff" },
+      { "weight": 1 }
+    ]
+  },{
+    "elementType": "labels.icon",
+    "stylers": [
+      { "saturation": -100 },
+      { "gamma": 0.01 },
+      { "lightness": 16 },
+      { "visibility": "on" }
+    ]
+  },{
+    "elementType": "labels.text",
+    "stylers": [
+      { "visibility": "on" },
+      { "saturation": -100 }
+    ]
+  },{
+    "elementType": "geometry"  }
+]
 
 
 // MAP STUFF!!!
@@ -667,6 +738,16 @@ var from12 = {"data":[
 		interAction:["mouseover","mouseout"]
 	}]}
 
+	var contactData = {"data":[
+	{
+		name:"Hospital for Sick Children",
+		lat:43.657395,
+		lon:-79.387576,
+		icon: 0,
+		description:"Sick Kids",
+		interAction:["mouseover","mouseout"]
+	}
+	]}
 
 
 

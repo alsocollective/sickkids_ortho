@@ -118,7 +118,8 @@ a standard start up includes:
 	@param {Object} [options.zoomControlOptions.style] Options include size and
 **/
 
-var google = null;
+var google = {};
+google.maps = null;
 
 (function ( $ ) {
 $.fn.Jmap = function( options ) {
@@ -126,8 +127,8 @@ $.fn.Jmap = function( options ) {
 		autoStart:true,
 		activeMap:null,
 		mapContainer:null,
-		selectedElement:null,
-		
+		selectedElement: this[0],
+
 		//Controls
 		zoomControl: false,
 
@@ -177,17 +178,19 @@ $.fn.Jmap = function( options ) {
 	loadScript();
 
 	function loadScript(){
-		if(settings.debugMode){
-			console.log("loading maps script");
-		}
+		if(settings.debugMode)console.log("loading maps script");
 
 		if(!settings.selectedElement){
-			settings.selectedElement = document.getElementById("google-maps")
+			settings.selectedElement = this;//document.getElementById("google-maps")
 		}
 		var script = document.createElement('script');
-		if(google){
+		if(google.maps){
+			if(settings.debugMode)console.log("google.maps is already loaded...");
 			settings.autoload = true;
 		}else{
+			if(settings.debugMode)console.log("load google map script");
+			if(settings.debugMode)console.log(settings.selectedElement);
+
 			script.type = 'text/javascript';
 			script.src = 'https://maps.googleapis.com/maps/api/js?key='+ settings.apiKey +'&sensor=false&' + 'callback=JmapGoogleReady';
 			$(settings.selectedElement).after(script);
@@ -513,7 +516,9 @@ Be sure to create the icon types before loading.
 	// OVER LAY STUFF
 
 	this.autoload = function(){
+		if(settings.debugMode) console.log("checking auto run");
 		if(settings.autoload){
+			if(settings.debugMode) console.log("running auto run");
 			JmapGoogleReady();
 		}
 	}

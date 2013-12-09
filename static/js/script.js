@@ -19,7 +19,6 @@ function resizeRows(){
 	});
 	findTriggerPoints();
 }
-
 function findChildrenHeight(parent){
 	var children = $(parent).children();
 	var height = 0;
@@ -43,13 +42,9 @@ function findChildrenHeight(parent){
 	}
 	return height;
 }
-
-// resizeRows();
-
 $( window ).resize(function() {
 	resizeRows();
 });
-
 
 function setupnav(){
 	var links = $(".link-to-page");
@@ -67,9 +62,6 @@ function setupnav(){
 	//$("#nav img").on("click",loadNextPage);//for the home being the index page
 	$("#nav img").on("click",function(){clearHighLight();loadNextPage("home");});
 }
-
-
-
 var slideMenu;
 $(window).load(function() {
 	if($(window).width()>mobileWidth){
@@ -86,8 +78,6 @@ $(window).load(function() {
 		}
 	});
 });
-
-
 function loadNextPage(address){
 	if(loading || address == pageSlug){
 		return false;
@@ -129,30 +119,24 @@ function loadNextPage(address){
 	});
 	nextpage.addClass(address);
 }
-
 function moveButtonDown(){
 	var lastB = $(".last-button")[0];
 	lastB.parentNode.appendChild(lastB);
 }
-
 function clearAnimation(){
 	var elements = $(".animated");
 	elements.removeClass('animated');
 	elements.removeClass('slideInRight');
 }
-
 function setupNav(){
 	var subNav = $("#subnav");
 }
-
-
 function clearHighLight() {
 	$(".heighlight").removeClass('heighlight');
 }
 function heighLightEl(element) {
 	$(element).addClass('heighlight');
 }
-
 function resetTheNames() {
 	loadingElement.style.display = "none";
 	var oldcontent = $("#content")[0];
@@ -174,7 +158,6 @@ function resetTheNames() {
 	slideMenu.refindHeight();
 	loading = false;
 }
-
 function setupNavClicks(element){
 	var elements = $(element).children();
 	for(var a = 0, max = elements.length; a<max; a += 1 ){
@@ -200,7 +183,6 @@ function findTriggerPoints() {
 		}
 	}
 }
-
 function scrollDetectionFunc(){
 	contentScrollTop = $(this).scrollTop();
 	//check if there is more than 1 point
@@ -215,7 +197,6 @@ function scrollDetectionFunc(){
 		}
 	}
 }
-
 function setURL(){
 	if (history && history.pushState) {
 		var newAddress = "/";
@@ -229,34 +210,28 @@ function setURL(){
 		_gaq.push(['_trackPageview', gaAddress ]);
 	}
 }
-
 function jumpToLocation(){
 	$("#content").scrollTop($("#"+currentHashEl).offset().top + $("#content").scrollTop());
 }
+function trackOutboundLink(link, category, action) {
+	try {
+		_gaq.push(['_trackEvent', category , action]);
+	} catch(err){}
 
-function trackOutboundLink(link, category, action) { 
- 
-try { 
-_gaq.push(['_trackEvent', category , action]); 
-} catch(err){}
- 
-setTimeout(function() {
-document.location.href = link.href;
-}, 100);
+	setTimeout(function() {document.location.href = link.href;}, 100);
 }
 
 var link = document.getElementById('my-link-id');
 
 //Google Analytics Snippet
 var _gaq = _gaq || [];
-
 _gaq.push(['_setAccount', 'UA-39447542-1']);
 _gaq.push(['_setDomainName', 'none']);
 
 (function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
 
@@ -343,7 +318,6 @@ var from05 = {"data":[
 		interAction:["mouseover","mouseout"]
 	}
 	]}
-
 var from06 = {"data":[
 	{
 		name:"SUBIR JHAVERI",
@@ -592,9 +566,7 @@ var from10 = {"data":[
 		icon: 5,
 		description:"Gilette Children's Specialty Healthcare",
 		interAction:["mouseover","mouseout"]
-	}
-]}
-
+	}]}
 var from11 = {"data":[
 	{
 		name:"ZAID AL-AUBAIDI",
@@ -645,7 +617,6 @@ var from11 = {"data":[
 		interAction:["mouseover","mouseout"]
 	}
 	]}
-
 var from12 = {"data":[
 	{
 		name:"Brant Sachleben",
@@ -694,7 +665,9 @@ var from12 = {"data":[
 		icon: 7,
 		description:"Royal Manchester Children Hospital",
 		interAction:["mouseover","mouseout"]
-	}
-]}
+	}]}
+
+
+
 
 

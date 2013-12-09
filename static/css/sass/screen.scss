@@ -661,9 +661,13 @@ h3 {
 }
 #zoom-button-container a{
 	display: inline-block;
-	padding: 2em;
+	padding: 0.15em 0.85em 0.15em 0.85em;
+	margin: 0 0 0.5em 0;
 	text-decoration: none;
-	background: $normalBackground;
+	background: $sk-red;
+	color: #fff;
+	font-weight: 600;
+	font-size: 2em;
 }
 #zoom-button-container a:hover{
 	background-color: $hover_button;

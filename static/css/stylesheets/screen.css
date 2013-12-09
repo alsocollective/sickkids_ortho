@@ -786,29 +786,33 @@ h3 {
 /* line 662, ../sass/screen.scss */
 #zoom-button-container a {
   display: inline-block;
-  padding: 2em;
+  padding: 0.15em 0.85em 0.15em 0.85em;
+  margin: 0 0 0.5em 0;
   text-decoration: none;
-  background: white;
+  background: #ea636e;
+  color: #fff;
+  font-weight: 600;
+  font-size: 2em;
 }
 
-/* line 668, ../sass/screen.scss */
+/* line 672, ../sass/screen.scss */
 #zoom-button-container a:hover {
   background-color: #ca444e;
 }
 
-/* line 673, ../sass/screen.scss */
+/* line 677, ../sass/screen.scss */
 #contact-maps {
   width: 100%;
   height: 600px;
 }
 
-/* line 678, ../sass/screen.scss */
+/* line 682, ../sass/screen.scss */
 .infobubble-bk {
   color: #fff;
   font-weight: 700 !important;
 }
 
-/* line 683, ../sass/screen.scss */
+/* line 687, ../sass/screen.scss */
 .gmap-overlay {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
 }

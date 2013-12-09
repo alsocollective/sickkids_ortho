@@ -220,10 +220,6 @@ To start the map, should only be called once the map api has been loaded, which 
 			zoomControl: settings.zoomControl,
 			zoomControlOptions: settings.zoomControlOptions,
 			scrollwheel: false,
-			zoomControl: true,
-			    zoomControlOptions: {
-			      style: google.maps.ZoomControlStyle.SMALL
-			    }
 		}
 		if(settings.mapStyles){
 			if(settings.debugMode){
@@ -544,7 +540,7 @@ Be sure to create the icon types before loading.
 
 		var zoomOut = document.createElement("a");
 		zoomOut.id = "zoom-out";
-		zoomOut.innerHTML = "-";
+		zoomOut.innerHTML = "&ndash;";
 		zoomOut.href="#zoomout";
 		$(zoomOut).click(function(event){
 			event.preventDefault();

@@ -6,6 +6,7 @@
 */
 
 var slideMenu;
+
 $(window).load(function() {
 	if($(window).width()>mobileWidth){
 		slideMenu = $("#nav").pullSlider({inmode:false});
@@ -14,6 +15,7 @@ $(window).load(function() {
 	}
 
 	bringOutStaticBackground();
+	$("#nav").removeClass('no-opac');
 
 	$(window).on("resize",function(){
 		if($(window).width()>mobileWidth){
@@ -34,9 +36,9 @@ $(window).load(function() {
 // 	},500);
 // })
 
-// $( window ).resize(function() {
-// 	resizeRows();
-// });
+$( window ).resize(function() {
+	resizeRows();
+});
 
 
 function resizeRows(){

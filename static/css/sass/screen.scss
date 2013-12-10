@@ -150,6 +150,10 @@ img.absolute{
 	background-size: inherit;
 }
 
+.disable-hover{
+	pointer-events: none;
+}
+
 @include breakpoint(phone) {
 	.background {
 		background-size: 90%;
@@ -185,6 +189,7 @@ img.absolute{
 		left: 0%;
 		// background-color: #fff;
 		overflow: scroll;
+		overflow-x: hidden;
 	}
 	.page > h1 {
 		padding-top: 2em;

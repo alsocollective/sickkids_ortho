@@ -469,7 +469,7 @@ Be sure to create the icon types before loading.
 						varience = 0.5;
 						if((lat1 == lat2 && lon1 == lon2) || (lat1 > lat2-varience && lat1 < lat2+varience && lon1 > lon2-varience && lon1 < lon2+varience )){
 							if(a != b){
-								console.log(json.data[a].lat)
+								//console.log(json.data[a].lat)
 							}
 							marks.push(json.data[b]);
 						}

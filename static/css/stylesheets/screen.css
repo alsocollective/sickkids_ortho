@@ -28,7 +28,7 @@ body {
   -o-transition: all 0.2s;
 }
 
-/* line 17, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -50,45 +50,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -583,90 +583,54 @@ h1 {
 }
 
 /* Custom Sections */
-<<<<<<< HEAD
 /* line 473, ../sass/screen.scss */
-#faculty-bios ul {
-  margin: 0 0 1em 0;
-}
-/* line 476, ../sass/screen.scss */
-=======
-/* line 468, ../sass/screen.scss */
 #faculty-bios img {
   padding-top: 4em;
 }
-/* line 471, ../sass/screen.scss */
+/* line 476, ../sass/screen.scss */
 #faculty-bios ul {
   margin: 0 0 1em 0;
 }
-/* line 474, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 479, ../sass/screen.scss */
 #faculty-bios blockquote {
   font-size: 1em;
   font-style: italic;
   margin: 1em 0 0 0;
   color: #ea636e;
 }
-<<<<<<< HEAD
-/* line 482, ../sass/screen.scss */
-=======
-/* line 480, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 485, ../sass/screen.scss */
 #faculty-bios h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
   text-transform: uppercase;
   text-decoration: underline;
 }
-<<<<<<< HEAD
-/* line 488, ../sass/screen.scss */
-#faculty-bios h4 {
-  margin: 1.4em 0 0.4em 0;
-}
-/* line 493, ../sass/screen.scss */
-=======
-/* line 486, ../sass/screen.scss */
-#faculty-bios h4 {
-  margin: 1.4em 0 0.4em 0;
-}
 /* line 491, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+#faculty-bios h4 {
+  margin: 1.4em 0 0.4em 0;
+}
+/* line 496, ../sass/screen.scss */
 #faculty-bios .row div > div:nth-child(2) div:nth-child(1) {
   z-index: 1;
 }
 
-<<<<<<< HEAD
-/* line 500, ../sass/screen.scss */
-=======
-/* line 498, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 503, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 {
   background-size: 50%;
   background-color: #777;
 }
-<<<<<<< HEAD
-/* line 503, ../sass/screen.scss */
-=======
-/* line 501, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 506, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol {
   counter-reset: list-counter;
   list-style: none;
   font-size: 0.8em;
   color: #fff;
 }
-<<<<<<< HEAD
-/* line 508, ../sass/screen.scss */
-#faculty-presentations-and-courses-20122013 ol li {
-  margin: 0 0 0.5em 0;
-}
 /* line 511, ../sass/screen.scss */
-=======
-/* line 506, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol li {
   margin: 0 0 0.5em 0;
 }
-/* line 509, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 514, ../sass/screen.scss */
 #faculty-presentations-and-courses-20122013 ol li:before {
   content: counter(list-counter) ".";
   counter-increment: list-counter;
@@ -678,57 +642,33 @@ h1 {
   text-align: right;
 }
 
-<<<<<<< HEAD
-/* line 525, ../sass/screen.scss */
-=======
-/* line 523, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 528, ../sass/screen.scss */
 #contact-information .row {
   background-color: rgba(255, 255, 255, 0.5);
   padding-bottom: 2em;
 }
 
-<<<<<<< HEAD
-/* line 532, ../sass/screen.scss */
-=======
-/* line 530, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 535, ../sass/screen.scss */
 .fellowship #about-fellowship, .fellowship #curriculum, .fellowship #research-opportunities, .fellowship #fellow-publications, .fellowship #fellowships-available, .fellowship #social-events {
   padding: 2em 0 4em 0;
 }
 
-<<<<<<< HEAD
-/* line 538, ../sass/screen.scss */
+/* line 541, ../sass/screen.scss */
 #curriculum {
   background-color: #666;
 }
-/* line 540, ../sass/screen.scss */
-=======
-/* line 536, ../sass/screen.scss */
-#curriculum {
-  background-color: #666;
-}
-/* line 538, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 543, ../sass/screen.scss */
 #curriculum ol {
   counter-reset: list-counter;
   list-style: none;
   font-size: 0.8em;
   color: #fff;
 }
-<<<<<<< HEAD
-/* line 545, ../sass/screen.scss */
-#curriculum ol li {
-  margin: 0 0 0.5em 0;
-}
 /* line 548, ../sass/screen.scss */
-=======
-/* line 543, ../sass/screen.scss */
 #curriculum ol li {
   margin: 0 0 0.5em 0;
 }
-/* line 546, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 551, ../sass/screen.scss */
 #curriculum ol li:before {
   content: counter(list-counter) ".";
   counter-increment: list-counter;
@@ -740,40 +680,24 @@ h1 {
   text-align: right;
 }
 
-<<<<<<< HEAD
-/* line 562, ../sass/screen.scss */
-=======
-/* line 560, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 565, ../sass/screen.scss */
 #selected-faculty-publications-20122013 h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
   text-transform: uppercase;
   text-decoration: underline;
 }
-<<<<<<< HEAD
-/* line 569, ../sass/screen.scss */
-=======
-/* line 567, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 572, ../sass/screen.scss */
 #selected-faculty-publications-20122013 ol li {
   margin: 0 0 1em 0;
 }
 
-<<<<<<< HEAD
-/* line 575, ../sass/screen.scss */
-=======
-/* line 573, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 578, ../sass/screen.scss */
 #previous-annuals {
   text-align: center;
   font-size: 1em;
 }
-<<<<<<< HEAD
-/* line 579, ../sass/screen.scss */
-=======
-/* line 577, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 582, ../sass/screen.scss */
 #previous-annuals img {
   width: 100%;
   box-shadow: 0px 0px 15px #999;
@@ -781,29 +705,17 @@ h1 {
 }
 
 /* Custom Padding */
-<<<<<<< HEAD
-/* line 587, ../sass/screen.scss */
-=======
-/* line 585, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 590, ../sass/screen.scss */
 #pre-requisites {
   padding-bottom: 4em;
 }
 
-<<<<<<< HEAD
-/* line 591, ../sass/screen.scss */
-=======
-/* line 589, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 594, ../sass/screen.scss */
 a {
   color: #ea636e;
 }
 
-<<<<<<< HEAD
-/* line 595, ../sass/screen.scss */
-=======
-/* line 593, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 598, ../sass/screen.scss */
 h3 {
   font-weight: 700;
   margin: 1em 0 0.6em 0;
@@ -811,19 +723,11 @@ h3 {
   text-decoration: underline;
 }
 
-<<<<<<< HEAD
-/* line 603, ../sass/screen.scss */
+/* line 606, ../sass/screen.scss */
 #about .sub-row {
   text-align: center;
 }
-/* line 609, ../sass/screen.scss */
-=======
-/* line 601, ../sass/screen.scss */
-#about .sub-row {
-  text-align: center;
-}
-/* line 607, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 612, ../sass/screen.scss */
 #about h5 {
   font-weight: 700;
   font-size: 3.5em;
@@ -832,63 +736,35 @@ h3 {
   margin: 0.25em 0 0 0;
 }
 
-<<<<<<< HEAD
-/* line 620, ../sass/screen.scss */
-=======
-/* line 618, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 623, ../sass/screen.scss */
 #about-fellowship .vert-top {
   vertical-align: top;
   padding-top: 0.45em;
 }
-<<<<<<< HEAD
-/* line 626, ../sass/screen.scss */
+/* line 629, ../sass/screen.scss */
 #about-fellowship colgroup #row-one {
   width: 5%;
-}
-/* line 629, ../sass/screen.scss */
-#about-fellowship colgroup #row-two {
-  width: 15%;
 }
 /* line 632, ../sass/screen.scss */
-#about-fellowship colgroup #row-three {
-  width: 30%;
-}
-/* line 635, ../sass/screen.scss */
-#about-fellowship colgroup #row-four {
-  width: 10%;
-}
-/* line 639, ../sass/screen.scss */
-=======
-/* line 624, ../sass/screen.scss */
-#about-fellowship colgroup #row-one {
-  width: 5%;
-}
-/* line 627, ../sass/screen.scss */
 #about-fellowship colgroup #row-two {
   width: 15%;
 }
-/* line 630, ../sass/screen.scss */
+/* line 635, ../sass/screen.scss */
 #about-fellowship colgroup #row-three {
   width: 30%;
 }
-/* line 633, ../sass/screen.scss */
+/* line 638, ../sass/screen.scss */
 #about-fellowship colgroup #row-four {
   width: 10%;
 }
-/* line 637, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 642, ../sass/screen.scss */
 #about-fellowship .tr-no-dots {
   height: 2em;
   border-bottom: none;
 }
 
 /* Media Queries */
-<<<<<<< HEAD
-/* line 646, ../sass/screen.scss */
-=======
-/* line 644, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 649, ../sass/screen.scss */
 .nav-animate {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -897,22 +773,14 @@ h3 {
   transition: all 0.5s;
 }
 
-<<<<<<< HEAD
-/* line 651, ../sass/screen.scss */
-=======
-/* line 649, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 654, ../sass/screen.scss */
 #google-maps {
   width: 100%;
   height: 600px;
   position: relative;
 }
 
-<<<<<<< HEAD
-/* line 657, ../sass/screen.scss */
-=======
-/* line 655, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 660, ../sass/screen.scss */
 #zoom-button-container {
   position: absolute;
   bottom: 0;
@@ -921,11 +789,7 @@ h3 {
   text-align: center;
 }
 
-<<<<<<< HEAD
-/* line 664, ../sass/screen.scss */
-=======
-/* line 662, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 667, ../sass/screen.scss */
 #zoom-button-container a {
   display: inline-block;
   padding: 0.15em 0.85em 0.15em 0.85em;
@@ -937,48 +801,36 @@ h3 {
   font-size: 2em;
 }
 
-<<<<<<< HEAD
-/* line 670, ../sass/screen.scss */
-=======
-/* line 672, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 677, ../sass/screen.scss */
 #zoom-button-container a:hover {
   background-color: #ca444e;
 }
 
-<<<<<<< HEAD
-/* line 675, ../sass/screen.scss */
-=======
-/* line 677, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 682, ../sass/screen.scss */
 #contact-maps {
   width: 100%;
   height: 600px;
 }
 
-/* line 682, ../sass/screen.scss */
+/* line 687, ../sass/screen.scss */
 .infobubble-bk {
   color: #fff;
   font-weight: 700 !important;
 }
 
-<<<<<<< HEAD
-/* line 680, ../sass/screen.scss */
-=======
-/* line 687, ../sass/screen.scss */
->>>>>>> fb31d3ddbe4f0093c8aa1e897f0fbbabdbf4ce9a
+/* line 692, ../sass/screen.scss */
 .gmap-overlay {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 685, ../sass/screen.scss */
+/* line 697, ../sass/screen.scss */
 #tree-area {
   width: 100%;
   height: 600px;
   display: inline-block;
 }
 
-/* line 691, ../sass/screen.scss */
+/* line 703, ../sass/screen.scss */
 .node {
   /*border: solid 3px #adafb2;*/
   overflow: hidden;
@@ -986,7 +838,7 @@ h3 {
   text-indent: 0.2em;
 }
 
-/* line 698, ../sass/screen.scss */
+/* line 710, ../sass/screen.scss */
 .tree-chart {
   color: #fff;
   background-color: #adafb2;
@@ -997,98 +849,98 @@ h3 {
   height: 100%;
 }
 
-/* line 710, ../sass/screen.scss */
+/* line 722, ../sass/screen.scss */
 .tree-chart .trauma, #tree-key-chart .trauma {
   background-color: #4d4d4f;
 }
 
-/* line 713, ../sass/screen.scss */
+/* line 725, ../sass/screen.scss */
 .tree-chart .hip, #tree-key-chart .hip {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P8PHXmf97sdEYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVAE8dJWnM3wx9AAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 717, ../sass/screen.scss */
+/* line 729, ../sass/screen.scss */
 .tree-chart .spine, #tree-key-chart .spine {
   background-color: #f3959a;
 }
 
-/* line 720, ../sass/screen.scss */
+/* line 732, ../sass/screen.scss */
 .tree-chart .limb-reconstruction, #tree-key-chart .limb-reconstruction {
   background-color: #e9636e;
 }
 
-/* line 723, ../sass/screen.scss */
+/* line 735, ../sass/screen.scss */
 .tree-chart .neuromuscular, #tree-key-chart .neuromuscular {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P09fX/v3nzRkYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVANGsIcF5IIVwAAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 727, ../sass/screen.scss */
+/* line 739, ../sass/screen.scss */
 .tree-chart .tumor, #tree-key-chart .tumor {
   background-color: #772f36;
 }
 
-/* line 730, ../sass/screen.scss */
+/* line 742, ../sass/screen.scss */
 .tree-chart .foot--ankle, #tree-key-chart .foot--ankle {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2N8mZz3nwEIxOdOYgTRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFQPSQ0xS90rwAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 734, ../sass/screen.scss */
+/* line 746, ../sass/screen.scss */
 .tree-chart .infection, #tree-key-chart .infection {
   background-color: #6d6f71;
 }
 
-/* line 737, ../sass/screen.scss */
+/* line 749, ../sass/screen.scss */
 .tree-chart .sports, #tree-key-chart .sports {
   background-color: #ea757e;
 }
 
-/* line 740, ../sass/screen.scss */
+/* line 752, ../sass/screen.scss */
 .tree-chart .upper-limb, #tree-key-chart .upper-limb {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2OcPHXGfwYgyM3OYATRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFXGyRG9SijbgAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 744, ../sass/screen.scss */
+/* line 756, ../sass/screen.scss */
 .tree-chart .genetic-and-metabolic, #tree-key-chart .genetic-and-metabolic {
   background-color: #939598;
 }
 
-/* line 748, ../sass/screen.scss */
+/* line 760, ../sass/screen.scss */
 #tree-key-chart {
   display: inline-block;
   margin: 0;
   padding: 0;
 }
 
-/* line 753, ../sass/screen.scss */
+/* line 765, ../sass/screen.scss */
 li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 758, ../sass/screen.scss */
+/* line 770, ../sass/screen.scss */
 li div, li h3 {
   padding: 0;
   margin: 0;
   display: inline-block;
 }
 
-/* line 763, ../sass/screen.scss */
+/* line 775, ../sass/screen.scss */
 .list-icon {
   width: 50px;
   height: 50px;
 }
 
-/* line 769, ../sass/screen.scss */
+/* line 781, ../sass/screen.scss */
 .tree-chart .tree-graph-heigh-lighted {
   color: #fc0;
 }
 
-/* line 772, ../sass/screen.scss */
+/* line 784, ../sass/screen.scss */
 #tree-key-chart li.tree-graph-heigh-lighted {
   background-color: #fc0;
 }

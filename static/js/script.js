@@ -107,6 +107,8 @@ function loadNextPage(address){
 		newPage = "/ajax/index/";
 	}
 	var nextpage = $("#next-page");
+	slideMenu.refindHeight();
+
 	nextpage.load(newPage,function(){
 
 		this.style.left = "0%";
@@ -173,7 +175,6 @@ function resetTheNames() {
 	newSubnav.className = "";
 	setupNavClicks(newSubnav);
 
-	slideMenu.refindHeight();
 	bringOutStaticBackground();
 
 	loading = false;

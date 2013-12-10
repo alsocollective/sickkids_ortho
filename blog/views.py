@@ -146,7 +146,7 @@ def getSections(request,sections,AllTexts,AllImages,AllSections,meta):
 			"showInSidebar":section.show_in_sidebar,
 			"fullPage":section.fullPage,
 		}
-		if section.backgroundImage:
+		if section.backgroundImage and not request.is_phone:
 			smallout["bk"] = section.backgroundImage
 		out.append(smallout)
 	return out

@@ -108,7 +108,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'microdetector.Middleware',
+    # 'microdetector.Middleware',
+    'mobileesp.middleware.MobileDetectionMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     # Uncomment the next line for simple clickjacking protection:

@@ -48,7 +48,7 @@ def sortbycoloums(inlist):
 	return outList
 
 def getElements(textObject, imageObject,subSections, cc, request, AllTexts, AllImages):
-	texts = getTextElements(textObject,cc)
+	texts = getTextElements(textObject,cc,request)
 	images = getImageElements(imageObject,cc,request)
 	sections = []
 	if subSections:
@@ -64,40 +64,42 @@ def getElements(textObject, imageObject,subSections, cc, request, AllTexts, AllI
 	combined.sort(numberic_compare)
 	return combined
 
-def getTextElements(textObject,cC):
+def getTextElements(textObject,cC,request):
 	textOut = []
 	for text in textObject:
-		textOut.append({
-			"paragraph":text.paragraph,
-			"subTitle":text.subTitle,
-			"coloum":(text.coloum_from+0.0)/cC*100,
-			"coloumWidth":(text.coloum_to - text.coloum_from+0.0)/cC*100,
-			"order":text.order_of_content,
-			"type":"text",
-			})
+		if( request.is_phone is text.show_on_mobile and text.show_on_mobile or request.is_tablet is text.show_on_tablet and text.show_on_tablet or request.is_mobile is not text.show_on_desktop and text.show_on_desktop):
+			textOut.append({
+				"paragraph":text.paragraph,
+				"subTitle":text.subTitle,
+				"coloum":(text.coloum_from+0.0)/cC*100,
+				"coloumWidth":(text.coloum_to - text.coloum_from+0.0)/cC*100,
+				"order":text.order_of_content,
+				"type":"text",
+				})
 	return textOut
 
 def getImageElements(imageObject,cC,request):
 	imageOut = []
 	for image in imageObject:
-		locDic = {
-			"coloum":(image.coloum_from+0.0)/cC*100,
-			"coloumWidth":(image.coloum_to - image.coloum_from+0.0)/cC*100,
-			"order":image.order_of_content,
-			"type":"image",
-			"imageAlt":image.alternate_info,
-			}
-		if(False):#request.mobile):
-			front = ""
-			splited = str(image.payload).split("/")
-			end = splited[len(splited)-1]
-			for a in range(len(splited)-1):
-				front = front + "/" + splited[a]
-			front = front[1:]
-			locDic["image"] = front+"/mobile"+end
-		else:
-			locDic["image"] = str(image.payload)
-		imageOut.append(locDic)
+		if( request.is_phone is image.show_on_mobile and image.show_on_mobile or request.is_tablet is image.show_on_tablet and image.show_on_tablet or request.is_mobile is not image.show_on_desktop and image.show_on_desktop):
+			locDic = {
+				"coloum":(image.coloum_from+0.0)/cC*100,
+				"coloumWidth":(image.coloum_to - image.coloum_from+0.0)/cC*100,
+				"order":image.order_of_content,
+				"type":"image",
+				"imageAlt":image.alternate_info,
+				}
+			if(False):#request.mobile):
+				front = ""
+				splited = str(image.payload).split("/")
+				end = splited[len(splited)-1]
+				for a in range(len(splited)-1):
+					front = front + "/" + splited[a]
+				front = front[1:]
+				locDic["image"] = front+"/mobile"+end
+			else:
+				locDic["image"] = str(image.payload)
+			imageOut.append(locDic)
 	return imageOut
 
 def getSubSections(subSections,cC,request,AllTexts,AllImages):
@@ -127,28 +129,30 @@ def getSections(request,sections,AllTexts,AllImages,AllSections,meta):
 	out = []
 
 	for section in sections:
-		texts = AllTexts.filter(parent = section)
-		images = AllImages.filter(parent = section)
-		subSections = AllSections.filter(sectionField = section)
+		if( request.is_phone is section.show_on_mobile and section.show_on_mobile or request.is_tablet is section.show_on_tablet and section.show_on_tablet or request.is_mobile is not section.show_on_desktop and section.show_on_desktop):
 
-		smallout = {
-			"title":section.title,
-			"showTitle":section.show_title,
-			"subTitle":section.subTitle,
-			"showSubTitle":section.show_subTitle,
-			"slug":section.slug,
-			"order":section.order_of_section,
-			"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
-			"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
-			"coloumCount":section.coloum_to,
-			"content":getRowsOfEl(texts,images,subSections,section.coloum_to,request,AllTexts,AllImages),
-			# "content":getRowsOfEl(texts,images,meta["coloumcount"],request),
-			"showInSidebar":section.show_in_sidebar,
-			"fullPage":section.fullPage,
-		}
-		if section.backgroundImage and not request.is_phone:
-			smallout["bk"] = section.backgroundImage
-		out.append(smallout)
+			texts = AllTexts.filter(parent = section)
+			images = AllImages.filter(parent = section)
+			subSections = AllSections.filter(sectionField = section)
+
+			smallout = {
+				"title":section.title,
+				"showTitle":section.show_title,
+				"subTitle":section.subTitle,
+				"showSubTitle":section.show_subTitle,
+				"slug":section.slug,
+				"order":section.order_of_section,
+				"coloum":(section.coloum_from+0.0)/meta["coloumcount"]*100,
+				"coloumWidth":(section.coloum_to - section.coloum_from+0.0)/meta["coloumcount"]*100,
+				"coloumCount":section.coloum_to,
+				"content":getRowsOfEl(texts,images,subSections,section.coloum_to,request,AllTexts,AllImages),
+				# "content":getRowsOfEl(texts,images,meta["coloumcount"],request),
+				"showInSidebar":section.show_in_sidebar,
+				"fullPage":section.fullPage,
+			}
+			if section.backgroundImage and not request.is_phone:
+				smallout["bk"] = section.backgroundImage
+			out.append(smallout)
 	return out
 
 def combineSection(sections):

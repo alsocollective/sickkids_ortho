@@ -130,7 +130,7 @@ $.fn.Jmap = function( options ) {
 		selectedElement: this[0],
 
 		//Controls
-		zoomControl: false,
+		zoomControl:false,
 
 		locationLat:-34.397,
 		locaiotnLon:150.644,
@@ -152,7 +152,7 @@ $.fn.Jmap = function( options ) {
 		//infobubble styles
 		infoShadowStyle: 0, //either 0, 1, or 3
 		infoPadding: 5,
-		infoBackgroundColor: 'rgb(255,255,255)',
+		infoBackgroundColor: 'rgb(82,22,26)',
 		infoBorderRadius: 0,
 		infoArrowSize: 12,
 		infoBorderWidth: 0,
@@ -162,7 +162,7 @@ $.fn.Jmap = function( options ) {
 		infoBackgroundClassName: 'infobubble-bk',
 		infoArrowStyle: 2,
 		infoDisableAnimation:true,
-		infoDisableAutoPan: false,
+		infoDisableAutoPan:false,
 
 		//Marker object
 		makerCluster:null,
@@ -215,15 +215,11 @@ To start the map, should only be called once the map api has been loaded, which 
 			center: new google.maps.LatLng(settings.locationLat,settings.locaiotnLon),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI: true,
-			maxZoom:10,
+			maxZoom:30,
 			minZoom:settings.minZoom,
 			zoomControl: settings.zoomControl,
 			zoomControlOptions: settings.zoomControlOptions,
 			scrollwheel: false,
-			zoomControl: true,
-			    zoomControlOptions: {
-			      style: google.maps.ZoomControlStyle.SMALL
-			    }
 		}
 		if(settings.mapStyles){
 			if(settings.debugMode){
@@ -326,7 +322,9 @@ You can use origin on a sprite sheet to use one image for all your icons
 			icon.scale = values.scale;
 		}
 		icon.strokeWeight = values.strokeWeight;
-		icon.anchor = {x:(5.5) , y:(14.5)};
+		if(!icon.url){
+			icon.anchor = {x:(5.5) , y:(14.5)};
+		}
 
 
 		var marker =  new google.maps.Marker({
@@ -541,7 +539,7 @@ Be sure to create the icon types before loading.
 
 		var zoomOut = document.createElement("a");
 		zoomOut.id = "zoom-out";
-		zoomOut.innerHTML = "-";
+		zoomOut.innerHTML = "&ndash;";
 		zoomOut.href="#zoomout";
 		$(zoomOut).click(function(event){
 			event.preventDefault();

@@ -362,17 +362,17 @@ treeChart.setup();
 */
 
 var treeData = {"name":"Number of Procedures", "children": [
-	{"name": "Trauma", "size": 325, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Hip", "size": 161, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Spine", "size": 141, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Limb Reconstruction", "size": 140, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Neuromuscular", "size": 135, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Tumor", "size": 128, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Foot & Ankle", "size": 123, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Infection", "size": 81, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Sports", "size": 71, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Upper Limb", "size": 50, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Genetic and Metabolic", "size": 35, "info":"dsfdsfdfsasdfasdfafsdasdf"}
+	{"name": "Trauma", "size": 325, "info":"Single level reconstruction, complex polytrauma, SCFE."},
+	{"name": "Hip", "size": 161, "info":"Hip relocation, Innominate osteotomy, periacetabular osteotomies, Wedge pelvic & femoral osteotomies, Wagner double osteotomy, articulated hip distraction, surgical hip dislocation."},
+	{"name": "Spine", "size": 141, "info":"Congenital and idiopathic spine deformity correction, anterior and posterior surgery, direct vertebral derotation, VEPTR, complex osteotomy and instrumentation."},
+	{"name": "Limb Reconstruction", "size": 140, "info":"Limb lengthening, Ilizarov & Taylor Spatial Frame application. monolateral frame application, multifocal osteotomies, Super-joint procedures, Blount’s reconstruction, pelvic support osteotomy."},
+	{"name": "Neuromuscular", "size": 135, "info":"Cerebral palsy soft tissue management, osteotomies, and single event multi-level surgery."},
+	{"name": "Tumor", "size": 128, "info":"Benign and malignant tumour resection, limb salvage, biological and endoprosthetic reconstruction, muscle flaps. Rotationplasty."},
+	{"name": "Foot & Ankle", "size": 123, "info":"Hindfoot osteotomies, midfoot osteotomies, forefoot osteotomies, resection of coalition, arthrodesis."},
+	{"name": "Infection", "size": 81, "info":"Irrigation and debridement, arthrotomy."},
+	{"name": "Sports", "size": 71, "info":"Arthroscopy, sports injuries, osteochondral reconstruction, all epiphyseal ACL reconstruction, meniscal repair, labral repair."},
+	{"name": "Upper Limb", "size": 50, "info":"Brachial plexus palsy sequelae reconstruction, glenoid osteotomy, tendon transfers, MHE wrist reconstruction."},
+	{"name": "Genetic and Metabolic", "size": 35, "info":"OI osteotomy and telescopic rodding. Skeletal dysplasia reconstruction, rickets reconstruction."}
 ]}
 
 

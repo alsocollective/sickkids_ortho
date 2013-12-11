@@ -1515,79 +1515,80 @@ h3 {
 /* line 1309, ../sass/screen.scss */
 #tree-key-chart .other {
   width: calc(100% - 30px );
+  display: inline;
 }
 
-/* line 1314, ../sass/screen.scss */
+/* line 1315, ../sass/screen.scss */
 .tree-chart .trauma, #tree-key-chart .trauma {
   background-color: #4d4d4f;
 }
 
-/* line 1317, ../sass/screen.scss */
+/* line 1318, ../sass/screen.scss */
 .tree-chart .hip, #tree-key-chart .hip {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P8PHXmf97sdEYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVAE8dJWnM3wx9AAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 1321, ../sass/screen.scss */
+/* line 1322, ../sass/screen.scss */
 .tree-chart .spine, #tree-key-chart .spine {
   background-color: #f3959a;
 }
 
-/* line 1324, ../sass/screen.scss */
+/* line 1325, ../sass/screen.scss */
 .tree-chart .limb-reconstruction, #tree-key-chart .limb-reconstruction {
   background-color: #e9636e;
 }
 
-/* line 1327, ../sass/screen.scss */
+/* line 1328, ../sass/screen.scss */
 .tree-chart .neuromuscular, #tree-key-chart .neuromuscular {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P09fX/v3nzRkYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVANGsIcF5IIVwAAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 1331, ../sass/screen.scss */
+/* line 1332, ../sass/screen.scss */
 .tree-chart .tumor, #tree-key-chart .tumor {
   background-color: #772f36;
 }
 
-/* line 1334, ../sass/screen.scss */
+/* line 1335, ../sass/screen.scss */
 .tree-chart .foot--ankle, #tree-key-chart .foot--ankle {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2N8mZz3nwEIxOdOYgTRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFQPSQ0xS90rwAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 1338, ../sass/screen.scss */
+/* line 1339, ../sass/screen.scss */
 .tree-chart .infection, #tree-key-chart .infection {
   background-color: #6d6f71;
 }
 
-/* line 1341, ../sass/screen.scss */
+/* line 1342, ../sass/screen.scss */
 .tree-chart .sports, #tree-key-chart .sports {
   background-color: #ea757e;
 }
 
-/* line 1344, ../sass/screen.scss */
+/* line 1345, ../sass/screen.scss */
 .tree-chart .upper-limb, #tree-key-chart .upper-limb {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2OcPHXGfwYgyM3OYATRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFXGyRG9SijbgAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 1348, ../sass/screen.scss */
+/* line 1349, ../sass/screen.scss */
 .tree-chart .genetic-and-metabolic, #tree-key-chart .genetic-and-metabolic {
   background-color: #939598;
 }
 
-/* line 1354, ../sass/screen.scss */
+/* line 1355, ../sass/screen.scss */
 .tree-chart .tree-graph-heigh-lighted {
   color: #fc0;
 }
 
-/* line 1357, ../sass/screen.scss */
+/* line 1358, ../sass/screen.scss */
 #tree-key-chart li.tree-graph-heigh-lighted {
   background-color: #fc0;
 }
 
 @media (max-width: 650px) {
-  /* line 1362, ../sass/screen.scss */
+  /* line 1363, ../sass/screen.scss */
   .hidden-nav {
     -webkit-opacity: 0;
     -moz-opacity: 0;
@@ -1595,7 +1596,7 @@ h3 {
     filter: alpha(opacity=0);
   }
 }
-/* line 1370, ../sass/screen.scss */
+/* line 1371, ../sass/screen.scss */
 .transition-all-2 {
   transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -1603,7 +1604,7 @@ h3 {
   -o-transition: all 0.5s;
 }
 
-/* line 1374, ../sass/screen.scss */
+/* line 1375, ../sass/screen.scss */
 .arc {
   color: #333;
 }

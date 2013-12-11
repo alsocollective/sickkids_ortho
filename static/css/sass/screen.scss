@@ -155,7 +155,7 @@ img.absolute{
 
 @include breakpoint(phone) {
 	.background {
-		background-size: 90%;
+		background-size: 200%;
 	}
 }
 
@@ -222,6 +222,18 @@ img.absolute{
 		color: $text_color_grey;
 		font-size: 2em;
 		margin-top: 3em;
+	}
+	
+	@include breakpoint(phone) {
+		blockquote{	
+			font-size: 1.6em;
+			margin-top:0;
+			color:#fff;
+		}
+		#blurb-2{
+			background-color: $sk-red;
+			padding: 1em 1em 1em 1em;
+		}
 	}
 	
 	.quoted {
@@ -530,6 +542,16 @@ img.absolute{
 	}
 }
 
+@include breakpoint(phone) {
+	#contact-information {
+		.row{
+			background-color: transparent;
+			padding-bottom: 2em;
+			text-align: center;
+		}
+	}
+}
+
 .fellowship {
 	#about-fellowship,#curriculum,#research-opportunities,#fellow-publications, #fellowships-available, #social-events{
 		padding: 2em 0 4em 0;
@@ -788,13 +810,15 @@ h3 {
 	background-color: #fc0;
 }
 
-
-.no-opac{
-	-webkit-opacity: 0;
-	-moz-opacity: 0;
-	opacity: 0;
-	filter:alpha(opacity=0);
+@include breakpoint(phone) {
+	.hidden-nav{
+		-webkit-opacity: 0;
+		-moz-opacity: 0;
+		opacity: 0;
+		filter:alpha(opacity=0);
+	}
 }
+
 .transition-all-2{
 	@include easyTransition(0.5s);
 }

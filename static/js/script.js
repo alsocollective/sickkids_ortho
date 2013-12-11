@@ -15,7 +15,7 @@ $(window).load(function() {
 	}
 
 	bringOutStaticBackground();
-	$("#nav").removeClass('no-opac');
+	$("#nav").removeClass('hidden-nav');
 
 	$(window).on("resize",function(){
 		if($(window).width()>mobileWidth){

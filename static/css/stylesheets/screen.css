@@ -247,7 +247,7 @@ img.absolute {
 @media (max-width: 650px) {
   /* line 157, ../sass/screen.scss */
   .background {
-    background-size: 90%;
+    background-size: 200%;
   }
 }
 /* line 162, ../sass/screen.scss */

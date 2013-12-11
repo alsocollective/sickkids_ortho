@@ -116,6 +116,7 @@ a standard start up includes:
 	@param {Boolean} [options.zoomControl] Toggle to control visibilty of zoom controls
 	@param {Object} [options.zoomControlOptions] Set various options for zoomo controls
 	@param {Object} [options.zoomControlOptions.style] Options include size and
+	@param {Boolean} [options.draggable] Toggle to control draggability
 **/
 
 var google = {};
@@ -131,6 +132,7 @@ $.fn.Jmap = function( options ) {
 
 		//Controls
 		zoomControl:false,
+		draggable: true,
 
 		locationLat:-34.397,
 		locaiotnLon:150.644,
@@ -220,6 +222,7 @@ To start the map, should only be called once the map api has been loaded, which 
 			zoomControl: settings.zoomControl,
 			zoomControlOptions: settings.zoomControlOptions,
 			scrollwheel: false,
+			draggable: settings.draggable,
 		}
 		if(settings.mapStyles){
 			if(settings.debugMode){

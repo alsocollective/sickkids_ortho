@@ -313,6 +313,7 @@ var circleSettings = {
 		.attr("dy", ".35em")
 		.style("text-anchor", "middle")
 		.style("display","none")
+		.attr("class","inner-text")
 		.text(function(d) { return d.data.name + " " + d.data.paper; });
 
 

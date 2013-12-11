@@ -1490,17 +1490,18 @@ h3 {
 }
 /* line 1292, ../sass/screen.scss */
 #tree-key-chart li {
-  margin: 0;
+  margin: 0.5em 0 0.5em 0;
   padding: 0;
   list-style: none;
 }
 /* line 1297, ../sass/screen.scss */
 #tree-key-chart li div, #tree-key-chart li h3 {
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 0.5em;
   display: inline-block;
+  vertical-align: middle;
 }
-/* line 1302, ../sass/screen.scss */
+/* line 1303, ../sass/screen.scss */
 #tree-key-chart .list-icon {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1511,82 +1512,82 @@ h3 {
   height: 30px;
   background-color: #adafb2;
 }
-/* line 1308, ../sass/screen.scss */
+/* line 1309, ../sass/screen.scss */
 #tree-key-chart .other {
   width: calc(100% - 30px );
 }
 
-/* line 1313, ../sass/screen.scss */
+/* line 1314, ../sass/screen.scss */
 .tree-chart .trauma, #tree-key-chart .trauma {
   background-color: #4d4d4f;
 }
 
-/* line 1316, ../sass/screen.scss */
+/* line 1317, ../sass/screen.scss */
 .tree-chart .hip, #tree-key-chart .hip {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P8PHXmf97sdEYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVAE8dJWnM3wx9AAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 1320, ../sass/screen.scss */
+/* line 1321, ../sass/screen.scss */
 .tree-chart .spine, #tree-key-chart .spine {
   background-color: #f3959a;
 }
 
-/* line 1323, ../sass/screen.scss */
+/* line 1324, ../sass/screen.scss */
 .tree-chart .limb-reconstruction, #tree-key-chart .limb-reconstruction {
   background-color: #e9636e;
 }
 
-/* line 1326, ../sass/screen.scss */
+/* line 1327, ../sass/screen.scss */
 .tree-chart .neuromuscular, #tree-key-chart .neuromuscular {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P09fX/v3nzRkYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVANGsIcF5IIVwAAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 1330, ../sass/screen.scss */
+/* line 1331, ../sass/screen.scss */
 .tree-chart .tumor, #tree-key-chart .tumor {
   background-color: #772f36;
 }
 
-/* line 1333, ../sass/screen.scss */
+/* line 1334, ../sass/screen.scss */
 .tree-chart .foot--ankle, #tree-key-chart .foot--ankle {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2N8mZz3nwEIxOdOYgTRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFQPSQ0xS90rwAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 1337, ../sass/screen.scss */
+/* line 1338, ../sass/screen.scss */
 .tree-chart .infection, #tree-key-chart .infection {
   background-color: #6d6f71;
 }
 
-/* line 1340, ../sass/screen.scss */
+/* line 1341, ../sass/screen.scss */
 .tree-chart .sports, #tree-key-chart .sports {
   background-color: #ea757e;
 }
 
-/* line 1343, ../sass/screen.scss */
+/* line 1344, ../sass/screen.scss */
 .tree-chart .upper-limb, #tree-key-chart .upper-limb {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2OcPHXGfwYgyM3OYATRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFXGyRG9SijbgAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 1347, ../sass/screen.scss */
+/* line 1348, ../sass/screen.scss */
 .tree-chart .genetic-and-metabolic, #tree-key-chart .genetic-and-metabolic {
   background-color: #939598;
 }
 
-/* line 1353, ../sass/screen.scss */
+/* line 1354, ../sass/screen.scss */
 .tree-chart .tree-graph-heigh-lighted {
   color: #fc0;
 }
 
-/* line 1356, ../sass/screen.scss */
+/* line 1357, ../sass/screen.scss */
 #tree-key-chart li.tree-graph-heigh-lighted {
   background-color: #fc0;
 }
 
 @media (max-width: 650px) {
-  /* line 1361, ../sass/screen.scss */
+  /* line 1362, ../sass/screen.scss */
   .hidden-nav {
     -webkit-opacity: 0;
     -moz-opacity: 0;
@@ -1594,7 +1595,7 @@ h3 {
     filter: alpha(opacity=0);
   }
 }
-/* line 1369, ../sass/screen.scss */
+/* line 1370, ../sass/screen.scss */
 .transition-all-2 {
   transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -1602,7 +1603,7 @@ h3 {
   -o-transition: all 0.5s;
 }
 
-/* line 1373, ../sass/screen.scss */
+/* line 1374, ../sass/screen.scss */
 .arc {
   color: #333;
 }

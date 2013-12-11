@@ -1269,7 +1269,6 @@ h3 {
 }
 
 .node {
-	/*border: solid 3px #adafb2;*/
 	overflow: hidden;
 	position: absolute;
 	text-indent: 0.2em;
@@ -1285,7 +1284,31 @@ h3 {
 	height: 100%;
 }
 
-
+#tree-key-chart{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li div, li h3{
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+	}
+	.list-icon{
+		@include vendorize(border-radius,50%);
+		width: 30px;
+		height: 30px;
+		background-color: #adafb2;
+	}
+	.other{
+		width: calc( 100% - 30px );
+	}
+}
 
 .tree-chart .trauma, #tree-key-chart .trauma{
 	background-color: #4d4d4f;
@@ -1325,25 +1348,6 @@ h3 {
 	background-color: #939598;
 }
 
-#tree-key-chart{
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-}
-li{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-li div, li h3{
-	padding: 0;
-	margin: 0;
-	display: inline-block;
-}
-.list-icon{
-	width: 50px;
-	height: 50px;
-}
 
 
 .tree-chart .tree-graph-heigh-lighted{

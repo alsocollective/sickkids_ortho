@@ -61,6 +61,9 @@ class Section(models.Model):
 
 	sectionField = models.ForeignKey("self", null=True)
 
+	show_on_desktop = models.BooleanField(default=True)
+	show_on_tablet = models.BooleanField(default=True)
+	show_on_mobile = models.BooleanField(default=True)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
@@ -89,6 +92,10 @@ class Text(models.Model):
 
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True)
+
+	show_on_desktop = models.BooleanField(default=True)
+	show_on_tablet = models.BooleanField(default=True)
+	show_on_mobile = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
 		datechanged = datetime.datetime.today()
@@ -120,6 +127,10 @@ class Image(models.Model):
 
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True)
+
+	show_on_desktop = models.BooleanField(default=True)
+	show_on_tablet = models.BooleanField(default=True)
+	show_on_mobile = models.BooleanField(default=True)
 
 	def showImage(self):
 		if self.payload:

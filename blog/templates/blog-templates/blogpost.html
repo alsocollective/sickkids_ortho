@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
 <html lang="en-ca">
 <head>
 	
@@ -6,10 +7,10 @@
 	<!-- 
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	-->
-	<script type="text/javascript" src="/static/js/d3.v3.min"></script>
-
+	<comment> <!--for ie 8 and above show this -->
+		<script type="text/javascript" src="/static/js/d3.v3.min"></script>
+	</comment>
 	<script type="text/javascript" src="/static/js/visualization.js"></script>
-
 	<!-- If we don't use this use the one above -->
 	<script type="text/javascript" src="//use.typekit.net/qyp0glx.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -18,7 +19,9 @@
 		
 	<script src="/static/js/j-map/j-map.js"></script>
 	<script src="/static/js/j-map/infobubble.js"></script>
-	<script src="/static/js/j-map/markerclusterer.js"></script>		
+	<script src="/static/js/j-map/markerclusterer.js"></script>
+	
+	<link rel="icon" type="image/png" href="/static/img/favicon.png">
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=10.0,user-scalable=no">
@@ -62,7 +65,7 @@
 	</style>
 </head>
 <body>
-<nav id="nav">
+<nav id="nav" class='hidden-nav'>
 	<img src="/static/img/sickkidslogo.png" alt="Home"/>{% for page in meta.pages %}{%if page.slug == "home"%}{%else%}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{%endif%}{% endfor %}
 	<div class="deviding-block"> </div>
 	<nav id="subnav">

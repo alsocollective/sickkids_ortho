@@ -17,7 +17,7 @@ $normalBackground: #fff;
 // @include breakpoint(huge) { background-color: #f00; }
 // @include breakpoint(tablet) { background-color: #0f0; }
 // @include breakpoint(phone) { background-color: #00f; }
-
+ 
 body,html{
 	width: 100%;
 	height: 100%;
@@ -145,14 +145,17 @@ img.absolute{
 .background{
 	background-position: center;
 	background-repeat: no-repeat;
-	@include vendorize(background-position, cover);
+	@include vendorize(background-size,cover);
 	z-index: -1;
-	background-size: inherit;
+}
+
+.disable-hover{
+	pointer-events: none;
 }
 
 @include breakpoint(phone) {
 	.background {
-		background-size: 90%;
+		background-size: 200%;
 	}
 }
 
@@ -185,6 +188,7 @@ img.absolute{
 		left: 0%;
 		// background-color: #fff;
 		overflow: scroll;
+		overflow-x: hidden;
 	}
 	.page > h1 {
 		padding-top: 2em;
@@ -778,4 +782,17 @@ li div, li h3{
 }
 #tree-key-chart li.tree-graph-heigh-lighted{
 	background-color: #fc0;
+}
+
+@include breakpoint(phone) {
+	.hidden-nav{
+		-webkit-opacity: 0;
+		-moz-opacity: 0;
+		opacity: 0;
+		filter:alpha(opacity=0);
+	}
+}
+
+.transition-all-2{
+	@include easyTransition(0.5s);
 }

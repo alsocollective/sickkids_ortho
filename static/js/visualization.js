@@ -2,6 +2,7 @@
 function showSameClassAsThisId(element){
 	if(!element.classList){
 		$("."+this.id).attr("class",this.id+" heighlight");
+		$(this).addClass(this.id+" heighlight");
 	} else {
 		$("."+element.classList[0]).attr("class",element.classList[0]+" heighlight");
 	}
@@ -63,9 +64,11 @@ var referrals = {
 			referrals.setupKeys();
 		});
 		$(window).resize(function(){
-			$(referrals.parentElement)[0].innerHTML = "";
-			referrals.updateSizes();
-			referrals.updateChart();
+			if($(referrals.parentElement)[0]){
+				$(referrals.parentElement)[0].innerHTML = "";
+				referrals.updateSizes();
+				referrals.updateChart();
+			}
 		});
 	},
 	updateChart:function(){
@@ -190,9 +193,11 @@ var circleSettings = {
 	},
 	load:function(){
 		$(window).on("resize",function(){
-			$(circleSettings.parentElement)[0].innerHTML = "";
-			circleSettings.updateSizes();
-			circleSettings.init();
+			if($(circleSettings.parentElement[0])){
+				$(circleSettings.parentElement)[0].innerHTML = "";
+				circleSettings.updateSizes();
+				circleSettings.init();
+			}
 		});
 		d3.json(circleSettings.dataLocation,function(data){
 			data.sort(circleSettings.dynamicSort("paper"));
@@ -335,6 +340,7 @@ var treeChart = {
 	dataLocation:"/static/data/2012-breakdown.json",
 	setup:function(){
 		treeChart.setWH();
+		console.log(treeChart.width,treeChart.height);
 		treeChart.treemap = d3.layout.treemap()
 			.size([treeChart.width, treeChart.height])
 			.sticky(true)
@@ -346,7 +352,10 @@ var treeChart = {
 		// d3.json(treeChart.dataLocation,treeChart.loadData);
 		treeChart.loadData("none",treeData);
 		treeChart.generateList();
-		// $(window).on("resize",treeChart.onResizeChart);
+		$(window).on("resize",function(){
+			console.log("yep");
+			treeChart.onResizeChart();
+		});
 	},
 	inputData:null,
 	divs:null,
@@ -381,6 +390,7 @@ var treeChart = {
 			listItem.appendChild(icon);
 
 			content = document.createElement("div");
+			content.className = "other";
 			listItem.appendChild(content);
 
 			header = document.createElement("h3");
@@ -415,17 +425,20 @@ var treeChart = {
 		treeChart.height = $(treeChart.location).outerHeight();
 	},
 	onResizeChart:function(){
-		treeChart.setWH();
-		treeChart.treemap.size([treeChart.width, treeChart.height]);
-		treeChart.parentDiv = d3.select(treeChart.location).append("div")
-			.style("width", (treeChart.width) + "px")
-			.style("height", (treeChart.height) + "px")
-			.attr("class","tree-chart");
-		treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
-			.data(treeChart.treemap(treeChart.inputData))
-			.enter().append("div")
-			.attr("class", function(d){return convertToSlug(d.name) + " node";})
-			.call(treeChart.setSize)
-			.text(function(d) { return d.size; });
+		if($(treeChart.location)[0]){
+			treeChart.setWH();
+			$(treeChart.location)[0].innerHTML = "";
+			treeChart.treemap.size([treeChart.width, treeChart.height]);
+			treeChart.parentDiv = d3.select(treeChart.location).append("div")
+				.style("width", (treeChart.width) + "px")
+				.style("height", (treeChart.height) + "px")
+				.attr("class","tree-chart");
+			treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
+				.data(treeChart.treemap(treeChart.inputData))
+				.enter().append("div")
+				.attr("class", function(d){return convertToSlug(d.name) + " node";})
+				.call(treeChart.setSize)
+				.text(function(d) { return d.size; });
+		}
 	}
 }

@@ -831,13 +831,12 @@ h3 {
 
 /* line 702, ../sass/screen.scss */
 .node {
-  /*border: solid 3px #adafb2;*/
   overflow: hidden;
   position: absolute;
   text-indent: 0.2em;
 }
 
-/* line 709, ../sass/screen.scss */
+/* line 708, ../sass/screen.scss */
 .tree-chart {
   color: #fff;
   background-color: #adafb2;
@@ -848,103 +847,111 @@ h3 {
   height: 100%;
 }
 
-/* line 721, ../sass/screen.scss */
+/* line 718, ../sass/screen.scss */
+#tree-key-chart {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+/* line 723, ../sass/screen.scss */
+#tree-key-chart li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 728, ../sass/screen.scss */
+#tree-key-chart li div, #tree-key-chart li h3 {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+/* line 733, ../sass/screen.scss */
+#tree-key-chart .list-icon {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #adafb2;
+}
+/* line 739, ../sass/screen.scss */
+#tree-key-chart .other {
+  width: calc(100% - 30px );
+}
+
+/* line 744, ../sass/screen.scss */
 .tree-chart .trauma, #tree-key-chart .trauma {
   background-color: #4d4d4f;
 }
 
-/* line 724, ../sass/screen.scss */
+/* line 747, ../sass/screen.scss */
 .tree-chart .hip, #tree-key-chart .hip {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P8PHXmf97sdEYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVAE8dJWnM3wx9AAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 728, ../sass/screen.scss */
+/* line 751, ../sass/screen.scss */
 .tree-chart .spine, #tree-key-chart .spine {
   background-color: #f3959a;
 }
 
-/* line 731, ../sass/screen.scss */
+/* line 754, ../sass/screen.scss */
 .tree-chart .limb-reconstruction, #tree-key-chart .limb-reconstruction {
   background-color: #e9636e;
 }
 
-/* line 734, ../sass/screen.scss */
+/* line 757, ../sass/screen.scss */
 .tree-chart .neuromuscular, #tree-key-chart .neuromuscular {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOUlEQVQYV2P09fX/v3nzRkYGNAASBwlhSIAEYZJYFSBLgkxGMQFdEsUEbJJwBbgkwQrwSaIowOVVANGsIcF5IIVwAAAAAElFTkSuQmCC) repeat;
 }
 
-/* line 738, ../sass/screen.scss */
+/* line 761, ../sass/screen.scss */
 .tree-chart .tumor, #tree-key-chart .tumor {
   background-color: #772f36;
 }
 
-/* line 741, ../sass/screen.scss */
+/* line 764, ../sass/screen.scss */
 .tree-chart .foot--ankle, #tree-key-chart .foot--ankle {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2N8mZz3nwEIxOdOYgTRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFQPSQ0xS90rwAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 745, ../sass/screen.scss */
+/* line 768, ../sass/screen.scss */
 .tree-chart .infection, #tree-key-chart .infection {
   background-color: #6d6f71;
 }
 
-/* line 748, ../sass/screen.scss */
+/* line 771, ../sass/screen.scss */
 .tree-chart .sports, #tree-key-chart .sports {
   background-color: #ea757e;
 }
 
-/* line 751, ../sass/screen.scss */
+/* line 774, ../sass/screen.scss */
 .tree-chart .upper-limb, #tree-key-chart .upper-limb {
   background-color: inherit;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYV2OcPHXGfwYgyM3OYATRyAAkxwhTgEsRWBc+RXBjcSlCsRebIqwOgzkU5HAMBehuAvsClxdBigFXGyRG9SijbgAAAABJRU5ErkJggg==) repeat;
 }
 
-/* line 755, ../sass/screen.scss */
+/* line 778, ../sass/screen.scss */
 .tree-chart .genetic-and-metabolic, #tree-key-chart .genetic-and-metabolic {
   background-color: #939598;
 }
 
-/* line 759, ../sass/screen.scss */
-#tree-key-chart {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-
-/* line 764, ../sass/screen.scss */
-li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* line 769, ../sass/screen.scss */
-li div, li h3 {
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-}
-
-/* line 774, ../sass/screen.scss */
-.list-icon {
-  width: 50px;
-  height: 50px;
-}
-
-/* line 780, ../sass/screen.scss */
+/* line 784, ../sass/screen.scss */
 .tree-chart .tree-graph-heigh-lighted {
   color: #fc0;
 }
 
-/* line 783, ../sass/screen.scss */
+/* line 787, ../sass/screen.scss */
 #tree-key-chart li.tree-graph-heigh-lighted {
   background-color: #fc0;
 }
 
-/* line 788, ../sass/screen.scss */
+/* line 792, ../sass/screen.scss */
 .no-opac {
   -webkit-opacity: 0;
   -moz-opacity: 0;
@@ -952,7 +959,7 @@ li div, li h3 {
   filter: alpha(opacity=0);
 }
 
-/* line 794, ../sass/screen.scss */
+/* line 798, ../sass/screen.scss */
 .transition-all-2 {
   transition: all 0.5s;
   -moz-transition: all 0.5s;

@@ -224,6 +224,18 @@ img.absolute{
 		margin-top: 3em;
 	}
 	
+	@include breakpoint(phone) {
+		blockquote{	
+			font-size: 1.6em;
+			margin-top:0;
+			color:#fff;
+		}
+		#blurb-2{
+			background-color: $sk-red;
+			padding: 1em 1em 1em 1em;
+		}
+	}
+	
 	.quoted {
 		position: absolute;
 		margin-top: 0.5em;
@@ -527,6 +539,16 @@ img.absolute{
 	.row{
 		background-color: rgba(255,255,255,0.5);
 		padding-bottom: 2em;	
+	}
+}
+
+@include breakpoint(phone) {
+	#contact-information {
+		.row{
+			background-color: transparent;
+			padding-bottom: 2em;
+			text-align: center;
+		}
 	}
 }
 

@@ -1369,3 +1369,7 @@ h3 {
 .transition-all-2{
 	@include easyTransition(0.5s);
 }
+
+.arc{
+	color:#333;
+}

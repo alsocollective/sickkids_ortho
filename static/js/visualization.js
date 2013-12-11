@@ -150,7 +150,9 @@ var referrals = {
 
 // Pie Circle....
 var circleSettings = {
-	squareSize:30,
+	squareSize:12,
+	maxRad:20,
+	minRad:5,
 	parentElement:"#my-svg",
 	parentKey:"#my-key",
 	keySetup:false,
@@ -206,7 +208,7 @@ var circleSettings = {
 		});
 	},
 	init:function(){
-		circleSettings.color = d3.scale.ordinal().range(["#ccc","#c00","#0c0","#00c","#000"])
+		circleSettings.color = d3.scale.ordinal().range(["#FAC2C3","#F7A4A6","#F18489","#EA636E","#A1585C","#792B34","#52161A","#000"])
 		circleSettings.arc = d3.svg.arc()
 			.outerRadius(circleSettings.radius - 29)
 			.innerRadius(circleSettings.radius - 30);
@@ -239,7 +241,10 @@ var circleSettings = {
 
 		circleSettings.g.append('circle')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
-		.attr("r", function(d) { return d.data.impact; })
+		.attr("r", function(d) {
+			
+			return map_range(d.data.impact,0,30,circleSettings.minRad,circleSettings.maxRad);
+		})
 		.style("text-anchor", "middle")
 		.style("fill", function(d) { return circleSettings.color(d.data.name); })
 		.on('mouseover',function(d){
@@ -295,7 +300,9 @@ var circleSettings = {
 }
 
 
-
+function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
 
 
 

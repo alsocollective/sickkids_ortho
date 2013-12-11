@@ -1,92 +1,272 @@
 [
 	{
-		"name":"name of Person",
-		"impact":25,
+		"name":"Wright",
+		"impact":30,
+		"paper":"Journal of the American Medical Association"
+	},
+	{
+		"name":"Wright",
+		"impact":3.73,
+		"paper":"Arthritis Care and Research"
+	},
+	{
+		"name":"Wright",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Wright",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Narayanan",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Wright",
+		"impact":2.86,
+		"paper":"PharmacoEconomics"
+	},
+	{
+		"name":"Narayanan",
+		"impact":2.41,
+		"paper":"Analytical Biochemistry"
+	},
+	{
+		"name":"Narayanan",
+		"impact":1.77,
+		"paper":"BMC Health Services Research"
+	},
+	{
+		"name":"Wright",
+		"impact":1.47,
+		"paper":"Foot and Ankle International"
+	},
+	{
+		"name":"Wright",
+		"impact":1.38,
+		"paper":"Journal of Pediatric Surgery"
+	},
+	{
+		"name":"Wright",
+		"impact":1.25,
+		"paper":"Orthopedic Clinics of North America"
+	},
+	{
+		"name":"Wright",
+		"impact":1.25,
+		"paper":"Orthopedic Clinics of North America"
+	},
+	{
+		"name":"Wright",
+		"impact":1.25,
+		"paper":"Orthopedic Clinics of North America"
+	},
+	{
+		"name":"Wright",
+		"impact":1.05,
+		"paper":"Canadian Journal of Surgery"
+	},
+	{
+		"name":"Alman",
+		"impact":20.83,
+		"paper":"Accounts of Chemical Research"
+	},
+	{
+		"name":"Alman",
+		"impact":7.36,
+		"paper":"Oncogene"
+	},
+	{
+		"name":"Alman",
+		"impact":6.20,
+		"paper":"Development"
+	},
+	{
+		"name":"Alman",
+		"impact":5.62,
+		"paper":"Cellular and Molecular Life Sciences"
+	},
+	{
+		"name":"Alman",
+		"impact":5.38,
+		"paper":"Journal of Biological Chemistry"
+	},
+	{
+		"name":"Alman",
+		"impact":4.70,
+		"paper":"Journal of Internet Medical Research"
+	},
+	{
+		"name":"Alman",
+		"impact":3.70,
+		"paper":"PLoS One"
+	},
+	{
+		"name":"Alman",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Alman",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Alman",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Alman",
+		"impact":2.88,
+		"paper":"Journal of Orthopaedic Research"
+	},
+	{
+		"name":"Alman",
+		"impact":2.58,
+		"paper":"Analytical Biochemistry"
+	},
+	{
+		"name":"Hopyan",
+		"impact":4.70,
+		"paper":"Journal of Internet Medical Research"
+	},
+	{
+		"name":"Hopyan",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Hopyan",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"name":"Hopyan",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"name":"Hopyan",
+		"impact":0,
+		"paper":"Studies in Health Technology and informatics"
+	},
+	{
+		"name":"Howard",
+		"impact":1.65,
 		"paper":"paper published"
 	},
 	{
-		"name":"name of Person 2",
-		"impact":10,
-		"paper":"in something"
+		"name":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":5,
-		"paper":"insomething ELSE!"
+		"name":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":25,
+		"name":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"name":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Children’s Orthopaedics"
+	},
+	{
+		"name":"Lewis",
+		"impact":1,
+		"paper":"Spine"
+	},
+	{
+		"name":"Lewis",
+		"impact":1,
+		"paper":"Spine"
+	},
+	{
+		"name":"Lewis",
+		"impact":1,
+		"paper":"Spine"
+	},
+	{
+		"name":"Lewis",
+		"impact":1,
+		"paper":"Spine"
+	},
+	{
+		"name":"Lewis",
+		"impact":1,
+		"paper":"Quality of Life Research"
+	},
+	{
+		"name":"Wedge",
+		"impact":1,
 		"paper":"paper published"
 	},
 	{
-		"name":"name of Person 4",
-		"impact":16,
-		"paper":"wad wad wad"
-	},
-	{
-		"name":"name of Person 5",
-		"impact":22,
-		"paper":"insomething ELSE!"
-	},
-	{
-		"name":"name of Person 3",
-		"impact":15,
-		"paper":"wad wad wad"
-	},
-	{
-		"name":"name of Person",
-		"impact":25,
+		"name":"Wedge",
+		"impact":1,
 		"paper":"paper published"
 	},
 	{
-		"name":"name of Person",
-		"impact":25,
+		"name":"Wedge",
+		"impact":1,
 		"paper":"paper published"
 	},
 	{
-		"name":"name of Person 2",
-		"impact":10,
-		"paper":"in something"
+		"name":"Murnaghan",
+		"impact":1.06,
+		"paper":"Orthopaedics and Trauma"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":5,
-		"paper":"insomething ELSE!"
+		"name":"Murnaghan",
+		"impact":1.16,
+		"paper":"Orthopedic Clinics of North America"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":25,
-		"paper":"paper published"
+		"name":"Murnaghan",
+		"impact":2.79,
+		"paper":"PharmacoEconomics"
 	},
 	{
-		"name":"name of Person 4",
-		"impact":16,
-		"paper":"wad wad wad"
+		"name":"Murnaghan",
+		"impact":3.29,
+		"paper":"Academic Medicine"
 	},
 	{
-		"name":"name of Person 5",
-		"impact":22,
-		"paper":"insomething ELSE!"
+		"name":"Murnaghan",
+		"impact":3.55,
+		"paper":"Medical Education"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":15,
-		"paper":"wad wad wad"
+		"name":"Kelley",
+		"impact":1.06,
+		"paper":"Orthopaedics and Trauma"
 	},
 	{
-		"name":"name of Person",
-		"impact":25,
-		"paper":"paper published"
+		"name":"Kelley",
+		"impact":1.25,
+		"paper":"Journal of Pediatric Surgery"
 	},
 	{
-		"name":"name of Person 5",
-		"impact":null,
-		"paper":"special paper 1"
+		"name":"Kelley",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
 	},
 	{
-		"name":"name of Person 3",
-		"impact":null,
-		"paper":"special paper 2"
+		"name":"Zeller",
+		"impact":1.16,
+		"paper":"Orthopedic Clinics of North America"
+	},
+	{
+		"name":"Zeller",
+		"impact":0,
+		"paper":"Studies in Health Technology and informatics"
 	}
 ]

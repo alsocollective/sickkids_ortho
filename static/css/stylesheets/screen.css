@@ -1601,3 +1601,8 @@ h3 {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
 }
+
+/* line 1373, ../sass/screen.scss */
+.arc {
+  color: #333;
+}

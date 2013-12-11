@@ -52,10 +52,7 @@ var referrals = {
 			})
 			.sort(
 				null
-				/*function(a,b)
-			{
-				return d3.descending(a["2012"],b["2012"]);
-			}*/);
+			);
 
 		referrals.arc = d3.svg.arc()
 		d3.json(referrals.dataLocation, function(error, data) {
@@ -86,11 +83,11 @@ var referrals = {
 			.attr('fill', function(d,i){
 				return referrals.colour(i);
 			})
-			.attr("class",function(d){
-				return convertToSlug(d.data.type);
-			})
 			.attr("d",referrals.arc)
-			.each(function(d) { this._current = d; });
+			.on("mouseover",referrals.lightUpText)
+			.on("mouseout",referrals.setbackText)
+			.each(function(d) { this.id = convertToSlug(d.data.type);this._current = d; });
+
 	},
 	switchDataSets:function(){
 		var value = this.value;
@@ -98,10 +95,6 @@ var referrals = {
 			.value(function(d) {
 				return d[value];
 			})
-			// .sort(function(a,b)
-			// {
-			// 	return d3.descending(a[value],b[value]);
-			// });
 		referrals.path = referrals.path.data(referrals.pie);
 		referrals.path.transition().duration(750).attrTween("d", referrals.arcTween);
 	},
@@ -134,8 +127,6 @@ var referrals = {
 			form.appendChild(input2);
 			parent.appendChild(form);
 
-
-
 			var listParent = document.createElement("ul"),
 			listItem = null,
 			icon = null,
@@ -149,7 +140,6 @@ var referrals = {
 				slug = convertToSlug(name);
 				if($(parent).children('#'+slug).length == 0){
 					var colour = referrals.path[0][a].attributes.fill.value;
-
 
 					listItem = document.createElement("li");
 					listItem.id = slug;
@@ -165,28 +155,27 @@ var referrals = {
 					$(listItem).on("mouseover",referrals.heighLightEl);
 					$(listItem).on("mouseout",referrals.removeHeighLight);
 					listParent.appendChild(listItem);
-					// var name = referrals.path[0][a].__data__.data.type,
-				
-					// var container = document.createElement("li");
-					// container.innerHTML = name;
-					// container.id = slug;
-					// container.style.backgroundColor = colour;
-					// $(container).on("mouseover",showSameClassAsThisId);
-					// $(container).on("mouseout",removeSameClassAsThisId)
-					// parent.appendChild(container);
 				}
 			}
 			parent.appendChild(listParent);
 		}
 	},
 	heighLightEl:function(event){
-		console.log($("#new-referrals-chart ."+this.id)[0]);
-		$("#new-referrals-chart ."+this.id).attr("class",this.id+" heighlight");
+		$("#new-referrals-chart #"+this.id).attr("class","heighlight");
 		$(this).addClass("heighlight");
 	},
 	removeHeighLight:function(event){
 		$(this).removeClass('heighlight')
-		$("#new-referrals-chart ."+this.id).attr("class",this.id);
+		$("#new-referrals-chart #"+this.id).attr("class","");
+	},
+	lightUpText:function(event){
+		$(this).attr('class', 'heighlight');
+		$("#new-referrals-key #"+this.id).addClass('heighlight');
+		console.log(this);
+	},
+	setbackText:function(event){
+		$(this).attr('class', '');
+		$("#new-referrals-key #"+this.id).removeClass('heighlight');
 	},
 	arcTween:function(a) {
 		var i = d3.interpolate(this._current, a);

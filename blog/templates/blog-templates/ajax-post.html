@@ -12,7 +12,7 @@
 	<div id="{{sections.slug}}" class="{%if sections.bk%}background{%endif%} {%if sections.fullPage%}full-page{%endif%}" {%if sections.bk%}style="background-image: url(/{{sections.bk}});"{%endif%}>
 	{% if sections.showTitle %}
 	<div class="row">
-		<h2 class="absolute" style="left:{{sections.coloum}}%; width:{{sections.coloumWidth}}%;">{{sections.title}}</h2>
+		<h2 class="absolute" style="left:{{sections.coloum}}%; width:inherit;">{{sections.title}}</h2>
 	</div>
 	{% endif %}
 	{%for row in sections.content%}

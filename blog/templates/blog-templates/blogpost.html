@@ -66,7 +66,7 @@
 </head>
 <body>
 <nav id="nav" class='hidden-nav'>
-	<img src="/static/img/sickkidslogo.png" alt="Home"/>{% for page in meta.pages %}{%if page.slug == "home"%}{%else%}<a href="/page/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{%endif%}{% endfor %}
+	<img src="/static/img/sickkidslogo.png" alt="Home"/>{% for page in meta.pages %}{%if page.slug == "home"%}{%else%}<a href="/{{page.slug}}" class="link-to-page {% if page.title = meta.title%}heighlight{% endif %}">{{page.title}}</a>{%endif%}{% endfor %}
 	<div class="deviding-block"> </div>
 	<nav id="subnav">
 		{%for sections in data%}

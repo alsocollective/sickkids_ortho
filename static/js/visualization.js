@@ -110,34 +110,83 @@ var referrals = {
 		if($(referrals.parentKey).children().length == 0){
 			var parent = $(referrals.parentKey)[0];
 			var form = document.createElement("form");
+
+			var label = document.createElement("label");
+			label.for = "2011";
+			label.innerHTML = "2011";
 			var input = document.createElement("input");
 			input.type = "radio";
 			input.value = "2011";
 			input.name = "date";
+			input.id = "2011";
 			$(input).on("change",referrals.switchDataSets);
+
+			var label2 = label.cloneNode(true);
+			label2.for = "2012";
+			label2.innerHTML = "2012";
 			input2 = input.cloneNode(true);
 			input2.value = "2012";
 			input2.checked = true;
 			$(input2).on("change",referrals.switchDataSets);
+			form.appendChild(label);
 			form.appendChild(input);
+			form.appendChild(label2);
 			form.appendChild(input2);
 			parent.appendChild(form);
+
+
+
+			var listParent = document.createElement("ul"),
+			listItem = null,
+			icon = null,
+			content = null,
+			header = null,
+			info = null;
+			listParent.id = "tree-key-chart";
 
 			for(var a = 0, max = referrals.path[0].length; a < max; a += 1){
 				var name = referrals.path[0][a].__data__.data.type,
 				slug = convertToSlug(name);
 				if($(parent).children('#'+slug).length == 0){
 					var colour = referrals.path[0][a].attributes.fill.value;
-					var container = document.createElement("li");
-					container.innerHTML = name;
-					container.id = slug;
-					container.style.backgroundColor = colour;
-					$(container).on("mouseover",showSameClassAsThisId);
-					$(container).on("mouseout",removeSameClassAsThisId)
-					parent.appendChild(container);
+
+
+					listItem = document.createElement("li");
+					listItem.id = slug;
+					icon = document.createElement("div");
+					icon.className = "list-icon "+ slug;
+					icon.style.backgroundColor = colour;
+					listItem.appendChild(icon);
+
+					header = document.createElement("h3");
+					header.innerHTML = name
+					listItem.appendChild(header);
+
+					$(listItem).on("mouseover",referrals.heighLightEl);
+					$(listItem).on("mouseout",referrals.removeHeighLight);
+					listParent.appendChild(listItem);
+					// var name = referrals.path[0][a].__data__.data.type,
+				
+					// var container = document.createElement("li");
+					// container.innerHTML = name;
+					// container.id = slug;
+					// container.style.backgroundColor = colour;
+					// $(container).on("mouseover",showSameClassAsThisId);
+					// $(container).on("mouseout",removeSameClassAsThisId)
+					// parent.appendChild(container);
 				}
 			}
+			parent.appendChild(listParent);
 		}
+	},
+	heighLightEl:function(event){
+		console.log($("#new-referrals-chart ."+this.id)[0]);
+		$("#new-referrals-chart ."+this.id).attr("class",this.id+" heighlight");
+		$(this).addClass("heighlight");
+	},
+	removeHeighLight:function(event){
+		$(this).removeClass('heighlight')
+		$("#new-referrals-chart ."+this.id).attr("class",this.id);
 	},
 	arcTween:function(a) {
 		var i = d3.interpolate(this._current, a);

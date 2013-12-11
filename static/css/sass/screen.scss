@@ -784,13 +784,15 @@ li div, li h3{
 	background-color: #fc0;
 }
 
-
-.no-opac{
-	-webkit-opacity: 0;
-	-moz-opacity: 0;
-	opacity: 0;
-	filter:alpha(opacity=0);
+@include breakpoint(phone) {
+	.hidden-nav{
+		-webkit-opacity: 0;
+		-moz-opacity: 0;
+		opacity: 0;
+		filter:alpha(opacity=0);
+	}
 }
+
 .transition-all-2{
 	@include easyTransition(0.5s);
 }

@@ -76,6 +76,77 @@ table{
 	}
 }
 
+@include breakpoint(phone) {
+	table{
+	
+		width: 100%;
+	
+		thead{
+			background-color: $sk-red;
+			color: #fff;
+			text-transform: uppercase;
+			font-size: 1em;
+		
+			tr{
+				border-bottom: none;
+				height: 1em;
+			}
+		
+			td{
+				padding: 0.25em 0 0.25em 0 !important;
+				text-align:center;
+			}
+		}
+	
+		colgroup{
+			#row-one{
+				width: 30%;
+				padding-left:1em !important;
+			}
+			#row-two{
+				width: 30%;
+			}
+			#row-three{
+				width: 20%;
+			}
+			#row-four{
+				width: 10%;
+			}
+		}
+	
+		tr{
+			height: 3em;
+			border-bottom: solid 1px $sk-red;
+			padding-left:1em !important;
+		}
+		td{
+			padding-left: 0.3em;
+		}
+	}
+}
+
+
+
+/*thead{
+	tr{
+		text-align:center !important;
+	}
+}
+td{
+	letter-spacing:0.01em;
+}
+tr{
+	border-bottom:solid 1px $sk-red;
+}
+
+colgroup {
+	#row-one{
+			padding:0.25em 0 0.25em 0.5em;
+	}
+}*/
+
+
+
 #calendar-of-events{
 	td{
 		padding: 0.5em 0 1.2em 0;
@@ -83,6 +154,23 @@ table{
 	tr{
 		border-bottom: none;
 	}
+}
+
+@include breakpoint(phone) {
+#calendar-of-events{
+	text-align:center;
+	background-color:#fff;
+	h2.absolute{
+		margin-bottom:1em;
+	}
+	padding-bottom:3em;
+	td{
+		padding: 0.5em 0 1.2em 1em;
+	}
+	tr{
+		border-bottom: none;
+	}
+}
 }
 
 #where-are-they-now{
@@ -98,13 +186,48 @@ table{
 		margin: 0.7em 0 0.5em 0;
 		text-transform: uppercase;
 	}
-	p{
+	/*p{
 		-ms-word-break: break-all;
 		word-break: break-all;
 		word-break: break-word;
 		-webkit-hyphens: auto;
 		-moz-hyphens: auto;
 		hyphens: auto;
+	}*/
+}
+
+@include breakpoint(phone) {
+	#spacer-1{
+		display:none;
+	}
+}
+
+@include breakpoint(phone) {
+	#current-fellows{
+		padding-bottom:3em;
+		text-align: center;
+		h3{
+			text-align: center;
+			text-decoration: underline;
+			color: $sk_red;
+			font-weight: 700;
+			margin: 0.7em 0 0.5em 0;
+			text-transform: uppercase;
+		}
+		p{
+			-ms-word-break: break-all;
+			word-break: break-all;
+			word-break: break-word;
+			-webkit-hyphens: auto;
+			-moz-hyphens: auto;
+			hyphens: auto;
+			padding:0 1em 0 1em;
+			text-align: left;
+		}
+		img{
+			width:60% !important;
+			padding-top: 2em;
+		}
 	}
 }
 
@@ -190,6 +313,13 @@ img.absolute{
 		overflow: scroll;
 		overflow-x: hidden;
 	}
+	
+	/*@include breakpoint(phone) {
+		#content{
+			width: 90%;
+			left: 1em;
+		}
+	}*/
 	.page > h1 {
 		padding-top: 2em;
 		width: 100%;
@@ -218,6 +348,21 @@ img.absolute{
 		color: $sk_red;
 	}
 	
+	@include breakpoint(phone) {
+		h2.absolute{
+			margin: 0;
+			border: solid 2px $sk_red;
+			box-sizing: border-box;
+			font-size: 1.2em;
+			text-align: center;
+			padding: 0.1em 0.2em 0.1em 0.2em;
+			font-weight: 700;
+			width: initial !important;
+			text-transform: uppercase;
+			color: $sk_red;
+		}
+	}
+	
 	blockquote{
 		color: $text_color_grey;
 		font-size: 2em;
@@ -230,9 +375,9 @@ img.absolute{
 			margin-top:0;
 			color:#fff;
 		}
-		#blurb-2{
+		#blurb-2, #blurb-1, #blurb-3, #blurb-4, #blurb-5{
 			background-color: $sk-red;
-			padding: 1em 1em 1em 1em;
+			padding: 1em 1em 6em 1em;
 		}
 	}
 	
@@ -242,6 +387,16 @@ img.absolute{
 		right: 0px;
 		font-size: 0.7em;
 		font-weight: 600;
+	}
+	
+	@include breakpoint(phone) {
+		.quoted {
+			position: absolute;
+			margin-top: 1em;
+			right: 0px;
+			font-size: 0.7em;
+			font-weight: 600;
+		}
 	}
 	
 	i {
@@ -257,29 +412,102 @@ img.absolute{
 	
 	#interview {
 		
-		background-color: #555;
+		background-color: #777;
 		padding: 2em 0 4em 0;
 		
 		h4{
 			text-decoration: none;
 			color: #fff;
 		}
-		
-		//div:nth-child(2){
-		//	div:nth-child(1) {
-		//		columns:2;
-		//		-webkit-columns:2; /* Safari and Chrome */
-		//		-moz-columns:2; /* Firefox */
-		//		//margin: 0 0 0 0.6em;
-		//	}
-		//}
 	}
 	
+	@include breakpoint(phone) {
+		#interview {
+			text-align:center;
+		
+			padding: 2em 0 4em 0;
+			
+			h2.absolute{
+				border-color: #fff;
+				color:#fff;
+			}
+			h4{
+				text-decoration: none;
+				color: #fff;
+				padding: 0 1em 0 1em;			
+			}
+			p{
+				text-align:left;
+				padding: 0 1em 0 1em;
+			}
+		}
+	}
+	
+	@include breakpoint(phone) {
+		#introduction{
+			text-align:center;
+			padding-bottom:3em;
+			background-color:$sk-red;
+			h2.absolute{
+				margin:1em 0 1em 0;
+				border-color: #fff;
+				color:#fff;
+			}
+			p{
+				text-align:left;
+				padding:0 1em 0 1em;
+				color:#fff;
+			}
+		}
+	}
+	
+	@include breakpoint(phone) {
+		#application-process{
+			text-align:center;
+			p{
+				text-align:left;
+				padding:0 1em 0 1em;
+			}
+		}
+		#pre-requisites{
+			h2.absolute{
+				margin:2em 0 1em 0;
+			}
+			text-align:center;
+			p{
+				text-align:left;
+				padding:0 1em 0 1em;
+			}
+		}		
+	}
 	#special-procedure{
 		background-color:#fff;
 		div:nth-child(2){
 			div:nth-child(1){
 				z-index:1;
+			}
+		}
+	}
+	
+	@include breakpoint(phone) {
+		#special-procedure{
+			text-align: center;
+			padding-bottom:3em;
+			h2.absolute{
+				margin-top:2em;
+			}
+			p{
+				text-align: left;
+				padding:0 1em 0 1em;
+			}
+			img{
+				width:70% !important;
+			}
+			background-color:#fff;
+			div:nth-child(2){
+				div:nth-child(1){
+					z-index:1;
+				}
 			}
 		}
 	}
@@ -342,6 +570,12 @@ img.absolute{
 			}
 		}
 	}
+	
+	@include breakpoint(phone) {
+		#cover{
+			margin-bottom:10em;
+		}
+	}
 
 	h1{
 		font-size: 2em;
@@ -364,7 +598,7 @@ img.absolute{
 	left: 0;
 	z-index: 88;
 	width: 100%;
-	background-color: $sk_red;
+	background-color: $sk-red;
 
 	h1{
 		display: inline-block;
@@ -390,6 +624,8 @@ img.absolute{
 		margin: 0;
 		margin-right: 3em;
 		background-color: $sk_red;
+		cursor: pointer;
+		width: 111px;
 	}
 	a:hover{
 		background-color: $hover_button;
@@ -453,9 +689,11 @@ img.absolute{
 			background-image: url(/static/img/pull-arrow.png);
 			background-repeat: no-repeat;
 			background-position: center;
+			background-size: 30px;
 		}
 		img{
-			//background-color: #f00;
+			cursor: pointer;
+			width: 111px;
 		}
 	}
 }
@@ -511,6 +749,47 @@ img.absolute{
 	}
 }
 
+@include breakpoint(phone) {
+	#faculty-bios {
+		text-align:center;
+		font-size:1.2em;
+		
+		h2.absolute{
+			margin-bottom:1em;
+		}
+		
+		img{
+			padding-top:0;
+			width:60% !important;
+		}
+		ul{
+			margin: 0 0 1em 0;
+		}
+		li{
+			padding: 0 1em 0 1em;
+		}
+		blockquote{
+			font-size:1em;
+			font-style:italic;
+			margin: 1em 0 0 0;
+			color: $sk-red;
+			text-align:left;
+			padding: 0 1em 0 1em;
+		}
+		h3{
+			font-weight: 700;
+			margin: 1em 0 0.6em 0;
+			text-transform: uppercase;
+			text-decoration: underline;
+			padding:0 1em 0 1em;
+		}
+		h4{
+			margin:1.4em 0 0.4em 0;
+			padding:0 1em 0 1em;
+		}
+	}
+}
+
 #faculty-presentations-and-courses-20122013{
 	background-size: 50%;
 	background-color: #777;
@@ -535,6 +814,45 @@ img.absolute{
 	}
 }
 
+@include breakpoint(phone) {
+	#faculty-presentations-and-courses-20122013{
+		background-size: 50%;
+		background-color: #777;
+		
+		text-align: center;
+		
+		h2.absolute{
+			border-color:#fff;
+			color:#fff;
+			margin: 1em 0 1em 0;
+		}
+		
+		ol{
+			counter-reset: list-counter;
+			list-style: none;
+			font-size: 1em;
+			color: #fff;
+			padding: 0 1em 0 1em;
+			text-align: left;
+			li{
+				margin: 0 0 0.5em 0;
+				
+			}
+			li:before{
+				content: none;
+				counter-increment: list-counter;
+				color: #000;
+				position: absolute;
+				left: 1em;
+				width: 2em;
+				font-weight: bold;
+				text-align: right;
+				font-size:0.9em;
+			}
+		}
+	}
+}
+
 #contact-information {
 	.row{
 		background-color: rgba(255,255,255,0.5);
@@ -544,10 +862,36 @@ img.absolute{
 
 @include breakpoint(phone) {
 	#contact-information {
+		text-align: center;
+		a{
+			color:#fff;
+		}
 		.row{
 			background-color: transparent;
-			padding-bottom: 2em;
-			text-align: center;
+			padding-bottom: 0;
+			font-size: 1.25em;
+		}
+		h3{
+			margin:1.25em 0 0.2em 0;
+		}
+		li{
+			padding-bottom: 0.5em;
+		}
+	}
+	#map{
+		text-align: center;
+	}
+	.contact{
+		background-color: $sk-red;
+		h1{
+			margin-bottom: 0;
+			padding-bottom: 0.5em;
+			visibility:hidden;
+		}
+		h2.absolute{
+			color:#fff;
+			border-color: #fff;
+			margin-bottom: 1em;
 		}
 	}
 }
@@ -560,7 +904,7 @@ img.absolute{
 }
 
 #curriculum{
-	background-color: #666;
+	background-color: #777;
 	ol{
 		counter-reset: list-counter;
 		list-style: none;
@@ -582,6 +926,78 @@ img.absolute{
 	}
 }
 
+@include breakpoint(phone) {
+	.fellowship{
+		h1{
+			display:none;
+		}
+		padding:2em 0 0 0 !important;
+	}
+	#curriculum{
+		background-color: #777;
+		padding:2em 0 0 0 !important;
+		ol{
+			counter-reset: list-counter;
+			list-style: none;
+			font-size: 1em;
+			
+			color: #fff;
+			padding: 0 1em 0 1em;
+			li{
+				margin: 0 0 0.5em 0;
+			}
+			li:before{
+				content: counter(list-counter)".";
+				counter-increment: list-counter;
+				color: #000;
+				position: absolute;
+				left: -3em;
+				width: 2em;
+				font-weight: bold;
+				text-align: right;
+			}
+		}
+		h2.absolute{
+			border-color:#fff;
+			color:#fff;
+		}
+		img{
+			bottom:0;
+		}
+	}
+	#research-opportunities,#fellow-publications,#fellowships-available,#social-events,#curriculum{
+		text-align:center;
+		padding-bottom:1em;
+		p{
+			padding: 0 1em 0 1em;
+			text-align:left;
+		}
+		li{
+			text-align:left;
+		}
+		ul{
+			padding: 0 1em 0 1em;
+		}
+		h2.absolute{
+			margin:0 0 1em 0;
+		}
+	}
+	#fellow-publications{
+		font-size:0.9em;
+	}
+	#research-opportunities{
+		img{
+			margin-top:1em;
+		}
+	}
+	#social-events{
+		padding-bottom:0 !important;
+		img{
+			bottom:0;
+		}
+	}
+}
+
 #selected-faculty-publications-20122013 {
 	h3{
 		font-weight: 700;
@@ -596,6 +1012,31 @@ img.absolute{
 	}
 }
 
+@include breakpoint(phone) {
+	#selected-faculty-publications-20122013 {
+		
+		text-align: center;
+		
+		h3{
+			font-weight: 700;
+			margin: 1em 0 0.6em 0;
+			text-transform: uppercase;
+			text-decoration: underline;
+			padding: 0 1em 0 1em;
+		}
+		ol{
+			li{
+				margin: 0 0 1em 0;
+				padding: 0 1em 0 1em;
+				text-align: left;
+				font-size:0.9em;
+			}
+		}
+		
+		padding-bottom: 3em;
+	}
+}
+
 #previous-annuals {
 	text-align: center;
 	font-size: 1em;
@@ -604,6 +1045,16 @@ img.absolute{
 		width:100%;
 		box-shadow: 0px 0px 15px #999;
 		margin: 0 0 1em 0;
+	}
+}
+
+@include breakpoint(phone) {
+	#previous-annuals {
+		
+		img{
+			width:60%;
+			margin: 3em 0 1em 0;
+		}
 	}
 }
 
@@ -639,6 +1090,68 @@ h3 {
 	}
 }
 
+@include breakpoint(phone) {
+	#breadth-of-surgical-education{
+		text-align:center;
+		padding-bottom:3em;
+		p{
+			text-align:left;
+			padding:0 1em 0 1em;
+		}
+	}
+}
+
+@include breakpoint(phone) {
+	#about{
+		text-align: center;
+		padding:0 1em 0 1em;
+		h2.absolute{
+			margin:2em 0 1em 0;
+			width: 80% !important;
+		}
+		.sub-row{
+			text-align: center;
+			p{
+				text-align:center;
+			}
+		}
+		#physicians,#beds,#operating,#suites{
+			width:55% !important;
+			margin-right:5%;
+		}
+		
+		p{
+			text-align:left;
+		}
+		img{
+			//width: 44% !important;
+		}
+		h5{
+			font-weight: 700;
+			font-size: 3.5em;
+			text-align: center;
+			width: 100%;
+			margin: 0.25em 0 0 0;
+		}
+	}
+	
+	#outpatient-clinics-and-outreach{
+		padding-bottom: 3em;
+		text-align:center;
+		h2.absolute{
+			margin:2em 0 1em 0;
+		}
+		table{
+			font-size:0.9em;
+		}
+		p{
+			padding:0 1em 0 1em;
+			text-align:left;
+		}
+	}
+	
+}
+
 #about-fellowship {
 	
 	.vert-top{
@@ -663,6 +1176,40 @@ h3 {
 	.tr-no-dots{
 		height: 2em;
 		border-bottom: none;
+	}
+}
+
+@include breakpoint(phone) {
+	#about-fellowship {
+		text-align:center;
+		p{
+			text-align:left;
+			padding:0 1em 0 1em;
+		}
+	
+		.vert-top{
+			vertical-align: top;
+			padding-top: 0.45em;
+		}
+	
+		colgroup{
+			#row-one{
+				width: 5%;
+			}
+			#row-two{
+				width: 15%;
+			}
+			#row-three{
+				width: 30%;
+			}
+			#row-four{
+				width: 10%;
+			}
+		}
+		.tr-no-dots{
+			height: 2em;
+			border-bottom: none;
+		}
 	}
 }
 

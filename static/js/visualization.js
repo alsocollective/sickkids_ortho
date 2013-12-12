@@ -161,21 +161,21 @@ var referrals = {
 		}
 	},
 	heighLightEl:function(event){
-		$("#new-referrals-chart #"+this.id).attr("class","heighlight");
-		$(this).addClass("heighlight");
+		$("#new-referrals-chart #"+this.id).attr("class","heighlight-ref");
+		$(this).addClass("heighlight-ref");
 	},
 	removeHeighLight:function(event){
-		$(this).removeClass('heighlight')
+		$(this).removeClass('heighlight-ref')
 		$("#new-referrals-chart #"+this.id).attr("class","");
 	},
 	lightUpText:function(event){
-		$(this).attr('class', 'heighlight');
-		$("#new-referrals-key #"+this.id).addClass('heighlight');
+		$(this).attr('class', 'heighlight-ref');
+		$("#new-referrals-key #"+this.id).addClass('heighlight-ref');
 		console.log(this);
 	},
 	setbackText:function(event){
 		$(this).attr('class', '');
-		$("#new-referrals-key #"+this.id).removeClass('heighlight');
+		$("#new-referrals-key #"+this.id).removeClass('heighlight-ref');
 	},
 	arcTween:function(a) {
 		var i = d3.interpolate(this._current, a);

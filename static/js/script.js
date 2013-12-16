@@ -254,6 +254,7 @@ function setURL(){
 function jumpToLocation(){
 	$("#content").scrollTop($("#"+currentHashEl).offset().top + $("#content").scrollTop());
 }
+
 function trackOutboundLink(link, category, action) {
 	try {
 		_gaq.push(['_trackEvent', category , action]);
@@ -267,7 +268,7 @@ var link = document.getElementById('my-link-id');
 //Google Analytics Snippet
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-39447542-1']);
-_gaq.push(['_setDomainName', 'none']);
+//_gaq.push(['_setDomainName', 'none']);
 
 (function() {
 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

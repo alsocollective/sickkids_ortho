@@ -1299,6 +1299,8 @@ h3 {
 		margin: 0 0 0 0.5em;
 		display: inline-block;
 		vertical-align:middle;
+		font-size:0.9em;
+		text-decoration:none;
 	}
 	.list-icon{
 		@include vendorize(border-radius,50%);
@@ -1307,10 +1309,15 @@ h3 {
 		background-color: #adafb2;
 	}
 	.other{
-		width: calc( 100% - 30px );
-		display: inline;
+		width: calc(90% - 30px );
+		display: inline-block;
+		vertical-align: top;
+	}
+	strong{
+		text-transform:uppercase;
 	}
 }
+
 
 .tree-chart .trauma, #tree-key-chart .trauma{
 	background-color: #4d4d4f;
@@ -1350,13 +1357,15 @@ h3 {
 	background-color: #939598;
 }
 
-
+.node{
+	color:#fff;
+}
 
 .tree-chart .tree-graph-heigh-lighted{
-	color: #fc0;
+	color: #000;
 }
 #tree-key-chart li.tree-graph-heigh-lighted{
-	background-color: #fc0;
+	background-color: #eee;
 }
 
 @include breakpoint(phone) {

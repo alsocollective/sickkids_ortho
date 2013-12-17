@@ -1,3 +1,45 @@
+#faculty-publications-and-impact-factors-2013 .list-icon{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+#faculty-publications-and-impact-factors-2013 h3{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.heighlight-circle{
+  stroke:#f0c;
+  stroke-width: 2px;
+}
+
+#faculty-publications-and-impact-factors-2013 .heighlight-circle .list-icon{
+  width: 24px;
+  height: 24px;
+  border: solid black 3px;
+}
+
+
+
+
+.about-the-hospital .heighlight-ref{
+  fill:#f0c;
+}
+
+#tree-key-chart .heighlight-ref .list-icon{
+  width: 24px;
+  height: 24px;
+  border: solid black 3px;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:

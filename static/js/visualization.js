@@ -499,12 +499,12 @@ var treeChart = {
 			content.className = "other";
 			listItem.appendChild(content);
 
-			header = document.createElement("h3");
+			/*header = document.createElement("h3");
 			header.innerHTML = elements[a].name+ ":";
-			content.appendChild(header);
+			content.appendChild(header);*/
 
-			info = document.createElement("span");
-			info.innerHTML = elements[a].info
+			info = document.createElement("p");
+			info.innerHTML = "<strong>"+elements[a].name+ ":</strong> "+elements[a].info;
 			content.appendChild(info)
 
 			listParent.appendChild(listItem);

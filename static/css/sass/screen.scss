@@ -178,6 +178,7 @@ colgroup {
 }
 
 #current-fellows{
+	padding-top:6em;
 	h3{
 		text-align: center;
 		text-decoration: underline;
@@ -186,14 +187,6 @@ colgroup {
 		margin: 0.7em 0 0.5em 0;
 		text-transform: uppercase;
 	}
-	/*p{
-		-ms-word-break: break-all;
-		word-break: break-all;
-		word-break: break-word;
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		hyphens: auto;
-	}*/
 }
 
 @include breakpoint(phone) {
@@ -419,6 +412,10 @@ img.absolute{
 			text-decoration: none;
 			color: #fff;
 		}
+		h2.absolute{
+			border-color: #fff;
+			color:#fff;
+		}
 	}
 	
 	@include breakpoint(phone) {
@@ -533,6 +530,7 @@ img.absolute{
 			font-size: 4em;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
+			color:#000;
 		}
 				
 		h3 {
@@ -583,6 +581,7 @@ img.absolute{
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+		color:$sk_red;
 	}
 
 	.full-page{
@@ -697,6 +696,17 @@ img.absolute{
 		}
 	}
 }
+@include breakpoint(tablet) {
+	#nav{
+		img {
+			margin-right:1em;
+		}
+		a{
+			padding-left:0.6em;
+			padding-right:0.6em;
+		}
+	}
+}
 
 /* ` */
 
@@ -793,6 +803,7 @@ img.absolute{
 #faculty-presentations-and-courses-20122013{
 	background-size: 50%;
 	background-color: #777;
+	padding-bottom:3em;
 	ol{
 		counter-reset: list-counter;
 		list-style: none;
@@ -811,6 +822,10 @@ img.absolute{
 			font-weight: bold;
 			text-align: right;
 		}
+	}
+	h2.absolute{
+		border-color:#fff;
+		color:#fff;
 	}
 }
 
@@ -923,6 +938,10 @@ img.absolute{
 			font-weight: bold;
 			text-align: right;
 		}
+	}
+	h2.absolute{
+		border-color: #fff;
+		color:#fff;
 	}
 }
 
@@ -1299,6 +1318,8 @@ h3 {
 		margin: 0 0 0 0.5em;
 		display: inline-block;
 		vertical-align:middle;
+		font-size:0.9em;
+		text-decoration:none;
 	}
 	.list-icon{
 		@include vendorize(border-radius,50%);
@@ -1307,10 +1328,15 @@ h3 {
 		background-color: #adafb2;
 	}
 	.other{
-		width: calc( 100% - 30px );
-		display: inline;
+		width: calc(90% - 30px );
+		display: inline-block;
+		vertical-align: top;
+	}
+	strong{
+		text-transform:uppercase;
 	}
 }
+
 
 .tree-chart .trauma, #tree-key-chart .trauma{
 	background-color: #4d4d4f;
@@ -1350,13 +1376,15 @@ h3 {
 	background-color: #939598;
 }
 
-
+.node{
+	color:#fff;
+}
 
 .tree-chart .tree-graph-heigh-lighted{
-	color: #fc0;
+	color: #000;
 }
 #tree-key-chart li.tree-graph-heigh-lighted{
-	background-color: #fc0;
+	background-color: #eee;
 }
 
 @include breakpoint(phone) {
@@ -1373,5 +1401,83 @@ h3 {
 }
 
 .arc{
-	color:#333;
+	path{
+		stroke:$sk_red;
+		stroke-width:2px;	
+	}
+}
+
+.heighlight-circle{
+	color:$sk_red !important;
+	//fill:#fff !important;
+	//fill:#269C80 !important;
+	fill:#3EB5E0 !important;
+	//stroke:$sk_red;
+	//stroke-width:2px;
+}
+
+#my-add-info{
+	text-align:right;
+	h5{
+		font-weight:800;
+		font-size:2em;
+		color: $sk_red;
+		margin: 1em 0 0.2em 0;
+	}
+	strong{
+		font-weight:400;
+	}
+	i{
+		color: $sk_red;	
+	}
+	p{
+		font-size:1em;
+	}
+}
+#faculty-publications-and-impact-factors-2013{
+	padding-bottom: 14em;
+	sub{
+		font-size:0.8em;
+		font-style:italic;
+		color:#555;
+	}
+	p{
+		line-height:0.95em !important;
+	}
+	h4{
+		text-decoration:none;
+		margin:0;
+		padding:0;
+		color:#333;
+	}
+	h3{
+		color:#333;
+		text-decoration:none;
+		border-bottom:solid #333 2px;
+	}
+	li{
+		margin:0.3em 0 0.3em 0;
+	}
+}
+@include breakpoint(tablet) {
+	#my-add-info{
+		h5{
+			font-size:1.2em;
+			white-space:nowrap;
+		}
+		p{
+			font-size:0.8em;
+		}
+	}
+}
+@include breakpoint(tabletland) {
+	#my-add-info{
+		h5{
+			font-size:1.5em;
+			white-space:nowrap;
+		}
+		p{
+			font-size:0.9em;
+		}
+	}
 }

@@ -11,10 +11,13 @@
 		@media (max-width: 1600px) { @content; }
 	}
 	@else if $point == tablet {
-		@media (max-width: 1250px) { @content; }
+		@media (max-width: 1000px) { @content; }//Was 1250?
 	}
 	@else if $point == phone {
 		@media (max-width: 650px)  { @content; }
+	}
+	@else if $point == tabletland {
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) { @content; }//Was 1250?
 	}
 }
 

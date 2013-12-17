@@ -161,21 +161,21 @@ var referrals = {
 		}
 	},
 	heighLightEl:function(event){
-		$("#new-referrals-chart #"+this.id).attr("class","heighlight");
-		$(this).addClass("heighlight");
+		$("#new-referrals-chart #"+this.id).attr("class","heighlight-ref");
+		$(this).addClass("heighlight-ref");
 	},
 	removeHeighLight:function(event){
-		$(this).removeClass('heighlight')
+		$(this).removeClass('heighlight-ref')
 		$("#new-referrals-chart #"+this.id).attr("class","");
 	},
 	lightUpText:function(event){
-		$(this).attr('class', 'heighlight');
-		$("#new-referrals-key #"+this.id).addClass('heighlight');
+		$(this).attr('class', 'heighlight-ref');
+		$("#new-referrals-key #"+this.id).addClass('heighlight-ref');
 		console.log(this);
 	},
 	setbackText:function(event){
 		$(this).attr('class', '');
-		$("#new-referrals-key #"+this.id).removeClass('heighlight');
+		$("#new-referrals-key #"+this.id).removeClass('heighlight-ref');
 	},
 	arcTween:function(a) {
 		var i = d3.interpolate(this._current, a);
@@ -189,10 +189,11 @@ var referrals = {
 // Pie Circle....
 var circleSettings = {
 	squareSize:12,
-	maxRad:20,
+	maxRad:15,
 	minRad:5,
 	parentElement:"#my-svg",
 	parentKey:"#my-key",
+	parentInfo:"#my-add-info",
 	keySetup:false,
 	dataLocation:"/static/data/2012-publication.json",
 	updateSizes:function(){
@@ -201,24 +202,79 @@ var circleSettings = {
 		circleSettings.radius = Math.min(circleSettings.width,circleSettings.height)/2
 	},
 	setUpHTMLEls:function(){
+		//console.log("SET UP HTML EL!!!!!!")
 		if($(circleSettings.parentKey).children().length == 0){
 			var parent = $(circleSettings.parentKey)[0];
+			var listParent = document.createElement("ul"),
+			listItem = null,
+			icon = null,
+			content = null,
+			header = null,
+			fname = null,
+			lname = null,
+			slug = null,
+			colour= null,
+			list = [];
+
 			for(var a = 0, max = circleSettings.g[0].length; a < max; a += 1){
-				var name = circleSettings.g[0][a].__data__.data.name
-				var slug = convertToSlug(name);
-				if($(parent).children('#'+slug).length == 0){
-					var colour = circleSettings.g[0][a].lastChild.style.fill;
-					var container = document.createElement("li");
-					container.innerHTML = name;
-					container.id = slug;
-					container.style.backgroundColor = colour;
-					$(container).on("mouseover",showSameClassAsThisId);
-					$(container).on("mouseout",removeSameClassAsThisId)
-					parent.appendChild(container);
+				fname = circleSettings.g[0][a].__data__.data.fname
+				lname = circleSettings.g[0][a].__data__.data.lname
+				slug = convertToSlug(fname);
+				if(!circleSettings.checkList(slug,list)){
+					colour = circleSettings.g[0][a].lastChild.style.fill;
+					listItem = document.createElement("li");
+					listItem.id = slug;
+					icon = document.createElement("div")
+					icon.className = "list-icon " + slug;
+					icon.style.backgroundColor = colour;
+					listItem.appendChild(icon);
+
+					header = document.createElement("h4");
+					header.innerHTML = lname;
+					listItem.appendChild(header);
+
+					list.push(slug);
+
+					listParent.appendChild(listItem);
 				}
 			}
+			parent.appendChild(listParent);
+			$(listParent).children().on("mouseover",circleSettings.showSameAuthors)
+			.on("mouseout",circleSettings.removeSameAuthors);
+
 			circleSettings.keySetup = true;
+			resizeRows();
 		}
+	},
+	checkList:function(item,list){
+		for(var a = 0, max = list.length; a < max; a+=1){
+			if(list[a] == item){
+				return true;
+			}
+		}
+		return false;
+	},
+	showSameAuthors:function(event,element){
+		var el = element || this;
+		$(circleSettings.parentKey+ " #"+ el.id).attr('class', 'heighlight-circle');
+		$(circleSettings.parentElement+ " #" + el.id).attr('class', 'heighlight-circle');
+	},
+	removeSameAuthors:function(event,element){
+		var el = element || this;
+		$(circleSettings.parentKey+ " #"+ el.id).attr('class', '');
+		$(circleSettings.parentElement+" #" + el.id).attr('class', '');
+	},
+	showMetaData:function(event,element,text){
+		var el = element || this,
+		data = el.parentNode.__data__.data;
+		numberOfPapers = $(circleSettings.parentElement+ " #" + el.parentNode.id + " #" + el.id)
+
+		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in <i><br/>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
+		
+		function plur(papernum) {if(papernum > 1){return "papers";}else{return "paper";}}
+	},
+	removeMetaData:function(){
+		$(circleSettings.parentInfo)[0].innerHTML = "";
 	},
 	dynamicSort:function(property) {
 		var sortOrder = 1;
@@ -240,7 +296,7 @@ var circleSettings = {
 			}
 		});
 		d3.json(circleSettings.dataLocation,function(data){
-			data.sort(circleSettings.dynamicSort("paper"));
+			data.sort(circleSettings.dynamicSort("impact"));
 			circleSettings.data = data;
 			circleSettings.init();
 		});
@@ -277,35 +333,36 @@ var circleSettings = {
 				return null;
 			});
 
+		////////////////// CRICLE //////////////
 		circleSettings.g.append('circle')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
 		.attr("r", function(d) {
-			
 			return map_range(d.data.impact,0,30,circleSettings.minRad,circleSettings.maxRad);
 		})
 		.style("text-anchor", "middle")
-		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.style("fill", function(d) { return circleSettings.color(d.data.fname); })
 		.on('mouseover',function(d){
-			this.nextSibling.style.display = "inherit";
-			showSameClassAsThisId(this);
+			circleSettings.showMetaData(d,this,this.nextSibling);
+			circleSettings.showSameAuthors(d,this);
 		})
 		.on('mouseout',function(d){
-			this.nextSibling.style.display = "none";
-			removeSameClassAsThisId(this);
+			circleSettings.removeMetaData();
+			circleSettings.removeSameAuthors(d,this);
 		})
-		.attr('class', function(d){
-			return convertToSlug(d.data.name);
-		})
+		.each(function(d){
+			this.id = convertToSlug(d.data.fname);
+			this.parentNode.id = convertToSlug(d.data.paper);
+		});
 
-
+		////////////////// TEXT //////////////
 		circleSettings.g.append("text")
 		.attr("dy", ".35em")
 		.style("text-anchor", "middle")
 		.style("display","none")
 		.attr("class","inner-text")
-		.text(function(d) { return d.data.name + " " + d.data.paper; });
+		.text(function(d) { return d.data.paper; });
 
-
+		////////////////// RECT //////////////
 		circleSettings.g.append('rect')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
 		.attr('x', -circleSettings.squareSize/2)
@@ -322,17 +379,22 @@ var circleSettings = {
 			}
 			return 0;
 		})
-		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.each(function(d,index){
+			this.id = convertToSlug(d.data.fname);
+			this.previousSibling.id = index;
+			this.parentNode.id = convertToSlug(d.data.paper);
+		})
+		.style("fill", function(d) { return circleSettings.color(d.data.fname); })
 		.on('mouseover',function(d){
-			this.previousSibling.style.display = "inherit";
-			showSameClassAsThisId(this);
+			circleSettings.showMetaData(d,this,this.previousSibling);
+			circleSettings.showSameAuthors(d,this);
 		})
 		.on('mouseout',function(d){
-			this.previousSibling.style.display = "none";
-			removeSameClassAsThisId(this);
+			circleSettings.removeMetaData();
+			circleSettings.removeSameAuthors(d,this);
 		})
 		.attr('class', function(d){
-			return convertToSlug(d.data.name);
+			return convertToSlug(d.data.fname);
 		})
 		circleSettings.setUpHTMLEls();
 	}
@@ -342,6 +404,8 @@ var circleSettings = {
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
+
+
 
 
 
@@ -386,7 +450,7 @@ var treeChart = {
 	dataLocation:"/static/data/2012-breakdown.json",
 	setup:function(){
 		treeChart.setWH();
-		console.log(treeChart.width,treeChart.height);
+		//console.log(treeChart.width,treeChart.height);
 		treeChart.treemap = d3.layout.treemap()
 			.size([treeChart.width, treeChart.height])
 			.sticky(true)
@@ -399,7 +463,7 @@ var treeChart = {
 		treeChart.loadData("none",treeData);
 		treeChart.generateList();
 		$(window).on("resize",function(){
-			console.log("yep");
+			//console.log("yep");
 			treeChart.onResizeChart();
 		});
 	},
@@ -439,12 +503,12 @@ var treeChart = {
 			content.className = "other";
 			listItem.appendChild(content);
 
-			header = document.createElement("h3");
+			/*header = document.createElement("h3");
 			header.innerHTML = elements[a].name+ ":";
-			content.appendChild(header);
+			content.appendChild(header);*/
 
-			info = document.createElement("span");
-			info.innerHTML = elements[a].info
+			info = document.createElement("p");
+			info.innerHTML = "<strong>"+elements[a].name+ ":</strong> "+elements[a].info;
 			content.appendChild(info)
 
 			listParent.appendChild(listItem);

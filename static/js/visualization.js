@@ -476,7 +476,9 @@ var treeChart = {
 			.enter().append("div")
 			.attr("class", function(d){return convertToSlug(d.name) + " node";})
 			.call(treeChart.setSize)
-			.text(function(d) { return d.size; });
+			.text(function(d) { return d.size; })
+			.on("mouseover",treeChart.heighLightFromBox)
+			.on("mouseout",treeChart.unHeighLight);
 	},
 	setSize:function(){
 		this.style("left", function(d) { return d.x + "px"; })
@@ -516,6 +518,7 @@ var treeChart = {
 		// d3.select(treeChart.location)[0][0].appendChild(listParent);
 		$(treeChart.keyLocation)[0].appendChild(listParent);
 		$(listParent).children().on("mouseover",treeChart.heighLight);
+		$(listParent).children().on("mouseout",treeChart.unHeighLight)
 	},
 	heighLight:function(){
 		treeChart.unHeighLight();
@@ -524,6 +527,15 @@ var treeChart = {
 			if(list[a]!="list-icon"){
 				$(this).addClass('tree-graph-heigh-lighted');
 				$("."+list[a]).addClass('tree-graph-heigh-lighted');
+			}
+		}
+	},
+	heighLightFromBox:function(){
+		var list = this.className.split(" ");
+		for( var a = 0, max = list.length; a < max; a += 1){
+			if(list[a]!="node"){
+				$(this).addClass('tree-graph-heigh-lighted');
+				$($("."+list[a])[0].parentNode).addClass('tree-graph-heigh-lighted');
 			}
 		}
 	},
@@ -543,12 +555,15 @@ var treeChart = {
 				.style("width", (treeChart.width) + "px")
 				.style("height", (treeChart.height) + "px")
 				.attr("class","tree-chart");
+
 			treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
 				.data(treeChart.treemap(treeChart.inputData))
 				.enter().append("div")
 				.attr("class", function(d){return convertToSlug(d.name) + " node";})
 				.call(treeChart.setSize)
-				.text(function(d) { return d.size; });
+				.text(function(d) { return d.size; })
+				.on("mouseover",treeChart.heighLightFromBox)
+				.on("mouseout",treeChart.unHeighLight);
 		}
 	}
 }

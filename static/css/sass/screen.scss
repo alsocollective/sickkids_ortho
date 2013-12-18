@@ -1280,7 +1280,14 @@ h3 {
 	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAL/gYARxgdzQAAkAOOA2IzIHJAAACAGEAFjDBirAAAAAElFTkSuQmCC) repeat;
 }
 
-// Visulizations..
+// Visulizations
+
+//Pie Chart
+.heighlight-ref{
+	background-color:#ccc;
+	fill:#ccc;
+}
+
 #tree-area{
 	width: 100%;
 	height: 600px;
@@ -1303,14 +1310,88 @@ h3 {
 	height: 100%;
 }
 
+#new-referrals-key{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	li{
+		padding: 0.5em 0 0.5em 0;
+		margin: 0;
+		list-style: none;
+	}
+	li div, li h3{
+		padding: 0;
+		margin: 0 0 0 0.5em;
+		display: inline-block;
+		vertical-align:middle;
+		font-size:0.9em;
+		text-decoration:none;
+	}
+	.list-icon{
+		@include vendorize(border-radius,50%);
+		width: 20px;
+		height: 20px;
+		background-color: #adafb2;
+		margin-right:0.4em;
+	}
+	.other{
+		width: calc(90% - 30px );
+		display: inline-block;
+		vertical-align: top;
+	}
+	strong{
+		text-transform:uppercase;
+	}
+	ul{
+		margin-bottom:1em;
+	}
+}
+#years{
+	font-weight:800;
+	input[type="radio"]{
+		margin:0 0.5em 0 1em;
+	}
+	li:hover{
+		background-color:#ccc;
+	}
+}
+
+#new-referrals-static{
+	padding-bottom: 14em;
+	sub{
+		font-size:0.8em;
+		font-style:italic;
+		color:#555;
+	}
+	p{
+		line-height:0.95em !important;
+	}
+	h4{
+		text-decoration:none;
+		margin:0;
+		padding:0;
+		color:#333;
+		display:inline-block;
+	}
+	h3{
+		color:#333;
+		text-decoration:none;
+		border-bottom:solid #333 2px;
+	}
+	li{
+		padding:0.2em 0 0.2em 0;
+	}
+}
+
 #tree-key-chart{
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 	vertical-align: top;
 	li{
-		margin: 0.5em 0 0.5em 0;
-		padding: 0;
+		padding: 0.5em 0 0.5em 0;
+		margin: 0;
 		list-style: none;
 	}
 	li div, li h3{
@@ -1326,6 +1407,7 @@ h3 {
 		width: 30px;
 		height: 30px;
 		background-color: #adafb2;
+		margin-right:0.5em;
 	}
 	.other{
 		width: calc(90% - 30px );
@@ -1381,10 +1463,11 @@ h3 {
 }
 
 .tree-chart .tree-graph-heigh-lighted{
-	color: #000;
+	color: #fff;
+	background-color:#f00;
 }
 #tree-key-chart li.tree-graph-heigh-lighted{
-	background-color: #eee;
+	background-color: #ccc;
 }
 
 @include breakpoint(phone) {
@@ -1412,10 +1495,56 @@ h3 {
 	//fill:#fff !important;
 	//fill:#269C80 !important;
 	fill:#3EB5E0 !important;
+	//fill:#f00 !important;
 	//stroke:$sk_red;
 	//stroke-width:2px;
 }
 
+
+#faculty-publications-and-impact-factors-2013{
+	padding-bottom: 14em;
+	sub{
+		font-size:0.8em;
+		font-style:italic;
+		color:#555;
+	}
+	p{
+		line-height:0.95em !important;
+	}
+	h4{
+		text-decoration:none;
+		margin:0;
+		padding:0;
+		color:#333;
+		display:inline-block;
+	}
+	h3{
+		color:#333;
+		text-decoration:none;
+		border-bottom:solid #333 2px;
+	}
+	li{
+		padding:0.2em 0 0.2em 0.5em;
+	}
+}
+#my-key{
+	white-space:nowrap;
+	ul{
+		margin-bottom: 1em;
+	}
+	/*li:hover{
+		
+		h4{
+			color:#fff !important;
+		}
+	}*/
+	.heighlight-circle{
+		background-color:#ccc;
+		h4{
+			//color:#fff;	
+		}
+	}
+}
 #my-add-info{
 	text-align:right;
 	h5{
@@ -1434,29 +1563,11 @@ h3 {
 		font-size:1em;
 	}
 }
-#faculty-publications-and-impact-factors-2013{
-	padding-bottom: 14em;
-	sub{
-		font-size:0.8em;
-		font-style:italic;
-		color:#555;
-	}
-	p{
-		line-height:0.95em !important;
-	}
-	h4{
-		text-decoration:none;
-		margin:0;
-		padding:0;
-		color:#333;
-	}
-	h3{
-		color:#333;
-		text-decoration:none;
-		border-bottom:solid #333 2px;
-	}
+#full-list{
 	li{
-		margin:0.3em 0 0.3em 0;
+		font-size:0.8em;
+		color:$sk_red;
+		margin:0 0 0.3em 0;
 	}
 }
 @include breakpoint(tablet) {
@@ -1480,4 +1591,16 @@ h3 {
 			font-size:0.9em;
 		}
 	}
+}
+.list-icon{
+	width:20px;
+	height:10px;
+	display:inline-block;
+	vertical-align: middle;
+	margin-right: 0.5em;
+}
+.vis-header{
+	color:#333;
+	text-decoration:none;
+	border-bottom:solid #333 2px;
 }

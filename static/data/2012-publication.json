@@ -248,14 +248,14 @@
 	{
 		"fname":"John",
 		"lname":"Wedge",
-		"impact":1,
-		"paper":"paper published"
+		"impact":1.25,
+		"paper":"Orthopedic Clinics of North America"
 	},
 	{
 		"fname":"John",
 		"lname":"Wedge",
-		"impact":1,
-		"paper":"paper published"
+		"impact":2.79,
+		"paper":"Clinical Orthopaedics and Related Research"
 	},
 	{
 		"fname":"John",

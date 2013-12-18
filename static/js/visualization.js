@@ -113,6 +113,9 @@ var referrals = {
 			var parent = $(referrals.parentKey)[0];
 			var form = document.createElement("form");
 
+			var listParent = document.createElement("ul"),
+			listItem = document.createElement("li"),
+			listItem2 = document.createElement("li");
 			var label = document.createElement("label");
 			label.for = "2011";
 			label.innerHTML = "2011";
@@ -124,25 +127,35 @@ var referrals = {
 			$(input).on("change",referrals.switchDataSets);
 
 			var label2 = label.cloneNode(true);
+			
 			label2.for = "2012";
 			label2.innerHTML = "2012";
 			input2 = input.cloneNode(true);
 			input2.value = "2012";
 			input2.checked = true;
 			$(input2).on("change",referrals.switchDataSets);
-			form.appendChild(label);
-			form.appendChild(input);
-			form.appendChild(label2);
-			form.appendChild(input2);
+			
+			form.appendChild(listParent);
+			
+			listItem.appendChild(input);
+			listItem.appendChild(label);
+			
+			listItem2.appendChild(input2);
+			listItem2.appendChild(label2);
+			listParent.appendChild(listItem);
+			listParent.appendChild(listItem2);
 			parent.appendChild(form);
+			
+			listParent.setAttribute("id","years");
+			
 
-			var listParent = document.createElement("ul"),
-			listItem = null,
-			icon = null,
+			listParent = document.createElement("ul");
+			listItem = null;
+			var icon = null,
 			content = null,
 			header = null,
 			info = null;
-			listParent.id = "tree-key-chart";
+			listParent.id = "new-referrals-key";
 
 			for(var a = 0, max = referrals.path[0].length; a < max; a += 1){
 				var name = referrals.path[0][a].__data__.data.type,
@@ -157,7 +170,7 @@ var referrals = {
 					icon.style.backgroundColor = colour;
 					listItem.appendChild(icon);
 
-					header = document.createElement("h3");
+					header = document.createElement("h4");
 					header.innerHTML = name
 					listItem.appendChild(header);
 
@@ -208,7 +221,7 @@ Y88b  d88P 888 888     Y88b.    888 Y8b.
 var circleSettings = {
 	squareSize:12,
 	maxRad:15,
-	minRad:5,
+	minRad:10,
 	parentElement:"#my-svg",
 	parentKey:"#my-key",
 	parentInfo:"#my-add-info",
@@ -298,7 +311,7 @@ var circleSettings = {
 		data = el.parentNode.__data__.data;
 		numberOfPapers = $(circleSettings.parentElement+ " #" + el.parentNode.id + " #" + el.id)
 
-		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in <i><br/>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
+		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in<i><br/>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
 	},
 	removeMetaData:function(){
 		$(circleSettings.parentInfo)[0].innerHTML = "";
@@ -307,7 +320,7 @@ var circleSettings = {
 		// console.log(event);
 		var numberOfPapers = $(circleSettings.parentElement+ " #"+ event.srcElement.parentNode.id);
 		var data = numberOfPapers[0].__data__.data
-		var out = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published: <ul>";
+		var out = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published: "+numberOfPapers.length/2+" Total</p><ul id='full-list'>";
 		var papers = {};
 		for(var a = 0, max = numberOfPapers.length; a < max; a += 2){
 			data = numberOfPapers[a].__data__.data;
@@ -321,10 +334,11 @@ var circleSettings = {
 			}
 		}
 		for(var key in papers){
-			out += "<li>"+papers[key].number+" "+plur(papers[key].number)+" in " + key + " with a total impact of " + zeroToNa(Math.floor(papers[key].Timpact*100)/100);
+			//out += "<li>"+papers[key].number+" "+plur(papers[key].number)+" in " + key + " with a total impact of " + zeroToNa(Math.floor(papers[key].Timpact*100)/100);
+			out += "<li>"+key
 		}
-		console.log(papers);
-		out += "</ul></p>";
+		//console.log(papers);
+		out += "</ul>";
 		$(circleSettings.parentInfo)[0].innerHTML = out;
 	},
 	dynamicSort:function(property) {

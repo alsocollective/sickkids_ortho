@@ -291,6 +291,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.man_made",
     "elementType": "geometry",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#a1585b" }
@@ -298,6 +299,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.man_made",
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#fac2c2" }
@@ -305,6 +307,7 @@ var myContactStyle = [
   },{
     "featureType": "road",
     "elementType": "geometry.fill",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#f7a4a7" }
@@ -312,6 +315,7 @@ var myContactStyle = [
   },{
     "featureType": "road",
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#ea646f" }
@@ -319,6 +323,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.natural",
     "elementType": "geometry.fill",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#fae6e6" }
@@ -326,12 +331,14 @@ var myContactStyle = [
   },{
     "featureType": "poi.medical",
     "elementType": "geometry",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#f18383" }
     ]
   },{
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#ffffff" },
@@ -339,6 +346,7 @@ var myContactStyle = [
     ]
   },{
     "elementType": "labels.icon",
+    "year":2005,
     "stylers": [
       { "saturation": -100 },
       { "gamma": 0.01 },
@@ -347,13 +355,37 @@ var myContactStyle = [
     ]
   },{
     "elementType": "labels.text",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "saturation": -100 }
     ]
   },{
-    "elementType": "geometry"  }
+    "elementType": "geometry"}
 ]
+
+function keyGenForMap(parentId,styles){
+	var parent=document.getElementById(parentId);
+	var ul = document.createElement("ul");
+	parent.appendChild(ul);
+	var li = null,
+	div=null,
+	h3=null;
+	for(var a = 1, max = styles.length-2; a < max; a += 1){
+		div = document.createElement("div"),
+		li = document.createElement("li"),
+		h3 = document.createElement("h3");
+		li.appendChild(div);
+		li.appendChild(h3);
+		h3.innerHTML = 2004+a;
+		console.log(styles[a])
+		if(!styles[a].stylers[1]){
+			return false;
+		}
+		div.style.backgroundColor = styles[a].stylers[1].color;
+		ul.appendChild(li);
+	}
+}
 
 
 // MAP STUFF!!!

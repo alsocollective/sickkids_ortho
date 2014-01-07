@@ -193,6 +193,7 @@ $.fn.pullSlider = function( options ) {
 						break;
 					case "bottom":
 						settings.element.css("top",settings.windowHeight-settings.tbheight);
+						
 						break;
 					default:
 						settings.element.css("top","0");

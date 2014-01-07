@@ -6,11 +6,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'sickkids_ortho.views.home', name='home'),
+    # url(r'^$', 'blog.views.home', name='home'),
     # url(r'^sickkids_ortho/', include('sickkids_ortho.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    url(r'^$','blog.views.post',name="rawpost"),
 
     # Uncomment the next line to enable the admin:
     url(r'^$', 'blog.views.static', name='home'),

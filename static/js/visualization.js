@@ -2,6 +2,7 @@
 function showSameClassAsThisId(element){
 	if(!element.classList){
 		$("."+this.id).attr("class",this.id+" heighlight");
+		$(this).addClass(this.id+" heighlight");
 	} else {
 		$("."+element.classList[0]).attr("class",element.classList[0]+" heighlight");
 	}
@@ -51,10 +52,7 @@ var referrals = {
 			})
 			.sort(
 				null
-				/*function(a,b)
-			{
-				return d3.descending(a["2012"],b["2012"]);
-			}*/);
+			);
 
 		referrals.arc = d3.svg.arc()
 		d3.json(referrals.dataLocation, function(error, data) {
@@ -63,9 +61,11 @@ var referrals = {
 			referrals.setupKeys();
 		});
 		$(window).resize(function(){
-			$(referrals.parentElement)[0].innerHTML = "";
-			referrals.updateSizes();
-			referrals.updateChart();
+			if($(referrals.parentElement)[0]){
+				$(referrals.parentElement)[0].innerHTML = "";
+				referrals.updateSizes();
+				referrals.updateChart();
+			}
 		});
 	},
 	updateChart:function(){
@@ -83,11 +83,11 @@ var referrals = {
 			.attr('fill', function(d,i){
 				return referrals.colour(i);
 			})
-			.attr("class",function(d){
-				return convertToSlug(d.data.type);
-			})
 			.attr("d",referrals.arc)
-			.each(function(d) { this._current = d; });
+			.on("mouseover",referrals.lightUpText)
+			.on("mouseout",referrals.setbackText)
+			.each(function(d) { this.id = convertToSlug(d.data.type);this._current = d; });
+
 	},
 	switchDataSets:function(){
 		var value = this.value;
@@ -95,10 +95,6 @@ var referrals = {
 			.value(function(d) {
 				return d[value];
 			})
-			// .sort(function(a,b)
-			// {
-			// 	return d3.descending(a[value],b[value]);
-			// });
 		referrals.path = referrals.path.data(referrals.pie);
 		referrals.path.transition().duration(750).attrTween("d", referrals.arcTween);
 	},
@@ -107,34 +103,79 @@ var referrals = {
 		if($(referrals.parentKey).children().length == 0){
 			var parent = $(referrals.parentKey)[0];
 			var form = document.createElement("form");
+
+			var label = document.createElement("label");
+			label.for = "2011";
+			label.innerHTML = "2011";
 			var input = document.createElement("input");
 			input.type = "radio";
 			input.value = "2011";
 			input.name = "date";
+			input.id = "2011";
 			$(input).on("change",referrals.switchDataSets);
+
+			var label2 = label.cloneNode(true);
+			label2.for = "2012";
+			label2.innerHTML = "2012";
 			input2 = input.cloneNode(true);
 			input2.value = "2012";
 			input2.checked = true;
 			$(input2).on("change",referrals.switchDataSets);
+			form.appendChild(label);
 			form.appendChild(input);
+			form.appendChild(label2);
 			form.appendChild(input2);
 			parent.appendChild(form);
+
+			var listParent = document.createElement("ul"),
+			listItem = null,
+			icon = null,
+			content = null,
+			header = null,
+			info = null;
+			listParent.id = "tree-key-chart";
 
 			for(var a = 0, max = referrals.path[0].length; a < max; a += 1){
 				var name = referrals.path[0][a].__data__.data.type,
 				slug = convertToSlug(name);
 				if($(parent).children('#'+slug).length == 0){
 					var colour = referrals.path[0][a].attributes.fill.value;
-					var container = document.createElement("li");
-					container.innerHTML = name;
-					container.id = slug;
-					container.style.backgroundColor = colour;
-					$(container).on("mouseover",showSameClassAsThisId);
-					$(container).on("mouseout",removeSameClassAsThisId)
-					parent.appendChild(container);
+
+					listItem = document.createElement("li");
+					listItem.id = slug;
+					icon = document.createElement("div");
+					icon.className = "list-icon "+ slug;
+					icon.style.backgroundColor = colour;
+					listItem.appendChild(icon);
+
+					header = document.createElement("h3");
+					header.innerHTML = name
+					listItem.appendChild(header);
+
+					$(listItem).on("mouseover",referrals.heighLightEl);
+					$(listItem).on("mouseout",referrals.removeHeighLight);
+					listParent.appendChild(listItem);
 				}
 			}
+			parent.appendChild(listParent);
 		}
+	},
+	heighLightEl:function(event){
+		$("#new-referrals-chart #"+this.id).attr("class","heighlight-ref");
+		$(this).addClass("heighlight-ref");
+	},
+	removeHeighLight:function(event){
+		$(this).removeClass('heighlight-ref')
+		$("#new-referrals-chart #"+this.id).attr("class","");
+	},
+	lightUpText:function(event){
+		$(this).attr('class', 'heighlight-ref');
+		$("#new-referrals-key #"+this.id).addClass('heighlight-ref');
+		console.log(this);
+	},
+	setbackText:function(event){
+		$(this).attr('class', '');
+		$("#new-referrals-key #"+this.id).removeClass('heighlight-ref');
 	},
 	arcTween:function(a) {
 		var i = d3.interpolate(this._current, a);
@@ -147,9 +188,12 @@ var referrals = {
 
 // Pie Circle....
 var circleSettings = {
-	squareSize:30,
+	squareSize:12,
+	maxRad:20,
+	minRad:5,
 	parentElement:"#my-svg",
 	parentKey:"#my-key",
+	parentInfo:"#my-add-info",
 	keySetup:false,
 	dataLocation:"/static/data/2012-publication.json",
 	updateSizes:function(){
@@ -158,24 +202,79 @@ var circleSettings = {
 		circleSettings.radius = Math.min(circleSettings.width,circleSettings.height)/2
 	},
 	setUpHTMLEls:function(){
+		//console.log("SET UP HTML EL!!!!!!")
 		if($(circleSettings.parentKey).children().length == 0){
 			var parent = $(circleSettings.parentKey)[0];
+			var listParent = document.createElement("ul"),
+			listItem = null,
+			icon = null,
+			content = null,
+			header = null,
+			fname = null,
+			lname = null,
+			slug = null,
+			colour= null,
+			list = [];
+
 			for(var a = 0, max = circleSettings.g[0].length; a < max; a += 1){
-				var name = circleSettings.g[0][a].__data__.data.name
-				var slug = convertToSlug(name);
-				if($(parent).children('#'+slug).length == 0){
-					var colour = circleSettings.g[0][a].lastChild.style.fill;
-					var container = document.createElement("li");
-					container.innerHTML = name;
-					container.id = slug;
-					container.style.backgroundColor = colour;
-					$(container).on("mouseover",showSameClassAsThisId);
-					$(container).on("mouseout",removeSameClassAsThisId)
-					parent.appendChild(container);
+				fname = circleSettings.g[0][a].__data__.data.fname
+				lname = circleSettings.g[0][a].__data__.data.lname
+				slug = convertToSlug(fname);
+				if(!circleSettings.checkList(slug,list)){
+					colour = circleSettings.g[0][a].lastChild.style.fill;
+					listItem = document.createElement("li");
+					listItem.id = slug;
+					icon = document.createElement("div")
+					icon.className = "list-icon " + slug;
+					icon.style.backgroundColor = colour;
+					listItem.appendChild(icon);
+
+					header = document.createElement("h3");
+					header.innerHTML = lname;
+					listItem.appendChild(header);
+
+					list.push(slug);
+
+					listParent.appendChild(listItem);
 				}
 			}
+			parent.appendChild(listParent);
+			$(listParent).children().on("mouseover",circleSettings.showSameAuthors)
+			.on("mouseout",circleSettings.removeSameAuthors);
+
 			circleSettings.keySetup = true;
+			resizeRows();
 		}
+	},
+	checkList:function(item,list){
+		for(var a = 0, max = list.length; a < max; a+=1){
+			if(list[a] == item){
+				return true;
+			}
+		}
+		return false;
+	},
+	showSameAuthors:function(event,element){
+		var el = element || this;
+		$(circleSettings.parentKey+ " #"+ el.id).attr('class', 'heighlight-circle');
+		$(circleSettings.parentElement+ " #" + el.id).attr('class', 'heighlight-circle');
+	},
+	removeSameAuthors:function(event,element){
+		var el = element || this;
+		$(circleSettings.parentKey+ " #"+ el.id).attr('class', '');
+		$(circleSettings.parentElement+" #" + el.id).attr('class', '');
+	},
+	showMetaData:function(event,element,text){
+		var el = element || this,
+		data = el.parentNode.__data__.data;
+		numberOfPapers = $(circleSettings.parentElement+ " #" + el.parentNode.id + " #" + el.id)
+
+		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in <i>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
+		
+		function plur(papernum) {if(papernum > 1){return "papers";}else{return "paper";}}
+	},
+	removeMetaData:function(){
+		$(circleSettings.parentInfo)[0].innerHTML = "";
 	},
 	dynamicSort:function(property) {
 		var sortOrder = 1;
@@ -190,9 +289,11 @@ var circleSettings = {
 	},
 	load:function(){
 		$(window).on("resize",function(){
-			$(circleSettings.parentElement)[0].innerHTML = "";
-			circleSettings.updateSizes();
-			circleSettings.init();
+			if($(circleSettings.parentElement[0])){
+				$(circleSettings.parentElement)[0].innerHTML = "";
+				circleSettings.updateSizes();
+				circleSettings.init();
+			}
 		});
 		d3.json(circleSettings.dataLocation,function(data){
 			data.sort(circleSettings.dynamicSort("paper"));
@@ -201,7 +302,7 @@ var circleSettings = {
 		});
 	},
 	init:function(){
-		circleSettings.color = d3.scale.ordinal().range(["#ccc","#c00","#0c0","#00c","#000"])
+		circleSettings.color = d3.scale.ordinal().range(["#FAC2C3","#F7A4A6","#F18489","#EA636E","#A1585C","#792B34","#52161A","#000"])
 		circleSettings.arc = d3.svg.arc()
 			.outerRadius(circleSettings.radius - 29)
 			.innerRadius(circleSettings.radius - 30);
@@ -232,31 +333,36 @@ var circleSettings = {
 				return null;
 			});
 
+		////////////////// CRICLE //////////////
 		circleSettings.g.append('circle')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
-		.attr("r", function(d) { return d.data.impact; })
+		.attr("r", function(d) {
+			return map_range(d.data.impact,0,30,circleSettings.minRad,circleSettings.maxRad);
+		})
 		.style("text-anchor", "middle")
-		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.style("fill", function(d) { return circleSettings.color(d.data.fname); })
 		.on('mouseover',function(d){
-			this.nextSibling.style.display = "inherit";
-			showSameClassAsThisId(this);
+			circleSettings.showMetaData(d,this,this.nextSibling);
+			circleSettings.showSameAuthors(d,this);
 		})
 		.on('mouseout',function(d){
-			this.nextSibling.style.display = "none";
-			removeSameClassAsThisId(this);
+			circleSettings.removeMetaData();
+			circleSettings.removeSameAuthors(d,this);
 		})
-		.attr('class', function(d){
-			return convertToSlug(d.data.name);
-		})
+		.each(function(d){
+			this.id = convertToSlug(d.data.fname);
+			this.parentNode.id = convertToSlug(d.data.paper);
+		});
 
-
+		////////////////// TEXT //////////////
 		circleSettings.g.append("text")
 		.attr("dy", ".35em")
 		.style("text-anchor", "middle")
 		.style("display","none")
-		.text(function(d) { return d.data.name + " " + d.data.paper; });
+		.attr("class","inner-text")
+		.text(function(d) { return d.data.paper; });
 
-
+		////////////////// RECT //////////////
 		circleSettings.g.append('rect')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
 		.attr('x', -circleSettings.squareSize/2)
@@ -273,22 +379,31 @@ var circleSettings = {
 			}
 			return 0;
 		})
-		.style("fill", function(d) { return circleSettings.color(d.data.name); })
+		.each(function(d,index){
+			this.id = convertToSlug(d.data.fname);
+			this.previousSibling.id = index;
+			this.parentNode.id = convertToSlug(d.data.paper);
+		})
+		.style("fill", function(d) { return circleSettings.color(d.data.fname); })
 		.on('mouseover',function(d){
-			this.previousSibling.style.display = "inherit";
-			showSameClassAsThisId(this);
+			circleSettings.showMetaData(d,this,this.previousSibling);
+			circleSettings.showSameAuthors(d,this);
 		})
 		.on('mouseout',function(d){
-			this.previousSibling.style.display = "none";
-			removeSameClassAsThisId(this);
+			circleSettings.removeMetaData();
+			circleSettings.removeSameAuthors(d,this);
 		})
 		.attr('class', function(d){
-			return convertToSlug(d.data.name);
+			return convertToSlug(d.data.fname);
 		})
 		circleSettings.setUpHTMLEls();
 	}
 }
 
+
+function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
 
 
 
@@ -311,17 +426,17 @@ treeChart.setup();
 */
 
 var treeData = {"name":"Number of Procedures", "children": [
-	{"name": "Trauma", "size": 325, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Hip", "size": 161, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Spine", "size": 141, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Limb Reconstruction", "size": 140, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Neuromuscular", "size": 135, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Tumor", "size": 128, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Foot & Ankle", "size": 123, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Infection", "size": 81, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Sports", "size": 71, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Upper Limb", "size": 50, "info":"dsfdsfdfsasdfasdfafsdasdf"},
-	{"name": "Genetic and Metabolic", "size": 35, "info":"dsfdsfdfsasdfasdfafsdasdf"}
+	{"name": "Trauma", "size": 325, "info":"Single level reconstruction, complex polytrauma, SCFE."},
+	{"name": "Hip", "size": 161, "info":"Hip relocation, Innominate osteotomy, periacetabular osteotomies, Wedge pelvic & femoral osteotomies, Wagner double osteotomy, articulated hip distraction, surgical hip dislocation."},
+	{"name": "Spine", "size": 141, "info":"Congenital and idiopathic spine deformity correction, anterior and posterior surgery, direct vertebral derotation, VEPTR, complex osteotomy and instrumentation."},
+	{"name": "Limb Reconstruction", "size": 140, "info":"Limb lengthening, Ilizarov & Taylor Spatial Frame application. monolateral frame application, multifocal osteotomies, Super-joint procedures, Blount’s reconstruction, pelvic support osteotomy."},
+	{"name": "Neuromuscular", "size": 135, "info":"Cerebral palsy soft tissue management, osteotomies, and single event multi-level surgery."},
+	{"name": "Tumor", "size": 128, "info":"Benign and malignant tumour resection, limb salvage, biological and endoprosthetic reconstruction, muscle flaps. Rotationplasty."},
+	{"name": "Foot & Ankle", "size": 123, "info":"Hindfoot osteotomies, midfoot osteotomies, forefoot osteotomies, resection of coalition, arthrodesis."},
+	{"name": "Infection", "size": 81, "info":"Irrigation and debridement, arthrotomy."},
+	{"name": "Sports", "size": 71, "info":"Arthroscopy, sports injuries, osteochondral reconstruction, all epiphyseal ACL reconstruction, meniscal repair, labral repair."},
+	{"name": "Upper Limb", "size": 50, "info":"Brachial plexus palsy sequelae reconstruction, glenoid osteotomy, tendon transfers, MHE wrist reconstruction."},
+	{"name": "Genetic and Metabolic", "size": 35, "info":"OI osteotomy and telescopic rodding. Skeletal dysplasia reconstruction, rickets reconstruction."}
 ]}
 
 
@@ -335,6 +450,7 @@ var treeChart = {
 	dataLocation:"/static/data/2012-breakdown.json",
 	setup:function(){
 		treeChart.setWH();
+		console.log(treeChart.width,treeChart.height);
 		treeChart.treemap = d3.layout.treemap()
 			.size([treeChart.width, treeChart.height])
 			.sticky(true)
@@ -346,7 +462,10 @@ var treeChart = {
 		// d3.json(treeChart.dataLocation,treeChart.loadData);
 		treeChart.loadData("none",treeData);
 		treeChart.generateList();
-		// $(window).on("resize",treeChart.onResizeChart);
+		$(window).on("resize",function(){
+			console.log("yep");
+			treeChart.onResizeChart();
+		});
 	},
 	inputData:null,
 	divs:null,
@@ -381,14 +500,15 @@ var treeChart = {
 			listItem.appendChild(icon);
 
 			content = document.createElement("div");
+			content.className = "other";
 			listItem.appendChild(content);
 
-			header = document.createElement("h3");
+			/*header = document.createElement("h3");
 			header.innerHTML = elements[a].name+ ":";
-			content.appendChild(header);
+			content.appendChild(header);*/
 
-			info = document.createElement("span");
-			info.innerHTML = elements[a].info
+			info = document.createElement("p");
+			info.innerHTML = "<strong>"+elements[a].name+ ":</strong> "+elements[a].info;
 			content.appendChild(info)
 
 			listParent.appendChild(listItem);
@@ -415,17 +535,20 @@ var treeChart = {
 		treeChart.height = $(treeChart.location).outerHeight();
 	},
 	onResizeChart:function(){
-		treeChart.setWH();
-		treeChart.treemap.size([treeChart.width, treeChart.height]);
-		treeChart.parentDiv = d3.select(treeChart.location).append("div")
-			.style("width", (treeChart.width) + "px")
-			.style("height", (treeChart.height) + "px")
-			.attr("class","tree-chart");
-		treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
-			.data(treeChart.treemap(treeChart.inputData))
-			.enter().append("div")
-			.attr("class", function(d){return convertToSlug(d.name) + " node";})
-			.call(treeChart.setSize)
-			.text(function(d) { return d.size; });
+		if($(treeChart.location)[0]){
+			treeChart.setWH();
+			$(treeChart.location)[0].innerHTML = "";
+			treeChart.treemap.size([treeChart.width, treeChart.height]);
+			treeChart.parentDiv = d3.select(treeChart.location).append("div")
+				.style("width", (treeChart.width) + "px")
+				.style("height", (treeChart.height) + "px")
+				.attr("class","tree-chart");
+			treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
+				.data(treeChart.treemap(treeChart.inputData))
+				.enter().append("div")
+				.attr("class", function(d){return convertToSlug(d.name) + " node";})
+				.call(treeChart.setSize)
+				.text(function(d) { return d.size; });
+		}
 	}
 }

@@ -1,3 +1,4 @@
+//http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Colossal&t=Tree%20Chart
 // Utility functions
 function showSameClassAsThisId(element){
 	if(!element.classList){
@@ -25,8 +26,16 @@ function convertToSlug(Text)
 }
 
 
-// Referrals
-
+/*
+8888888b.            .d888                                   888
+888   Y88b          d88P"                                    888
+888    888          888                                      888
+888   d88P  .d88b.  888888  .d88b.  888d888 888d888  8888b.  888 .d8888b
+8888888P"  d8P  Y8b 888    d8P  Y8b 888P"   888P"       "88b 888 88K
+888 T88b   88888888 888    88888888 888     888     .d888888 888 "Y8888b.
+888  T88b  Y8b.     888    Y8b.     888     888     888  888 888      X88
+888   T88b  "Y8888  888     "Y8888  888     888     "Y888888 888  88888P'
+*/
 var referrals = {
 	parentElement:"#new-referrals-chart",
 	dataLocation:"/static/data/2011-2012-referals.json",
@@ -104,6 +113,9 @@ var referrals = {
 			var parent = $(referrals.parentKey)[0];
 			var form = document.createElement("form");
 
+			var listParent = document.createElement("ul"),
+			listItem = document.createElement("li"),
+			listItem2 = document.createElement("li");
 			var label = document.createElement("label");
 			label.for = "2011";
 			label.innerHTML = "2011";
@@ -115,25 +127,35 @@ var referrals = {
 			$(input).on("change",referrals.switchDataSets);
 
 			var label2 = label.cloneNode(true);
+			
 			label2.for = "2012";
 			label2.innerHTML = "2012";
 			input2 = input.cloneNode(true);
 			input2.value = "2012";
 			input2.checked = true;
 			$(input2).on("change",referrals.switchDataSets);
-			form.appendChild(label);
-			form.appendChild(input);
-			form.appendChild(label2);
-			form.appendChild(input2);
+			
+			form.appendChild(listParent);
+			
+			listItem.appendChild(input);
+			listItem.appendChild(label);
+			
+			listItem2.appendChild(input2);
+			listItem2.appendChild(label2);
+			listParent.appendChild(listItem);
+			listParent.appendChild(listItem2);
 			parent.appendChild(form);
+			
+			listParent.setAttribute("id","years");
+			
 
-			var listParent = document.createElement("ul"),
-			listItem = null,
-			icon = null,
+			listParent = document.createElement("ul");
+			listItem = null;
+			var icon = null,
 			content = null,
 			header = null,
 			info = null;
-			listParent.id = "tree-key-chart";
+			listParent.id = "new-referrals-key";
 
 			for(var a = 0, max = referrals.path[0].length; a < max; a += 1){
 				var name = referrals.path[0][a].__data__.data.type,
@@ -148,7 +170,7 @@ var referrals = {
 					icon.style.backgroundColor = colour;
 					listItem.appendChild(icon);
 
-					header = document.createElement("h3");
+					header = document.createElement("h4");
 					header.innerHTML = name
 					listItem.appendChild(header);
 
@@ -186,19 +208,37 @@ var referrals = {
 	}
 }
 
-// Pie Circle....
+/*
+ .d8888b.  d8b                  888
+d88P  Y88b Y8P                  888
+888    888                      888
+888        888 888d888  .d8888b 888  .d88b.
+888        888 888P"   d88P"    888 d8P  Y8b
+888    888 888 888     888      888 88888888
+Y88b  d88P 888 888     Y88b.    888 Y8b.
+ "Y8888P"  888 888      "Y8888P 888  "Y8888
+*/
 var circleSettings = {
 	squareSize:12,
-	maxRad:20,
-	minRad:5,
+	maxRad:15,
+	minRad:10,
 	parentElement:"#my-svg",
 	parentKey:"#my-key",
 	parentInfo:"#my-add-info",
 	keySetup:false,
 	dataLocation:"/static/data/2012-publication.json",
 	updateSizes:function(){
-		circleSettings.width = $(circleSettings.parentElement).width()
-		circleSettings.height = $(circleSettings.parentElement).height()
+		circleSettings.width = $(circleSettings.parentElement).width();
+		circleSettings.height = $(window).outerHeight()-$("#nav").outerHeight();
+		if(circleSettings.width < circleSettings.height){
+			$(circleSettings.parentElement).css("height",circleSettings.width);
+			circleSettings.ratio = circleSettings.width/35;
+		} else {
+			$(circleSettings.parentElement).css("height",circleSettings.height);
+			circleSettings.ratio = circleSettings.height/35;
+		}
+		$($(circleSettings.parentElement)[0].parentNode).css("z-index","5");
+		$($(circleSettings.parentKey)[0].parentNode).css("z-index","6");
 		circleSettings.radius = Math.min(circleSettings.width,circleSettings.height)/2
 	},
 	setUpHTMLEls:function(){
@@ -229,7 +269,7 @@ var circleSettings = {
 					icon.style.backgroundColor = colour;
 					listItem.appendChild(icon);
 
-					header = document.createElement("h3");
+					header = document.createElement("h4");
 					header.innerHTML = lname;
 					listItem.appendChild(header);
 
@@ -258,23 +298,48 @@ var circleSettings = {
 		var el = element || this;
 		$(circleSettings.parentKey+ " #"+ el.id).attr('class', 'heighlight-circle');
 		$(circleSettings.parentElement+ " #" + el.id).attr('class', 'heighlight-circle');
+		circleSettings.showGlobalMetaData(event)
 	},
 	removeSameAuthors:function(event,element){
 		var el = element || this;
 		$(circleSettings.parentKey+ " #"+ el.id).attr('class', '');
 		$(circleSettings.parentElement+" #" + el.id).attr('class', '');
+		circleSettings.removeMetaData();
 	},
 	showMetaData:function(event,element,text){
 		var el = element || this,
 		data = el.parentNode.__data__.data;
 		numberOfPapers = $(circleSettings.parentElement+ " #" + el.parentNode.id + " #" + el.id)
 
-		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in <i>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
-		
-		function plur(papernum) {if(papernum > 1){return "papers";}else{return "paper";}}
+		$(circleSettings.parentInfo)[0].innerHTML = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published "+numberOfPapers.length/2+" "+plur(numberOfPapers.length/2)+" in<i><br/>"+data.paper+"</i><br/>"+"Impact Factor: "+data.impact+"</p>"
 	},
 	removeMetaData:function(){
 		$(circleSettings.parentInfo)[0].innerHTML = "";
+	},
+	showGlobalMetaData:function(event){
+		// console.log(event);
+		var numberOfPapers = $(circleSettings.parentElement+ " #"+ event.srcElement.parentNode.id);
+		var data = numberOfPapers[0].__data__.data
+		var out = "<h5>Dr. "+data.fname+" "+data.lname+"</h5><p>Published: "+numberOfPapers.length/2+" Total</p><ul id='full-list'>";
+		var papers = {};
+		for(var a = 0, max = numberOfPapers.length; a < max; a += 2){
+			data = numberOfPapers[a].__data__.data;
+			if(!papers[data.paper]){
+				papers[data.paper] = {};
+				papers[data.paper]["number"] = 1;
+				papers[data.paper]["Timpact"] = data.impact;
+			} else {
+				papers[data.paper]["number"] += 1;
+				papers[data.paper]["Timpact"] += data.impact;
+			}
+		}
+		for(var key in papers){
+			//out += "<li>"+papers[key].number+" "+plur(papers[key].number)+" in " + key + " with a total impact of " + zeroToNa(Math.floor(papers[key].Timpact*100)/100);
+			out += "<li>"+key
+		}
+		//console.log(papers);
+		out += "</ul>";
+		$(circleSettings.parentInfo)[0].innerHTML = out;
 	},
 	dynamicSort:function(property) {
 		var sortOrder = 1;
@@ -293,10 +358,11 @@ var circleSettings = {
 				$(circleSettings.parentElement)[0].innerHTML = "";
 				circleSettings.updateSizes();
 				circleSettings.init();
+				resizeRows();
 			}
 		});
 		d3.json(circleSettings.dataLocation,function(data){
-			data.sort(circleSettings.dynamicSort("paper"));
+			data.sort(circleSettings.dynamicSort("impact"));
 			circleSettings.data = data;
 			circleSettings.init();
 		});
@@ -337,7 +403,7 @@ var circleSettings = {
 		circleSettings.g.append('circle')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
 		.attr("r", function(d) {
-			return map_range(d.data.impact,0,30,circleSettings.minRad,circleSettings.maxRad);
+			return map_range(d.data.impact,0,30,circleSettings.ratio/5,circleSettings.ratio/*circleSettings.maxRad*/);
 		})
 		.style("text-anchor", "middle")
 		.style("fill", function(d) { return circleSettings.color(d.data.fname); })
@@ -397,6 +463,7 @@ var circleSettings = {
 			return convertToSlug(d.data.fname);
 		})
 		circleSettings.setUpHTMLEls();
+		resizeRows();
 	}
 }
 
@@ -404,12 +471,22 @@ var circleSettings = {
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
+function zeroToNa(value) {if(value<=0){return "N/A"} else {return value;}}
+
+function plur(papernum) {if(papernum > 1){return "papers";}else{return "paper";}}
 
 
 
-
-
-//TREEEEEEEEEEEEEEEEE chart
+/*
+88888888888                                  .d8888b.  888                       888
+    888                                     d88P  Y88b 888                       888
+    888                                     888    888 888                       888
+    888     888d888  .d88b.   .d88b.        888        88888b.   8888b.  888d888 888888
+    888     888P"   d8P  Y8b d8P  Y8b       888        888 "88b     "88b 888P"   888
+    888     888     88888888 88888888       888    888 888  888 .d888888 888     888
+    888     888     Y8b.     Y8b.           Y88b  d88P 888  888 888  888 888     Y88b.
+    888     888      "Y8888   "Y8888         "Y8888P"  888  888 "Y888888 888      "Y888
+*/
 //have next lines in the box...
 /*
 first 
@@ -450,7 +527,7 @@ var treeChart = {
 	dataLocation:"/static/data/2012-breakdown.json",
 	setup:function(){
 		treeChart.setWH();
-		console.log(treeChart.width,treeChart.height);
+		//console.log(treeChart.width,treeChart.height);
 		treeChart.treemap = d3.layout.treemap()
 			.size([treeChart.width, treeChart.height])
 			.sticky(true)
@@ -463,7 +540,7 @@ var treeChart = {
 		treeChart.loadData("none",treeData);
 		treeChart.generateList();
 		$(window).on("resize",function(){
-			console.log("yep");
+			//console.log("yep");
 			treeChart.onResizeChart();
 		});
 	},
@@ -476,7 +553,9 @@ var treeChart = {
 			.enter().append("div")
 			.attr("class", function(d){return convertToSlug(d.name) + " node";})
 			.call(treeChart.setSize)
-			.text(function(d) { return d.size; });
+			.text(function(d) { return d.size; })
+			.on("mouseover",treeChart.heighLightFromBox)
+			.on("mouseout",treeChart.unHeighLight);
 	},
 	setSize:function(){
 		this.style("left", function(d) { return d.x + "px"; })
@@ -516,6 +595,7 @@ var treeChart = {
 		// d3.select(treeChart.location)[0][0].appendChild(listParent);
 		$(treeChart.keyLocation)[0].appendChild(listParent);
 		$(listParent).children().on("mouseover",treeChart.heighLight);
+		$(listParent).children().on("mouseout",treeChart.unHeighLight)
 	},
 	heighLight:function(){
 		treeChart.unHeighLight();
@@ -524,6 +604,15 @@ var treeChart = {
 			if(list[a]!="list-icon"){
 				$(this).addClass('tree-graph-heigh-lighted');
 				$("."+list[a]).addClass('tree-graph-heigh-lighted');
+			}
+		}
+	},
+	heighLightFromBox:function(){
+		var list = this.className.split(" ");
+		for( var a = 0, max = list.length; a < max; a += 1){
+			if(list[a]!="node"){
+				$(this).addClass('tree-graph-heigh-lighted');
+				$($("."+list[a])[0].parentNode).addClass('tree-graph-heigh-lighted');
 			}
 		}
 	},
@@ -543,12 +632,15 @@ var treeChart = {
 				.style("width", (treeChart.width) + "px")
 				.style("height", (treeChart.height) + "px")
 				.attr("class","tree-chart");
+
 			treeChart.divs = treeChart.parentDiv.datum(treeChart.inputData).selectAll("div")
 				.data(treeChart.treemap(treeChart.inputData))
 				.enter().append("div")
 				.attr("class", function(d){return convertToSlug(d.name) + " node";})
 				.call(treeChart.setSize)
-				.text(function(d) { return d.size; });
+				.text(function(d) { return d.size; })
+				.on("mouseover",treeChart.heighLightFromBox)
+				.on("mouseout",treeChart.unHeighLight);
 		}
 	}
 }

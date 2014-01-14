@@ -6,12 +6,12 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'blog.views.home', name='home'),
+    # url(r'^$', 'sickkids_ortho.views.home', name='home'),
     # url(r'^sickkids_ortho/', include('sickkids_ortho.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
+    
     url(r'^$','blog.views.post',name="rawpost"),
 
     # Uncomment the next line to enable the admin:
@@ -26,5 +26,6 @@ urlpatterns = patterns('',
     url(r'^downloads/(?P<filename>.*)', 'blog.views.pdf_download'),
     url(r'^(?P<post>.*)/$','blog.views.post',name="rawpost"),
     url(r'^(?P<post>.*)/.','blog.views.post',name="rawpost"),
+    url(r'^robots.txt', 'blog.views.robots', name='forbots'),
     url(r'^$', 'blog.views.post', name='home'),
 )

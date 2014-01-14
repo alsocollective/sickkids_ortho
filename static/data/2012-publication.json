@@ -24,8 +24,8 @@
 		"paper":"Journal of Bone and Joint Surgery"
 	},
 	{
-		"fname":"Unni",
-		"lname":"Narayanan",
+		"fname":"James",
+		"lname":"Wright",
 		"impact":3.27,
 		"paper":"Journal of Bone and Joint Surgery"
 	},
@@ -34,18 +34,6 @@
 		"lname":"Wright",
 		"impact":2.86,
 		"paper":"PharmacoEconomics"
-	},
-	{
-		"fname":"Unni",
-		"lname":"Narayanan",
-		"impact":2.41,
-		"paper":"Analytical Biochemistry"
-	},
-	{
-		"fname":"Unni",
-		"lname":"Narayanan",
-		"impact":1.77,
-		"paper":"BMC Health Services Research"
 	},
 	{
 		"fname":"James",
@@ -62,26 +50,134 @@
 	{
 		"fname":"James",
 		"lname":"Wright",
-		"impact":1.25,
-		"paper":"Orthopedic Clinics of North America"
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
 	},
 	{
 		"fname":"James",
 		"lname":"Wright",
-		"impact":1.25,
-		"paper":"Orthopedic Clinics of North America"
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
 	},
 	{
 		"fname":"James",
 		"lname":"Wright",
-		"impact":1.25,
-		"paper":"Orthopedic Clinics of North America"
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
 	},
 	{
 		"fname":"James",
 		"lname":"Wright",
 		"impact":1.05,
 		"paper":"Canadian Journal of Surgery"
+	},
+	{
+		"fname":"Unni",
+		"lname":"Narayanan",
+		"impact":2.41,
+		"paper":"Quality of Life Research"
+	},
+	{
+		"fname":"Unni",
+		"lname":"Narayanan",
+		"impact":1.77,
+		"paper":"BMC Health Services Research"
+	},
+	{
+		"fname":"Unni",
+		"lname":"Narayanan",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Stephen",
+		"lname":"Lewis",
+		"impact":3.36,
+		"paper":"Spine"
+	},
+	{
+		"fname":"Stephen",
+		"lname":"Lewis",
+		"impact":3.36,
+		"paper":"Spine"
+	},
+	{
+		"fname":"Stephen",
+		"lname":"Lewis",
+		"impact":3.36,
+		"paper":"Spine"
+	},
+	{
+		"fname":"Stephen",
+		"lname":"Lewis",
+		"impact":3.36,
+		"paper":"Spine"
+	},
+	{
+		"fname":"Stephen",
+		"lname":"Lewis",
+		"impact":2.13,
+		"paper":"European Spine Journal"
+	},
+	{
+		"fname":"Andrew",
+		"lname":"Howard",
+		"impact":1.65,
+		"paper":"Emergency Medicine Journal"
+	},
+	{
+		"fname":"Andrew",
+		"lname":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Andrew",
+		"lname":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Andrew",
+		"lname":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Andrew",
+		"lname":"Howard",
+		"impact":1.16,
+		"paper":"Journal of Children's Orthopaedics"
+	},
+	{
+		"fname":"Sevan",
+		"lname":"Hopyan",
+		"impact":4.70,
+		"paper":"Journal of Internet Medical Research"
+	},
+	{
+		"fname":"Sevan",
+		"lname":"Hopyan",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"fname":"Sevan",
+		"lname":"Hopyan",
+		"impact":3.27,
+		"paper":"Journal of Bone and Joint Surgery"
+	},
+	{
+		"fname":"Sevan",
+		"lname":"Hopyan",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Sevan",
+		"lname":"Hopyan",
+		"impact":0,
+		"paper":"Journal of Bone and Joint Surgery Essential Surgery Tech."
 	},
 	{
 		"fname":"Ben",
@@ -156,130 +252,22 @@
 		"paper":"Analytical Biochemistry"
 	},
 	{
-		"fname":"Sevan",
-		"lname":"Hopyan",
-		"impact":4.70,
-		"paper":"Journal of Internet Medical Research"
-	},
-	{
-		"fname":"Sevan",
-		"lname":"Hopyan",
-		"impact":3.27,
-		"paper":"Journal of Bone and Joint Surgery"
-	},
-	{
-		"fname":"Sevan",
-		"lname":"Hopyan",
-		"impact":3.27,
-		"paper":"Journal of Bone and Joint Surgery"
-	},
-	{
-		"fname":"Sevan",
-		"lname":"Hopyan",
-		"impact":1.16,
-		"paper":"Journal of Pediatric Orthopaedics"
-	},
-	{
-		"fname":"Sevan",
-		"lname":"Hopyan",
-		"impact":0,
-		"paper":"Studies in Health Technology and informatics"
-	},
-	{
-		"fname":"Andrew",
-		"lname":"Howard",
-		"impact":1.65,
-		"paper":"paper published"
-	},
-	{
-		"fname":"Andrew",
-		"lname":"Howard",
-		"impact":1.16,
-		"paper":"Journal of Pediatric Orthopaedics"
-	},
-	{
-		"fname":"Andrew",
-		"lname":"Howard",
-		"impact":1.16,
-		"paper":"Journal of Pediatric Orthopaedics"
-	},
-	{
-		"fname":"Andrew",
-		"lname":"Howard",
-		"impact":1.16,
-		"paper":"Journal of Pediatric Orthopaedics"
-	},
-	{
-		"fname":"Andrew",
-		"lname":"Howard",
-		"impact":1.16,
-		"paper":"Journal of Children’s Orthopaedics"
-	},
-	{
-		"fname":"Stephen",
-		"lname":"Lewis",
-		"impact":1,
-		"paper":"Spine"
-	},
-	{
-		"fname":"Stephen",
-		"lname":"Lewis",
-		"impact":1,
-		"paper":"Spine"
-	},
-	{
-		"fname":"Stephen",
-		"lname":"Lewis",
-		"impact":1,
-		"paper":"Spine"
-	},
-	{
-		"fname":"Stephen",
-		"lname":"Lewis",
-		"impact":1,
-		"paper":"Spine"
-	},
-	{
-		"fname":"Stephen",
-		"lname":"Lewis",
-		"impact":1,
-		"paper":"Quality of Life Research"
+		"fname":"John",
+		"lname":"Wedge",
+		"impact":2.79,
+		"paper":"Clinical Orthopaedics and Related Research"
 	},
 	{
 		"fname":"John",
 		"lname":"Wedge",
-		"impact":1,
-		"paper":"paper published"
-	},
-	{
-		"fname":"John",
-		"lname":"Wedge",
-		"impact":1,
-		"paper":"paper published"
-	},
-	{
-		"fname":"John",
-		"lname":"Wedge",
-		"impact":1,
-		"paper":"paper published"
-	},
-	{
-		"fname":"Lucas",
-		"lname":"Murnaghan",
-		"impact":1.06,
-		"paper":"Orthopaedics and Trauma"
-	},
-	{
-		"fname":"Lucas",
-		"lname":"Murnaghan",
-		"impact":1.16,
+		"impact":1.25,
 		"paper":"Orthopedic Clinics of North America"
 	},
 	{
 		"fname":"Lucas",
 		"lname":"Murnaghan",
-		"impact":2.79,
-		"paper":"PharmacoEconomics"
+		"impact":3.55,
+		"paper":"Medical Education"
 	},
 	{
 		"fname":"Lucas",
@@ -290,20 +278,32 @@
 	{
 		"fname":"Lucas",
 		"lname":"Murnaghan",
-		"impact":3.55,
-		"paper":"Medical Education"
+		"impact":2.79,
+		"paper":"Clinical Orthopaedics and Related Research"
 	},
 	{
-		"fname":"Simon",
-		"lname":"Kelley",
+		"fname":"Lucas",
+		"lname":"Murnaghan",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Lucas",
+		"lname":"Murnaghan",
 		"impact":1.06,
 		"paper":"Orthopaedics and Trauma"
 	},
 	{
-		"fname":"Simon",
-		"lname":"Kelley",
-		"impact":1.25,
-		"paper":"Journal of Pediatric Surgery"
+		"fname":"Reinhard",
+		"lname":"Zeller",
+		"impact":1.16,
+		"paper":"Journal of Pediatric Orthopaedics"
+	},
+	{
+		"fname":"Reinhard",
+		"lname":"Zeller",
+		"impact":0,
+		"paper":"Studies in Health Technology and informatics"
 	},
 	{
 		"fname":"Simon",
@@ -312,15 +312,15 @@
 		"paper":"Journal of Bone and Joint Surgery"
 	},
 	{
-		"fname":"Reinhard",
-		"lname":"Zeller",
-		"impact":1.16,
-		"paper":"Orthopedic Clinics of North America"
-	},
+		"fname":"Simon",
+		"lname":"Kelley",
+		"impact":1.25,
+		"paper":"Journal of Pediatric Surgery"
+	},	
 	{
-		"fname":"Reinhard",
-		"lname":"Zeller",
-		"impact":0,
-		"paper":"Studies in Health Technology and informatics"
+		"fname":"Simon",
+		"lname":"Kelley",
+		"impact":1.06,
+		"paper":"Orthopedic Clinics of North America"
 	}
 ]

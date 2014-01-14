@@ -231,6 +231,9 @@ def treemap(request):
 
 def static(request):
 	return render_to_response('blog-templates/index-static.html',{"data":0})
+    
+def robots(request):
+	return render_to_response('blog-templates/robots.txt',{"data":0})
 
 def pdf_download(request, filename):
     path = os.path.expanduser('/static/data/')

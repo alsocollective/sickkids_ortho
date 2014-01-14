@@ -97,6 +97,8 @@ function setupnav(){
 	$("#nav img").on("click",function(){clearHighLight();loadNextPage("home");});
 }
 function loadNextPage(address){
+	document.getElementById('main-title').innerHTML = "Sick Kids Orthopaedic Surgery Fellowship: "+titleFormat(address);
+	
 	if(loading || address == pageSlug){
 		return false;
 	}
@@ -139,6 +141,11 @@ function loadNextPage(address){
 		currentHashEl="";
 	});
 	nextpage.addClass(address);
+}
+function titleFormat(urlTitle){
+	urlText = urlTitle.split("-").join(" ");
+
+	return urlText;
 }
 function moveButtonDown(){
 	var lastB = $(".last-button")[0];
@@ -254,6 +261,7 @@ function setURL(){
 function jumpToLocation(){
 	$("#content").scrollTop($("#"+currentHashEl).offset().top + $("#content").scrollTop());
 }
+
 function trackOutboundLink(link, category, action) {
 	try {
 		_gaq.push(['_trackEvent', category , action]);
@@ -263,19 +271,6 @@ function trackOutboundLink(link, category, action) {
 }
 
 var link = document.getElementById('my-link-id');
-
-//Google Analytics Snippet
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-39447542-1']);
-_gaq.push(['_setDomainName', 'none']);
-
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
-
 
 
 
@@ -290,6 +285,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.man_made",
     "elementType": "geometry",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#a1585b" }
@@ -297,6 +293,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.man_made",
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#fac2c2" }
@@ -304,6 +301,7 @@ var myContactStyle = [
   },{
     "featureType": "road",
     "elementType": "geometry.fill",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#f7a4a7" }
@@ -311,6 +309,7 @@ var myContactStyle = [
   },{
     "featureType": "road",
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#ea646f" }
@@ -318,6 +317,7 @@ var myContactStyle = [
   },{
     "featureType": "landscape.natural",
     "elementType": "geometry.fill",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#fae6e6" }
@@ -325,12 +325,14 @@ var myContactStyle = [
   },{
     "featureType": "poi.medical",
     "elementType": "geometry",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#f18383" }
     ]
   },{
     "elementType": "geometry.stroke",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "color": "#ffffff" },
@@ -338,6 +340,7 @@ var myContactStyle = [
     ]
   },{
     "elementType": "labels.icon",
+    "year":2005,
     "stylers": [
       { "saturation": -100 },
       { "gamma": 0.01 },
@@ -346,13 +349,37 @@ var myContactStyle = [
     ]
   },{
     "elementType": "labels.text",
+    "year":2005,
     "stylers": [
       { "visibility": "on" },
       { "saturation": -100 }
     ]
   },{
-    "elementType": "geometry"  }
+    "elementType": "geometry"}
 ]
+
+function keyGenForMap(parentId,styles){
+	var parent=document.getElementById(parentId);
+	var ul = document.createElement("ul");
+	parent.appendChild(ul);
+	var li = null,
+	div=null,
+	h3=null;
+	for(var a = 1, max = styles.length-2; a < max; a += 1){
+		div = document.createElement("div"),
+		li = document.createElement("li"),
+		h3 = document.createElement("h3");
+		li.appendChild(div);
+		li.appendChild(h3);
+		h3.innerHTML = 2004+a;
+		console.log(styles[a])
+		if(!styles[a].stylers[1]){
+			return false;
+		}
+		div.style.backgroundColor = styles[a].stylers[1].color;
+		ul.appendChild(li);
+	}
+}
 
 
 // MAP STUFF!!!

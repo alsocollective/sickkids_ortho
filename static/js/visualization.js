@@ -49,11 +49,17 @@ var referrals = {
 	path:null,
 
 	updateSizes:function(){
+		if(playVis){
+			return false;
+		}
 		referrals.width = $(referrals.parentElement).width()
 		referrals.height = $(referrals.parentElement).height()
 		referrals.radius = Math.min(referrals.width,referrals.height)/2
 	},
 	load:function(){
+		if(playVis){
+			return false;
+		}
 		referrals.colour = d3.scale.linear().domain([1,10]).range(['#733036', '#FCE0DF']);
 		referrals.pie = d3.layout.pie()
 			.value(function(d){
@@ -228,6 +234,9 @@ var circleSettings = {
 	keySetup:false,
 	dataLocation:"/static/data/2012-publication.json",
 	updateSizes:function(){
+		if(playVis){
+			return false;
+		}
 		circleSettings.width = $(circleSettings.parentElement).width();
 		circleSettings.height = $(window).outerHeight()-$("#nav").outerHeight();
 		if(circleSettings.width < circleSettings.height){
@@ -243,6 +252,9 @@ var circleSettings = {
 	},
 	setUpHTMLEls:function(){
 		//console.log("SET UP HTML EL!!!!!!")
+		if(playVis){
+			return false;
+		}
 		if($(circleSettings.parentKey).children().length == 0){
 			var parent = $(circleSettings.parentKey)[0];
 			var listParent = document.createElement("ul"),
@@ -353,6 +365,9 @@ var circleSettings = {
 		}
 	},
 	load:function(){
+		if(playVis){
+			return false;
+		}
 		$(window).on("resize",function(){
 			if($(circleSettings.parentElement[0])){
 				$(circleSettings.parentElement)[0].innerHTML = "";
@@ -368,6 +383,9 @@ var circleSettings = {
 		});
 	},
 	init:function(){
+		if(playVis){
+			return false;
+		}
 		circleSettings.color = d3.scale.ordinal().range(["#FAC2C3","#F7A4A6","#F18489","#EA636E","#A1585C","#792B34","#52161A","#000"])
 		circleSettings.arc = d3.svg.arc()
 			.outerRadius(circleSettings.radius - 29)
@@ -375,11 +393,16 @@ var circleSettings = {
 		circleSettings.pie = d3.layout.pie()
 			.value(function(d){ return 1;})
 			.sort(null);
+
+		
+
+
 		circleSettings.svg = d3.select(circleSettings.parentElement).append("svg")
 			.attr("with",circleSettings.width)
 			.attr('height', circleSettings.height)
 			.append("g")
-			.attr("transform","translate("+circleSettings.width/2+","+circleSettings.height/2+")");
+			.attr("transform","translate("+circleSettings.width/2+","+circleSettings.height/2+")")
+
 
 		circleSettings.g = circleSettings.svg.selectAll(".arc")
 			.data(circleSettings.pie(circleSettings.data))
@@ -398,7 +421,7 @@ var circleSettings = {
 				}
 				return null;
 			});
-
+		console.log(circleSettings.svg);
 		////////////////// CRICLE //////////////
 		circleSettings.g.append('circle')
 		.attr("transform", function(d) { return "translate(" + circleSettings.arc.centroid(d) + ")"; })
@@ -526,6 +549,9 @@ var treeChart = {
 	keyLocation:"#tree-area-key",
 	dataLocation:"/static/data/2012-breakdown.json",
 	setup:function(){
+		if(playVis){
+			return false;
+		}
 		treeChart.setWH();
 		//console.log(treeChart.width,treeChart.height);
 		treeChart.treemap = d3.layout.treemap()
@@ -558,6 +584,9 @@ var treeChart = {
 			.on("mouseout",treeChart.unHeighLight);
 	},
 	setSize:function(){
+		if(playVis){
+			return false;
+		}
 		this.style("left", function(d) { return d.x + "px"; })
 			.style("top", function(d) { return d.y + "px"; })
 			.style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
@@ -624,6 +653,9 @@ var treeChart = {
 		treeChart.height = $(treeChart.location).outerHeight();
 	},
 	onResizeChart:function(){
+		if(playVis){
+			return false;
+		}
 		if($(treeChart.location)[0]){
 			treeChart.setWH();
 			$(treeChart.location)[0].innerHTML = "";

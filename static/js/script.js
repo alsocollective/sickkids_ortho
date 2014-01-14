@@ -6,6 +6,7 @@
 */
 
 var slideMenu;
+var playVis = !$("html").hasClass("no-svg");
 
 $(window).load(function() {
 	if($(window).width()>mobileWidth){
@@ -53,6 +54,7 @@ function resizeRows(){
 		var height = findChildrenHeight(rows[index]);
 		rows[index].style.height = height+"px";
 	});
+	$("#cover").css({"minHeight":$(window).outerHeight(true)});
 	findTriggerPoints();
 }
 function findChildrenHeight(parent){
@@ -76,6 +78,7 @@ function findChildrenHeight(parent){
 			}
 		}
 	}
+
 	return height;
 }
 
